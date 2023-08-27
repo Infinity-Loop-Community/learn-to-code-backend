@@ -6,9 +6,10 @@ This is a sample template for learn-to-code-backend - Below is a brief explanati
 .
 ├── Makefile                    <-- Make to automate build
 ├── README.md                   <-- This instructions file
-├── hello-world                 <-- Source code for a lambda function
+├── cmd/get_hello_world         <-- Source code for a lambda function
 │   ├── main.go                 <-- Lambda function code
 │   └── main_test.go            <-- Unit tests
+├── internal                    <-- Application code
 └── template.yaml
 ```
 

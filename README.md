@@ -63,7 +63,7 @@ AWS Lambda Golang runtime requires a flat folder with the executable generated o
     FirstFunction:
         Type: AWS::Serverless::Function
         Properties:
-            CodeUri: hello_world/
+            CodeUri: cmd/get_hello_world/
             ...
 ```
 
@@ -88,8 +88,7 @@ You can find your API Gateway Endpoint URL in the output values displayed after 
 We use `testing` package that is built-in in Golang and you can simply run the following command to run our tests:
 
 ```shell
-cd ./hello-world/
-go test -v .
+go test -v ./...
 ```
 # Appendix
 

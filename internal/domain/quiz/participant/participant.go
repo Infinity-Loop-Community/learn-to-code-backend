@@ -8,25 +8,24 @@ import (
 
 type Participant struct {
 	id      string
-	quizzes []activeQuiz
+	Quizzes []activeQuiz
 
 	events []event.Event
 }
 
 func (p *Participant) apply(e event.Event) error {
+	err := e.CheckIfApplicable(p)
+	if err != nil {
+		return err
+	}
+
 	switch e.(type) {
 
 	case event.StartedQuiz:
-		err2 := p.handleStartedQuizEvent(e)
-		if err2 != nil {
-			return err2
-		}
+		p.appendToQuizList(e.(event.StartedQuiz).Id)
 
 	case event.FinishedQuiz:
-		err := p.handleFinishedQuizEvent(e)
-		if err != nil {
-			return err
-		}
+		p.setQuizCompleted(e.(event.FinishedQuiz).Id)
 
 	default:
 		panic(fmt.Sprintf("unknown event type %s", reflect.TypeOf(e)))
@@ -35,67 +34,18 @@ func (p *Participant) apply(e event.Event) error {
 	return nil
 }
 
-func (p *Participant) handleFinishedQuizEvent(e event.Event) error {
-	finishedQuizEvent := e.(event.FinishedQuiz)
-
-	err := p.allowsApplyFinishedQuizEvent(finishedQuizEvent.Id)
-	if err != nil {
-		return err
-	}
-
-	p.setQuizCompleted(finishedQuizEvent.Id)
-
-	return nil
-}
-
 func (p *Participant) setQuizCompleted(finishedQuizId string) {
-	for i, quiz := range p.quizzes {
-		if quiz.id == finishedQuizId {
-			p.quizzes[i].completed = true
+	for i, quiz := range p.Quizzes {
+		if quiz.Id == finishedQuizId {
+			p.Quizzes[i].completed = true
 			break
 		}
 	}
-}
-
-func (p *Participant) allowsApplyFinishedQuizEvent(finishedQuizEventId string) error {
-	quizFound := false
-	for _, quiz := range p.quizzes {
-		if quiz.id == finishedQuizEventId {
-			quizFound = true
-			break
-		}
-	}
-
-	if quizFound == false {
-		return fmt.Errorf("no started quiz found with id '%s'", finishedQuizEventId)
-	}
-	return nil
-}
-
-func (p *Participant) handleStartedQuizEvent(e event.Event) error {
-	eventQuizId := e.(event.StartedQuiz).Id
-
-	err := p.allowsApplyStartedQuizEvent(eventQuizId)
-	if err != nil {
-		return err
-	}
-
-	p.appendToQuizList(eventQuizId)
-	return nil
-}
-
-func (p *Participant) allowsApplyStartedQuizEvent(eventQuizId string) error {
-	for _, quiz := range p.quizzes {
-		if quiz.id == eventQuizId && quiz.isOngoing() {
-			return fmt.Errorf("quiz '%s' already started and not finished", quiz.id)
-		}
-	}
-	return nil
 }
 
 func (p *Participant) appendToQuizList(eventQuizId string) {
-	p.quizzes = append(p.quizzes, activeQuiz{
-		id:              eventQuizId,
+	p.Quizzes = append(p.Quizzes, activeQuiz{
+		Id:              eventQuizId,
 		providedAnswers: nil,
 		completed:       false,
 	})
@@ -106,13 +56,13 @@ func (p *Participant) GetId() string {
 }
 
 func (p *Participant) GetStartedQuizCount() int {
-	return len(p.quizzes)
+	return len(p.Quizzes)
 }
 
 func (p *Participant) GetFinishedQuizCount() int {
 	finishedQuizzes := 0
 
-	for _, quiz := range p.quizzes {
+	for _, quiz := range p.Quizzes {
 		if quiz.completed {
 			finishedQuizzes++
 		}
@@ -135,9 +85,9 @@ func (p *Participant) StartQuiz(id string) (event.StartedQuiz, error) {
 func (p *Participant) FinishQuiz(id string) (event.FinishedQuiz, error) {
 	var foundQuiz *activeQuiz
 
-	for _, quiz := range p.quizzes {
+	for _, quiz := range p.Quizzes {
 
-		if quiz.id == id && quiz.completed != true {
+		if quiz.Id == id && quiz.completed != true {
 			foundQuiz = &quiz
 			break
 		}

@@ -15,7 +15,7 @@ func TestParticipant_GetId_CorrectSize(t *testing.T) {
 	uuidLength := len(newUuid())
 
 	if pLength != uuidLength {
-		t.Fatalf("id length not equal to an uuid %d != %d", pLength, uuidLength)
+		t.Fatalf("Id length not equal to an uuid %d != %d", pLength, uuidLength)
 	}
 }
 
@@ -24,7 +24,7 @@ func TestParticipant_GetId_Unique(t *testing.T) {
 	p2 := participant.New()
 
 	if p1.GetId() == p2.GetId() {
-		t.Fatalf("id not unique")
+		t.Fatalf("Id not unique")
 	}
 }
 
@@ -54,7 +54,7 @@ func TestParticipant_JoinQuiz_ReturnsEvent(t *testing.T) {
 	event, _ := p.StartQuiz(quizId)
 
 	if event.Id != quizId {
-		t.Fatalf("invalid event id '%s' != '%s", event.Id, quizId)
+		t.Fatalf("invalid event Id '%s' != '%s", event.Id, quizId)
 	}
 }
 
@@ -147,7 +147,7 @@ func TestParticipant_FinishQuiz_eventQuizIdMatches(t *testing.T) {
 	event, _ := p.FinishQuiz(quizId)
 
 	if event.Id != quizId {
-		t.Fatalf("finish event quizId does not match quiz id '%s' != '%s'", event.Id, quizId)
+		t.Fatalf("finish event quizId does not match quiz Id '%s' != '%s'", event.Id, quizId)
 	}
 }
 

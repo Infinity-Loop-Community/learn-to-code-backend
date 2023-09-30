@@ -8,7 +8,7 @@ import (
 func New() Participant {
 	return Participant{
 		id:      uuid.MustNewRandomAsString(),
-		quizzes: nil,
+		Quizzes: nil,
 		events:  nil,
 	}
 }
@@ -16,7 +16,7 @@ func New() Participant {
 func NewFromEvents(id string, events []event.Event) (Participant, error) {
 	p := Participant{
 		id:      id,
-		quizzes: nil,
+		Quizzes: nil,
 		events:  nil,
 	}
 

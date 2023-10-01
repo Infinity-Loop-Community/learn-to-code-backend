@@ -4,22 +4,23 @@ import (
 	"fmt"
 	"hello-world/internal/domain/quiz/participant/event"
 	"reflect"
+	"time"
 )
 
 type Participant struct {
 	id      string
+	joined  time.Time
 	Quizzes []activeQuiz
 
 	events []event.Event
 }
 
 func (p *Participant) apply(e event.Event) error {
-	err := e.CheckIfApplicable(p)
-	if err != nil {
-		return err
-	}
 
 	switch e.(type) {
+
+	case event.JoinedQuiz:
+		p.id, p.joined = e.(event.JoinedQuiz).Id, e.(event.JoinedQuiz).Time
 
 	case event.StartedQuiz:
 		p.appendToQuizList(e.(event.StartedQuiz).Id)
@@ -73,13 +74,27 @@ func (p *Participant) GetFinishedQuizCount() int {
 
 func (p *Participant) StartQuiz(id string) (event.StartedQuiz, error) {
 
+	quiz, err := p.ensureQuizNotStarted(id)
+	if err != nil {
+		return quiz, err
+	}
+
 	var startedQuizEvent = event.StartedQuiz{
 		Id: id,
 	}
 
-	err := p.apply(startedQuizEvent)
+	err = p.apply(startedQuizEvent)
 
 	return startedQuizEvent, err
+}
+
+func (p *Participant) ensureQuizNotStarted(id string) (event.StartedQuiz, error) {
+	for _, quiz := range p.Quizzes {
+		if quiz.Id == id && quiz.IsOngoing() {
+			return event.StartedQuiz{}, fmt.Errorf("quiz '%s' already started and not finished", quiz.Id)
+		}
+	}
+	return event.StartedQuiz{}, nil
 }
 
 func (p *Participant) FinishQuiz(id string) (event.FinishedQuiz, error) {

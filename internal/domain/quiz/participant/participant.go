@@ -2,6 +2,7 @@ package participant
 
 import (
 	"fmt"
+	"hello-world/internal/domain/eventsource"
 	"hello-world/internal/domain/quiz/participant/event"
 	"reflect"
 	"time"
@@ -12,25 +13,27 @@ type Participant struct {
 	joined  time.Time
 	Quizzes []activeQuiz
 
-	events []event.Event
+	eventsource.AggregateRoot
 }
 
-func (p *Participant) apply(e event.Event) error {
+func (p *Participant) apply(e eventsource.Event) error {
 
-	switch e.(type) {
+	switch eventType := e.(type) {
 
 	case event.JoinedQuiz:
-		p.id, p.joined = e.(event.JoinedQuiz).Id, e.(event.JoinedQuiz).Time
+		p.id, p.joined = eventType.Id, eventType.GetCreatedAt()
 
 	case event.StartedQuiz:
-		p.appendToQuizList(e.(event.StartedQuiz).Id)
+		p.appendToQuizList(eventType.Id)
 
 	case event.FinishedQuiz:
-		p.setQuizCompleted(e.(event.FinishedQuiz).Id)
+		p.setQuizCompleted(eventType.Id)
 
 	default:
 		panic(fmt.Sprintf("unknown event type %s", reflect.TypeOf(e)))
 	}
+
+	p.CurrentVersion++
 
 	return nil
 }
@@ -80,7 +83,7 @@ func (p *Participant) StartQuiz(id string) (event.StartedQuiz, error) {
 	}
 
 	var startedQuizEvent = event.StartedQuiz{
-		Id: id,
+		EventBase: p.createEventBaseEvent(id),
 	}
 
 	err = p.apply(startedQuizEvent)
@@ -113,10 +116,18 @@ func (p *Participant) FinishQuiz(id string) (event.FinishedQuiz, error) {
 	}
 
 	finishedQuizEvent := event.FinishedQuiz{
-		Id: id,
+		EventBase: p.createEventBaseEvent(id),
 	}
 
 	err := p.apply(finishedQuizEvent)
 
 	return finishedQuizEvent, err
+}
+
+func (p *Participant) createEventBaseEvent(id string) eventsource.EventBase {
+	return eventsource.EventBase{
+		Id:        id,
+		Version:   p.CurrentVersion,
+		CreatedAt: time.Now(),
+	}
 }

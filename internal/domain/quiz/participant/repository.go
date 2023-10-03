@@ -2,7 +2,7 @@ package participant
 
 import (
 	"errors"
-	"hello-world/internal/domain/quiz/participant/event"
+	"hello-world/internal/domain/eventsource"
 )
 
 var ErrNotFound = errors.New("element not found")
@@ -13,7 +13,7 @@ var ErrNotFound = errors.New("element not found")
 // you can utilize TransactionalWrites along with condition checks, such as an event counter,
 // to maintain transactional integrity.
 type Repository interface {
-	AppendEvent(participantId string, e event.Event) error
+	AppendEvent(participantId string, e eventsource.Event) error
 
 	// FindById retrieves a participant by ID from the repository.
 	// It returns the Participant object and an error.

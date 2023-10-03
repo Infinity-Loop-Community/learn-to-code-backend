@@ -1,10 +1,12 @@
 package event
 
 import (
-	"time"
+	"hello-world/internal/domain/eventsource"
+	"reflect"
 )
 
 type JoinedQuiz struct {
-	Id   string
-	Time time.Time
+	eventsource.EventBase
 }
+
+var JoinedQuizTypeName = reflect.TypeOf(JoinedQuiz{}).Name()

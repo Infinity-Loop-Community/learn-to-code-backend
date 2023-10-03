@@ -1,6 +1,7 @@
 package participant
 
 import (
+	"hello-world/internal/domain/eventsource"
 	"hello-world/internal/domain/quiz/participant/event"
 	"hello-world/internal/infrastructure/go/util/uuid"
 	"time"
@@ -8,16 +9,21 @@ import (
 
 func New() (Participant, error) {
 	joinedQuizEvent := event.JoinedQuiz{
-		Id:   uuid.MustNewRandomAsString(),
-		Time: time.Now(),
+		EventBase: eventsource.EventBase{
+			Id:        uuid.MustNewRandomAsString(),
+			Version:   0,
+			CreatedAt: time.Now(),
+		},
 	}
-	return NewFromEvents([]event.Event{joinedQuizEvent})
+	return NewFromEvents([]eventsource.Event{joinedQuizEvent})
 }
 
-func NewFromEvents(events []event.Event) (Participant, error) {
+func NewFromEvents(events []eventsource.Event) (Participant, error) {
+
 	p := Participant{}
 
 	for _, e := range events {
+
 		err := p.apply(e)
 
 		if err != nil {

@@ -9,7 +9,7 @@ import (
 )
 
 func TestParticipant_GetId_CorrectSize(t *testing.T) {
-	p := participant.New()
+	p := err.PanicIfError1(participant.New())
 
 	pLength := len(p.GetId())
 	uuidLength := len(newUuid())
@@ -20,8 +20,8 @@ func TestParticipant_GetId_CorrectSize(t *testing.T) {
 }
 
 func TestParticipant_GetId_Unique(t *testing.T) {
-	p1 := participant.New()
-	p2 := participant.New()
+	p1 := err.PanicIfError1(participant.New())
+	p2 := err.PanicIfError1(participant.New())
 
 	if p1.GetId() == p2.GetId() {
 		t.Fatalf("Id not unique")
@@ -29,7 +29,7 @@ func TestParticipant_GetId_Unique(t *testing.T) {
 }
 
 func TestParticipant_GetJoinedQuizzesInitiallyZero(t *testing.T) {
-	p := participant.New()
+	p := err.PanicIfError1(participant.New())
 
 	if p.GetStartedQuizCount() != 0 {
 		t.Fatalf("joined quiz count initially not 0")
@@ -37,7 +37,7 @@ func TestParticipant_GetJoinedQuizzesInitiallyZero(t *testing.T) {
 }
 
 func TestParticipant_WhenJoiningAQuiz_HasJoinedQuizzes(t *testing.T) {
-	p := participant.New()
+	p := err.PanicIfError1(participant.New())
 	quizId := err.PanicIfError1(uuid.NewRandom()).String()
 
 	_, _ = p.StartQuiz(quizId)
@@ -48,7 +48,7 @@ func TestParticipant_WhenJoiningAQuiz_HasJoinedQuizzes(t *testing.T) {
 }
 
 func TestParticipant_JoinQuiz_ReturnsEvent(t *testing.T) {
-	p := participant.New()
+	p := err.PanicIfError1(participant.New())
 	quizId := err.PanicIfError1(uuid.NewRandom()).String()
 
 	event, _ := p.StartQuiz(quizId)
@@ -59,7 +59,7 @@ func TestParticipant_JoinQuiz_ReturnsEvent(t *testing.T) {
 }
 
 func TestParticipant_JoinQuiz_FailsIfJoinedTwice(t *testing.T) {
-	p := participant.New()
+	p := err.PanicIfError1(participant.New())
 	quizId := err.PanicIfError1(uuid.NewRandom()).String()
 
 	_, err1 := p.StartQuiz(quizId)
@@ -74,7 +74,7 @@ func TestParticipant_JoinQuiz_FailsIfJoinedTwice(t *testing.T) {
 }
 
 func TestParticipant_JoinQuiz_JoiningTheQuizAgainSucceedsAfterFinishAgain(t *testing.T) {
-	p := participant.New()
+	p := err.PanicIfError1(participant.New())
 	quizId := err.PanicIfError1(uuid.NewRandom()).String()
 
 	_, err1 := p.StartQuiz(quizId)
@@ -100,7 +100,7 @@ func TestParticipant_JoinQuiz_JoiningTheQuizAgainSucceedsAfterFinishAgain(t *tes
 }
 
 func TestParticipant_FinishQuiz_FailsIfNotStarted(t *testing.T) {
-	p := participant.New()
+	p := err.PanicIfError1(participant.New())
 	quizId := err.PanicIfError1(uuid.NewRandom()).String()
 
 	_, finishQuizErr := p.FinishQuiz(quizId)
@@ -111,7 +111,7 @@ func TestParticipant_FinishQuiz_FailsIfNotStarted(t *testing.T) {
 }
 
 func TestParticipant_FinishQuiz(t *testing.T) {
-	p := participant.New()
+	p := err.PanicIfError1(participant.New())
 	quizId := err.PanicIfError1(uuid.NewRandom()).String()
 
 	_, _ = p.StartQuiz(quizId)
@@ -123,7 +123,7 @@ func TestParticipant_FinishQuiz(t *testing.T) {
 }
 
 func TestParticipant_FinishQuiz_failsIfFinishedTwice(t *testing.T) {
-	p := participant.New()
+	p := err.PanicIfError1(participant.New())
 	quizId := err.PanicIfError1(uuid.NewRandom()).String()
 
 	_, _ = p.StartQuiz(quizId)
@@ -140,7 +140,7 @@ func TestParticipant_FinishQuiz_failsIfFinishedTwice(t *testing.T) {
 }
 
 func TestParticipant_FinishQuiz_eventQuizIdMatches(t *testing.T) {
-	p := participant.New()
+	p := err.PanicIfError1(participant.New())
 	quizId := err.PanicIfError1(uuid.NewRandom()).String()
 
 	_, _ = p.StartQuiz(quizId)
@@ -152,7 +152,7 @@ func TestParticipant_FinishQuiz_eventQuizIdMatches(t *testing.T) {
 }
 
 func TestParticipant_GetFinishedQuizCount(t *testing.T) {
-	p := participant.New()
+	p := err.PanicIfError1(participant.New())
 
 	if p.GetFinishedQuizCount() != 0 {
 		t.Fatalf("finished quiz count must be 0 initially")
@@ -160,7 +160,7 @@ func TestParticipant_GetFinishedQuizCount(t *testing.T) {
 }
 
 func TestParticipant_FinishQuiz_GetFinishedQuizCount(t *testing.T) {
-	p := participant.New()
+	p := err.PanicIfError1(participant.New())
 	quizId := err.PanicIfError1(uuid.NewRandom()).String()
 
 	_, _ = p.StartQuiz(quizId)

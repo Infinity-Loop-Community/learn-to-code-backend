@@ -24,19 +24,31 @@ func TestRepository_FindById_HandleSingleUser(t *testing.T) {
 	var repo dParticipant.Repository
 	repo = iParticipant.NewParticipantRepository()
 
-	p := dParticipant.New()
+	p := errUtils.PanicIfError1(dParticipant.New())
+
+	quizId := uuid.MustNewRandomAsString()
 	quizStartedEvent := errUtils.PanicIfError1(
-		p.StartQuiz(uuid.MustNewRandomAsString()),
+		p.StartQuiz(quizId),
 	)
 
 	errUtils.PanicIfError(
 		repo.AppendEvent(p.GetId(), quizStartedEvent),
 	)
 
-	_, err := repo.FindById(p.GetId())
+	p, err := repo.FindById(p.GetId())
 
-	if errors.Is(err, dParticipant.ErrNotFound) {
-		t.Fatalf("is ErrNotFound, participant should exist")
+	if err != nil {
+		t.Fatalf("could not fetch the participant due to an error: %s", err)
+	}
+
+	finishedQuizEvent := errUtils.PanicIfError1(p.FinishQuiz(quizId))
+	errUtils.PanicIfError(
+		repo.AppendEvent(p.GetId(), finishedQuizEvent),
+	)
+
+	_, err = repo.FindById(p.GetId())
+	if err != nil {
+		t.Fatalf("error while getting a participant with finished quiz: %s", err)
 	}
 }
 

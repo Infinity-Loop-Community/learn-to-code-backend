@@ -10,7 +10,6 @@ import (
 
 type Participant struct {
 	id      string
-	joined  time.Time
 	Quizzes []activeQuiz
 
 	eventsource.AggregateRoot
@@ -20,8 +19,8 @@ func (p *Participant) apply(e eventsource.Event) error {
 
 	switch eventType := e.(type) {
 
-	case event.JoinedQuiz:
-		p.id, p.joined = eventType.Id, eventType.GetCreatedAt()
+	case event.ParticipantCreated:
+		p.id = eventType.Id
 
 	case event.StartedQuiz:
 		p.appendToQuizList(eventType.Id)
@@ -34,6 +33,7 @@ func (p *Participant) apply(e eventsource.Event) error {
 	}
 
 	p.CurrentVersion++
+	p.Events = append(p.Events, e)
 
 	return nil
 }
@@ -75,11 +75,11 @@ func (p *Participant) GetFinishedQuizCount() int {
 	return finishedQuizzes
 }
 
-func (p *Participant) StartQuiz(id string) (event.StartedQuiz, error) {
+func (p *Participant) StartQuiz(id string) error {
 
-	quiz, err := p.ensureQuizNotStarted(id)
+	err := p.ensureQuizNotStarted(id)
 	if err != nil {
-		return quiz, err
+		return err
 	}
 
 	var startedQuizEvent = event.StartedQuiz{
@@ -88,19 +88,19 @@ func (p *Participant) StartQuiz(id string) (event.StartedQuiz, error) {
 
 	err = p.apply(startedQuizEvent)
 
-	return startedQuizEvent, err
+	return err
 }
 
-func (p *Participant) ensureQuizNotStarted(id string) (event.StartedQuiz, error) {
+func (p *Participant) ensureQuizNotStarted(id string) error {
 	for _, quiz := range p.Quizzes {
 		if quiz.Id == id && quiz.IsOngoing() {
-			return event.StartedQuiz{}, fmt.Errorf("quiz '%s' already started and not finished", quiz.Id)
+			return fmt.Errorf("quiz '%s' already started and not finished", quiz.Id)
 		}
 	}
-	return event.StartedQuiz{}, nil
+	return nil
 }
 
-func (p *Participant) FinishQuiz(id string) (event.FinishedQuiz, error) {
+func (p *Participant) FinishQuiz(id string) error {
 	var foundQuiz *activeQuiz
 
 	for _, quiz := range p.Quizzes {
@@ -112,7 +112,7 @@ func (p *Participant) FinishQuiz(id string) (event.FinishedQuiz, error) {
 	}
 
 	if foundQuiz == nil {
-		return event.FinishedQuiz{}, fmt.Errorf("quiz not found")
+		return fmt.Errorf("quiz not found")
 	}
 
 	finishedQuizEvent := event.FinishedQuiz{
@@ -121,7 +121,7 @@ func (p *Participant) FinishQuiz(id string) (event.FinishedQuiz, error) {
 
 	err := p.apply(finishedQuizEvent)
 
-	return finishedQuizEvent, err
+	return err
 }
 
 func (p *Participant) createEventBaseEvent(id string) eventsource.EventBase {

@@ -8,7 +8,7 @@ import (
 )
 
 func New() (Participant, error) {
-	joinedQuizEvent := event.JoinedQuiz{
+	joinedQuizEvent := event.ParticipantCreated{
 		EventBase: eventsource.EventBase{
 			Id:        uuid.MustNewRandomAsString(),
 			Version:   0,

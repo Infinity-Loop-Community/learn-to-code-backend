@@ -38,12 +38,12 @@ func (as *QuizApplicationService) StartQuiz(participantId string, quizId string)
 		return err
 	}
 
-	startedQuizEvent, err := p.StartQuiz(quizId)
+	err = p.StartQuiz(quizId)
 	if err != nil {
 		return err
 	}
 
-	appendEventErr := as.participantRepository.AppendEvent(participantId, startedQuizEvent)
+	appendEventErr := as.participantRepository.AppendEvents(participantId, p.GetNewEventsAndUpdatePersistedVersion())
 
 	return appendEventErr
 }
@@ -65,12 +65,12 @@ func (as *QuizApplicationService) FinishQuiz(participantId string, quizId string
 		return err
 	}
 
-	finishedQuizEvent, err := p.FinishQuiz(quizId)
+	err = p.FinishQuiz(quizId)
 	if err != nil {
 		return err
 	}
 
-	appendEventErr := as.participantRepository.AppendEvent(participantId, finishedQuizEvent)
+	appendEventErr := as.participantRepository.AppendEvents(participantId, p.GetNewEventsAndUpdatePersistedVersion())
 
 	return appendEventErr
 }

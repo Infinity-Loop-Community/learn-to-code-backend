@@ -36,7 +36,18 @@ func NewParticipantRepository() *ParticipantRepository {
 	}
 }
 
-func (r *ParticipantRepository) AppendEvent(id string, e eventsource.Event) error {
+func (r *ParticipantRepository) AppendEvents(id string, events []eventsource.Event) error {
+	for _, e := range events {
+		err := r.appendEvent(id, e)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (r *ParticipantRepository) appendEvent(id string, e eventsource.Event) error {
 	serializedEvent, err := r.serializer(e)
 	if err != nil {
 		return err
@@ -66,8 +77,8 @@ func (r *ParticipantRepository) FindById(id string) (Participant, error) {
 
 		switch po.Type {
 
-		case event.JoinedQuizTypeName:
-			joinedQuizEvent := &event.JoinedQuiz{}
+		case event.ParticipantCreatedTypeName:
+			joinedQuizEvent := &event.ParticipantCreated{}
 
 			err := r.deserializer(po.Payload, joinedQuizEvent)
 			if err != nil {

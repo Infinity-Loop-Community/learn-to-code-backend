@@ -1,6 +1,7 @@
 package dynamodb_test
 
 import (
+	"context"
 	"errors"
 	"hello-world/internal/domain/quiz/participant"
 	dynamodb "hello-world/internal/infrastructure/dynamodb"
@@ -69,7 +70,7 @@ func TestRepository_FindById_HandleSingleUser(t *testing.T) {
 func getRepository() participant.Repository {
 	var repo participant.Repository
 
-	repo = dynamodb.NewDynamoDbParticipantRepository(dynamoDbClient)
+	repo = dynamodb.NewDynamoDbParticipantRepository(context.Background(), dynamoDbClient)
 
 	return repo
 }

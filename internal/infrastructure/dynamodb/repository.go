@@ -28,15 +28,17 @@ type EventPo struct {
 
 type Repository struct {
 	dbClient     *dynamodb.Client
+	ctx          context.Context
 	serializer   MarshalFunc
 	deserializer UnmarshalFunc
 	tableName    string
 }
 
-func NewDynamoDbParticipantRepository(client *dynamodb.Client) *Repository {
+func NewDynamoDbParticipantRepository(ctx context.Context, client *dynamodb.Client) *Repository {
 
 	return &Repository{
 		dbClient:     client,
+		ctx:          ctx,
 		serializer:   json.Marshal,
 		deserializer: json.Unmarshal,
 		tableName:    "dev_events",
@@ -72,7 +74,7 @@ func (r Repository) appendEvent(participantId string, e eventsource.Event) error
 			// Add your eventData here
 		},
 	}
-	_, err = r.dbClient.PutItem(context.TODO(), input)
+	_, err = r.dbClient.PutItem(r.ctx, input)
 	if err != nil {
 		return err
 	}
@@ -93,7 +95,7 @@ func (r Repository) FindById(id string) (participant.Participant, error) {
 		},
 	}
 
-	output, err := r.dbClient.Query(context.TODO(), input)
+	output, err := r.dbClient.Query(r.ctx, input)
 	if err != nil {
 		return participant.Participant{}, err
 	}

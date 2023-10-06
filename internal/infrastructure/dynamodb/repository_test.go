@@ -70,7 +70,7 @@ func TestRepository_FindById_HandleSingleUser(t *testing.T) {
 func getRepository() participant.Repository {
 	var repo participant.Repository
 
-	repo = dynamodb.NewDynamoDbParticipantRepository(context.Background(), dynamoDbClient)
+	repo = dynamodb.NewDynamoDbParticipantRepository(context.Background(), "test", dynamoDbClient)
 
 	return repo
 }

@@ -14,7 +14,7 @@ type TableDefinition struct {
 func GetAllTableDefinitions() []TableDefinition {
 	return []TableDefinition{
 		{
-			TableName: "dev_events",
+			TableName: "test_events",
 			KeySchemas: []types.KeySchemaElement{
 				{
 					AttributeName: aws.String("aggregate_id"),

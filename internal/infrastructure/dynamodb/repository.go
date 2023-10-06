@@ -9,6 +9,7 @@ import (
 	"hello-world/internal/domain/eventsource"
 	"hello-world/internal/domain/quiz/participant"
 	"hello-world/internal/domain/quiz/participant/event"
+	"hello-world/internal/infrastructure/config"
 	"reflect"
 	"time"
 
@@ -34,14 +35,14 @@ type Repository struct {
 	tableName    string
 }
 
-func NewDynamoDbParticipantRepository(ctx context.Context, client *dynamodb.Client) *Repository {
+func NewDynamoDbParticipantRepository(ctx context.Context, environment config.Environment, client *dynamodb.Client) *Repository {
 
 	return &Repository{
 		dbClient:     client,
 		ctx:          ctx,
 		serializer:   json.Marshal,
 		deserializer: json.Unmarshal,
-		tableName:    "dev_events",
+		tableName:    fmt.Sprintf("%s_events", environment),
 	}
 }
 
@@ -71,7 +72,6 @@ func (r Repository) appendEvent(participantId string, e eventsource.Event) error
 			"type":         &types.AttributeValueMemberS{Value: reflect.TypeOf(e).Name()},
 			"payload":      &types.AttributeValueMemberS{Value: string(serializedEvent)},
 			"created_at":   &types.AttributeValueMemberS{Value: e.GetCreatedAt().Format(time.RFC3339)},
-			// Add your eventData here
 		},
 	}
 	_, err = r.dbClient.PutItem(r.ctx, input)

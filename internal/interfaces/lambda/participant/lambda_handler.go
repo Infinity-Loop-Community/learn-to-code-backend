@@ -3,6 +3,7 @@ package participant
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"github.com/aws/aws-lambda-go/events"
 	"hello-world/internal/infrastructure/config"
 	"hello-world/internal/infrastructure/go/util/uuid"
@@ -25,12 +26,14 @@ func (l LambdaHandler) HandleRequest(ctx context.Context, request events.APIGate
 	var body Body
 
 	err := json.Unmarshal([]byte(request.Body), &body)
-
-	serviceRegistry := service.NewServiceRegistry(ctx, l.cfg)
-	serviceRegistry.QuizApplicationService.StartQuiz(uuid.MustNewRandomAsString(), uuid.MustNewRandomAsString())
-
 	if err != nil {
 		return events.APIGatewayProxyResponse{StatusCode: 400, Body: `{"msg": "ready body error, Invalid JSON"}`}, err
+	}
+
+	serviceRegistry := service.NewServiceRegistry(ctx, l.cfg)
+	err = serviceRegistry.QuizApplicationService.StartQuiz(uuid.MustNewRandomAsString(), uuid.MustNewRandomAsString())
+	if err != nil {
+		return events.APIGatewayProxyResponse{StatusCode: 500, Body: fmt.Sprintf(`{"error": "%s"}`, err)}, err
 	}
 
 	return events.APIGatewayProxyResponse{

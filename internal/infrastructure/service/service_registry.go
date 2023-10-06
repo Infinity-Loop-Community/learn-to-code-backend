@@ -15,7 +15,7 @@ type Registry struct {
 }
 
 func NewServiceRegistry(ctx context.Context, cfg config2.Config) *Registry {
-	dynamoDbClient := createDynamoDbClient(ctx)
+	dynamoDbClient := createDynamoDbClient(ctx, cfg.DefaultAwsRegion)
 	participantRepository := dynamodb.NewDynamoDbParticipantRepository(ctx, cfg.Environment, dynamoDbClient)
 	quizApplicationService := application.NewQuizApplicationService(participantRepository)
 
@@ -24,7 +24,9 @@ func NewServiceRegistry(ctx context.Context, cfg config2.Config) *Registry {
 	}
 }
 
-func createDynamoDbClient(ctx context.Context) *dynamodbsdk.Client {
+func createDynamoDbClient(ctx context.Context, defaultAwsRegion string) *dynamodbsdk.Client {
 	dynamoDbConfig := err.PanicIfError1(config.LoadDefaultConfig(ctx))
+	dynamoDbConfig.Region = defaultAwsRegion
+
 	return dynamodbsdk.NewFromConfig(dynamoDbConfig)
 }

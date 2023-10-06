@@ -1,0 +1,6 @@
+POST localhost:3000/hello/
+Content-Type: application/json
+
+{
+  "value": "test"
+}

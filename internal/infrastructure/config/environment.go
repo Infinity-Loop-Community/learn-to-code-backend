@@ -7,8 +7,8 @@ import (
 type Environment string
 
 const (
-	Dev  Environment = "Dev"
-	Prod Environment = "Prod"
+	Dev  Environment = "dev"
+	Prod Environment = "prod"
 )
 
 func ParseEnvironment(envVar string) (Environment, error) {

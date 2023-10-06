@@ -33,10 +33,7 @@ func (as *QuizApplicationService) GetStartedQuizCount(participantId string) (int
 // StartQuiz is the first action of a participants in the quiz bounded context, hence if not created yet
 // a first event for a participant is created, and with that the participant itself.
 func (as *QuizApplicationService) StartQuiz(participantId string, quizId string) error {
-	p, err := as.participantRepository.FindById(participantId)
-	if err != nil && !errors.Is(err, participant.ErrNotFound) {
-		return err
-	}
+	p, err := as.createParticipantIfNotExists(participantId)
 
 	err = p.StartQuiz(quizId)
 	if err != nil {
@@ -46,6 +43,21 @@ func (as *QuizApplicationService) StartQuiz(participantId string, quizId string)
 	appendEventErr := as.participantRepository.AppendEvents(participantId, p.GetNewEventsAndUpdatePersistedVersion())
 
 	return appendEventErr
+}
+
+func (as *QuizApplicationService) createParticipantIfNotExists(participantId string) (participant.Participant, error) {
+	p, err := as.participantRepository.FindById(participantId)
+	if err != nil && !errors.Is(err, participant.ErrNotFound) {
+		return participant.Participant{}, err
+	}
+
+	if err != nil && errors.Is(err, participant.ErrNotFound) {
+		p, err = participant.NewWithId(participantId)
+		if err != nil {
+			return participant.Participant{}, err
+		}
+	}
+	return p, nil
 }
 
 func (as *QuizApplicationService) GetFinishedQuizCount(participantId string) (int, error) {

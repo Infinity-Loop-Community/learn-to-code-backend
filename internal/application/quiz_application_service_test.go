@@ -21,7 +21,7 @@ func TestQuizApplicationService_StartQuiz(t *testing.T) {
 	}
 
 	quizId := uuid.MustNewRandomAsString()
-	_ = as.StartQuiz(userId, quizId)
+	errUtils.PanicIfError(as.StartQuiz(userId, quizId))
 
 	startedQuizCount = errUtils.PanicIfError1(as.GetStartedQuizCount(userId))
 	if startedQuizCount != 1 {

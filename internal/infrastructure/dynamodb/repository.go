@@ -37,12 +37,14 @@ type Repository struct {
 
 func NewDynamoDbParticipantRepository(ctx context.Context, environment config.Environment, client *dynamodb.Client) *Repository {
 
+	tableName := fmt.Sprintf("%s_events", environment)
+
 	return &Repository{
 		dbClient:     client,
 		ctx:          ctx,
 		serializer:   json.Marshal,
 		deserializer: json.Unmarshal,
-		tableName:    fmt.Sprintf("%s_events", environment),
+		tableName:    tableName,
 	}
 }
 

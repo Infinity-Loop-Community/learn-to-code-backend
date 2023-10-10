@@ -3,11 +3,11 @@ package dynamodb_test
 import (
 	"context"
 	"errors"
-	"hello-world/internal/domain/quiz/participant"
-	dynamodb "hello-world/internal/infrastructure/dynamodb"
-	errUtils "hello-world/internal/infrastructure/go/util/err"
-	"hello-world/internal/infrastructure/go/util/uuid"
-	"hello-world/pkg/test/db"
+	"learn-to-code/internal/domain/quiz/participant"
+	dynamodb "learn-to-code/internal/infrastructure/dynamodb"
+	errUtils "learn-to-code/internal/infrastructure/go/util/err"
+	"learn-to-code/internal/infrastructure/go/util/uuid"
+	"learn-to-code/pkg/test/db"
 	"os"
 	"testing"
 

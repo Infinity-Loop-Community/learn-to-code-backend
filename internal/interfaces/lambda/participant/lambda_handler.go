@@ -2,12 +2,11 @@ package participant
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"github.com/aws/aws-lambda-go/events"
-	"hello-world/internal/infrastructure/config"
-	"hello-world/internal/infrastructure/go/util/uuid"
-	"hello-world/internal/infrastructure/service"
+	"learn-to-code/internal/infrastructure/config"
+	"learn-to-code/internal/infrastructure/go/util/uuid"
+	"learn-to-code/internal/infrastructure/service"
 )
 
 type LambdaHandler struct {
@@ -18,22 +17,17 @@ func NewLambdaHandler(cfg config.Config) LambdaHandler {
 	return LambdaHandler{cfg: cfg}
 }
 
-type Body struct {
-	Input string `json:"input"`
-}
-
 func (l LambdaHandler) HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	var body Body
+	serviceRegistry := service.NewServiceRegistry(ctx, l.cfg)
 
-	err := json.Unmarshal([]byte(request.Body), &body)
+	_, userId, err := serviceRegistry.RequestValidator.ValidateRequest(request)
 	if err != nil {
-		return events.APIGatewayProxyResponse{StatusCode: 400, Body: `{"msg": "ready body error, Invalid JSON"}`}, err
+		return events.APIGatewayProxyResponse{StatusCode: 400, Body: fmt.Sprintf(`{"error": "%s"}`, err)}, nil
 	}
 
-	serviceRegistry := service.NewServiceRegistry(ctx, l.cfg)
-	err = serviceRegistry.QuizApplicationService.StartQuiz(uuid.MustNewRandomAsString(), uuid.MustNewRandomAsString())
+	err = serviceRegistry.QuizApplicationService.StartQuiz(userId, uuid.MustNewRandomAsString())
 	if err != nil {
-		return events.APIGatewayProxyResponse{StatusCode: 500, Body: fmt.Sprintf(`{"error": "%s"}`, err)}, err
+		return events.APIGatewayProxyResponse{StatusCode: 500, Body: fmt.Sprintf(`{"error": "%s"}`, err)}, nil
 	}
 
 	return events.APIGatewayProxyResponse{

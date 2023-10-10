@@ -2,7 +2,7 @@ package participant
 
 import (
 	"errors"
-	"hello-world/internal/domain/eventsource"
+	"learn-to-code/internal/domain/eventsource"
 )
 
 var ErrNotFound = errors.New("element not found")

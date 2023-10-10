@@ -3,8 +3,8 @@ package participant_test
 import (
 	"encoding/json"
 	"github.com/google/uuid"
-	"hello-world/internal/domain/quiz/participant"
-	"hello-world/internal/infrastructure/go/util/err"
+	"learn-to-code/internal/domain/quiz/participant"
+	"learn-to-code/internal/infrastructure/go/util/err"
 	"strings"
 	"testing"
 )

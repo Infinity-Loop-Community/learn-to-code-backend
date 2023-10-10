@@ -2,7 +2,7 @@ package application
 
 import (
 	"errors"
-	"hello-world/internal/domain/quiz/participant"
+	"learn-to-code/internal/domain/quiz/participant"
 )
 
 type QuizApplicationService struct {

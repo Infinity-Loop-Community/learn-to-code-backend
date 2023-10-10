@@ -17,6 +17,9 @@ Parameters:
     AllowedValues:
       - dev
       - prod
+  JwtSecret:
+    Type: String
+    Default: test
 
 Resources:
 
@@ -57,12 +60,13 @@ Resources:
         CatchAll:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /hello
-            Method: POST
+            Path: /participants/{participantId}/events/{eventId}
+            Method: PUT
             RestApiId: !Ref RestApi
       Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
         Variables:
           ENVIRONMENT: !Sub "${StageName}"
+          JWT_SECRET: !Sub "${JwtSecret}" # More secure would be to use AWS Secret manager with secret rotation. That's postponed to save costs.
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Sub "${StageName}_events"
@@ -71,12 +75,9 @@ Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  HelloWorldAPI:
-    Description: "API Gateway endpoint URL for Prod environment for First Function"
-    Value: !Sub "https://${RestApi}.execute-api.${AWS::Region}.amazonaws.com/${StageName}/hello/"
+  ParticipantAPI:
+    Value: !Sub "https://${RestApi}.execute-api.${AWS::Region}.amazonaws.com/${StageName}/participant/events/"
   ParticipantPost:
-    Description: "First Lambda Function ARN"
     Value: !GetAtt ParticipantPost.Arn
   ParticipantPostIamRole:
-    Description: "Implicit IAM Role created for Hello World function"
     Value: !GetAtt ParticipantPost.Arn

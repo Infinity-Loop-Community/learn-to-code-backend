@@ -2,8 +2,8 @@ package participant
 
 import (
 	"fmt"
-	"hello-world/internal/domain/eventsource"
-	"hello-world/internal/domain/quiz/participant/event"
+	"learn-to-code/internal/domain/eventsource"
+	"learn-to-code/internal/domain/quiz/participant/event"
 	"reflect"
 	"time"
 )

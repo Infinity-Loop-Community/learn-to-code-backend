@@ -10,8 +10,8 @@ import (
 	"github.com/docker/go-connections/nat"
 	"github.com/testcontainers/testcontainers-go"
 	"github.com/testcontainers/testcontainers-go/wait"
-	"hello-world/internal/infrastructure/dynamodb"
-	errUtils "hello-world/internal/infrastructure/go/util/err"
+	"learn-to-code/internal/infrastructure/dynamodb"
+	errUtils "learn-to-code/internal/infrastructure/go/util/err"
 )
 
 const (

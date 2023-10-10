@@ -2,9 +2,9 @@ package main
 
 import (
 	"github.com/aws/aws-lambda-go/lambda"
-	"hello-world/internal/infrastructure/config"
-	"hello-world/internal/infrastructure/go/util/err"
-	"hello-world/internal/interfaces/lambda/participant"
+	"learn-to-code/internal/infrastructure/config"
+	"learn-to-code/internal/infrastructure/go/util/err"
+	"learn-to-code/internal/interfaces/lambda/participant"
 )
 
 func main() {

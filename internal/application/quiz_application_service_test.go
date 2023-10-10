@@ -1,10 +1,10 @@
 package application_test
 
 import (
-	"hello-world/internal/application"
-	errUtils "hello-world/internal/infrastructure/go/util/err"
-	"hello-world/internal/infrastructure/go/util/uuid"
-	"hello-world/internal/infrastructure/inmemory"
+	"learn-to-code/internal/application"
+	errUtils "learn-to-code/internal/infrastructure/go/util/err"
+	"learn-to-code/internal/infrastructure/go/util/uuid"
+	"learn-to-code/internal/infrastructure/inmemory"
 	"testing"
 )
 

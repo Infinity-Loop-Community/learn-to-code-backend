@@ -1,7 +1,7 @@
 package event
 
 import (
-	"hello-world/internal/domain/eventsource"
+	"learn-to-code/internal/domain/eventsource"
 	"reflect"
 )
 

@@ -11,8 +11,8 @@ build:
 	go test ./...
 
 .PHONY: sam-build
-build:
-	sam sam-build
+sam-build:
+	sam build
 
 .PHONY: deploy-dev
 deploy-dev:

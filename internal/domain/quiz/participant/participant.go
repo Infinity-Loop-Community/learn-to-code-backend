@@ -20,13 +20,13 @@ func (p *Participant) apply(e eventsource.Event) error {
 	switch eventType := e.(type) {
 
 	case event.ParticipantCreated:
-		p.id = eventType.Id
+		p.id = eventType.ID
 
 	case event.StartedQuiz:
-		p.appendToQuizList(eventType.Id)
+		p.appendToQuizList(eventType.ID)
 
 	case event.FinishedQuiz:
-		p.setQuizCompleted(eventType.Id)
+		p.setQuizCompleted(eventType.ID)
 
 	default:
 		panic(fmt.Sprintf("unknown event type %s", reflect.TypeOf(e)))
@@ -38,24 +38,24 @@ func (p *Participant) apply(e eventsource.Event) error {
 	return nil
 }
 
-func (p *Participant) setQuizCompleted(finishedQuizId string) {
+func (p *Participant) setQuizCompleted(finishedQuizID string) {
 	for i, quiz := range p.Quizzes {
-		if quiz.Id == finishedQuizId {
+		if quiz.ID == finishedQuizID {
 			p.Quizzes[i].completed = true
 			break
 		}
 	}
 }
 
-func (p *Participant) appendToQuizList(eventQuizId string) {
+func (p *Participant) appendToQuizList(eventQuizID string) {
 	p.Quizzes = append(p.Quizzes, activeQuiz{
-		Id:              eventQuizId,
+		ID:              eventQuizID,
 		providedAnswers: nil,
 		completed:       false,
 	})
 }
 
-func (p *Participant) GetId() string {
+func (p *Participant) GetID() string {
 	return p.id
 }
 
@@ -93,8 +93,8 @@ func (p *Participant) StartQuiz(id string) error {
 
 func (p *Participant) ensureQuizNotStarted(id string) error {
 	for _, quiz := range p.Quizzes {
-		if quiz.Id == id && quiz.IsOngoing() {
-			return fmt.Errorf("quiz '%s' already started and not finished", quiz.Id)
+		if quiz.ID == id && quiz.IsOngoing() {
+			return fmt.Errorf("quiz '%s' already started and not finished", quiz.ID)
 		}
 	}
 	return nil
@@ -105,7 +105,7 @@ func (p *Participant) FinishQuiz(id string) error {
 
 	for _, quiz := range p.Quizzes {
 
-		if quiz.Id == id && quiz.completed != true {
+		if quiz.ID == id && !quiz.completed {
 			foundQuiz = &quiz
 			break
 		}
@@ -126,7 +126,7 @@ func (p *Participant) FinishQuiz(id string) error {
 
 func (p *Participant) createEventBaseEvent(id string) eventsource.EventBase {
 	return eventsource.EventBase{
-		Id:        id,
+		ID:        id,
 		Version:   p.CurrentVersion,
 		CreatedAt: time.Now(),
 	}

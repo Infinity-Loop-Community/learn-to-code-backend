@@ -1,7 +1,7 @@
 package definition
 
 type Question struct {
-	Id              string
+	ID              string
 	Text            string
 	PossibleAnswers []Answer
 }

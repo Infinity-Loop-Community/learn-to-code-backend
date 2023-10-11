@@ -4,14 +4,15 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
-	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 	"learn-to-code/internal/domain/eventsource"
 	"learn-to-code/internal/domain/quiz/participant"
 	"learn-to-code/internal/domain/quiz/participant/event"
 	"learn-to-code/internal/infrastructure/config"
 	"reflect"
 	"time"
+
+	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
+	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 
 	"github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue"
 )
@@ -48,9 +49,9 @@ func NewDynamoDbParticipantRepository(ctx context.Context, environment config.En
 	}
 }
 
-func (r Repository) AppendEvents(participantId string, events []eventsource.Event) error {
+func (r Repository) AppendEvents(participantID string, events []eventsource.Event) error {
 	for _, e := range events {
-		err := r.appendEvent(participantId, e)
+		err := r.appendEvent(participantID, e)
 
 		if err != nil {
 			return err
@@ -60,7 +61,7 @@ func (r Repository) AppendEvents(participantId string, events []eventsource.Even
 	return nil
 }
 
-func (r Repository) appendEvent(participantId string, e eventsource.Event) error {
+func (r Repository) appendEvent(participantID string, e eventsource.Event) error {
 	serializedEvent, err := r.serializer(e)
 	if err != nil {
 		return err
@@ -69,7 +70,7 @@ func (r Repository) appendEvent(participantId string, e eventsource.Event) error
 	input := &dynamodb.PutItemInput{
 		TableName: &r.tableName,
 		Item: map[string]types.AttributeValue{
-			"aggregate_id": &types.AttributeValueMemberS{Value: participantId},
+			"aggregate_id": &types.AttributeValueMemberS{Value: participantID},
 			"version":      &types.AttributeValueMemberN{Value: fmt.Sprintf("%d", e.GetVersion())},
 			"type":         &types.AttributeValueMemberS{Value: reflect.TypeOf(e).Name()},
 			"payload":      &types.AttributeValueMemberS{Value: string(serializedEvent)},
@@ -84,7 +85,7 @@ func (r Repository) appendEvent(participantId string, e eventsource.Event) error
 	return nil
 }
 
-func (r Repository) FindById(id string) (participant.Participant, error) {
+func (r Repository) FindByID(id string) (participant.Participant, error) {
 	input := &dynamodb.QueryInput{
 		TableName: &r.tableName,
 		KeyConditions: map[string]types.Condition{

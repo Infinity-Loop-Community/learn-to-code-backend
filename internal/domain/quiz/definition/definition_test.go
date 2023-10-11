@@ -1,20 +1,21 @@
 package definition
 
 import (
-	"github.com/google/uuid"
 	"testing"
+
+	"github.com/google/uuid"
 )
 
 func TestQuizAnswersMissing(t *testing.T) {
 	quiz := Definition{
-		Id: "QuizDefinition Text",
+		ID: "QuizDefinition Text",
 		Questions: []Question{
 			{
-				Id:   newId(t),
+				ID:   newID(t),
 				Text: "Question1 Text",
 				PossibleAnswers: []Answer{
-					Answer{
-						Id:          newId(t),
+					{
+						ID:          newID(t),
 						IsCorrect:   false,
 						Explanation: "Q1: This is not the correct answer",
 					},
@@ -30,19 +31,19 @@ func TestQuizAnswersMissing(t *testing.T) {
 
 func TestQuizIsComplete(t *testing.T) {
 	quiz := Definition{
-		Id: "QuizDefinition Text",
+		ID: "QuizDefinition Text",
 		Questions: []Question{
 			{
-				Id:   newId(t),
+				ID:   newID(t),
 				Text: "Question1 Text",
 				PossibleAnswers: []Answer{
 					{
-						Id:          newId(t),
+						ID:          newID(t),
 						IsCorrect:   false,
 						Explanation: "Q1: This is not the correct answer",
 					},
 					{
-						Id:          newId(t),
+						ID:          newID(t),
 						IsCorrect:   false,
 						Explanation: "Q1: This is the correct answer",
 					},
@@ -56,11 +57,11 @@ func TestQuizIsComplete(t *testing.T) {
 	}
 }
 
-func newId(t *testing.T) string {
-	newUuid, err := uuid.NewRandom()
+func newID(t *testing.T) string {
+	newUUID, err := uuid.NewRandom()
 	if err != nil {
 		t.Fatalf("UUID generation failed")
 	}
 
-	return newUuid.String()
+	return newUUID.String()
 }

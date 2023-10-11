@@ -8,18 +8,18 @@ import (
 )
 
 func New() (Participant, error) {
-	return NewWithId(uuid.MustNewRandomAsString())
+	return NewWithID(uuid.MustNewRandomAsString())
 }
 
-func NewWithId(id string) (Participant, error) {
-	joinedQuizEvent := event.ParticipantCreated{
+func NewWithID(id string) (Participant, error) {
+	participantCreated := event.ParticipantCreated{
 		EventBase: eventsource.EventBase{
-			Id:        id,
+			ID:        id,
 			Version:   0,
 			CreatedAt: time.Now(),
 		},
 	}
-	return NewFromEvents([]eventsource.Event{joinedQuizEvent})
+	return NewFromEvents([]eventsource.Event{participantCreated})
 }
 
 func NewFromEvents(events []eventsource.Event) (Participant, error) {

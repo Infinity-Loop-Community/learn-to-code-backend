@@ -29,7 +29,7 @@ func TestMain(m *testing.M) {
 func TestRepository_FindById_ReturnsNotFoundError(t *testing.T) {
 	repo := getRepository()
 
-	_, err := repo.FindById("does not exist")
+	_, err := repo.FindByID("does not exist")
 
 	if !errors.Is(err, participant.ErrNotFound) {
 		t.Fatalf("is not ErrNotFound: %s", err)
@@ -41,36 +41,34 @@ func TestRepository_FindById_HandleSingleUser(t *testing.T) {
 
 	p := errUtils.PanicIfError1(participant.New())
 
-	quizId := uuid.MustNewRandomAsString()
+	quizID := uuid.MustNewRandomAsString()
 	errUtils.PanicIfError(
-		p.StartQuiz(quizId),
+		p.StartQuiz(quizID),
 	)
 
 	errUtils.PanicIfError(
-		repo.AppendEvents(p.GetId(), p.GetNewEventsAndUpdatePersistedVersion()),
+		repo.AppendEvents(p.GetID(), p.GetNewEventsAndUpdatePersistedVersion()),
 	)
 
-	p, err := repo.FindById(p.GetId())
+	p, err := repo.FindByID(p.GetID())
 
 	if err != nil {
 		t.Fatalf("could not fetch the participant due to an error: %s", err)
 	}
 
-	errUtils.PanicIfError(p.FinishQuiz(quizId))
+	errUtils.PanicIfError(p.FinishQuiz(quizID))
 	errUtils.PanicIfError(
-		repo.AppendEvents(p.GetId(), p.GetNewEventsAndUpdatePersistedVersion()),
+		repo.AppendEvents(p.GetID(), p.GetNewEventsAndUpdatePersistedVersion()),
 	)
 
-	_, err = repo.FindById(p.GetId())
+	_, err = repo.FindByID(p.GetID())
 	if err != nil {
 		t.Fatalf("error while getting a participant with finished quiz: %s", err)
 	}
 }
 
 func getRepository() participant.Repository {
-	var repo participant.Repository
-
-	repo = dynamodb.NewDynamoDbParticipantRepository(context.Background(), "test", dynamoDbClient)
+	repo := dynamodb.NewDynamoDbParticipantRepository(context.Background(), "test", dynamoDbClient)
 
 	return repo
 }

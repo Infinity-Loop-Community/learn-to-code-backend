@@ -15,12 +15,8 @@ func NewQuizApplicationService(participantRepository participant.Repository) *Qu
 	}
 }
 
-func (as *QuizApplicationService) name() {
-
-}
-
-func (as *QuizApplicationService) GetStartedQuizCount(participantId string) (int, error) {
-	p, err := as.participantRepository.FindById(participantId)
+func (as *QuizApplicationService) GetStartedQuizCount(participantID string) (int, error) {
+	p, err := as.participantRepository.FindByID(participantID)
 	if errors.Is(err, participant.ErrNotFound) {
 		return 0, nil
 	} else if err != nil {
@@ -32,27 +28,30 @@ func (as *QuizApplicationService) GetStartedQuizCount(participantId string) (int
 
 // StartQuiz is the first action of a participants in the quiz bounded context, hence if not created yet
 // a first event for a participant is created, and with that the participant itself.
-func (as *QuizApplicationService) StartQuiz(participantId string, quizId string) error {
-	p, err := as.createParticipantIfNotExists(participantId)
-
-	err = p.StartQuiz(quizId)
+func (as *QuizApplicationService) StartQuiz(participantID string, quizID string) error {
+	p, err := as.createParticipantIfNotExists(participantID)
 	if err != nil {
 		return err
 	}
 
-	appendEventErr := as.participantRepository.AppendEvents(participantId, p.GetNewEventsAndUpdatePersistedVersion())
+	err = p.StartQuiz(quizID)
+	if err != nil {
+		return err
+	}
+
+	appendEventErr := as.participantRepository.AppendEvents(participantID, p.GetNewEventsAndUpdatePersistedVersion())
 
 	return appendEventErr
 }
 
-func (as *QuizApplicationService) createParticipantIfNotExists(participantId string) (participant.Participant, error) {
-	p, err := as.participantRepository.FindById(participantId)
+func (as *QuizApplicationService) createParticipantIfNotExists(participantID string) (participant.Participant, error) {
+	p, err := as.participantRepository.FindByID(participantID)
 	if err != nil && !errors.Is(err, participant.ErrNotFound) {
 		return participant.Participant{}, err
 	}
 
 	if err != nil && errors.Is(err, participant.ErrNotFound) {
-		p, err = participant.NewWithId(participantId)
+		p, err = participant.NewWithID(participantID)
 		if err != nil {
 			return participant.Participant{}, err
 		}
@@ -60,8 +59,8 @@ func (as *QuizApplicationService) createParticipantIfNotExists(participantId str
 	return p, nil
 }
 
-func (as *QuizApplicationService) GetFinishedQuizCount(participantId string) (int, error) {
-	p, err := as.participantRepository.FindById(participantId)
+func (as *QuizApplicationService) GetFinishedQuizCount(participantID string) (int, error) {
+	p, err := as.participantRepository.FindByID(participantID)
 	if errors.Is(err, participant.ErrNotFound) {
 		return 0, nil
 	} else if err != nil {
@@ -71,18 +70,18 @@ func (as *QuizApplicationService) GetFinishedQuizCount(participantId string) (in
 	return p.GetFinishedQuizCount(), nil
 }
 
-func (as *QuizApplicationService) FinishQuiz(participantId string, quizId string) error {
-	p, err := as.participantRepository.FindById(participantId)
+func (as *QuizApplicationService) FinishQuiz(participantID string, quizID string) error {
+	p, err := as.participantRepository.FindByID(participantID)
 	if err != nil && !errors.Is(err, participant.ErrNotFound) {
 		return err
 	}
 
-	err = p.FinishQuiz(quizId)
+	err = p.FinishQuiz(quizID)
 	if err != nil {
 		return err
 	}
 
-	appendEventErr := as.participantRepository.AppendEvents(participantId, p.GetNewEventsAndUpdatePersistedVersion())
+	appendEventErr := as.participantRepository.AppendEvents(participantID, p.GetNewEventsAndUpdatePersistedVersion())
 
 	return appendEventErr
 }

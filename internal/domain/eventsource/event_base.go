@@ -3,13 +3,13 @@ package eventsource
 import "time"
 
 type EventBase struct {
-	Id        string
+	ID        string
 	Version   uint
 	CreatedAt time.Time
 }
 
-func (a EventBase) GetId() string {
-	return a.Id
+func (a EventBase) GetID() string {
+	return a.ID
 }
 
 func (a EventBase) GetVersion() uint {

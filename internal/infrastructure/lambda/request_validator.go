@@ -2,8 +2,9 @@ package lambda
 
 import (
 	"encoding/json"
-	"github.com/aws/aws-lambda-go/events"
 	authJwt "learn-to-code/internal/infrastructure/authentication/jwt"
+
+	"github.com/aws/aws-lambda-go/events"
 )
 
 type RequestValidator struct {
@@ -28,7 +29,7 @@ func (r RequestValidator) ValidateRequest(request events.APIGatewayProxyRequest)
 		return Body{}, "", err
 	}
 
-	userId, err := r.jwtTokenValidator.ValidateAndGetUserId(jwtToken)
+	userID, err := r.jwtTokenValidator.ValidateAndGetUserID(jwtToken)
 	if err != nil {
 		return Body{}, "", err
 	}
@@ -39,5 +40,5 @@ func (r RequestValidator) ValidateRequest(request events.APIGatewayProxyRequest)
 		return Body{}, "", err
 	}
 
-	return body, userId, nil
+	return body, userID, nil
 }

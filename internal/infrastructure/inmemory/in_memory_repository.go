@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"learn-to-code/internal/domain/eventsource"
-	. "learn-to-code/internal/domain/quiz/participant"
+	"learn-to-code/internal/domain/quiz/participant"
 	"learn-to-code/internal/domain/quiz/participant/event"
 	"reflect"
 	"time"
@@ -54,7 +54,7 @@ func (r *ParticipantRepository) appendEvent(id string, e eventsource.Event) erro
 	}
 
 	po := EventPo{
-		AggregateID: e.GetId(),
+		AggregateID: e.GetID(),
 		Version:     e.GetVersion(),
 		Type:        reflect.TypeOf(e).Name(),
 		Payload:     serializedEvent,
@@ -64,11 +64,11 @@ func (r *ParticipantRepository) appendEvent(id string, e eventsource.Event) erro
 	return nil
 }
 
-func (r *ParticipantRepository) FindById(id string) (Participant, error) {
+func (r *ParticipantRepository) FindByID(id string) (participant.Participant, error) {
 	eventPos, ok := r.data[id]
 
-	if ok != true {
-		return Participant{}, ErrNotFound
+	if !ok {
+		return participant.Participant{}, participant.ErrNotFound
 	}
 
 	var events []eventsource.Event
@@ -82,7 +82,7 @@ func (r *ParticipantRepository) FindById(id string) (Participant, error) {
 
 			err := r.deserializer(po.Payload, joinedQuizEvent)
 			if err != nil {
-				return Participant{}, err
+				return participant.Participant{}, err
 			}
 
 			events = append(events, *joinedQuizEvent)
@@ -91,7 +91,7 @@ func (r *ParticipantRepository) FindById(id string) (Participant, error) {
 
 			err := r.deserializer(po.Payload, finishedQuiz)
 			if err != nil {
-				return Participant{}, err
+				return participant.Participant{}, err
 			}
 
 			events = append(events, *finishedQuiz)
@@ -101,7 +101,7 @@ func (r *ParticipantRepository) FindById(id string) (Participant, error) {
 
 			err := r.deserializer(po.Payload, startedQuiz)
 			if err != nil {
-				return Participant{}, err
+				return participant.Participant{}, err
 			}
 
 			events = append(events, *startedQuiz)
@@ -112,7 +112,7 @@ func (r *ParticipantRepository) FindById(id string) (Participant, error) {
 
 	}
 
-	p, err := NewFromEvents(events)
+	p, err := participant.NewFromEvents(events)
 
 	return p, err
 }

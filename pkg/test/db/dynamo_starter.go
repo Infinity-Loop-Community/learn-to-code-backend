@@ -3,6 +3,9 @@ package db
 import (
 	"context"
 	"fmt"
+	"learn-to-code/internal/infrastructure/dynamodb"
+	errUtils "learn-to-code/internal/infrastructure/go/util/err"
+
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	dynamodbsdk "github.com/aws/aws-sdk-go-v2/service/dynamodb"
@@ -10,8 +13,6 @@ import (
 	"github.com/docker/go-connections/nat"
 	"github.com/testcontainers/testcontainers-go"
 	"github.com/testcontainers/testcontainers-go/wait"
-	"learn-to-code/internal/infrastructure/dynamodb"
-	errUtils "learn-to-code/internal/infrastructure/go/util/err"
 )
 
 const (

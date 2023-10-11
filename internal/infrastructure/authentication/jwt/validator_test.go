@@ -2,11 +2,12 @@ package jwt_test
 
 import (
 	"fmt"
-	"github.com/golang-jwt/jwt/v5"
-	"github.com/stretchr/testify/assert"
 	authJwt "learn-to-code/internal/infrastructure/authentication/jwt"
 	"testing"
 	"time"
+
+	"github.com/golang-jwt/jwt/v5"
+	"github.com/stretchr/testify/assert"
 )
 
 var sampleSecret = "SecretYouShouldHide"
@@ -18,7 +19,7 @@ func TestValidator_Validate(t *testing.T) {
 		validator := authJwt.NewValidator("wrong secret")
 		futureTime := time.Now().Add(10 * time.Minute)
 
-		_, err := validator.ValidateAndGetUserId(createRequestWithGeneratedJWT(futureTime))
+		_, err := validator.ValidateAndGetUserID(createRequestWithGeneratedJWT(futureTime))
 		assert.ErrorContains(t, err, "signature is invalid")
 	})
 
@@ -26,16 +27,16 @@ func TestValidator_Validate(t *testing.T) {
 		validator := authJwt.NewValidator(sampleSecret)
 		futureTime := time.Now().Add(10 * time.Minute)
 
-		userId, err := validator.ValidateAndGetUserId(createRequestWithGeneratedJWT(futureTime))
+		userID, err := validator.ValidateAndGetUserID(createRequestWithGeneratedJWT(futureTime))
 		assert.Nil(t, err)
-		assert.Equal(t, "user", userId)
+		assert.Equal(t, "user", userID)
 	})
 
 	t.Run("returns error if expired", func(t *testing.T) {
 		validator := authJwt.NewValidator(sampleSecret)
 		pastTime := time.Now().Add(-10 * time.Minute)
 
-		_, err := validator.ValidateAndGetUserId(createRequestWithGeneratedJWT(pastTime))
+		_, err := validator.ValidateAndGetUserID(createRequestWithGeneratedJWT(pastTime))
 		assert.ErrorContains(t, err, "token is expired")
 	})
 }
@@ -56,5 +57,4 @@ func createRequestWithGeneratedJWT(expiresAt time.Time) string {
 	}
 
 	return tokenString
-
 }

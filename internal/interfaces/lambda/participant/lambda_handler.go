@@ -3,10 +3,11 @@ package participant
 import (
 	"context"
 	"fmt"
-	"github.com/aws/aws-lambda-go/events"
 	"learn-to-code/internal/infrastructure/config"
 	"learn-to-code/internal/infrastructure/go/util/uuid"
 	"learn-to-code/internal/infrastructure/service"
+
+	"github.com/aws/aws-lambda-go/events"
 )
 
 type LambdaHandler struct {
@@ -20,12 +21,12 @@ func NewLambdaHandler(cfg config.Config) LambdaHandler {
 func (l LambdaHandler) HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	serviceRegistry := service.NewServiceRegistry(ctx, l.cfg)
 
-	_, userId, err := serviceRegistry.RequestValidator.ValidateRequest(request)
+	_, userID, err := serviceRegistry.RequestValidator.ValidateRequest(request)
 	if err != nil {
 		return events.APIGatewayProxyResponse{StatusCode: 400, Body: fmt.Sprintf(`{"error": "%s"}`, err)}, nil
 	}
 
-	err = serviceRegistry.QuizApplicationService.StartQuiz(userId, uuid.MustNewRandomAsString())
+	err = serviceRegistry.QuizApplicationService.StartQuiz(userID, uuid.MustNewRandomAsString())
 	if err != nil {
 		return events.APIGatewayProxyResponse{StatusCode: 500, Body: fmt.Sprintf(`{"error": "%s"}`, err)}, nil
 	}

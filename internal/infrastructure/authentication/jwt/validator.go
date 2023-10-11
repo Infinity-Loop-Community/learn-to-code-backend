@@ -19,7 +19,7 @@ func NewValidator(secret string) *Validator {
 	}
 }
 
-func (validator Validator) ValidateAndGetUserId(jwtToken string) (string, error) {
+func (validator Validator) ValidateAndGetUserID(jwtToken string) (string, error) {
 
 	if validator.secret == "" {
 		panic("no next auth secret")

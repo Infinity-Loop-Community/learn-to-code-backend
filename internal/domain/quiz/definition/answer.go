@@ -1,7 +1,7 @@
 package definition
 
 type Answer struct {
-	Id          string
+	ID          string
 	IsCorrect   bool
 	Explanation string
 }

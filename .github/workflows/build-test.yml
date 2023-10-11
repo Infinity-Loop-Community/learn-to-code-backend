@@ -1,0 +1,35 @@
+name: build-test
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # pin@v3.6.0
+      - name: Setup Go
+        uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe # pin@4.1.0
+        with:
+          go-version: '1.21'
+      - name: Install golangci-lint
+        run: |
+          curl -sSLO https://github.com/golangci/golangci-lint/releases/download/v$GOLANGCI_LINT_VERSION/golangci-lint-$GOLANGCI_LINT_VERSION-linux-amd64.tar.gz
+          shasum -a 256 golangci-lint-$GOLANGCI_LINT_VERSION-linux-amd64.tar.gz | grep "^$GOLANGCI_LINT_SHA256  " > /dev/null
+          tar -xf golangci-lint-$GOLANGCI_LINT_VERSION-linux-amd64.tar.gz
+          sudo mv golangci-lint-$GOLANGCI_LINT_VERSION-linux-amd64/golangci-lint /usr/local/bin/golangci-lint
+          rm -rf golangci-lint-$GOLANGCI_LINT_VERSION-linux-amd64*
+        env:
+          GOLANGCI_LINT_VERSION: '1.54.2'
+          GOLANGCI_LINT_SHA256: '17c9ca05253efe833d47f38caf670aad2202b5e6515879a99873fabd4c7452b3'
+      - name: Test style
+        run: make test-style
+      - name: Run unit tests
+        run: make test-coverage
+      - name: Test build
+        run: make build

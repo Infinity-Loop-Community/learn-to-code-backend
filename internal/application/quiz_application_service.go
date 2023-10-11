@@ -26,8 +26,6 @@ func (as *QuizApplicationService) GetStartedQuizCount(participantID string) (int
 	return p.GetStartedQuizCount(), nil
 }
 
-// StartQuiz is the first action of a participants in the quiz bounded context, hence if not created yet
-// a first event for a participant is created, and with that the participant itself.
 func (as *QuizApplicationService) StartQuiz(participantID string, quizID string) error {
 	p, err := as.createParticipantIfNotExists(participantID)
 	if err != nil {

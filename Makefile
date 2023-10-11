@@ -1,6 +1,18 @@
+.PHONY: lint
+lint:
+	golangci-lint run
+
 .PHONY: build
 build:
-	sam build
+	go build ./...
+
+.PHONY: test
+build:
+	go test ./...
+
+.PHONY: sam-build
+build:
+	sam sam-build
 
 .PHONY: deploy-dev
 deploy-dev:
@@ -15,7 +27,3 @@ delete-dev:
 .PHONY: logs-dev-tail
 logs-dev-tail:
 	sam logs -n ParticipantPost --stack-name learn-to-code-backend --region eu-central-1 -t
-
-.PHONY: lint
-lint:
-	golangci-lint run

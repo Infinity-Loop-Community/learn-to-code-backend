@@ -65,7 +65,7 @@ func (s *DynamoStarter) startContainer() {
 
 func (s *DynamoStarter) createDynamoDbClient() *dynamodbsdk.Client {
 	customResolver := aws.EndpointResolverWithOptionsFunc(func(service, region string, options ...interface{}) (aws.Endpoint, error) {
-		customEndpoint := fmt.Sprintf("http://%s:%d", "localhost", s.getPort().Int())
+		customEndpoint := fmt.Sprintf("http://%s:%d", s.getHost(), s.getPort().Int())
 		endpoint := aws.Endpoint{
 			URL:           customEndpoint,
 			SigningRegion: awsDefaultRegion,
@@ -75,8 +75,10 @@ func (s *DynamoStarter) createDynamoDbClient() *dynamodbsdk.Client {
 	})
 
 	cfg := errUtils.PanicIfError1(config.LoadDefaultConfig(context.TODO(),
-		config.WithRegion(awsDefaultRegion), // Replace with your desired region
+		config.WithRegion(awsDefaultRegion),
 		config.WithEndpointResolverWithOptions(customResolver),
+
+		// disable authentication
 		config.WithCredentialsProvider(credentials.NewStaticCredentialsProvider("test", "test", "test")),
 	))
 
@@ -87,9 +89,9 @@ func (s *DynamoStarter) getPort() nat.Port {
 	return errUtils.PanicIfError1(s.tc.MappedPort(s.ctx, dynamoDbPort))
 }
 
-//func (s *DynamoStarter) getHost() string {
-//	return errUtils.PanicIfError1(s.tc.Host(s.ctx))
-//}
+func (s *DynamoStarter) getHost() string {
+	return errUtils.PanicIfError1(s.tc.Host(s.ctx))
+}
 
 func (s *DynamoStarter) createTables(dynamoDbClient *dynamodbsdk.Client) {
 

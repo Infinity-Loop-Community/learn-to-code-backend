@@ -7,7 +7,11 @@ on:
     branches:
       - main
 
+env:
+  GO_VERSION: '1.21'  # Set the Golang version here
+
 jobs:
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -16,7 +20,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe # pin@4.1.0
         with:
-          go-version: '1.21'
+          go-version: ${{ env.GO_VERSION }}
       - name: Install golangci-lint
         run: |
           curl -sSLO https://github.com/golangci/golangci-lint/releases/download/v$GOLANGCI_LINT_VERSION/golangci-lint-$GOLANGCI_LINT_VERSION-linux-amd64.tar.gz
@@ -30,10 +34,6 @@ jobs:
       - name: Lint
         run: make lint
       - name: Run tests
-        env:
-          AWS_ACCESS_KEY_ID: "test"
-          AWS_SECRET_ACCESS_KEY: "test"
-          AWS_DEFAULT_REGION: "us-east-1"
         run: make test
       - name: Test build
         run: make build

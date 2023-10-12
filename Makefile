@@ -7,7 +7,7 @@ build:
 	go build ./...
 
 .PHONY: test
-build:
+test:
 	go test ./...
 
 .PHONY: sam-build

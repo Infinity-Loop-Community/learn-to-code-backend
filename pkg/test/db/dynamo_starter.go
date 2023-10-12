@@ -84,9 +84,9 @@ func (s *DynamoStarter) getPort() nat.Port {
 	return errUtils.PanicIfError1(s.tc.MappedPort(s.ctx, dynamoDbPort))
 }
 
-func (s *DynamoStarter) getHost() string {
-	return errUtils.PanicIfError1(s.tc.Host(s.ctx))
-}
+//func (s *DynamoStarter) getHost() string {
+//	return errUtils.PanicIfError1(s.tc.Host(s.ctx))
+//}
 
 func (s *DynamoStarter) createTables(dynamoDbClient *dynamodbsdk.Client) {
 

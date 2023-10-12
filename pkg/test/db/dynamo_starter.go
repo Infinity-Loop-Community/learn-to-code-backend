@@ -63,7 +63,7 @@ func (s *DynamoStarter) startContainer() {
 
 func (s *DynamoStarter) createDynamoDbClient() *dynamodbsdk.Client {
 	customResolver := aws.EndpointResolverWithOptionsFunc(func(service, region string, options ...interface{}) (aws.Endpoint, error) {
-		customEndpoint := fmt.Sprintf("http://%s:%d", s.getHost(), s.getPort().Int())
+		customEndpoint := fmt.Sprintf("http://%s:%d", "localhost", s.getPort().Int())
 		endpoint := aws.Endpoint{
 			URL:           customEndpoint,
 			SigningRegion: awsDefaultRegion,

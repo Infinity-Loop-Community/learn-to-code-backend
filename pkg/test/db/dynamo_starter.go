@@ -77,7 +77,7 @@ func (s *DynamoStarter) createDynamoDbClient() *dynamodbsdk.Client {
 	cfg := errUtils.PanicIfError1(config.LoadDefaultConfig(context.TODO(),
 		config.WithRegion(awsDefaultRegion), // Replace with your desired region
 		config.WithEndpointResolverWithOptions(customResolver),
-		config.WithCredentialsProvider(credentials.NewStaticCredentialsProvider("AKID", "SECRET_KEY", "TOKEN")),
+		config.WithCredentialsProvider(credentials.NewStaticCredentialsProvider("test", "test", "test")),
 	))
 
 	return dynamodbsdk.NewFromConfig(cfg)

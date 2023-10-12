@@ -7,6 +7,8 @@ import (
 	errUtils "learn-to-code/internal/infrastructure/go/util/err"
 	"time"
 
+	"github.com/aws/aws-sdk-go-v2/credentials"
+
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	dynamodbsdk "github.com/aws/aws-sdk-go-v2/service/dynamodb"
@@ -75,6 +77,7 @@ func (s *DynamoStarter) createDynamoDbClient() *dynamodbsdk.Client {
 	cfg := errUtils.PanicIfError1(config.LoadDefaultConfig(context.TODO(),
 		config.WithRegion(awsDefaultRegion), // Replace with your desired region
 		config.WithEndpointResolverWithOptions(customResolver),
+		config.WithCredentialsProvider(credentials.NewStaticCredentialsProvider("AKID", "SECRET_KEY", "TOKEN")),
 	))
 
 	return dynamodbsdk.NewFromConfig(cfg)

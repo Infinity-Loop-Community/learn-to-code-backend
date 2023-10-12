@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"learn-to-code/internal/infrastructure/dynamodb"
 	errUtils "learn-to-code/internal/infrastructure/go/util/err"
-	"time"
 
 	"github.com/aws/aws-sdk-go-v2/credentials"
 
@@ -40,10 +39,6 @@ func NewDynamoStarter() *DynamoStarter {
 func (s *DynamoStarter) Start() *dynamodbsdk.Client {
 	s.startContainer()
 	dynamoDbClient := s.createDynamoDbClient()
-
-	fmt.Printf("Sleep 5 seconds to ensure database is up and running.")
-	time.Sleep(time.Second * 5)
-	fmt.Printf("Sleep done.")
 
 	s.createTables(dynamoDbClient)
 	return dynamoDbClient

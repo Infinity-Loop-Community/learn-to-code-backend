@@ -1,7 +1,5 @@
 # learn-to-code-backend
 
-[![Go Coverage](https://github.com/sesigl/learn-to-code-backend/wiki/coverage.svg)](https://raw.githack.com/wiki/sesigl/learn-to-code-backend/coverage.html)
-
 This is a sample template for learn-to-code-backend - Below is a brief explanation of what we have generated for you:
 
 ```bash

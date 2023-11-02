@@ -3,10 +3,12 @@ require github.com/aws/aws-lambda-go v1.41.0
 require (
 	github.com/aws/aws-sdk-go-v2 v1.21.1
 	github.com/aws/aws-sdk-go-v2/config v1.18.44
+	github.com/aws/aws-sdk-go-v2/credentials v1.13.42
 	github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue v1.10.41
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.22.1
 	github.com/docker/go-connections v0.4.0
 	github.com/golang-jwt/jwt/v5 v5.0.0
+	github.com/google/go-cmp v0.5.9
 	github.com/google/uuid v1.3.1
 	github.com/stretchr/testify v1.8.4
 	github.com/testcontainers/testcontainers-go v0.25.0
@@ -17,7 +19,6 @@ require (
 	github.com/Azure/go-ansiterm v0.0.0-20230124172434-306776ec8161 // indirect
 	github.com/Microsoft/go-winio v0.6.1 // indirect
 	github.com/Microsoft/hcsshim v0.11.1 // indirect
-	github.com/aws/aws-sdk-go-v2/credentials v1.13.42 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.13.12 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/configsources v1.1.42 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.4.36 // indirect

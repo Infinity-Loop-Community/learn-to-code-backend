@@ -1,8 +1,0 @@
-POST https://kj6h8637qj.execute-api.eu-central-1.amazonaws.com/dev/participants/events/
-Content-Type: application/json
-# Paste and modify via https://jwt.io/ for testing; use the testing secret "test"
-next-auth.session-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2ViYXN0aWFuIFNpZ2wiLCJlbWFpbCI6ImFrcmlsbG84OUBnbWFpbC5jb20iLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUVkRlRwNGRCbjEza3VMUWx3dnBKeFZ4R2JZdVpFMEVMc0hBS3RudmVlRE89czk2LWMiLCJzdWIiOiJjbGR2eXR3NmMwMDAwbDUwODZvZ3ZvdnI4IiwiaWF0IjoxNjc5MjUwOTQ5LCJleHAiOjE3ODE4NDI5NDl9.eruaZVelm8jW12PAFMREOw3vyFZQ098ZrfmtFGSuyhs
-
-{
-  "value": "test"
-}

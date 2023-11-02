@@ -9,7 +9,7 @@ import (
 )
 
 func TestQuizApplicationService_StartQuiz(t *testing.T) {
-	as := application.NewQuizApplicationService(
+	as := application.NewPartcipantApplicationService(
 		inmemory.NewParticipantRepository(),
 	)
 
@@ -30,7 +30,7 @@ func TestQuizApplicationService_StartQuiz(t *testing.T) {
 }
 
 func TestQuizApplicationService_EndQuiz(t *testing.T) {
-	as := application.NewQuizApplicationService(
+	as := application.NewPartcipantApplicationService(
 		inmemory.NewParticipantRepository(),
 	)
 

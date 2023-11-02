@@ -68,7 +68,7 @@ func (r *ParticipantRepository) FindByID(id string) (participant.Participant, er
 	eventPos, ok := r.data[id]
 
 	if !ok {
-		return participant.Participant{}, participant.ErrNotFound
+		return participant.Participant{}, participant.ErrParticipantNotFound
 	}
 
 	var events []eventsource.Event

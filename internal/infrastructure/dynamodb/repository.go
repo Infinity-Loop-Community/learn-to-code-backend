@@ -104,7 +104,7 @@ func (r Repository) FindByID(id string) (participant.Participant, error) {
 	}
 
 	if len(output.Items) == 0 {
-		return participant.Participant{}, participant.ErrNotFound
+		return participant.Participant{}, participant.ErrParticipantNotFound
 	}
 
 	var events []eventsource.Event

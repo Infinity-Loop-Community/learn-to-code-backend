@@ -46,12 +46,34 @@ Resources:
     Properties:
       StageName: !Ref StageName
 
-  ParticipantPost:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+  CourseGet:
+    Type: AWS::Serverless::Function
     Metadata:
       BuildMethod: go1.x
     Properties:
-      CodeUri: cmd/post_participant
+      CodeUri: cmd/course_get
+      Handler: bootstrap
+      Runtime: provided.al2
+      Architectures:
+        - x86_64
+      Events:
+        CatchAll:
+          Type: Api
+          Properties:
+            Path: /courses/{courseId}
+            Method: GET
+            RestApiId: !Ref RestApi
+      Environment:
+        Variables:
+          ENVIRONMENT: !Sub "${StageName}"
+          JWT_SECRET: !Sub "${JwtSecret}" # More secure would be to use AWS Secret manager with secret rotation. That's postponed to save costs.
+
+  ParticipantPost:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+    Properties:
+      CodeUri: cmd/participant_post
       Handler: bootstrap
       Runtime: provided.al2
       Architectures:
@@ -71,13 +93,14 @@ Resources:
         - DynamoDBCrudPolicy:
             TableName: !Sub "${StageName}_events"
 
+
 Outputs:
-  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
-  # Find out more about other implicit resources you can reference within SAM
-  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  ParticipantAPI:
+  ParticipantPostAPI:
     Value: !Sub "https://${RestApi}.execute-api.${AWS::Region}.amazonaws.com/${StageName}/participant/events/"
-  ParticipantPost:
+  ParticipantPostARN:
     Value: !GetAtt ParticipantPost.Arn
-  ParticipantPostIamRole:
-    Value: !GetAtt ParticipantPost.Arn
+
+  CourseGetAPI:
+    Value: !Sub "https://${RestApi}.execute-api.${AWS::Region}.amazonaws.com/${StageName}/courses/{courseId}/"
+  CourseGetARN:
+    Value: !GetAtt CourseGet.Arn

@@ -26,7 +26,7 @@ func (l LambdaHandler) HandleRequest(ctx context.Context, request events.APIGate
 		return events.APIGatewayProxyResponse{StatusCode: 400, Body: fmt.Sprintf(`{"error": "%s"}`, err)}, nil
 	}
 
-	err = serviceRegistry.QuizApplicationService.StartQuiz(userID, uuid.MustNewRandomAsString())
+	err = serviceRegistry.ParticipantApplicationService.StartQuiz(userID, uuid.MustNewRandomAsString())
 	if err != nil {
 		return events.APIGatewayProxyResponse{StatusCode: 500, Body: fmt.Sprintf(`{"error": "%s"}`, err)}, nil
 	}

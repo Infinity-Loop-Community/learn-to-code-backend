@@ -27,3 +27,11 @@ delete-dev:
 .PHONY: logs-dev-tail
 logs-dev-tail:
 	sam logs -n ParticipantPost --stack-name learn-to-code-backend --region eu-central-1 -t
+
+.PHONY: clean-rebuild
+clean-rebuild:
+	rm -rf .aws-sam && make build && sam build
+
+.PHONY: run-api-local
+run-api-local:
+	sam local start-api

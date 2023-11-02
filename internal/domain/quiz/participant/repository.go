@@ -5,7 +5,7 @@ import (
 	"learn-to-code/internal/domain/eventsource"
 )
 
-var ErrNotFound = errors.New("element not found")
+var ErrParticipantNotFound = errors.New("participant not found")
 
 // The Repository needs transactional safety to ensure proper functioning of event sourcing.
 // This ensures that events are inserted in the correct order. In traditional relational databases,
@@ -15,8 +15,8 @@ var ErrNotFound = errors.New("element not found")
 type Repository interface {
 	AppendEvents(participantID string, events []eventsource.Event) error
 
-	// FindById retrieves a participant by ID from the repository.
+	// FindByID retrieves a participant by ID from the repository.
 	// It returns the Participant object and an error.
-	// If the user is not found, a static error ErrNotFound must be returned.
+	// If the user is not found, a static error ErrParticipantNotFound must be returned.
 	FindByID(id string) (Participant, error)
 }

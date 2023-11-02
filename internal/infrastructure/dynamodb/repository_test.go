@@ -31,8 +31,8 @@ func TestRepository_FindById_ReturnsNotFoundError(t *testing.T) {
 
 	_, err := repo.FindByID("does not exist")
 
-	if !errors.Is(err, participant.ErrNotFound) {
-		t.Fatalf("is not ErrNotFound: %s", err)
+	if !errors.Is(err, participant.ErrParticipantNotFound) {
+		t.Fatalf("is not ErrParticipantNotFound: %s", err)
 	}
 }
 

@@ -5,19 +5,19 @@ import (
 	"learn-to-code/internal/domain/quiz/participant"
 )
 
-type QuizApplicationService struct {
+type ParticipantApplicationService struct {
 	participantRepository participant.Repository
 }
 
-func NewQuizApplicationService(participantRepository participant.Repository) *QuizApplicationService {
-	return &QuizApplicationService{
+func NewPartcipantApplicationService(participantRepository participant.Repository) *ParticipantApplicationService {
+	return &ParticipantApplicationService{
 		participantRepository: participantRepository,
 	}
 }
 
-func (as *QuizApplicationService) GetStartedQuizCount(participantID string) (int, error) {
+func (as *ParticipantApplicationService) GetStartedQuizCount(participantID string) (int, error) {
 	p, err := as.participantRepository.FindByID(participantID)
-	if errors.Is(err, participant.ErrNotFound) {
+	if errors.Is(err, participant.ErrParticipantNotFound) {
 		return 0, nil
 	} else if err != nil {
 		return 0, err
@@ -26,7 +26,7 @@ func (as *QuizApplicationService) GetStartedQuizCount(participantID string) (int
 	return p.GetStartedQuizCount(), nil
 }
 
-func (as *QuizApplicationService) StartQuiz(participantID string, quizID string) error {
+func (as *ParticipantApplicationService) StartQuiz(participantID string, quizID string) error {
 	p, err := as.createParticipantIfNotExists(participantID)
 	if err != nil {
 		return err
@@ -42,13 +42,13 @@ func (as *QuizApplicationService) StartQuiz(participantID string, quizID string)
 	return appendEventErr
 }
 
-func (as *QuizApplicationService) createParticipantIfNotExists(participantID string) (participant.Participant, error) {
+func (as *ParticipantApplicationService) createParticipantIfNotExists(participantID string) (participant.Participant, error) {
 	p, err := as.participantRepository.FindByID(participantID)
-	if err != nil && !errors.Is(err, participant.ErrNotFound) {
+	if err != nil && !errors.Is(err, participant.ErrParticipantNotFound) {
 		return participant.Participant{}, err
 	}
 
-	if err != nil && errors.Is(err, participant.ErrNotFound) {
+	if err != nil && errors.Is(err, participant.ErrParticipantNotFound) {
 		p, err = participant.NewWithID(participantID)
 		if err != nil {
 			return participant.Participant{}, err
@@ -57,9 +57,9 @@ func (as *QuizApplicationService) createParticipantIfNotExists(participantID str
 	return p, nil
 }
 
-func (as *QuizApplicationService) GetFinishedQuizCount(participantID string) (int, error) {
+func (as *ParticipantApplicationService) GetFinishedQuizCount(participantID string) (int, error) {
 	p, err := as.participantRepository.FindByID(participantID)
-	if errors.Is(err, participant.ErrNotFound) {
+	if errors.Is(err, participant.ErrParticipantNotFound) {
 		return 0, nil
 	} else if err != nil {
 		return 0, err
@@ -68,9 +68,9 @@ func (as *QuizApplicationService) GetFinishedQuizCount(participantID string) (in
 	return p.GetFinishedQuizCount(), nil
 }
 
-func (as *QuizApplicationService) FinishQuiz(participantID string, quizID string) error {
+func (as *ParticipantApplicationService) FinishQuiz(participantID string, quizID string) error {
 	p, err := as.participantRepository.FindByID(participantID)
-	if err != nil && !errors.Is(err, participant.ErrNotFound) {
+	if err != nil && !errors.Is(err, participant.ErrParticipantNotFound) {
 		return err
 	}
 

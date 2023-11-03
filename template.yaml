@@ -23,6 +23,35 @@ Parameters:
 
 Resources:
 
+  ProdApiCustomDomain:
+    Type: 'AWS::ApiGateway::DomainName'
+    Properties:
+      DomainName: "api.learn-to-code.io"
+      CertificateArn: "arn:aws:acm:us-east-1:127870186360:certificate/1fe844b0-2158-4f2f-835a-c1a5742db254"
+
+  DevApiCustomDomain:
+    Type: 'AWS::ApiGateway::DomainName'
+    Condition: IsDevelopment
+    Properties:
+      DomainName: "dev.api.learn-to-code.io"
+      CertificateArn: "arn:aws:acm:us-east-1:127870186360:certificate/86e662c1-0a87-4793-8c4e-b84b5a27b1b2"
+
+  ProdApiBasePathMapping:
+    Type: 'AWS::ApiGateway::BasePathMapping'
+    Condition: IsProduction
+    Properties:
+      DomainName: !Ref ProdApiCustomDomain
+      RestApiId: !Ref RestApi
+      Stage: prod
+
+  DevApiBasePathMapping:
+    Type: 'AWS::ApiGateway::BasePathMapping'
+    Condition: IsDevelopment
+    Properties:
+      DomainName: !Ref DevApiCustomDomain
+      RestApiId: !Ref RestApi
+      Stage: dev
+
   EventSourcingTable:
     Type: AWS::DynamoDB::Table
     Properties:
@@ -93,6 +122,15 @@ Resources:
         - DynamoDBCrudPolicy:
             TableName: !Sub "${StageName}_events"
 
+Conditions:
+  IsProduction:
+    Fn::Equals:
+      - !Ref StageName
+      - "prod"
+  IsDevelopment:
+    Fn::Equals:
+      - !Ref StageName
+      - "dev"
 
 Outputs:
   ParticipantPostAPI:

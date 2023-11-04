@@ -1,11 +1,12 @@
 package jwt
 
 import (
+	"time"
+
 	"github.com/golang-jwt/jwt/v5"
 )
 
 type CustomClaims struct {
-	Name string `json:"name"`
 	jwt.RegisteredClaims
 }
 
@@ -36,4 +37,27 @@ func (validator Validator) ValidateAndGetUserID(jwtToken string) (string, error)
 	subject, err := token.Claims.GetSubject()
 
 	return subject, err
+}
+
+func (validator Validator) CreateToken() (string, error) {
+	claims := &CustomClaims{
+		RegisteredClaims: jwt.RegisteredClaims{
+			Issuer:    "myAppIssuer",
+			Subject:   "user123",
+			Audience:  []string{"myAppClient"},
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(24 * time.Hour)),
+			NotBefore: jwt.NewNumericDate(time.Now()),
+			IssuedAt:  jwt.NewNumericDate(time.Now()),
+			ID:        "uniqueTokenID123",
+		},
+	}
+
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+
+	tokenString, err := token.SignedString([]byte(validator.secret))
+	if err != nil {
+		return "", err
+	}
+
+	return tokenString, nil
 }

@@ -43,7 +43,6 @@ func TestValidator_Validate(t *testing.T) {
 
 func createRequestWithGeneratedJWT(expiresAt time.Time) string {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, authJwt.CustomClaims{
-		Name: "name",
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: &jwt.NumericDate{
 				Time: expiresAt,

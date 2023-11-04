@@ -34,15 +34,23 @@ func (r RequestValidator) ValidateRequest(request events.APIGatewayProxyRequest)
 		return Body{}, "", err
 	}
 
-	var body Body
-	if request.Body != "" {
-		err = json.Unmarshal([]byte(request.Body), &body)
-		if err != nil {
-			return Body{}, "", err
-		}
-	} else {
-		body = Body{}
+	body, err := r.getBody(request)
+	if err != nil {
+		return body, "", err
 	}
 
 	return body, userID, nil
+}
+
+func (r RequestValidator) getBody(request events.APIGatewayProxyRequest) (Body, error) {
+	var body = Body{}
+
+	if request.Body != "" {
+		err := json.Unmarshal([]byte(request.Body), &body)
+		if err != nil {
+			return Body{}, err
+		}
+	}
+
+	return body, nil
 }

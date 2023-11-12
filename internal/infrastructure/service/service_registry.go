@@ -29,7 +29,7 @@ func NewServiceRegistry(ctx context.Context, cfg config2.Config) *Registry {
 	nextJsSecretParser := lambda.NewNextJsSecretParser()
 	jwtTokenValidator := authJwt.NewValidator(cfg.JwtSecret)
 	requestValidator := lambda.NewRequestValidator(nextJsSecretParser, jwtTokenValidator)
-	responseCreator := lambda.NewResponseCreator()
+	responseCreator := lambda.NewResponseCreator(cfg.CorsAllowOrigin)
 
 	participantRepository := dynamodb.NewDynamoDbParticipantRepository(ctx, cfg.Environment, dynamoDbClient)
 	participantApplicationService := application.NewPartcipantApplicationService(participantRepository)

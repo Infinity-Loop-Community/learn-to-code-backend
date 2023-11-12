@@ -74,6 +74,11 @@ Resources:
     Type: AWS::Serverless::Api
     Properties:
       StageName: !Ref StageName
+      Cors:
+        AllowMethods: "'GET,PUT,POST,DELETE,OPTIONS'"
+        AllowHeaders: "'Cookie,Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+        AllowOrigin: "'http://localhost:3000'"
+        AllowCredentials: true
 
   CourseGet:
     Type: AWS::Serverless::Function
@@ -96,6 +101,7 @@ Resources:
         Variables:
           ENVIRONMENT: !Sub "${StageName}"
           JWT_SECRET: !Sub "${JwtSecret}" # More secure would be to use AWS Secret manager with secret rotation. That's postponed to save costs.
+          CORS_ALLOW_ORIGIN_URL: !FindInMap [EnvironmentConfig, !Ref StageName, CorsUrl]
 
   ParticipantPost:
     Type: AWS::Serverless::Function
@@ -118,6 +124,7 @@ Resources:
         Variables:
           ENVIRONMENT: !Sub "${StageName}"
           JWT_SECRET: !Sub "${JwtSecret}" # More secure would be to use AWS Secret manager with secret rotation. That's postponed to save costs.
+          CORS_ALLOW_ORIGIN_URL: !FindInMap [EnvironmentConfig, !Ref StageName, CorsUrl]
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Sub "${StageName}_events"
@@ -142,3 +149,10 @@ Outputs:
     Value: !Sub "https://${RestApi}.execute-api.${AWS::Region}.amazonaws.com/${StageName}/courses/{courseId}/"
   CourseGetARN:
     Value: !GetAtt CourseGet.Arn
+
+Mappings:
+  EnvironmentConfig:
+    dev:
+      CorsUrl: "http://localhost:3000"
+    prod:
+      CorsUrl: "https://www.learn-to-code.io"

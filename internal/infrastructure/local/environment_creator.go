@@ -25,6 +25,7 @@ func NewEnvironmentCreator() *EnvironmentCreator {
 func setupExecutionEnvironment() config.Config {
 	os.Setenv(config.EnvEnvironmentKey, string(config.Dev))
 	os.Setenv(config.EnvJwtSecretKey, "test")
+	os.Setenv(config.EnvCorsAllowOriginKey, "http://localhost:3000")
 	cfg := err.PanicIfError1(config.NewConfig())
 	return cfg
 }

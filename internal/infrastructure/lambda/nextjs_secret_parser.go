@@ -25,7 +25,7 @@ func (parser *NextJsSecretParser) GetJwtTokenFromRequest(request events.APIGatew
 	nextJsAuthSessionToken := parser.getNextJsAuthTokenFromCookie(cookieHeader)
 
 	if nextJsAuthSessionToken == "" {
-		return "", fmt.Errorf("no cookie key '%s' presents", NextJsSessionTokenCookieKey)
+		return "", fmt.Errorf("no cookie key '%s' present", NextJsSessionTokenCookieKey)
 	}
 
 	return nextJsAuthSessionToken, nil

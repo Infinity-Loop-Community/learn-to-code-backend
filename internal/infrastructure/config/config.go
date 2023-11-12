@@ -9,10 +9,12 @@ type Config struct {
 	Environment      Environment
 	DefaultAwsRegion string
 	JwtSecret        string
+	CorsAllowOrigin  string
 }
 
 const EnvEnvironmentKey = "ENVIRONMENT"
 const EnvJwtSecretKey = "JWT_SECRET"
+const EnvCorsAllowOriginKey = "CORS_ALLOW_ORIGIN_URL"
 
 func NewConfig() (Config, error) {
 
@@ -23,12 +25,18 @@ func NewConfig() (Config, error) {
 
 	jwtSecret := os.Getenv(EnvJwtSecretKey)
 	if jwtSecret == "" {
-		return Config{}, fmt.Errorf("missing environment variable 'JWT_SECRET'")
+		return Config{}, fmt.Errorf("missing environment variable '%s'", EnvJwtSecretKey)
+	}
+
+	allowOrigin := os.Getenv(EnvCorsAllowOriginKey)
+	if allowOrigin == "" {
+		return Config{}, fmt.Errorf("missing environment variable '%s'", EnvCorsAllowOriginKey)
 	}
 
 	return Config{
 		Environment:      environment,
 		DefaultAwsRegion: "eu-central-1",
 		JwtSecret:        jwtSecret,
+		CorsAllowOrigin:  allowOrigin,
 	}, err
 }

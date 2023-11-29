@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"learn-to-code/internal/application"
+	"learn-to-code/internal/domain/command"
 	authJwt "learn-to-code/internal/infrastructure/authentication/jwt"
 	config2 "learn-to-code/internal/infrastructure/config"
 	"learn-to-code/internal/infrastructure/dynamodb"
@@ -31,8 +32,11 @@ func NewServiceRegistry(ctx context.Context, cfg config2.Config) *Registry {
 	requestValidator := lambda.NewRequestValidator(nextJsSecretParser, jwtTokenValidator)
 	responseCreator := lambda.NewResponseCreator(cfg.CorsAllowOrigin)
 
-	participantRepository := dynamodb.NewDynamoDbParticipantRepository(ctx, cfg.Environment, dynamoDbClient)
-	participantApplicationService := application.NewPartcipantApplicationService(participantRepository)
+	startQuizToEventMapper := command.NewParticipantCommandApplier()
+
+	participantRepositoryFactory := dynamodb.NewParticipantRepositoryFactory(cfg.Environment, dynamoDbClient)
+	participantRepository := participantRepositoryFactory.NewRepository(ctx)
+	participantApplicationService := application.NewPartcipantApplicationService(participantRepository, startQuizToEventMapper)
 
 	courseRepository := inmemory.NewCourseRepository()
 	courseApplicationService := application.NewCourseApplicationService(courseRepository)

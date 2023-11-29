@@ -21,8 +21,10 @@ func TestEntityToResponseObject(t *testing.T) {
 						ID: "quizID",
 						Questions: []course.QuizQuestion{
 							{
-								Text:       "questionText",
-								Difficulty: "easy",
+								Text:        "questionText",
+								Difficulty:  "easy",
+								Rating:      0,
+								RatingCount: 0,
 								Answers: []course.QuizAnswer{
 									{
 										Text:        "answerText",

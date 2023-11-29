@@ -2,10 +2,12 @@ package participant
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
+	command "learn-to-code/internal/domain/command"
 	"learn-to-code/internal/infrastructure/config"
-	"learn-to-code/internal/infrastructure/go/util/uuid"
 	"learn-to-code/internal/infrastructure/service"
+	"learn-to-code/internal/interfaces/lambda/course/requestobject"
 
 	"github.com/aws/aws-lambda-go/events"
 )
@@ -21,18 +23,29 @@ func NewLambdaHandler(cfg config.Config) LambdaHandler {
 func (l LambdaHandler) HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	serviceRegistry := service.NewServiceRegistry(ctx, l.cfg)
 
-	_, userID, err := serviceRegistry.RequestValidator.ValidateRequest(request)
+	userID, err := serviceRegistry.RequestValidator.ValidateRequest(request)
 	if err != nil {
 		return events.APIGatewayProxyResponse{StatusCode: 400, Body: fmt.Sprintf(`{"error": "%s"}`, err)}, nil
 	}
 
-	err = serviceRegistry.ParticipantApplicationService.StartQuiz(userID, uuid.MustNewRandomAsString())
+	commandRequest := requestobject.Command{}
+	json.Unmarshal([]byte(request.Body), &commandRequest)
+
+	commandDomainObject := l.mapRequestToCommand(commandRequest)
+
+	err = serviceRegistry.ParticipantApplicationService.ProcessCommand(commandDomainObject, userID)
 	if err != nil {
-		return events.APIGatewayProxyResponse{StatusCode: 500, Body: fmt.Sprintf(`{"error": "%s"}`, err)}, nil
+		return serviceRegistry.ResponseCreator.CreateServerErrorResponse(err)
 	}
 
-	return events.APIGatewayProxyResponse{
-		Body:       request.Body,
-		StatusCode: 200,
-	}, nil
+	return serviceRegistry.ResponseCreator.CreateSuccessResponse(commandDomainObject)
+}
+
+func (l LambdaHandler) mapRequestToCommand(commandRequest requestobject.Command) command.Command {
+	c := command.Command{
+		CreatedAt: commandRequest.CreatedAt,
+		Data:      commandRequest.Data,
+		Type:      commandRequest.Type,
+	}
+	return c
 }

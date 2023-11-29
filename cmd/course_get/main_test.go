@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"learn-to-code/internal/infrastructure/config"
 	err2 "learn-to-code/internal/infrastructure/go/util/err"
 	"learn-to-code/internal/infrastructure/inmemory"
 	"learn-to-code/internal/infrastructure/local"
@@ -15,7 +16,7 @@ import (
 
 func TestGetCourseLambda_Returns200(t *testing.T) {
 
-	environmentCreator := local.NewEnvironmentCreator()
+	environmentCreator := local.NewEnvironmentCreator(config.Test)
 	handlerResponse := environmentCreator.ExecuteLambdaHandler(course.NewLambdaHandler(environmentCreator.Cfg).HandleRequest)
 
 	if handlerResponse.StatusCode != 200 {
@@ -25,7 +26,7 @@ func TestGetCourseLambda_Returns200(t *testing.T) {
 
 func TestGetCourseLambda_ContainsCourseData(t *testing.T) {
 
-	environmentCreator := local.NewEnvironmentCreator()
+	environmentCreator := local.NewEnvironmentCreator(config.Test)
 	handlerResponse := environmentCreator.ExecuteLambdaHandler(course.NewLambdaHandler(environmentCreator.Cfg).HandleRequest)
 
 	path := "$.id"

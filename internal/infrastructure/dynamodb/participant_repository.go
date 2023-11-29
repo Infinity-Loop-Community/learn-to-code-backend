@@ -28,7 +28,7 @@ type EventPo struct {
 	CreatedAt   time.Time `dynamodbav:"created_at"`
 }
 
-type Repository struct {
+type ParticipantRepository struct {
 	dbClient     *dynamodb.Client
 	ctx          context.Context
 	serializer   MarshalFunc
@@ -36,11 +36,11 @@ type Repository struct {
 	tableName    string
 }
 
-func NewDynamoDbParticipantRepository(ctx context.Context, environment config.Environment, client *dynamodb.Client) *Repository {
+func NewDynamoDbParticipantRepository(ctx context.Context, environment config.Environment, client *dynamodb.Client) *ParticipantRepository {
 
 	tableName := fmt.Sprintf("%s_events", environment)
 
-	return &Repository{
+	return &ParticipantRepository{
 		dbClient:     client,
 		ctx:          ctx,
 		serializer:   json.Marshal,
@@ -49,7 +49,7 @@ func NewDynamoDbParticipantRepository(ctx context.Context, environment config.En
 	}
 }
 
-func (r Repository) AppendEvents(participantID string, events []eventsource.Event) error {
+func (r ParticipantRepository) AppendEvents(participantID string, events []eventsource.Event) error {
 	for _, e := range events {
 		err := r.appendEvent(participantID, e)
 
@@ -61,7 +61,7 @@ func (r Repository) AppendEvents(participantID string, events []eventsource.Even
 	return nil
 }
 
-func (r Repository) appendEvent(participantID string, e eventsource.Event) error {
+func (r ParticipantRepository) appendEvent(participantID string, e eventsource.Event) error {
 	serializedEvent, err := r.serializer(e)
 	if err != nil {
 		return err
@@ -70,6 +70,7 @@ func (r Repository) appendEvent(participantID string, e eventsource.Event) error
 	input := &dynamodb.PutItemInput{
 		TableName: &r.tableName,
 		Item: map[string]types.AttributeValue{
+			"id":           &types.AttributeValueMemberS{Value: e.GetID()},
 			"aggregate_id": &types.AttributeValueMemberS{Value: participantID},
 			"version":      &types.AttributeValueMemberN{Value: fmt.Sprintf("%d", e.GetVersion())},
 			"type":         &types.AttributeValueMemberS{Value: reflect.TypeOf(e).Name()},
@@ -85,7 +86,7 @@ func (r Repository) appendEvent(participantID string, e eventsource.Event) error
 	return nil
 }
 
-func (r Repository) FindByID(id string) (participant.Participant, error) {
+func (r ParticipantRepository) FindOrCreateByID(id string) (participant.Participant, error) {
 	input := &dynamodb.QueryInput{
 		TableName: &r.tableName,
 		KeyConditions: map[string]types.Condition{
@@ -104,7 +105,7 @@ func (r Repository) FindByID(id string) (participant.Participant, error) {
 	}
 
 	if len(output.Items) == 0 {
-		return participant.Participant{}, participant.ErrParticipantNotFound
+		return participant.NewParticipant(id)
 	}
 
 	var events []eventsource.Event

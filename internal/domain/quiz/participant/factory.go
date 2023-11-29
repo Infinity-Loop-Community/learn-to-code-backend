@@ -8,10 +8,10 @@ import (
 )
 
 func New() (Participant, error) {
-	return NewWithID(uuid.MustNewRandomAsString())
+	return NewParticipant(uuid.MustNewRandomAsString())
 }
 
-func NewWithID(id string) (Participant, error) {
+func NewParticipant(id string) (Participant, error) {
 	participantCreated := event.ParticipantCreated{
 		EventBase: eventsource.EventBase{
 			ID:        id,

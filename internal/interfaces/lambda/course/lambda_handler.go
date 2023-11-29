@@ -22,7 +22,7 @@ func NewLambdaHandler(cfg config.Config) LambdaHandler {
 func (l LambdaHandler) HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	serviceRegistry := service.NewServiceRegistry(ctx, l.cfg)
 
-	_, _, err := serviceRegistry.RequestValidator.ValidateRequest(request)
+	_, err := serviceRegistry.RequestValidator.ValidateRequest(request)
 	if err != nil {
 		return serviceRegistry.ResponseCreator.CreateClientErrorResponse(err)
 	}

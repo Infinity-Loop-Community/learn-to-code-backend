@@ -67,8 +67,8 @@ Resources:
         - AttributeName: version
           KeyType: RANGE
       ProvisionedThroughput:
-        ReadCapacityUnits: 5
-        WriteCapacityUnits: 5
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
 
   RestApi:
     Type: AWS::Serverless::Api
@@ -118,7 +118,7 @@ Resources:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
             Path: /participants/{participantId}/events/{eventId}
-            Method: PUT
+            Method: POST
             RestApiId: !Ref RestApi
       Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
         Variables:

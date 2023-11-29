@@ -20,6 +20,7 @@ type ParticipantRepository struct {
 }
 
 type EventPo struct {
+	ID          string
 	AggregateID string
 	Type        string
 	Version     uint
@@ -64,11 +65,11 @@ func (r *ParticipantRepository) appendEvent(id string, e eventsource.Event) erro
 	return nil
 }
 
-func (r *ParticipantRepository) FindByID(id string) (participant.Participant, error) {
+func (r *ParticipantRepository) FindOrCreateByID(id string) (participant.Participant, error) {
 	eventPos, ok := r.data[id]
 
 	if !ok {
-		return participant.Participant{}, participant.ErrParticipantNotFound
+		return participant.NewParticipant(id)
 	}
 
 	var events []eventsource.Event

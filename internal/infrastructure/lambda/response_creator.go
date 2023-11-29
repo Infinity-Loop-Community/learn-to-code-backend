@@ -33,6 +33,14 @@ func (r *ResponseCreator) CreateSuccessResponse(responeObject any) (events.APIGa
 	}, nil
 }
 
+func (r *ResponseCreator) CreateServerErrorResponse(err error) (events.APIGatewayProxyResponse, error) {
+	return events.APIGatewayProxyResponse{
+		StatusCode: 500,
+		Body:       fmt.Sprintf(`{"error": "%s"}`, err),
+		Headers:    r.getHeaders(),
+	}, nil
+}
+
 func (r *ResponseCreator) CreateClientErrorResponse(err error) (events.APIGatewayProxyResponse, error) {
 	return events.APIGatewayProxyResponse{
 		StatusCode: 400,

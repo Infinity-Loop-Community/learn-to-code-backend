@@ -6,6 +6,7 @@ import (
 )
 
 type StartedQuiz struct {
+	QuizID string
 	eventsource.EventBase
 }
 

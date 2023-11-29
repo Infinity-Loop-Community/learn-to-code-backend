@@ -14,16 +14,16 @@ type EnvironmentCreator struct {
 	requestCreator *RequestCreator
 }
 
-func NewEnvironmentCreator() *EnvironmentCreator {
-	cfg := setupExecutionEnvironment()
+func NewEnvironmentCreator(environment config.Environment) *EnvironmentCreator {
+	cfg := setupExecutionEnvironment(environment)
 	return &EnvironmentCreator{
 		Cfg:            cfg,
 		requestCreator: NewRequestCreator(cfg),
 	}
 }
 
-func setupExecutionEnvironment() config.Config {
-	os.Setenv(config.EnvEnvironmentKey, string(config.Dev))
+func setupExecutionEnvironment(environment config.Environment) config.Config {
+	os.Setenv(config.EnvEnvironmentKey, string(environment))
 	os.Setenv(config.EnvJwtSecretKey, "test")
 	os.Setenv(config.EnvCorsAllowOriginKey, "http://localhost:3000")
 	cfg := err.PanicIfError1(config.NewConfig())
@@ -31,6 +31,14 @@ func setupExecutionEnvironment() config.Config {
 }
 
 func (ec *EnvironmentCreator) ExecuteLambdaHandler(handleRequest func(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error)) events.APIGatewayProxyResponse {
-	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreateRequest()))
+	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreateGETRequest()))
+	return request
+}
+
+func (ec *EnvironmentCreator) ExecuteLambdaHandlerWithPostBody(
+	handleRequest func(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error),
+	body string) events.APIGatewayProxyResponse {
+
+	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreatePOSTRequest(body)))
 	return request
 }

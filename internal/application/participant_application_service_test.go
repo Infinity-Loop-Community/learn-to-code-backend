@@ -2,17 +2,20 @@ package application_test
 
 import (
 	"learn-to-code/internal/application"
+	"learn-to-code/internal/domain/command"
 	errUtils "learn-to-code/internal/infrastructure/go/util/err"
 	"learn-to-code/internal/infrastructure/go/util/uuid"
 	"learn-to-code/internal/infrastructure/inmemory"
 	"testing"
 )
 
-func TestQuizApplicationService_StartQuiz(t *testing.T) {
-	as := application.NewPartcipantApplicationService(
-		inmemory.NewParticipantRepository(),
-	)
+var commandFactory = command.NewCommandFactory()
+var as = application.NewPartcipantApplicationService(
+	inmemory.NewParticipantRepository(),
+	command.NewParticipantCommandApplier(),
+)
 
+func TestQuizApplicationService_StartQuiz(t *testing.T) {
 	userID := uuid.MustNewRandomAsString()
 
 	startedQuizCount := errUtils.PanicIfError1(as.GetStartedQuizCount(userID))
@@ -21,7 +24,7 @@ func TestQuizApplicationService_StartQuiz(t *testing.T) {
 	}
 
 	quizID := uuid.MustNewRandomAsString()
-	errUtils.PanicIfError(as.StartQuiz(userID, quizID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(quizID), userID))
 
 	startedQuizCount = errUtils.PanicIfError1(as.GetStartedQuizCount(userID))
 	if startedQuizCount != 1 {
@@ -30,10 +33,6 @@ func TestQuizApplicationService_StartQuiz(t *testing.T) {
 }
 
 func TestQuizApplicationService_EndQuiz(t *testing.T) {
-	as := application.NewPartcipantApplicationService(
-		inmemory.NewParticipantRepository(),
-	)
-
 	userID := uuid.MustNewRandomAsString()
 
 	finishedQuizCount := errUtils.PanicIfError1(as.GetFinishedQuizCount(userID))
@@ -42,7 +41,9 @@ func TestQuizApplicationService_EndQuiz(t *testing.T) {
 	}
 
 	quizID := uuid.MustNewRandomAsString()
-	_ = as.StartQuiz(userID, quizID)
+	startQuizCommand := commandFactory.CreateStartQuizCommand(quizID)
+
+	_ = as.ProcessCommand(startQuizCommand, userID)
 	_ = as.FinishQuiz(userID, quizID)
 
 	finishedQuizCount = errUtils.PanicIfError1(as.GetFinishedQuizCount(userID))

@@ -31,8 +31,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 							ID: QuizID,
 							Questions: []course.QuizQuestion{
 								{
-									Text:       "What is HTML used for?",
-									Difficulty: "easy",
+									Text:        "What is HTML used for?",
+									Difficulty:  "easy",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "Styling the website",
@@ -57,8 +59,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "Which of the following is NOT an HTML element?",
-									Difficulty: "easy",
+									Text:        "Which of the following is NOT an HTML element?",
+									Difficulty:  "easy",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "<heading>",
@@ -83,8 +87,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "Which language is primarily used to determine the visual style of a website?",
-									Difficulty: "easy",
+									Text:        "Which language is primarily used to determine the visual style of a website?",
+									Difficulty:  "easy",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "JavaScript",
@@ -109,8 +115,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "What is the primary purpose of visual design in web development?",
-									Difficulty: "easy",
+									Text:        "What is the primary purpose of visual design in web development?",
+									Difficulty:  "easy",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "Accelerating website speed",
@@ -135,8 +143,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "Why is web accessibility important?",
-									Difficulty: "easy",
+									Text:        "Why is web accessibility important?",
+									Difficulty:  "easy",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "It ensures that websites look the same on all devices.",
@@ -161,8 +171,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "What does responsive web design ensure?",
-									Difficulty: "easy",
+									Text:        "What does responsive web design ensure?",
+									Difficulty:  "easy",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "Faster loading speed on mobile devices",
@@ -187,8 +199,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "Which of the following is a powerful layout method introduced in CSS3?",
-									Difficulty: "easy",
+									Text:        "Which of the following is a powerful layout method introduced in CSS3?",
+									Difficulty:  "easy",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "CSS Shapes",
@@ -213,8 +227,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "What does the CSS Grid enable in terms of layout design?",
-									Difficulty: "easy",
+									Text:        "What does the CSS Grid enable in terms of layout design?",
+									Difficulty:  "easy",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "It allows embedding multimedia.",
@@ -239,8 +255,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "Which of the following elements can describe text as a heading in HTML?",
-									Difficulty: "easy",
+									Text:        "Which of the following elements can describe text as a heading in HTML?",
+									Difficulty:  "easy",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "<header>",
@@ -265,8 +283,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "When you want to make a list of items without any specific order, which HTML tag would you use?",
-									Difficulty: "medium",
+									Text:        "When you want to make a list of items without any specific order, which HTML tag would you use?",
+									Difficulty:  "medium",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "<ol>",
@@ -291,8 +311,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "Considering the 'Cascading' in Cascading Style Sheets (CSS), which of the following statements is true?",
-									Difficulty: "medium",
+									Text:        "Considering the 'Cascading' in Cascading Style Sheets (CSS), which of the following statements is true?",
+									Difficulty:  "medium",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "External stylesheets have a higher priority than inline styles.",
@@ -317,8 +339,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "In responsive design, what does the 'viewport' refer to?",
-									Difficulty: "medium",
+									Text:        "In responsive design, what does the 'viewport' refer to?",
+									Difficulty:  "medium",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "The visible area of a webpage that the user can interact with.",
@@ -343,8 +367,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "Given the growth of mobile web browsing, why is Flexbox considered an important tool in responsive design?",
-									Difficulty: "medium",
+									Text:        "Given the growth of mobile web browsing, why is Flexbox considered an important tool in responsive design?",
+									Difficulty:  "medium",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "It enables developers to use less JavaScript.",
@@ -369,8 +395,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "In the context of CSS Grid, what does the 'fr' unit stand for?",
-									Difficulty: "medium",
+									Text:        "In the context of CSS Grid, what does the 'fr' unit stand for?",
+									Difficulty:  "medium",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "Frame",
@@ -395,8 +423,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "Which of the following best describes 'Semantic HTML'?",
-									Difficulty: "hard",
+									Text:        "Which of the following best describes 'Semantic HTML'?",
+									Difficulty:  "hard",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "HTML that boosts the website's SEO",
@@ -421,8 +451,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "Which property would you use in CSS if you wanted to set the space between the content of an element and its border?",
-									Difficulty: "hard",
+									Text:        "Which property would you use in CSS if you wanted to set the space between the content of an element and its border?",
+									Difficulty:  "hard",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "margin",
@@ -447,8 +479,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "Which of the following pseudo-classes targets elements based on their position in a parent element?",
-									Difficulty: "hard",
+									Text:        "Which of the following pseudo-classes targets elements based on their position in a parent element?",
+									Difficulty:  "hard",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        ":first-child",
@@ -473,8 +507,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "Which HTML5 element is specifically designed to contain navigation links?",
-									Difficulty: "hard",
+									Text:        "Which HTML5 element is specifically designed to contain navigation links?",
+									Difficulty:  "hard",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "<sidebar>",
@@ -499,8 +535,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "What does the 'Box Model' in CSS refer to?",
-									Difficulty: "hard",
+									Text:        "What does the 'Box Model' in CSS refer to?",
+									Difficulty:  "hard",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "A technique for 3D transformations.",
@@ -525,8 +563,10 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									},
 								},
 								{
-									Text:       "In a flexbox container, which property is used to align the items vertically (assuming a row-direction)?",
-									Difficulty: "hard",
+									Text:        "In a flexbox container, which property is used to align the items vertically (assuming a row-direction)?",
+									Difficulty:  "hard",
+									Rating:      4.3,
+									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
 											Text:        "align-horizontal",

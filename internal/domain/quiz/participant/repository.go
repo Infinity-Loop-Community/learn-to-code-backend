@@ -15,8 +15,6 @@ var ErrParticipantNotFound = errors.New("participant not found")
 type Repository interface {
 	AppendEvents(participantID string, events []eventsource.Event) error
 
-	// FindByID retrieves a participant by ID from the repository.
-	// It returns the Participant object and an error.
-	// If the user is not found, a static error ErrParticipantNotFound must be returned.
-	FindByID(id string) (Participant, error)
+	// FindByID retrieves a participant by ID from the repository or creates an empty one if not exists.
+	FindOrCreateByID(id string) (Participant, error)
 }

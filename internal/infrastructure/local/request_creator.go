@@ -21,11 +21,11 @@ func NewRequestCreator(cfg config.Config) *RequestCreator {
 	}
 }
 
-func (r *RequestCreator) CreateRequest() events.APIGatewayProxyRequest {
+func (r *RequestCreator) CreateGETRequest() events.APIGatewayProxyRequest {
 	return events.APIGatewayProxyRequest{
 		Resource:                        "",
 		Path:                            "",
-		HTTPMethod:                      "",
+		HTTPMethod:                      "GET",
 		Headers:                         map[string]string{"Cookie": r.createSessionTokenCookie(r.cfg)},
 		MultiValueHeaders:               nil,
 		QueryStringParameters:           nil,
@@ -36,6 +36,25 @@ func (r *RequestCreator) CreateRequest() events.APIGatewayProxyRequest {
 		StageVariables:  nil,
 		RequestContext:  events.APIGatewayProxyRequestContext{},
 		Body:            "",
+		IsBase64Encoded: false,
+	}
+}
+
+func (r *RequestCreator) CreatePOSTRequest(body string) events.APIGatewayProxyRequest {
+	return events.APIGatewayProxyRequest{
+		Resource:                        "",
+		Path:                            "",
+		HTTPMethod:                      "POST",
+		Headers:                         map[string]string{"Cookie": r.createSessionTokenCookie(r.cfg)},
+		MultiValueHeaders:               nil,
+		QueryStringParameters:           nil,
+		MultiValueQueryStringParameters: nil,
+		PathParameters: map[string]string{
+			"courseId": inmemory.CourseID,
+		},
+		StageVariables:  nil,
+		RequestContext:  events.APIGatewayProxyRequestContext{},
+		Body:            body,
 		IsBase64Encoded: false,
 	}
 }

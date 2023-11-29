@@ -2,7 +2,6 @@ package dynamodb_test
 
 import (
 	"context"
-	"errors"
 	"learn-to-code/internal/domain/quiz/participant"
 	dynamodb "learn-to-code/internal/infrastructure/dynamodb"
 	errUtils "learn-to-code/internal/infrastructure/go/util/err"
@@ -26,13 +25,17 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
-func TestRepository_FindById_ReturnsNotFoundError(t *testing.T) {
+func TestRepository_FindById_ReturnsNewUser(t *testing.T) {
 	repo := getRepository()
 
-	_, err := repo.FindByID("does not exist")
+	p, err := repo.FindOrCreateByID("does not exist")
 
-	if !errors.Is(err, participant.ErrParticipantNotFound) {
-		t.Fatalf("is not ErrParticipantNotFound: %s", err)
+	if err != nil {
+		t.Fatalf("error finding a user who does not exist: %s", err)
+	}
+
+	if p.GetID() == "" {
+		t.Fatalf("new user id is nil")
 	}
 }
 
@@ -50,7 +53,7 @@ func TestRepository_FindById_HandleSingleUser(t *testing.T) {
 		repo.AppendEvents(p.GetID(), p.GetNewEventsAndUpdatePersistedVersion()),
 	)
 
-	p, err := repo.FindByID(p.GetID())
+	p, err := repo.FindOrCreateByID(p.GetID())
 
 	if err != nil {
 		t.Fatalf("could not fetch the participant due to an error: %s", err)
@@ -61,7 +64,7 @@ func TestRepository_FindById_HandleSingleUser(t *testing.T) {
 		repo.AppendEvents(p.GetID(), p.GetNewEventsAndUpdatePersistedVersion()),
 	)
 
-	_, err = repo.FindByID(p.GetID())
+	_, err = repo.FindOrCreateByID(p.GetID())
 	if err != nil {
 		t.Fatalf("error while getting a participant with finished quiz: %s", err)
 	}

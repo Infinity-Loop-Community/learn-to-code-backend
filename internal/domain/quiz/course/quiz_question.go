@@ -1,6 +1,7 @@
 package course
 
 type QuizQuestion struct {
+	ID          string
 	Text        string
 	Difficulty  string
 	Answers     []QuizAnswer

@@ -1,6 +1,7 @@
 package responseobject
 
 type QuizQuestion struct {
+	ID          string       `json:"id"`
 	Text        string       `json:"text"`
 	Difficulty  string       `json:"difficulty"`
 	Answers     []QuizAnswer `json:"answers"`

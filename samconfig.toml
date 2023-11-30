@@ -38,7 +38,6 @@ region = "eu-central-1"
 confirm_changeset = true
 capabilities = "CAPABILITY_IAM"
 image_repositories = []
-disable_rollback = true
 parameter_overrides = "StageName=\"dev\""
 
 [prod.deploy.parameters]

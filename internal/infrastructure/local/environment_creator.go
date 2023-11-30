@@ -39,6 +39,8 @@ func (ec *EnvironmentCreator) ExecuteLambdaHandlerWithPostBody(
 	handleRequest func(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error),
 	body string) events.APIGatewayProxyResponse {
 
-	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreatePOSTRequest(body)))
+	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreatePOSTRequest(body, map[string]string{
+		"userId": "user123",
+	})))
 	return request
 }

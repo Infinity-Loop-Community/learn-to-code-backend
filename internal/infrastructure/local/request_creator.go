@@ -40,7 +40,7 @@ func (r *RequestCreator) CreateGETRequest() events.APIGatewayProxyRequest {
 	}
 }
 
-func (r *RequestCreator) CreatePOSTRequest(body string) events.APIGatewayProxyRequest {
+func (r *RequestCreator) CreatePOSTRequest(body string, pathParameters map[string]string) events.APIGatewayProxyRequest {
 	return events.APIGatewayProxyRequest{
 		Resource:                        "",
 		Path:                            "",
@@ -49,13 +49,11 @@ func (r *RequestCreator) CreatePOSTRequest(body string) events.APIGatewayProxyRe
 		MultiValueHeaders:               nil,
 		QueryStringParameters:           nil,
 		MultiValueQueryStringParameters: nil,
-		PathParameters: map[string]string{
-			"courseId": inmemory.CourseID,
-		},
-		StageVariables:  nil,
-		RequestContext:  events.APIGatewayProxyRequestContext{},
-		Body:            body,
-		IsBase64Encoded: false,
+		PathParameters:                  pathParameters,
+		StageVariables:                  nil,
+		RequestContext:                  events.APIGatewayProxyRequestContext{},
+		Body:                            body,
+		IsBase64Encoded:                 false,
 	}
 }
 

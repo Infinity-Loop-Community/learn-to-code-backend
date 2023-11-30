@@ -2,7 +2,7 @@ package participant
 
 type activeQuiz struct {
 	ID              string
-	providedAnswers []providedAnswer
+	providedAnswers []ProvidedAnswer
 	completed       bool
 }
 

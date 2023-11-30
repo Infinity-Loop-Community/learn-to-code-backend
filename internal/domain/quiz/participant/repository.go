@@ -1,11 +1,8 @@
 package participant
 
 import (
-	"errors"
 	"learn-to-code/internal/domain/eventsource"
 )
-
-var ErrParticipantNotFound = errors.New("participant not found")
 
 // The Repository needs transactional safety to ensure proper functioning of event sourcing.
 // This ensures that events are inserted in the correct order. In traditional relational databases,

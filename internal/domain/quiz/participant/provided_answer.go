@@ -1,5 +1,6 @@
 package participant
 
-type providedAnswer struct {
-	AnswerID string
+type ProvidedAnswer struct {
+	AnswerID   string
+	QuestionID string
 }

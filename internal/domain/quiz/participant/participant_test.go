@@ -3,7 +3,9 @@ package participant_test
 import (
 	"encoding/json"
 	"learn-to-code/internal/domain/quiz/participant"
+	"learn-to-code/internal/domain/quiz/participant/event"
 	"learn-to-code/internal/infrastructure/go/util/err"
+	"learn-to-code/internal/infrastructure/inmemory"
 	"strings"
 	"testing"
 
@@ -57,8 +59,9 @@ func TestParticipant_JoinQuiz_ReturnsEvent(t *testing.T) {
 
 	newEvents := p.GetNewEventsAndUpdatePersistedVersion()
 
-	if newEvents[len(newEvents)-1].GetID() != quizID {
-		t.Fatalf("invalid event ID '%s' != '%s", newEvents[len(newEvents)-1].GetID(), quizID)
+	startedQuizEvent := newEvents[len(newEvents)-1].(event.StartedQuiz)
+	if startedQuizEvent.QuizID != quizID {
+		t.Fatalf("invalid event ID '%s' != '%s", startedQuizEvent.QuizID, quizID)
 	}
 }
 
@@ -93,13 +96,78 @@ func TestParticipant_JoinQuiz_JoiningTheQuizAgainSucceedsAfterFinishAgain(t *tes
 		t.Fatalf("initial start quiz should not fail")
 	}
 
-	if p.GetStartedQuizCount() != 2 {
-		t.Fatalf("start quiz count not 2 although started twice")
-	}
-
 	finishQuizErr := p.FinishQuiz(quizID)
 	if finishQuizErr != nil {
 		t.Fatalf("finish a quiz before starting does not fail")
+	}
+}
+
+func TestParticipant_SelectQuizAnswer_ErrosWhenNotJoinedTheQuiz(t *testing.T) {
+	selectedAnswerID := inmemory.FirstAnswerID
+	selectedQuestionID := inmemory.FirstQuestionID
+
+	p := err.PanicIfError1(participant.New())
+	quizID := err.PanicIfError1(uuid.NewRandom()).String()
+
+	err := p.SelectQuizAnswer(quizID, selectedQuestionID, selectedAnswerID)
+
+	if err == nil {
+		t.Fatalf("expected error when providing an answer for a quiz that is not active")
+	}
+}
+
+func TestParticipant_SelectQuizAnswer_StoresSelectedAnswers(t *testing.T) {
+	selectedQuestionID := inmemory.FirstQuestionID
+	selectedAnswerID := inmemory.FirstAnswerID
+
+	p := err.PanicIfError1(participant.New())
+	quizID := err.PanicIfError1(uuid.NewRandom()).String()
+
+	err.PanicIfError(p.StartQuiz(quizID))
+	err.PanicIfError(p.SelectQuizAnswer(quizID, selectedQuestionID, selectedAnswerID))
+
+	activeQuizAnswers := err.PanicIfError1(p.GetActiveQuizAnswers(quizID))
+
+	if len(activeQuizAnswers) != 1 {
+		t.Fatalf("should only contain %v answer, but contains %v", 1, len(activeQuizAnswers))
+	}
+
+	if activeQuizAnswers[0].AnswerID != selectedAnswerID {
+		t.Fatalf("not expected first answer provided %v, but should be %v instead", activeQuizAnswers[0].AnswerID, selectedAnswerID)
+	}
+}
+
+func TestParticipant_SelectQuizAnswer_FailsStoringAnswersForAFinishedQuiz(t *testing.T) {
+	selectedQuestionID := inmemory.FirstQuestionID
+	selectedAnswerID := inmemory.FirstAnswerID
+
+	p := err.PanicIfError1(participant.New())
+	quizID := err.PanicIfError1(uuid.NewRandom()).String()
+
+	err.PanicIfError(p.StartQuiz(quizID))
+	err.PanicIfError(p.FinishQuiz(quizID))
+	err := p.SelectQuizAnswer(quizID, selectedQuestionID, selectedAnswerID)
+
+	if err == nil {
+		t.Fatalf("does not fail selecting an answer for a finished quiz with id %v", quizID)
+	}
+}
+
+func TestParticipant_SelectQuizAnswer_CreatesANewEventToPersist(t *testing.T) {
+	selectedQuestionID := inmemory.FirstQuestionID
+	selectedAnswerID := inmemory.FirstAnswerID
+
+	p := err.PanicIfError1(participant.New())
+	quizID := err.PanicIfError1(uuid.NewRandom()).String()
+
+	err.PanicIfError(p.StartQuiz(quizID))
+	p.GetNewEventsAndUpdatePersistedVersion()
+
+	err.PanicIfError(p.SelectQuizAnswer(quizID, selectedQuestionID, selectedAnswerID))
+	events := p.GetNewEventsAndUpdatePersistedVersion()
+
+	if len(events) != 1 {
+		t.Fatalf("selecting an answer did not create a new event to persist")
 	}
 }
 
@@ -151,10 +219,10 @@ func TestParticipant_FinishQuiz_eventQuizIdMatches(t *testing.T) {
 	err.PanicIfError(p.FinishQuiz(quizID))
 
 	newEvents := p.GetNewEventsAndUpdatePersistedVersion()
-	lastEvent := newEvents[len(newEvents)-1]
+	startedQuizEvent := newEvents[len(newEvents)-1].(event.FinishedQuiz)
 
-	if lastEvent.GetID() != quizID {
-		t.Fatalf("finish event quizId does not match quiz ID '%s' != '%s'", lastEvent.GetID(), quizID)
+	if startedQuizEvent.QuizID != quizID {
+		t.Fatalf("finish event quizId does not match quiz ID '%s' != '%s'", startedQuizEvent.QuizID, quizID)
 	}
 }
 
@@ -217,12 +285,12 @@ func TestParticipant_Events_createsSameEventsAfterApplyAndRestore(t *testing.T) 
 	err.PanicIfError(p2.StartQuiz(quiz2Id))
 
 	p1NewEvents := p1.GetNewEventsAndUpdatePersistedVersion()
-	p1LastEvent := p1NewEvents[len(p1NewEvents)-1]
+	p1LastEvent := p1NewEvents[len(p1NewEvents)-1].(event.StartedQuiz)
 
 	p2NewEvents := p2.GetNewEventsAndUpdatePersistedVersion()
-	p2LastEvent := p2NewEvents[len(p2NewEvents)-1]
+	p2LastEvent := p2NewEvents[len(p2NewEvents)-1].(event.StartedQuiz)
 
-	if p1LastEvent.GetVersion() != p2LastEvent.GetVersion() || p1LastEvent.GetID() != p2LastEvent.GetID() {
+	if p1LastEvent.GetVersion() != p2LastEvent.GetVersion() || p1LastEvent.QuizID != p2LastEvent.QuizID {
 		t.Fatalf("original participant's new event is different to the restored version: %v != %v", p1LastEvent, p2LastEvent)
 	}
 }

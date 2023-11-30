@@ -55,7 +55,7 @@ func (r *ParticipantRepository) appendEvent(id string, e eventsource.Event) erro
 	}
 
 	po := EventPo{
-		AggregateID: e.GetID(),
+		AggregateID: e.GetAggregateID(),
 		Version:     e.GetVersion(),
 		Type:        reflect.TypeOf(e).Name(),
 		Payload:     serializedEvent,

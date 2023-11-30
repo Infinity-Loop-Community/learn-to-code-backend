@@ -70,7 +70,6 @@ func (r ParticipantRepository) appendEvent(participantID string, e eventsource.E
 	input := &dynamodb.PutItemInput{
 		TableName: &r.tableName,
 		Item: map[string]types.AttributeValue{
-			"id":           &types.AttributeValueMemberS{Value: e.GetID()},
 			"aggregate_id": &types.AttributeValueMemberS{Value: participantID},
 			"version":      &types.AttributeValueMemberN{Value: fmt.Sprintf("%d", e.GetVersion())},
 			"type":         &types.AttributeValueMemberS{Value: reflect.TypeOf(e).Name()},
@@ -129,15 +128,6 @@ func (r ParticipantRepository) FindOrCreateByID(id string) (participant.Particip
 			}
 
 			events = append(events, *joinedQuizEvent)
-		case event.FinishedQuizTypeName:
-			finishedQuiz := &event.FinishedQuiz{}
-
-			err := r.deserializer([]byte(eventPo.Payload), finishedQuiz)
-			if err != nil {
-				return participant.Participant{}, err
-			}
-
-			events = append(events, *finishedQuiz)
 
 		case event.StartedQuizTypeName:
 			startedQuiz := &event.StartedQuiz{}
@@ -148,6 +138,26 @@ func (r ParticipantRepository) FindOrCreateByID(id string) (participant.Particip
 			}
 
 			events = append(events, *startedQuiz)
+
+		case event.SelectedAnswerTypeName:
+			e := &event.SelectedAnswer{}
+
+			err := r.deserializer([]byte(eventPo.Payload), e)
+			if err != nil {
+				return participant.Participant{}, err
+			}
+
+			events = append(events, *e)
+
+		case event.FinishedQuizTypeName:
+			finishedQuiz := &event.FinishedQuiz{}
+
+			err := r.deserializer([]byte(eventPo.Payload), finishedQuiz)
+			if err != nil {
+				return participant.Participant{}, err
+			}
+
+			events = append(events, *finishedQuiz)
 
 		default:
 			panic(fmt.Errorf("unknown type '%s' while reading persisted events", eventPo.Type))

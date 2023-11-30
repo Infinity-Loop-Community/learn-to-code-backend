@@ -22,12 +22,14 @@ func (cm *CourseMapper) EntityToResponseObject(c course.Course) responseobject.C
 				var responseAnswers []responseobject.QuizAnswer
 				for _, a := range qq.Answers {
 					responseAnswers = append(responseAnswers, responseobject.QuizAnswer{
+						ID:          a.ID,
 						Text:        a.Text,
 						IsCorrect:   a.IsCorrect,
 						Description: a.Description,
 					})
 				}
 				responseQuestions = append(responseQuestions, responseobject.QuizQuestion{
+					ID:         qq.ID,
 					Text:       qq.Text,
 					Difficulty: qq.Difficulty,
 					Answers:    responseAnswers,

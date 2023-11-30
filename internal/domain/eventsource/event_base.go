@@ -3,14 +3,9 @@ package eventsource
 import "time"
 
 type EventBase struct {
-	ID          string
 	AggregateID string
 	Version     uint
 	CreatedAt   time.Time
-}
-
-func (a EventBase) GetID() string {
-	return a.ID
 }
 
 func (a EventBase) GetAggregateID() string {

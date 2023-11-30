@@ -32,22 +32,14 @@ func TestQuizApplicationService_StartQuiz(t *testing.T) {
 	}
 }
 
-func TestQuizApplicationService_EndQuiz(t *testing.T) {
+func TestQuizApplicationService_SelectAnswer(t *testing.T) {
 	userID := uuid.MustNewRandomAsString()
 
-	finishedQuizCount := errUtils.PanicIfError1(as.GetFinishedQuizCount(userID))
-	if finishedQuizCount != 0 {
-		t.Fatalf("new user, finished quiz count not 0")
+	startedQuizCount := errUtils.PanicIfError1(as.GetStartedQuizCount(userID))
+	if startedQuizCount != 0 {
+		t.Fatalf("new user, started quiz count not 0")
 	}
 
-	quizID := uuid.MustNewRandomAsString()
-	startQuizCommand := commandFactory.CreateStartQuizCommand(quizID)
-
-	_ = as.ProcessCommand(startQuizCommand, userID)
-	_ = as.FinishQuiz(userID, quizID)
-
-	finishedQuizCount = errUtils.PanicIfError1(as.GetFinishedQuizCount(userID))
-	if finishedQuizCount != 1 {
-		t.Fatalf("after finishing a quiz, count not 1")
-	}
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizID), userID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateSelectAnswerCommand(inmemory.QuizID, inmemory.FirstQuestionID, inmemory.FirstAnswerID), userID))
 }

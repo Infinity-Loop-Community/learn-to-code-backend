@@ -6,6 +6,7 @@ import (
 	dynamodb "learn-to-code/internal/infrastructure/dynamodb"
 	errUtils "learn-to-code/internal/infrastructure/go/util/err"
 	"learn-to-code/internal/infrastructure/go/util/uuid"
+	"learn-to-code/internal/infrastructure/inmemory"
 	"learn-to-code/pkg/test/db"
 	"os"
 	"testing"
@@ -58,6 +59,8 @@ func TestRepository_FindById_HandleSingleUser(t *testing.T) {
 	if err != nil {
 		t.Fatalf("could not fetch the participant due to an error: %s", err)
 	}
+
+	errUtils.PanicIfError(p.SelectQuizAnswer(quizID, inmemory.FirstQuestionID, inmemory.FirstAnswerID))
 
 	errUtils.PanicIfError(p.FinishQuiz(quizID))
 	errUtils.PanicIfError(

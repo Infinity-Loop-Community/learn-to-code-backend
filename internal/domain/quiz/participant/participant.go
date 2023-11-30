@@ -10,49 +10,129 @@ import (
 
 type Participant struct {
 	id      string
-	Quizzes []activeQuiz
+	quizzes map[string]*activeQuiz
 
 	eventsource.AggregateRoot
 }
 
-func (p *Participant) apply(e eventsource.Event) error {
+func (p *Participant) apply(eventToApply eventsource.Event) error {
 
-	switch eventType := e.(type) {
+	var err error
+
+	switch e := eventToApply.(type) {
 
 	case event.ParticipantCreated:
-		p.id = eventType.ID
+		p.id = e.GetAggregateID()
 
 	case event.StartedQuiz:
-		p.appendToQuizList(eventType.ID)
+		err := p.ensureQuizNotStarted(e.QuizID)
+		if err != nil {
+			return err
+		}
+
+		p.quizzes[e.QuizID] = &activeQuiz{
+			ID:              e.QuizID,
+			providedAnswers: nil,
+			completed:       false,
+		}
+
+	case event.SelectedAnswer:
+		quiz, ok := p.quizzes[e.QuizID]
+		if !ok {
+			return fmt.Errorf("quiz %v not found", e.QuizID)
+		}
+
+		if quiz.completed {
+			return fmt.Errorf("can not selected an answer for quiz %v that is already completed", e.QuizID)
+		}
+
+		quiz.providedAnswers = append(quiz.providedAnswers, ProvidedAnswer{
+			QuestionID: e.QuestionID,
+			AnswerID:   e.AnswerID,
+		})
 
 	case event.FinishedQuiz:
-		p.setQuizCompleted(eventType.ID)
+		_, ok := p.quizzes[e.QuizID]
+
+		if !ok {
+			return fmt.Errorf("quiz %v not found", e.QuizID)
+		}
+
+		quiz, ok := p.quizzes[e.QuizID]
+		if !ok {
+			return fmt.Errorf("Quiz not started %v, hence it can not be completed", e.QuizID)
+		}
+
+		if quiz.completed {
+			return fmt.Errorf("Quiz %v already finished", e.QuizID)
+		}
+
+		quiz.completed = true
+		if err != nil {
+			return err
+		}
 
 	default:
-		panic(fmt.Sprintf("unknown event type %s", reflect.TypeOf(e)))
+		panic(fmt.Sprintf("unknown event type %s", reflect.TypeOf(eventToApply)))
 	}
 
 	p.CurrentVersion++
-	p.Events = append(p.Events, e)
+	p.Events = append(p.Events, eventToApply)
 
 	return nil
 }
 
-func (p *Participant) setQuizCompleted(finishedQuizID string) {
-	for i, quiz := range p.Quizzes {
-		if quiz.ID == finishedQuizID {
-			p.Quizzes[i].completed = true
-			break
+func (p *Participant) ensureQuizNotStarted(id string) error {
+	for _, quiz := range p.quizzes {
+		if quiz.ID == id && quiz.IsOngoing() {
+			return fmt.Errorf("quiz '%s' already started and not finished", quiz.ID)
 		}
 	}
+	return nil
 }
 
-func (p *Participant) appendToQuizList(eventQuizID string) {
-	p.Quizzes = append(p.Quizzes, activeQuiz{
-		ID:              eventQuizID,
-		providedAnswers: nil,
-		completed:       false,
-	})
+func (p *Participant) StartQuiz(quizID string) error {
+
+	var startedQuizEvent = event.StartedQuiz{
+		EventBase: p.createEventBaseEvent(),
+		QuizID:    quizID,
+	}
+
+	err := p.apply(startedQuizEvent)
+
+	return err
+}
+
+func (p *Participant) FinishQuiz(quizID string) error {
+	finishedQuizEvent := event.FinishedQuiz{
+		EventBase: p.createEventBaseEvent(),
+		QuizID:    quizID,
+	}
+
+	err := p.apply(finishedQuizEvent)
+
+	return err
+}
+
+func (p *Participant) SelectQuizAnswer(quizID string, questionID string, answerID string) error {
+	selectedAnswerEvent := event.SelectedAnswer{
+		QuizID:     quizID,
+		QuestionID: questionID,
+		AnswerID:   answerID,
+		EventBase:  p.createEventBaseEvent(),
+	}
+
+	err := p.apply(selectedAnswerEvent)
+
+	return err
+}
+
+func (p *Participant) createEventBaseEvent() eventsource.EventBase {
+	return eventsource.EventBase{
+		AggregateID: p.id,
+		Version:     p.CurrentVersion,
+		CreatedAt:   time.Now(),
+	}
 }
 
 func (p *Participant) GetID() string {
@@ -60,13 +140,13 @@ func (p *Participant) GetID() string {
 }
 
 func (p *Participant) GetStartedQuizCount() int {
-	return len(p.Quizzes)
+	return len(p.quizzes)
 }
 
 func (p *Participant) GetFinishedQuizCount() int {
 	finishedQuizzes := 0
 
-	for _, quiz := range p.Quizzes {
+	for _, quiz := range p.quizzes {
 		if quiz.completed {
 			finishedQuizzes++
 		}
@@ -75,59 +155,11 @@ func (p *Participant) GetFinishedQuizCount() int {
 	return finishedQuizzes
 }
 
-func (p *Participant) StartQuiz(id string) error {
-
-	err := p.ensureQuizNotStarted(id)
-	if err != nil {
-		return err
+func (p *Participant) GetActiveQuizAnswers(quizID string) ([]ProvidedAnswer, error) {
+	quiz, ok := p.quizzes[quizID]
+	if !ok {
+		return nil, fmt.Errorf("quiz %v not found", quizID)
 	}
 
-	var startedQuizEvent = event.StartedQuiz{
-		EventBase: p.createEventBaseEvent(id),
-	}
-
-	err = p.apply(startedQuizEvent)
-
-	return err
-}
-
-func (p *Participant) ensureQuizNotStarted(id string) error {
-	for _, quiz := range p.Quizzes {
-		if quiz.ID == id && quiz.IsOngoing() {
-			return fmt.Errorf("quiz '%s' already started and not finished", quiz.ID)
-		}
-	}
-	return nil
-}
-
-func (p *Participant) FinishQuiz(id string) error {
-	var foundQuiz *activeQuiz
-
-	for _, quiz := range p.Quizzes {
-
-		if quiz.ID == id && !quiz.completed {
-			foundQuiz = &quiz
-			break
-		}
-	}
-
-	if foundQuiz == nil {
-		return fmt.Errorf("quiz not found")
-	}
-
-	finishedQuizEvent := event.FinishedQuiz{
-		EventBase: p.createEventBaseEvent(id),
-	}
-
-	err := p.apply(finishedQuizEvent)
-
-	return err
-}
-
-func (p *Participant) createEventBaseEvent(id string) eventsource.EventBase {
-	return eventsource.EventBase{
-		ID:        id,
-		Version:   p.CurrentVersion,
-		CreatedAt: time.Now(),
-	}
+	return quiz.providedAnswers, nil
 }

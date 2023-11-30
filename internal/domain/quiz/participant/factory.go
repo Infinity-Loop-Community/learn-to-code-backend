@@ -14,9 +14,9 @@ func New() (Participant, error) {
 func NewParticipant(id string) (Participant, error) {
 	participantCreated := event.ParticipantCreated{
 		EventBase: eventsource.EventBase{
-			ID:        id,
-			Version:   0,
-			CreatedAt: time.Now(),
+			AggregateID: id,
+			Version:     0,
+			CreatedAt:   time.Now(),
 		},
 	}
 	return NewFromEvents([]eventsource.Event{participantCreated})
@@ -24,7 +24,9 @@ func NewParticipant(id string) (Participant, error) {
 
 func NewFromEvents(events []eventsource.Event) (Participant, error) {
 
-	p := Participant{}
+	p := Participant{
+		quizzes: map[string]*activeQuiz{},
+	}
 
 	for _, e := range events {
 

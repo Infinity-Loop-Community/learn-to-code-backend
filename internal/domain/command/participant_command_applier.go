@@ -23,6 +23,11 @@ func (m *ParticipantCommandApplier) ApplyCommand(command Command, p participant.
 
 		p.StartQuiz(startQuiz.QuizID)
 
+	case data.SelectAnswerCommandType:
+		selectAnswerData := data.SelectAnswer{}
+		mapstructure.Decode(command.Data, &selectAnswerData)
+		p.SelectQuizAnswer(selectAnswerData.QuizID, selectAnswerData.QuestionID, selectAnswerData.AnswerID)
+
 	default:
 		return p, fmt.Errorf("unknown command type '%s'", command.Type)
 	}

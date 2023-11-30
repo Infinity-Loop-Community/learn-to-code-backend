@@ -21,12 +21,14 @@ func TestEntityToResponseObject(t *testing.T) {
 						ID: "quizID",
 						Questions: []course.QuizQuestion{
 							{
+								ID:          "16254bde-ac8c-409e-8a3e-f10805151a6b",
 								Text:        "questionText",
 								Difficulty:  "easy",
 								Rating:      0,
 								RatingCount: 0,
 								Answers: []course.QuizAnswer{
 									{
+										ID:          "c362e4d9-f915-4480-bec0-488258e07186",
 										Text:        "answerText",
 										IsCorrect:   true,
 										Description: "answerDescription",

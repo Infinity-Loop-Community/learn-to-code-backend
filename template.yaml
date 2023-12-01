@@ -70,6 +70,76 @@ Resources:
         ReadCapacityUnits: 1
         WriteCapacityUnits: 1
 
+  EventSourcingTableReadScalingTarget:
+    Type: AWS::ApplicationAutoScaling::ScalableTarget
+    Properties:
+      MaxCapacity: 10
+      MinCapacity: 1
+      ResourceId: !Sub 'table/${EventSourcingTable}'
+      RoleARN: !GetAtt AutoscalingRole.Arn
+      ScalableDimension: 'dynamodb:table:ReadCapacityUnits'
+      ServiceNamespace: dynamodb
+
+  EventSourcingTableReadScalingPolicy:
+    Type: AWS::ApplicationAutoScaling::ScalingPolicy
+    Properties:
+      PolicyName: 'ReadAutoScalingPolicy'
+      PolicyType: 'TargetTrackingScaling'
+      ScalingTargetId: !Ref EventSourcingTableReadScalingTarget
+      TargetTrackingScalingPolicyConfiguration:
+        PredefinedMetricSpecification:
+          PredefinedMetricType: 'DynamoDBReadCapacityUtilization'
+        TargetValue: 70.0
+
+  EventSourcingTableWriteScalingTarget:
+    Type: AWS::ApplicationAutoScaling::ScalableTarget
+    Properties:
+      MaxCapacity: 10
+      MinCapacity: 1
+      ResourceId: !Sub 'table/${EventSourcingTable}'
+      RoleARN: !GetAtt AutoscalingRole.Arn
+      ScalableDimension: 'dynamodb:table:WriteCapacityUnits'
+      ServiceNamespace: dynamodb
+
+  EventSourcingTableWriteScalingPolicy:
+    Type: AWS::ApplicationAutoScaling::ScalingPolicy
+    Properties:
+      PolicyName: 'WriteAutoScalingPolicy'
+      PolicyType: 'TargetTrackingScaling'
+      ScalingTargetId: !Ref EventSourcingTableWriteScalingTarget
+      TargetTrackingScalingPolicyConfiguration:
+        PredefinedMetricSpecification:
+          PredefinedMetricType: 'DynamoDBWriteCapacityUtilization'
+        TargetValue: 70.0
+
+  AutoscalingRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - application-autoscaling.amazonaws.com
+            Action: sts:AssumeRole
+      Path: /
+      Policies:
+        - PolicyName: 'AutoscalingPolicy'
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - dynamodb:DescribeTable
+                  - dynamodb:UpdateTable
+                  - cloudwatch:PutMetricAlarm
+                  - cloudwatch:DescribeAlarms
+                  - cloudwatch:GetMetricStatistics
+                  - cloudwatch:SetAlarmState
+                  - cloudwatch:DeleteAlarms
+                Resource: '*'
+
   RestApi:
     Type: AWS::Serverless::Api
     Properties:

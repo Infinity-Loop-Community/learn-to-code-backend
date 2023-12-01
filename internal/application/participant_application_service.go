@@ -38,7 +38,7 @@ func (as *ParticipantApplicationService) ProcessCommand(commandDomainObject comm
 		return err
 	}
 
-	appendEventErr := as.participantRepository.AppendEvents(p.GetID(), p.GetNewEventsAndUpdatePersistedVersion())
+	appendEventErr := as.participantRepository.StoreEvents(p.GetID(), p.GetNewEventsAndUpdatePersistedVersion())
 
 	return appendEventErr
 }

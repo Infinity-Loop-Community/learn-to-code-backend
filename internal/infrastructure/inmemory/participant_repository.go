@@ -28,18 +28,20 @@ type EventPo struct {
 	CreatedAt   time.Time
 }
 
+var GlobalParticipantData = make(map[string][]EventPo)
+
 func NewParticipantRepository() *ParticipantRepository {
 	return &ParticipantRepository{
-		data: make(map[string][]EventPo),
+		data: GlobalParticipantData,
 
 		serializer:   json.Marshal,
 		deserializer: json.Unmarshal,
 	}
 }
 
-func (r *ParticipantRepository) AppendEvents(id string, events []eventsource.Event) error {
+func (r *ParticipantRepository) StoreEvents(id string, events []eventsource.Event) error {
 	for _, e := range events {
-		err := r.appendEvent(id, e)
+		err := r.storeEvent(id, e)
 		if err != nil {
 			return err
 		}
@@ -48,7 +50,7 @@ func (r *ParticipantRepository) AppendEvents(id string, events []eventsource.Eve
 	return nil
 }
 
-func (r *ParticipantRepository) appendEvent(id string, e eventsource.Event) error {
+func (r *ParticipantRepository) storeEvent(id string, e eventsource.Event) error {
 	serializedEvent, err := r.serializer(e)
 	if err != nil {
 		return err
@@ -69,7 +71,18 @@ func (r *ParticipantRepository) FindOrCreateByID(id string) (participant.Partici
 	eventPos, ok := r.data[id]
 
 	if !ok {
-		return participant.NewParticipant(id)
+		newParticipant, err := participant.NewParticipant(id)
+		if err != nil {
+			return participant.Participant{}, err
+		}
+
+		events := newParticipant.GetNewEventsAndUpdatePersistedVersion()
+		r.StoreEvents(id, events)
+
+		eventPos, ok = r.data[id]
+		if !ok {
+			return participant.Participant{}, fmt.Errorf("could not fetch data from before created list of events")
+		}
 	}
 
 	var events []eventsource.Event
@@ -79,23 +92,14 @@ func (r *ParticipantRepository) FindOrCreateByID(id string) (participant.Partici
 		switch po.Type {
 
 		case event.ParticipantCreatedTypeName:
-			joinedQuizEvent := &event.ParticipantCreated{}
+			participantCreatedEvent := &event.ParticipantCreated{}
 
-			err := r.deserializer(po.Payload, joinedQuizEvent)
+			err := r.deserializer(po.Payload, participantCreatedEvent)
 			if err != nil {
 				return participant.Participant{}, err
 			}
 
-			events = append(events, *joinedQuizEvent)
-		case event.FinishedQuizTypeName:
-			finishedQuiz := &event.FinishedQuiz{}
-
-			err := r.deserializer(po.Payload, finishedQuiz)
-			if err != nil {
-				return participant.Participant{}, err
-			}
-
-			events = append(events, *finishedQuiz)
+			events = append(events, *participantCreatedEvent)
 
 		case event.StartedQuizTypeName:
 			startedQuiz := &event.StartedQuiz{}
@@ -107,13 +111,32 @@ func (r *ParticipantRepository) FindOrCreateByID(id string) (participant.Partici
 
 			events = append(events, *startedQuiz)
 
+		case event.SelectedAnswerTypeName:
+			event := &event.SelectedAnswer{}
+
+			err := r.deserializer(po.Payload, event)
+			if err != nil {
+				return participant.Participant{}, err
+			}
+
+			events = append(events, *event)
+
+		case event.FinishedQuizTypeName:
+			finishedQuiz := &event.FinishedQuiz{}
+
+			err := r.deserializer(po.Payload, finishedQuiz)
+			if err != nil {
+				return participant.Participant{}, err
+			}
+
+			events = append(events, *finishedQuiz)
 		default:
 			panic(fmt.Errorf("unknown type '%s' while reading persisted events", po.Type))
 		}
 
 	}
 
-	p, err := participant.NewFromEvents(events)
+	p, err := participant.NewFromEvents(events, true)
 
 	return p, err
 }

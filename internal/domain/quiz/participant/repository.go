@@ -10,7 +10,7 @@ import (
 // you can utilize TransactionalWrites along with condition checks, such as an event counter,
 // to maintain transactional integrity.
 type Repository interface {
-	AppendEvents(participantID string, events []eventsource.Event) error
+	StoreEvents(participantID string, events []eventsource.Event) error
 
 	// FindByID retrieves a participant by ID from the repository or creates an empty one if not exists.
 	FindOrCreateByID(id string) (Participant, error)

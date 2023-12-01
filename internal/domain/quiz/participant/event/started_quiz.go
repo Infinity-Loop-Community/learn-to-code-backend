@@ -6,7 +6,8 @@ import (
 )
 
 type StartedQuiz struct {
-	QuizID string
+	QuizID                    string
+	RequiredQuestionsAnswered []string
 	eventsource.EventBase
 }
 

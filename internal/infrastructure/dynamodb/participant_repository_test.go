@@ -47,11 +47,11 @@ func TestRepository_FindById_HandleSingleUser(t *testing.T) {
 
 	quizID := uuid.MustNewRandomAsString()
 	errUtils.PanicIfError(
-		p.StartQuiz(quizID),
+		p.StartQuiz(quizID, nil),
 	)
 
 	errUtils.PanicIfError(
-		repo.AppendEvents(p.GetID(), p.GetNewEventsAndUpdatePersistedVersion()),
+		repo.StoreEvents(p.GetID(), p.GetNewEventsAndUpdatePersistedVersion()),
 	)
 
 	p, err := repo.FindOrCreateByID(p.GetID())
@@ -64,7 +64,7 @@ func TestRepository_FindById_HandleSingleUser(t *testing.T) {
 
 	errUtils.PanicIfError(p.FinishQuiz(quizID))
 	errUtils.PanicIfError(
-		repo.AppendEvents(p.GetID(), p.GetNewEventsAndUpdatePersistedVersion()),
+		repo.StoreEvents(p.GetID(), p.GetNewEventsAndUpdatePersistedVersion()),
 	)
 
 	_, err = repo.FindOrCreateByID(p.GetID())

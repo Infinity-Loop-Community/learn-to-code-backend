@@ -49,7 +49,7 @@ func NewDynamoDbParticipantRepository(ctx context.Context, environment config.En
 	}
 }
 
-func (r ParticipantRepository) AppendEvents(participantID string, events []eventsource.Event) error {
+func (r ParticipantRepository) StoreEvents(participantID string, events []eventsource.Event) error {
 	for _, e := range events {
 		err := r.appendEvent(participantID, e)
 
@@ -165,7 +165,7 @@ func (r ParticipantRepository) FindOrCreateByID(id string) (participant.Particip
 
 	}
 
-	p, newFromEventsErr := participant.NewFromEvents(events)
+	p, newFromEventsErr := participant.NewFromEvents(events, true)
 
 	return p, newFromEventsErr
 }

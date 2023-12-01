@@ -1,13 +1,15 @@
 package data
 
-func NewStartQuizData(quizID string) StartQuiz {
+func NewStartQuizData(quizID string, requiredQuestionsAnswered []string) StartQuiz {
 	return StartQuiz{
-		QuizID: quizID,
+		QuizID:                    quizID,
+		RequiredQuestionsAnswered: requiredQuestionsAnswered,
 	}
 }
 
 type StartQuiz struct {
-	QuizID string
+	QuizID                    string
+	RequiredQuestionsAnswered []string
 }
 
 const StartQuizCommandType = "StartQuiz"

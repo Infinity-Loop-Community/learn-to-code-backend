@@ -19,10 +19,10 @@ func NewParticipant(id string) (Participant, error) {
 			CreatedAt:   time.Now(),
 		},
 	}
-	return NewFromEvents([]eventsource.Event{participantCreated})
+	return NewFromEvents([]eventsource.Event{participantCreated}, false)
 }
 
-func NewFromEvents(events []eventsource.Event) (Participant, error) {
+func NewFromEvents(events []eventsource.Event, isPersisted bool) (Participant, error) {
 
 	p := Participant{
 		quizzes: map[string]*activeQuiz{},
@@ -30,7 +30,7 @@ func NewFromEvents(events []eventsource.Event) (Participant, error) {
 
 	for _, e := range events {
 
-		err := p.apply(e)
+		err := p.apply(e, isPersisted)
 
 		if err != nil {
 			return Participant{}, err

@@ -15,7 +15,7 @@ type Participant struct {
 	eventsource.AggregateRoot
 }
 
-func (p *Participant) apply(eventToApply eventsource.Event) error {
+func (p *Participant) apply(eventToApply eventsource.Event, isPersisted bool) error {
 
 	var err error
 
@@ -31,9 +31,10 @@ func (p *Participant) apply(eventToApply eventsource.Event) error {
 		}
 
 		p.quizzes[e.QuizID] = &activeQuiz{
-			ID:              e.QuizID,
-			providedAnswers: nil,
-			completed:       false,
+			ID:                        e.QuizID,
+			providedAnswers:           nil,
+			requiredQuestionsAnswered: e.RequiredQuestionsAnswered,
+			completed:                 false,
 		}
 
 	case event.SelectedAnswer:
@@ -63,6 +64,24 @@ func (p *Participant) apply(eventToApply eventsource.Event) error {
 			return fmt.Errorf("Quiz not started %v, hence it can not be completed", e.QuizID)
 		}
 
+		// check if all requests are answered
+		providedQuestionsLookupTable := map[string]bool{}
+		for _, answer := range quiz.providedAnswers {
+			providedQuestionsLookupTable[answer.QuestionID] = true
+		}
+		allAnswersProvided := true
+		missingQuestionIds := []string{}
+		for _, requiredQuestionAnswered := range quiz.requiredQuestionsAnswered {
+			_, ok = providedQuestionsLookupTable[requiredQuestionAnswered]
+			if !ok {
+				allAnswersProvided = false
+				missingQuestionIds = append(missingQuestionIds, requiredQuestionAnswered)
+			}
+		}
+		if !allAnswersProvided {
+			return fmt.Errorf("not all answers provided, the answer for the following question ids are missing: %v", missingQuestionIds)
+		}
+
 		if quiz.completed {
 			return fmt.Errorf("Quiz %v already finished", e.QuizID)
 		}
@@ -77,6 +96,11 @@ func (p *Participant) apply(eventToApply eventsource.Event) error {
 	}
 
 	p.CurrentVersion++
+
+	if isPersisted && (p.CurrentVersion-1) == p.PersistedVersion {
+		p.PersistedVersion++
+	}
+
 	p.Events = append(p.Events, eventToApply)
 
 	return nil
@@ -91,14 +115,15 @@ func (p *Participant) ensureQuizNotStarted(id string) error {
 	return nil
 }
 
-func (p *Participant) StartQuiz(quizID string) error {
+func (p *Participant) StartQuiz(quizID string, requiredQuestionsAnswered []string) error {
 
 	var startedQuizEvent = event.StartedQuiz{
-		EventBase: p.createEventBaseEvent(),
-		QuizID:    quizID,
+		EventBase:                 p.createEventBaseEvent(),
+		QuizID:                    quizID,
+		RequiredQuestionsAnswered: requiredQuestionsAnswered,
 	}
 
-	err := p.apply(startedQuizEvent)
+	err := p.apply(startedQuizEvent, false)
 
 	return err
 }
@@ -109,7 +134,7 @@ func (p *Participant) FinishQuiz(quizID string) error {
 		QuizID:    quizID,
 	}
 
-	err := p.apply(finishedQuizEvent)
+	err := p.apply(finishedQuizEvent, false)
 
 	return err
 }
@@ -122,7 +147,7 @@ func (p *Participant) SelectQuizAnswer(quizID string, questionID string, answerI
 		EventBase:  p.createEventBaseEvent(),
 	}
 
-	err := p.apply(selectedAnswerEvent)
+	err := p.apply(selectedAnswerEvent, false)
 
 	return err
 }

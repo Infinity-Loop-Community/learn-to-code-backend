@@ -16,21 +16,28 @@ func NewParticipantCommandApplier() *ParticipantCommandApplier {
 }
 
 func (m *ParticipantCommandApplier) ApplyCommand(command Command, p participant.Participant) (participant.Participant, error) {
+	var err error = nil
+
 	switch command.Type {
 	case data.StartQuizCommandType:
 		startQuiz := data.StartQuiz{}
 		mapstructure.Decode(command.Data, &startQuiz)
 
-		p.StartQuiz(startQuiz.QuizID)
+		err = p.StartQuiz(startQuiz.QuizID, startQuiz.RequiredQuestionsAnswered)
 
 	case data.SelectAnswerCommandType:
 		selectAnswerData := data.SelectAnswer{}
 		mapstructure.Decode(command.Data, &selectAnswerData)
-		p.SelectQuizAnswer(selectAnswerData.QuizID, selectAnswerData.QuestionID, selectAnswerData.AnswerID)
+		err = p.SelectQuizAnswer(selectAnswerData.QuizID, selectAnswerData.QuestionID, selectAnswerData.AnswerID)
+
+	case data.FinishQuizCommandType:
+		finishQuizData := data.FinishQuiz{}
+		mapstructure.Decode(command.Data, &finishQuizData)
+		err = p.FinishQuiz(finishQuizData.QuizID)
 
 	default:
 		return p, fmt.Errorf("unknown command type '%s'", command.Type)
 	}
 
-	return p, nil
+	return p, err
 }

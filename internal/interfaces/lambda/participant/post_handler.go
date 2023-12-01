@@ -29,7 +29,10 @@ func (l LambdaHandler) HandleRequest(ctx context.Context, request events.APIGate
 	}
 
 	commandRequest := requestobject.Command{}
-	json.Unmarshal([]byte(request.Body), &commandRequest)
+	err = json.Unmarshal([]byte(request.Body), &commandRequest)
+	if err != nil {
+		return events.APIGatewayProxyResponse{}, err
+	}
 
 	commandDomainObject := l.mapRequestToCommand(commandRequest)
 

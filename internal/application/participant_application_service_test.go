@@ -24,7 +24,7 @@ func TestQuizApplicationService_StartQuiz(t *testing.T) {
 	}
 
 	quizID := uuid.MustNewRandomAsString()
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(quizID), userID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(quizID, []string{inmemory.FirstQuestionID}), userID))
 
 	startedQuizCount = errUtils.PanicIfError1(as.GetStartedQuizCount(userID))
 	if startedQuizCount != 1 {
@@ -40,6 +40,19 @@ func TestQuizApplicationService_SelectAnswer(t *testing.T) {
 		t.Fatalf("new user, started quiz count not 0")
 	}
 
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizID), userID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizID, []string{inmemory.FirstQuestionID}), userID))
 	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateSelectAnswerCommand(inmemory.QuizID, inmemory.FirstQuestionID, inmemory.FirstAnswerID), userID))
+}
+
+func TestQuizApplicationService_FinishQuiz(t *testing.T) {
+	userID := uuid.MustNewRandomAsString()
+
+	startedQuizCount := errUtils.PanicIfError1(as.GetStartedQuizCount(userID))
+	if startedQuizCount != 0 {
+		t.Fatalf("new user, started quiz count not 0")
+	}
+
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizID, []string{inmemory.FirstQuestionID}), userID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateSelectAnswerCommand(inmemory.QuizID, inmemory.FirstQuestionID, inmemory.FirstAnswerID), userID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateFinishQuizCommand(inmemory.QuizID), userID))
 }

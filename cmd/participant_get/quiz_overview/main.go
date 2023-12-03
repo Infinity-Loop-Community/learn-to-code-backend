@@ -3,14 +3,15 @@ package main
 import (
 	"learn-to-code/internal/infrastructure/config"
 	"learn-to-code/internal/infrastructure/go/util/err"
-	"learn-to-code/internal/interfaces/lambda/participant"
+	"learn-to-code/internal/interfaces/lambda/participant/quiz"
 
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
 func main() {
 	cfg := err.PanicIfError1(config.NewConfig())
-	handler := participant.NewPostParticipantCommandHandler(cfg)
 
-	lambda.Start(handler.HandleRequest)
+	getParticipantQuizOverviewHandler := quiz.NewGetParticipantQuizOverviewHandler(cfg)
+
+	lambda.Start(getParticipantQuizOverviewHandler.HandleRequest)
 }

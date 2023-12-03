@@ -11,17 +11,21 @@ import (
 	"learn-to-code/internal/infrastructure/inmemory"
 	"learn-to-code/internal/infrastructure/lambda"
 	"learn-to-code/internal/interfaces/lambda/course/mapper"
+	mapper2 "learn-to-code/internal/interfaces/lambda/participant/quiz/mapper"
 
 	"github.com/aws/aws-sdk-go-v2/config"
 	dynamodbsdk "github.com/aws/aws-sdk-go-v2/service/dynamodb"
 )
 
 type Registry struct {
+	RequestValidator *lambda.RequestValidator
+	ResponseCreator  *lambda.ResponseCreator
+
 	ParticipantApplicationService *application.ParticipantApplicationService
-	CourseApplicationService      *application.CourseApplicationService
-	RequestValidator              *lambda.RequestValidator
-	CourseMapper                  *mapper.CourseMapper
-	ResponseCreator               *lambda.ResponseCreator
+	QuizOverviewMapper            *mapper2.QuizOverviewMapper
+
+	CourseApplicationService *application.CourseApplicationService
+	CourseMapper             *mapper.CourseMapper
 }
 
 func NewServiceRegistry(ctx context.Context, cfg config2.Config) *Registry {
@@ -37,6 +41,7 @@ func NewServiceRegistry(ctx context.Context, cfg config2.Config) *Registry {
 	participantRepositoryFactory := dynamodb.NewParticipantRepositoryFactory(cfg.Environment, dynamoDbClient)
 	participantRepository := participantRepositoryFactory.NewRepository(ctx)
 	participantApplicationService := application.NewPartcipantApplicationService(participantRepository, startQuizToEventMapper)
+	quizOverviewMapper := mapper2.NewQuizOverviewMapper()
 
 	courseRepository := inmemory.NewCourseRepository()
 	courseApplicationService := application.NewCourseApplicationService(courseRepository)
@@ -46,6 +51,7 @@ func NewServiceRegistry(ctx context.Context, cfg config2.Config) *Registry {
 		ParticipantApplicationService: participantApplicationService,
 		CourseApplicationService:      courseApplicationService,
 		CourseMapper:                  courseMapper,
+		QuizOverviewMapper:            quizOverviewMapper,
 		RequestValidator:              requestValidator,
 		ResponseCreator:               responseCreator,
 	}

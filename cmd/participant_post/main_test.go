@@ -52,7 +52,7 @@ func TestPutParticipantLambda_Returns200(t *testing.T) {
 		eventBody3,
 	}
 
-	handleRequestFn := participant.NewLambdaHandler(environmentCreator.Cfg).HandleRequest
+	handleRequestFn := participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest
 	for _, requestBody := range requestBodys {
 		handlerResponse := environmentCreator.ExecuteLambdaHandlerWithPostBody(
 			handleRequestFn,
@@ -69,7 +69,7 @@ func TestPutParticipantLambda_InvalidQuizCompletion_Returns500(t *testing.T) {
 
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
 
-	handleRequestFn := participant.NewLambdaHandler(environmentCreator.Cfg).HandleRequest
+	handleRequestFn := participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest
 
 	environmentCreator.ExecuteLambdaHandlerWithPostBody(
 		handleRequestFn,

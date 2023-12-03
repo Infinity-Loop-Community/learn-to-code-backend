@@ -16,8 +16,8 @@ type LambdaHandler struct {
 	cfg config.Config
 }
 
-func NewLambdaHandler(cfg config.Config) LambdaHandler {
-	return LambdaHandler{cfg: cfg}
+func NewPostParticipantCommandHandler(cfg config.Config) *LambdaHandler {
+	return &LambdaHandler{cfg: cfg}
 }
 
 func (l LambdaHandler) HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {

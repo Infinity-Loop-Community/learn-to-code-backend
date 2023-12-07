@@ -4,6 +4,7 @@ import (
 	"context"
 	"learn-to-code/internal/infrastructure/config"
 	"learn-to-code/internal/infrastructure/go/util/err"
+	"learn-to-code/internal/infrastructure/inmemory"
 	"os"
 
 	"github.com/aws/aws-lambda-go/events"
@@ -31,7 +32,15 @@ func setupExecutionEnvironment(environment config.Environment) config.Config {
 }
 
 func (ec *EnvironmentCreator) ExecuteLambdaHandler(handleRequest func(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error)) events.APIGatewayProxyResponse {
-	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreateGETRequest()))
+	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreateGETRequest(
+		map[string]string{
+			"courseId": inmemory.CourseID,
+		})))
+	return request
+}
+
+func (ec *EnvironmentCreator) ExecuteLambdaHandlerGETWithPathParameters(handleRequest func(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error), pathParameters map[string]string) events.APIGatewayProxyResponse {
+	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreateGETRequest(pathParameters)))
 	return request
 }
 

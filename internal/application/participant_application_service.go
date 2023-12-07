@@ -54,3 +54,14 @@ func (as *ParticipantApplicationService) GetQuizzes(participantID string) (proje
 
 	return quizOverview, nil
 }
+
+func (as *ParticipantApplicationService) GetQuizAttemptDetail(participantID string, quizId string, attemptId int) (projection.QuizAttemptDetail, error) {
+	p, err := as.participantRepository.FindOrCreateByID(participantID)
+	if err != nil {
+		return projection.QuizAttemptDetail{}, err
+	}
+
+	quizOverview, err := projection.NewQuizAttemptDetail(p, quizId, attemptId)
+
+	return quizOverview, err
+}

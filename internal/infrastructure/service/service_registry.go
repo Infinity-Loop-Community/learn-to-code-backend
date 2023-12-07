@@ -26,6 +26,7 @@ type Registry struct {
 
 	CourseApplicationService *application.CourseApplicationService
 	CourseMapper             *mapper.CourseMapper
+	QuizAttemptDetailMapper  *mapper2.QuizAttemptDetailMapper
 }
 
 func NewServiceRegistry(ctx context.Context, cfg config2.Config) *Registry {
@@ -42,6 +43,7 @@ func NewServiceRegistry(ctx context.Context, cfg config2.Config) *Registry {
 	participantRepository := participantRepositoryFactory.NewRepository(ctx)
 	participantApplicationService := application.NewPartcipantApplicationService(participantRepository, startQuizToEventMapper)
 	quizOverviewMapper := mapper2.NewQuizOverviewMapper()
+	quizAttemptDetailMapper := mapper2.NewQuizAttemptDetailMapper()
 
 	courseRepository := inmemory.NewCourseRepository()
 	courseApplicationService := application.NewCourseApplicationService(courseRepository)
@@ -52,6 +54,7 @@ func NewServiceRegistry(ctx context.Context, cfg config2.Config) *Registry {
 		CourseApplicationService:      courseApplicationService,
 		CourseMapper:                  courseMapper,
 		QuizOverviewMapper:            quizOverviewMapper,
+		QuizAttemptDetailMapper:       quizAttemptDetailMapper,
 		RequestValidator:              requestValidator,
 		ResponseCreator:               responseCreator,
 	}

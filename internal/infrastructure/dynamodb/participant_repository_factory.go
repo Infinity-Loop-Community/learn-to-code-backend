@@ -4,7 +4,6 @@ import (
 	"context"
 	"learn-to-code/internal/domain/quiz/participant"
 	"learn-to-code/internal/infrastructure/config"
-	"learn-to-code/internal/infrastructure/inmemory"
 
 	dynamodbsdk "github.com/aws/aws-sdk-go-v2/service/dynamodb"
 )
@@ -22,9 +21,5 @@ func NewParticipantRepositoryFactory(env config.Environment, dynamoDBClient *dyn
 }
 
 func (f *ParticipantRepositoryFactory) NewRepository(ctx context.Context) participant.Repository {
-	if f.env == config.Test {
-		return inmemory.NewParticipantRepository()
-	}
-
 	return NewDynamoDbParticipantRepository(ctx, f.env, f.dynamoDBClient)
 }

@@ -8,17 +8,17 @@ import (
 	"github.com/aws/aws-lambda-go/events"
 )
 
-type GetHandler struct {
+type GetOverviewHandler struct {
 	cfg config.Config
 }
 
-func NewGetParticipantQuizOverviewHandler(cfg config.Config) *GetHandler {
-	return &GetHandler{
+func NewGetParticipantQuizOverviewHandler(cfg config.Config) *GetOverviewHandler {
+	return &GetOverviewHandler{
 		cfg: cfg,
 	}
 }
 
-func (gh *GetHandler) HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+func (gh *GetOverviewHandler) HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	serviceRegistry := service.NewServiceRegistry(ctx, gh.cfg)
 
 	userID, err := serviceRegistry.RequestValidator.ValidateRequest(request)

@@ -7,7 +7,7 @@ Globals:
   Function:
     Timeout: 5
     MemorySize: 128
-    ReservedConcurrentExecutions: 1 # Make sure no unexpected costs are created due to an error or unexpected external requests
+    ReservedConcurrentExecutions: 5 # Make sure no unexpected costs are created due to an error or unexpected external requests
 
 Parameters:
   StageName:
@@ -67,14 +67,14 @@ Resources:
         - AttributeName: version
           KeyType: RANGE
       ProvisionedThroughput:
-        ReadCapacityUnits: 1
-        WriteCapacityUnits: 1
+        ReadCapacityUnits: 2
+        WriteCapacityUnits: 2
 
   EventSourcingTableReadScalingTarget:
     Type: AWS::ApplicationAutoScaling::ScalableTarget
     Properties:
       MaxCapacity: 10
-      MinCapacity: 1
+      MinCapacity: 2
       ResourceId: !Sub 'table/${EventSourcingTable}'
       RoleARN: !GetAtt AutoscalingRole.Arn
       ScalableDimension: 'dynamodb:table:ReadCapacityUnits'
@@ -95,7 +95,7 @@ Resources:
     Type: AWS::ApplicationAutoScaling::ScalableTarget
     Properties:
       MaxCapacity: 10
-      MinCapacity: 1
+      MinCapacity: 2
       ResourceId: !Sub 'table/${EventSourcingTable}'
       RoleARN: !GetAtt AutoscalingRole.Arn
       ScalableDimension: 'dynamodb:table:WriteCapacityUnits'
@@ -214,6 +214,32 @@ Resources:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
             Path: /participants/{participantId}/quizzes/
+            Method: GET
+            RestApiId: !Ref RestApi
+      Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
+        Variables:
+          ENVIRONMENT: !Sub "${StageName}"
+          JWT_SECRET: !Sub "${JwtSecret}" # More secure would be to use AWS Secret manager with secret rotation. That's postponed to save costs.
+          CORS_ALLOW_ORIGIN_URL: !FindInMap [EnvironmentConfig, !Ref StageName, CorsUrl]
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Sub "${StageName}_events"
+
+  ParticipantQuizAttemptDetailGet:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+    Properties:
+      CodeUri: cmd/participant_get/quiz_attempt_detail
+      Handler: bootstrap
+      Runtime: provided.al2
+      Architectures:
+        - x86_64
+      Events:
+        CatchAll:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /participants/{participantId}/quizzes/{quizId}/attempts/{attemptId}
             Method: GET
             RestApiId: !Ref RestApi
       Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object

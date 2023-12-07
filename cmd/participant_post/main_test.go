@@ -42,6 +42,29 @@ var eventBody3 = fmt.Sprintf(`
 }
 `, data.FinishQuizCommandType)
 
+var eventBodyEmptySelectAnswer = fmt.Sprintf(`
+{
+   "createdAt":"2023-11-17T04:55:24.059Z",
+   "data": {
+		"quizId":"fcf7890f-9c72-46d3-931e-34494307be37",
+		"questionId":"f5b70d7d-3461-4cf7-978d-2b0caf77db1e",
+		"answerId": ""
+	},
+   "type": "%s"
+}
+`, data.SelectAnswerCommandType)
+
+var eventBodyEmptyStartQuiz = fmt.Sprintf(`
+{
+   "createdAt":"2023-11-17T04:55:24.059Z",
+   "data": {
+		"quizId":"",
+		"requiredQuestionsAnswered": ["f5b70d7d-3461-4cf7-978d-2b0caf77db1e"]
+	},
+   "type": "%s"
+}
+`, data.StartQuizCommandType)
+
 func TestPutParticipantLambda_Returns200(t *testing.T) {
 
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
@@ -82,6 +105,44 @@ func TestPutParticipantLambda_InvalidQuizCompletion_Returns500(t *testing.T) {
 	)
 	if handlerResponse3.StatusCode != 500 {
 		t.Fatalf("lambda return code is not 500 although invalid quiz completion case: %v, %v", handlerResponse3.StatusCode, handlerResponse3.Body)
+	}
+
+}
+
+func TestPutParticipantLambda_InvalidQuestionSelection_Returns400(t *testing.T) {
+
+	environmentCreator := local.NewEnvironmentCreator(config.Test)
+
+	handleRequestFn := participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest
+
+	environmentCreator.ExecuteLambdaHandlerWithPostBody(
+		handleRequestFn,
+		eventBody,
+	)
+
+	handlerResponse2 := environmentCreator.ExecuteLambdaHandlerWithPostBody(
+		handleRequestFn,
+		eventBodyEmptySelectAnswer,
+	)
+	if handlerResponse2.StatusCode != 400 {
+		t.Fatalf("lambda return code is not 400 although invalid quiz completion case: %v, %v", handlerResponse2.StatusCode, handlerResponse2.Body)
+	}
+
+}
+
+func TestPutParticipantLambda_InvalidStartQuiz_Returns400(t *testing.T) {
+
+	environmentCreator := local.NewEnvironmentCreator(config.Test)
+
+	handleRequestFn := participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest
+
+	handlerResponse := environmentCreator.ExecuteLambdaHandlerWithPostBody(
+		handleRequestFn,
+		eventBodyEmptyStartQuiz,
+	)
+
+	if handlerResponse.StatusCode != 400 {
+		t.Fatalf("lambda return code is not 400 although invalid start quiz command: %v, %v", handlerResponse.StatusCode, handlerResponse.Body)
 	}
 
 }

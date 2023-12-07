@@ -35,7 +35,7 @@ func TestGetQuizOverview_Returns200(t *testing.T) {
 
 	activeQuizzesResponse := json.GetJSONPathValue(getOverviewResponse, "$.activeQuizzes")
 
-	if len(activeQuizzesResponse.([]interface{})) != 1 {
+	if len(activeQuizzesResponse.(map[string]interface{})) != 1 {
 		t.Fatalf("no active quizzes in overview response")
 	}
 }

@@ -13,7 +13,7 @@ func TestNewQuizOverview_EmptyForEmptyUsers(t *testing.T) {
 
 	p := newParticipant()
 
-	qo := projection.NewQuizOverview(p)
+	qo := err.PanicIfError1(projection.NewQuizOverview(p))
 
 	if len(qo.ActiveQuizzes) != 0 {
 		t.Fatalf("empty user has active quizzes")
@@ -24,19 +24,19 @@ func TestNewQuizOverview_EmptyForEmptyUsers(t *testing.T) {
 	}
 }
 
-func TestNewQuizOverview_AddsActiveQuizzes(t *testing.T) {
+func TestNewQuizOverview_AddsAndRemovesActiveQuizzesAndAddsFinishedQuizzes(t *testing.T) {
 
 	p := newParticipant()
 
-	activeQuizId := inmemory.QuizID
-	finishedQuizId := "2d107555-e311-4a52-a5f9-6997e88c407c"
+	activeQuizID := inmemory.QuizID
+	finishedQuizID := "2d107555-e311-4a52-a5f9-6997e88c407c"
 
-	p.StartQuiz(activeQuizId, nil)
+	err.PanicIfError(p.StartQuiz(activeQuizID, nil))
 
-	p.StartQuiz(finishedQuizId, nil)
-	p.FinishQuiz(finishedQuizId)
+	err.PanicIfError(p.StartQuiz(finishedQuizID, nil))
+	err.PanicIfError(p.FinishQuiz(finishedQuizID))
 
-	qo := projection.NewQuizOverview(p)
+	qo := err.PanicIfError1(projection.NewQuizOverview(p))
 
 	if len(qo.ActiveQuizzes) != 1 {
 		t.Fatalf("user with active quiz has no active quiz in overview")

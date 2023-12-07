@@ -8,23 +8,8 @@ import (
 	"learn-to-code/internal/infrastructure/go/util/uuid"
 	"learn-to-code/internal/infrastructure/inmemory"
 	"learn-to-code/pkg/test/db"
-	"os"
 	"testing"
-
-	dynamodbsdk "github.com/aws/aws-sdk-go-v2/service/dynamodb"
 )
-
-var dynamoDbClient *dynamodbsdk.Client
-
-func TestMain(m *testing.M) {
-	dbStarter := db.NewDynamoStarter()
-	dynamoDbClient = dbStarter.Start()
-
-	defer dbStarter.Terminate()
-
-	// now we just need to tell go-test that we can run the tests
-	os.Exit(m.Run())
-}
 
 func TestRepository_FindById_ReturnsNewUser(t *testing.T) {
 	repo := getRepository()
@@ -60,7 +45,7 @@ func TestRepository_FindById_HandleSingleUser(t *testing.T) {
 		t.Fatalf("could not fetch the participant due to an error: %s", err)
 	}
 
-	errUtils.PanicIfError(p.SelectQuizAnswer(quizID, inmemory.FirstQuestionID, inmemory.FirstAnswerID))
+	errUtils.PanicIfError(p.SelectQuizAnswer(quizID, inmemory.FirstQuestionID, inmemory.FirstAnswerID, true))
 
 	errUtils.PanicIfError(p.FinishQuiz(quizID))
 	errUtils.PanicIfError(
@@ -73,8 +58,41 @@ func TestRepository_FindById_HandleSingleUser(t *testing.T) {
 	}
 }
 
+func TestParticipantRepository_StoreEventsWithPayload(t *testing.T) {
+	repo := getRepository()
+
+	p := errUtils.PanicIfError1(participant.New())
+
+	quizID := uuid.MustNewRandomAsString()
+	errUtils.PanicIfError(
+		p.StartQuiz(quizID, nil),
+	)
+
+	errUtils.PanicIfError(
+		p.SelectQuizAnswer(quizID, inmemory.FirstQuestionID, inmemory.FirstAnswerID, true),
+	)
+
+	errUtils.PanicIfError(
+		repo.StoreEvents(p.GetID(), p.GetNewEventsAndUpdatePersistedVersion()),
+	)
+
+	events := errUtils.PanicIfError1(repo.FindEventsByID(p.GetID()))
+
+	for _, event := range events {
+		if event.GetAggregateID() == "" {
+			t.Fatalf("aggregateID is empty")
+		}
+
+		if event.GetCreatedAt().String() == "" {
+			t.Fatalf("createdAt is empty")
+		}
+	}
+}
+
 func getRepository() participant.Repository {
-	repo := dynamodb.NewDynamoDbParticipantRepository(context.Background(), "test", dynamoDbClient)
+	dbStarter := db.NewDynamoStarter()
+
+	repo := dynamodb.NewDynamoDbParticipantRepository(context.Background(), "test", dbStarter.CreateDynamoDbClient(true))
 
 	return repo
 }

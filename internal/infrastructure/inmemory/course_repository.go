@@ -12,11 +12,12 @@ func NewCourseRepository() *CourseRepository {
 type CourseRepository struct {
 }
 
-const CourseID = "fcf7890f-9c72-46d3-931e-34494307be37"
+const CourseID = "ed86d338-84a0-4486-a314-b99b17175875"
 const CourseStepID = "c7486278-a50c-4629-89b9-cc1c74d7a538"
 const QuizID = "fcf7890f-9c72-46d3-931e-34494307be37"
 const FirstQuestionID = "14c20d31-c7e1-416d-9c8e-1f2040141f0b"
 const FirstAnswerID = "06a1956e-b659-493f-9533-b27733ddd7fe"
+const FirstCorrectAnswerID = "48a293ee-7f43-4e3d-85d1-4737e6385c7c"
 
 func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 
@@ -46,7 +47,7 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 											Description: "Styling a website is primarily done using CSS, which helps in determining colors, font sizes, positioning, and other visual elements.",
 										},
 										{
-											ID:          "48a293ee-7f43-4e3d-85d1-4737e6385c7c",
+											ID:          FirstCorrectAnswerID,
 											Text:        "Describing the structure of a webpage",
 											IsCorrect:   true,
 											Description: "HTML stands for HyperText Markup Language and it provides the basic structure to a webpage. Through HTML, the browser understands headings, paragraphs, links, and other content types.",
@@ -205,25 +206,25 @@ func (q *CourseRepository) FindByID(id string) (course.Course, error) {
 									RatingCount: 1991,
 									Answers: []course.QuizAnswer{
 										{
-											ID:          "",
+											ID:          "48ce094c-0b9a-455f-9b4c-2931252eeb05",
 											Text:        "Faster loading speed on mobile devices",
 											IsCorrect:   false,
 											Description: "Responsive design doesn't inherently speed up website loading times. Its main goal is adaptability.",
 										},
 										{
-											ID:          "",
+											ID:          "1631d3b5-0e30-4bb2-a23f-41b7206b1731",
 											Text:        "Higher security against web threats",
 											IsCorrect:   false,
 											Description: "Responsive design focuses on layout adaptability, not security.",
 										},
 										{
-											ID:          "",
+											ID:          "e9f67fda-0eb2-4647-ae9e-eae4aa4c654e",
 											Text:        "Flexibility in website appearance according to device size and orientation",
 											IsCorrect:   true,
 											Description: "Responsive web design allows websites to adjust and look good on devices of all sizes, whether it's a large monitor, tablet, or smartphone.",
 										},
 										{
-											ID:          "",
+											ID:          "d7b900e1-d4d0-46a5-b1a7-8a35393eb666",
 											Text:        "Vibrant color schemes for websites",
 											IsCorrect:   false,
 											Description: "Color schemes are part of visual design. Responsiveness is about layout adjustments based on screen sizes.",

@@ -1,45 +1,84 @@
 package projection
 
 import (
+	"fmt"
 	"learn-to-code/internal/domain/quiz/participant"
 	"learn-to-code/internal/domain/quiz/participant/event"
 )
 
-type QuizOverview struct {
-	ActiveQuizzes   []string
-	FinishedQuizzes []string
+type QuizAttemptOverview struct {
+	QuizID              string
+	AttemptID           int
+	QuestionsWithAnswer map[string]string
 }
 
-func NewQuizOverview(p participant.Participant) QuizOverview {
+type QuizOverview struct {
+	ActiveQuizzes   map[string][]QuizAttemptOverview
+	FinishedQuizzes map[string][]QuizAttemptOverview
+}
+
+func NewQuizOverview(p participant.Participant) (QuizOverview, error) {
 
 	qo := QuizOverview{
-		ActiveQuizzes:   []string{},
-		FinishedQuizzes: []string{},
+		ActiveQuizzes:   map[string][]QuizAttemptOverview{},
+		FinishedQuizzes: map[string][]QuizAttemptOverview{},
 	}
 
-	activeQuizzesMap := map[string]string{}
-	finishedQuizzesMap := map[string]string{}
+	quizAttemptCounter := map[string]int{}
+	quizFinishCounter := map[string]int{}
+
+	var activeQuizAttempts = map[string]*QuizAttemptOverview{}
 
 	for _, generalEvent := range p.Events {
 
 		switch e := generalEvent.(type) {
 
 		case event.StartedQuiz:
-			activeQuizzesMap[e.QuizID] = e.QuizID
+			_, ok := quizAttemptCounter[e.QuizID]
+			if !ok {
+				quizAttemptCounter[e.QuizID] = 0
+			}
+			quizAttemptCounter[e.QuizID]++
+
+			if activeQuizAttempts[e.QuizID] != nil {
+				return QuizOverview{}, fmt.Errorf("invalid multiple active attempts for quiz %s", e.QuizID)
+			}
+
+			activeQuizAttempts[e.QuizID] = &QuizAttemptOverview{
+				QuizID:              e.QuizID,
+				AttemptID:           quizAttemptCounter[e.QuizID],
+				QuestionsWithAnswer: map[string]string{},
+			}
 
 		case event.FinishedQuiz:
-			finishedQuizzesMap[e.QuizID] = e.QuizID
-			delete(activeQuizzesMap, e.QuizID)
+			_, ok := quizFinishCounter[e.QuizID]
+			if !ok {
+				quizFinishCounter[e.QuizID] = 0
+			}
+			quizFinishCounter[e.QuizID]++
+
+			_, ok = qo.FinishedQuizzes[e.QuizID]
+			if !ok {
+				qo.FinishedQuizzes[e.QuizID] = []QuizAttemptOverview{}
+			}
+
+			qo.FinishedQuizzes[e.QuizID] = append(qo.FinishedQuizzes[e.QuizID], *activeQuizAttempts[e.QuizID])
+			delete(activeQuizAttempts, e.QuizID)
 		}
 	}
 
-	for _, activeQuizID := range activeQuizzesMap {
-		qo.ActiveQuizzes = append(qo.ActiveQuizzes, activeQuizID)
+	for activeQuizID, activeQuizAttemptOverview := range activeQuizAttempts {
+		_, ok := qo.ActiveQuizzes[activeQuizID]
+		if !ok {
+			qo.ActiveQuizzes[activeQuizID] = []QuizAttemptOverview{}
+		}
+
+		qo.ActiveQuizzes[activeQuizID] = append(qo.ActiveQuizzes[activeQuizID], QuizAttemptOverview{
+			QuizID:              activeQuizID,
+			AttemptID:           activeQuizAttemptOverview.AttemptID,
+			QuestionsWithAnswer: activeQuizAttemptOverview.QuestionsWithAnswer,
+		})
 	}
 
-	for _, finishedQuizID := range finishedQuizzesMap {
-		qo.FinishedQuizzes = append(qo.FinishedQuizzes, finishedQuizID)
-	}
-
-	return qo
+	return qo, nil
 }

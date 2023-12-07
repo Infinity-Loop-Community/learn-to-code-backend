@@ -39,11 +39,11 @@ func (validator Validator) ValidateAndGetUserID(jwtToken string) (string, error)
 	return subject, err
 }
 
-func (validator Validator) CreateToken() (string, error) {
+func (validator Validator) CreateToken(subject string) (string, error) {
 	claims := &CustomClaims{
 		RegisteredClaims: jwt.RegisteredClaims{
 			Issuer:    "myAppIssuer",
-			Subject:   "user123",
+			Subject:   subject,
 			Audience:  []string{"myAppClient"},
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(24 * time.Hour)),
 			NotBefore: jwt.NewNumericDate(time.Now()),

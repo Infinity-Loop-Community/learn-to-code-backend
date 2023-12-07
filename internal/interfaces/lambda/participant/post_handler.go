@@ -2,10 +2,10 @@ package participant
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	command "learn-to-code/internal/domain/command"
 	"learn-to-code/internal/infrastructure/config"
+	"learn-to-code/internal/infrastructure/lambda"
 	"learn-to-code/internal/infrastructure/service"
 	"learn-to-code/internal/interfaces/lambda/course/requestobject"
 
@@ -28,10 +28,9 @@ func (l LambdaHandler) HandleRequest(ctx context.Context, request events.APIGate
 		return events.APIGatewayProxyResponse{StatusCode: 400, Body: fmt.Sprintf(`{"error": "%s"}`, err)}, nil
 	}
 
-	commandRequest := requestobject.Command{}
-	err = json.Unmarshal([]byte(request.Body), &commandRequest)
+	commandRequest, err := lambda.ReadBody(request.Body, requestobject.Command{})
 	if err != nil {
-		return events.APIGatewayProxyResponse{}, err
+		return serviceRegistry.ResponseCreator.CreateClientErrorResponse(err)
 	}
 
 	commandDomainObject := l.mapRequestToCommand(commandRequest)

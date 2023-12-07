@@ -10,7 +10,7 @@ import (
 
 type Participant struct {
 	id      string
-	quizzes map[string]*activeQuiz
+	quizzes map[string][]*activeQuiz
 
 	eventsource.AggregateRoot
 }
@@ -30,18 +30,20 @@ func (p *Participant) apply(eventToApply eventsource.Event, isPersisted bool) er
 			return err
 		}
 
-		p.quizzes[e.QuizID] = &activeQuiz{
+		p.quizzes[e.QuizID] = append(p.quizzes[e.QuizID], &activeQuiz{
 			ID:                        e.QuizID,
 			providedAnswers:           nil,
 			requiredQuestionsAnswered: e.RequiredQuestionsAnswered,
 			completed:                 false,
-		}
+		})
 
 	case event.SelectedAnswer:
-		quiz, ok := p.quizzes[e.QuizID]
+		quizAttempts, ok := p.quizzes[e.QuizID]
 		if !ok {
 			return fmt.Errorf("quiz %v not found", e.QuizID)
 		}
+		quizAttemptCount := len(quizAttempts)
+		quiz := quizAttempts[quizAttemptCount-1]
 
 		if quiz.completed {
 			return fmt.Errorf("can not selected an answer for quiz %v that is already completed", e.QuizID)
@@ -53,16 +55,12 @@ func (p *Participant) apply(eventToApply eventsource.Event, isPersisted bool) er
 		})
 
 	case event.FinishedQuiz:
-		_, ok := p.quizzes[e.QuizID]
-
+		quizAttempts, ok := p.quizzes[e.QuizID]
 		if !ok {
 			return fmt.Errorf("quiz %v not found", e.QuizID)
 		}
-
-		quiz, ok := p.quizzes[e.QuizID]
-		if !ok {
-			return fmt.Errorf("Quiz not started %v, hence it can not be completed", e.QuizID)
-		}
+		quizAttemptCount := len(quizAttempts)
+		quiz := quizAttempts[quizAttemptCount-1]
 
 		// check if all requests are answered
 		providedQuestionsLookupTable := map[string]bool{}
@@ -107,7 +105,11 @@ func (p *Participant) apply(eventToApply eventsource.Event, isPersisted bool) er
 }
 
 func (p *Participant) ensureQuizNotStarted(id string) error {
-	for _, quiz := range p.quizzes {
+	for _, quizAttempts := range p.quizzes {
+
+		quizAttemptCount := len(quizAttempts)
+		quiz := quizAttempts[quizAttemptCount-1]
+
 		if quiz.ID == id && quiz.IsOngoing() {
 			return fmt.Errorf("quiz '%s' already started and not finished", quiz.ID)
 		}
@@ -171,7 +173,11 @@ func (p *Participant) GetStartedQuizCount() int {
 func (p *Participant) GetFinishedQuizCount() int {
 	finishedQuizzes := 0
 
-	for _, quiz := range p.quizzes {
+	for _, quizAttempts := range p.quizzes {
+
+		quizAttemptCount := len(quizAttempts)
+		quiz := quizAttempts[quizAttemptCount-1]
+
 		if quiz.completed {
 			finishedQuizzes++
 		}
@@ -181,10 +187,12 @@ func (p *Participant) GetFinishedQuizCount() int {
 }
 
 func (p *Participant) GetActiveQuizAnswers(quizID string) ([]ProvidedAnswer, error) {
-	quiz, ok := p.quizzes[quizID]
+	quizAttempts, ok := p.quizzes[quizID]
 	if !ok {
 		return nil, fmt.Errorf("quiz %v not found", quizID)
 	}
+	quizAttemptCount := len(quizAttempts)
+	quiz := quizAttempts[quizAttemptCount-1]
 
 	return quiz.providedAnswers, nil
 }

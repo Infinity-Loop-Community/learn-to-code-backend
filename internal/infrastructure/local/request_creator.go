@@ -4,7 +4,6 @@ import (
 	"learn-to-code/internal/infrastructure/authentication/jwt"
 	"learn-to-code/internal/infrastructure/config"
 	"learn-to-code/internal/infrastructure/go/util/err"
-	"learn-to-code/internal/infrastructure/inmemory"
 	"net/http"
 	"time"
 
@@ -21,7 +20,7 @@ func NewRequestCreator(cfg config.Config) *RequestCreator {
 	}
 }
 
-func (r *RequestCreator) CreateGETRequest() events.APIGatewayProxyRequest {
+func (r *RequestCreator) CreateGETRequest(pathParameters map[string]string) events.APIGatewayProxyRequest {
 	return events.APIGatewayProxyRequest{
 		Resource:                        "",
 		Path:                            "",
@@ -30,13 +29,11 @@ func (r *RequestCreator) CreateGETRequest() events.APIGatewayProxyRequest {
 		MultiValueHeaders:               nil,
 		QueryStringParameters:           nil,
 		MultiValueQueryStringParameters: nil,
-		PathParameters: map[string]string{
-			"courseId": inmemory.CourseID,
-		},
-		StageVariables:  nil,
-		RequestContext:  events.APIGatewayProxyRequestContext{},
-		Body:            "",
-		IsBase64Encoded: false,
+		PathParameters:                  pathParameters,
+		StageVariables:                  nil,
+		RequestContext:                  events.APIGatewayProxyRequestContext{},
+		Body:                            "",
+		IsBase64Encoded:                 false,
 	}
 }
 

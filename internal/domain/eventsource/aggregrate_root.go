@@ -1,9 +1,20 @@
 package eventsource
 
+// AggregateRoot acts as the main entity around which events are centered, encapsulating key
+// business logic and state changes.
 type AggregateRoot struct {
+
+	// persistedVersion keeps track of the last persisted version of the entity, ensuring data
+	// integrity and consistency during the event storing process.
 	persistedVersion uint
-	currentVersion   uint
-	events           []Event
+
+	// currentVersion represents the current version of the entity, reflecting all the changes made
+	// by the events that have occurred since the last persistence.
+	currentVersion uint
+
+	// events is a collection of events that have been applied to the entity but not yet persisted.
+	// These events encapsulate the changes that have occurred in the entity's state.
+	events []Event
 }
 
 func (a *AggregateRoot) GetPersistedVerstion() uint {

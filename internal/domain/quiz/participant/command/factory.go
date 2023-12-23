@@ -1,7 +1,7 @@
 package command
 
 import (
-	"learn-to-code/internal/domain/command/data"
+	"learn-to-code/internal/domain/quiz/participant/command/data"
 	"time"
 )
 

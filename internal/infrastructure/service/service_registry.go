@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 	"learn-to-code/internal/application"
-	"learn-to-code/internal/domain/command"
+	"learn-to-code/internal/domain/quiz/participant/command"
 	authJwt "learn-to-code/internal/infrastructure/authentication/jwt"
 	config2 "learn-to-code/internal/infrastructure/config"
 	"learn-to-code/internal/infrastructure/dynamodb"

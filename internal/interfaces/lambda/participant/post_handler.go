@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	command "learn-to-code/internal/domain/command"
+	"learn-to-code/internal/domain/quiz/participant/command"
 	"learn-to-code/internal/infrastructure/config"
 	"learn-to-code/internal/infrastructure/service"
 	"learn-to-code/internal/interfaces/lambda/course/requestobject"

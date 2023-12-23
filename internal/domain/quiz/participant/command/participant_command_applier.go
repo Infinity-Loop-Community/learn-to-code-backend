@@ -2,8 +2,8 @@ package command
 
 import (
 	"fmt"
-	"learn-to-code/internal/domain/command/data"
 	"learn-to-code/internal/domain/quiz/participant"
+	"learn-to-code/internal/domain/quiz/participant/command/data"
 
 	"github.com/mitchellh/mapstructure"
 )

@@ -294,12 +294,12 @@ func TestParticipant_Events_applyAndRestoresWithSameVersion(t *testing.T) {
 	err.PanicIfError(p1.StartQuiz(quizID, nil))
 	err.PanicIfError(p1.FinishQuiz(quizID))
 
-	participantEvents := p1.Events
+	participantEvents := p1.GetEvents()
 
 	p2 := err.PanicIfError1(participant.NewFromEvents(participantEvents, true))
 
-	if p1.CurrentVersion != p2.CurrentVersion {
-		t.Fatalf("original participant's version is different to the restored version: %d != %d", p1.CurrentVersion, p2.CurrentVersion)
+	if p1.GetCurrentVersion() != p2.GetCurrentVersion() {
+		t.Fatalf("original participant's version is different to the restored version: %d != %d", p1.GetCurrentVersion(), p2.GetCurrentVersion())
 	}
 
 }
@@ -312,7 +312,7 @@ func TestParticipant_Events_createsSameEventsAfterApplyAndRestore(t *testing.T) 
 	err.PanicIfError(p1.StartQuiz(quizID, nil))
 	err.PanicIfError(p1.FinishQuiz(quizID))
 
-	participantEvents := p1.Events
+	participantEvents := p1.GetEvents()
 
 	p2 := err.PanicIfError1(participant.NewFromEvents(participantEvents, true))
 
@@ -339,12 +339,12 @@ func TestParticipant_Events_applyAndRestoresWithSameEvents(t *testing.T) {
 	err.PanicIfError(p1.StartQuiz(quizID, nil))
 	err.PanicIfError(p1.FinishQuiz(quizID))
 
-	participantEvents := p1.Events
+	participantEvents := p1.GetEvents()
 
 	p2 := err.PanicIfError1(participant.NewFromEvents(participantEvents, true))
 
-	p1EventsAsJSON := string(err.PanicIfError1(json.Marshal(p1.Events)))
-	p2EventsAsJSON := string(err.PanicIfError1(json.Marshal(p2.Events)))
+	p1EventsAsJSON := string(err.PanicIfError1(json.Marshal(p1.GetEvents())))
+	p2EventsAsJSON := string(err.PanicIfError1(json.Marshal(p2.GetEvents())))
 	if p1EventsAsJSON != p2EventsAsJSON {
 		t.Fatalf("original participant's events are different to the restored version: %s != %s", p1EventsAsJSON, p2EventsAsJSON)
 	}

@@ -29,7 +29,7 @@ func NewQuizOverview(p participant.Participant) (QuizOverview, error) {
 
 	var activeQuizAttempts = map[string]*QuizAttemptOverview{}
 
-	for _, generalEvent := range p.Events {
+	for _, generalEvent := range p.GetEvents() {
 
 		switch e := generalEvent.(type) {
 

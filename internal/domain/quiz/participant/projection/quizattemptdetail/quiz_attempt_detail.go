@@ -53,7 +53,7 @@ func NewQuizAttemptDetail(p participant.Participant, quizID string, attemptID in
 	startQuizTime := time.Time{}
 	endQuizTime := time.Time{}
 
-	for _, generalEvent := range p.Events {
+	for _, generalEvent := range p.GetEvents() {
 
 		switch e := generalEvent.(type) {
 

@@ -93,13 +93,13 @@ func (p *Participant) apply(eventToApply eventsource.Event, isPersisted bool) er
 		panic(fmt.Sprintf("unknown event type %s", reflect.TypeOf(eventToApply)))
 	}
 
-	p.CurrentVersion++
+	p.IncremenCurrentVerstion()
 
-	if isPersisted && (p.CurrentVersion-1) == p.PersistedVersion {
-		p.PersistedVersion++
+	if isPersisted && (p.GetCurrentVersion()-1) == p.GetPersistedVerstion() {
+		p.IncrementPersistedVerstion()
 	}
 
-	p.Events = append(p.Events, eventToApply)
+	p.AppendEvent(eventToApply)
 
 	return nil
 }
@@ -157,7 +157,7 @@ func (p *Participant) SelectQuizAnswer(quizID string, questionID string, answerI
 func (p *Participant) createEventBaseEvent() eventsource.EventBase {
 	return eventsource.EventBase{
 		AggregateID: p.id,
-		Version:     p.CurrentVersion,
+		Version:     p.GetCurrentVersion(),
 		CreatedAt:   time.Now(),
 	}
 }

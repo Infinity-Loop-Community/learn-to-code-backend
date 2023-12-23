@@ -9,7 +9,12 @@ import (
 )
 
 type Participant struct {
-	id      string
+	// id is the unique identifier for the Participant, distinguishing each user within
+	// the system.
+	id string
+
+	// quizzes holds information about active quizzes associated with the participant. This
+	// includes data about the quizzes the participant is currently engaged with and their progress.
 	quizzes map[string][]*activeQuiz
 
 	eventsource.AggregateRoot

@@ -2,7 +2,7 @@ package main_test
 
 import (
 	"fmt"
-	"learn-to-code/internal/domain/command/data"
+	"learn-to-code/internal/domain/quiz/participant/command"
 	"learn-to-code/internal/infrastructure/config"
 	"learn-to-code/internal/infrastructure/local"
 	"learn-to-code/internal/interfaces/lambda/participant"
@@ -18,7 +18,7 @@ var eventBody = fmt.Sprintf(`
 	},
    "type": "%s"
 }
-`, data.StartQuizCommandType)
+`, command.StartQuizCommandType)
 
 var eventBody2 = fmt.Sprintf(`
 {
@@ -30,7 +30,7 @@ var eventBody2 = fmt.Sprintf(`
 	},
    "type": "%s"
 }
-`, data.SelectAnswerCommandType)
+`, command.SelectAnswerCommandType)
 
 var eventBody3 = fmt.Sprintf(`
 {
@@ -40,7 +40,7 @@ var eventBody3 = fmt.Sprintf(`
 	},
    "type": "%s"
 }
-`, data.FinishQuizCommandType)
+`, command.FinishQuizCommandType)
 
 func TestPutParticipantLambda_Returns200(t *testing.T) {
 

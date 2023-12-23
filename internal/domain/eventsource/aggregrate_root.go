@@ -37,7 +37,14 @@ func (a *AggregateRoot) GetEvents() []Event {
 	return a.events
 }
 
-func (a *AggregateRoot) AppendEvent(event Event) {
+func (a *AggregateRoot) AppendEvent(event Event, isPersisted bool) {
+
+	a.IncremenCurrentVerstion()
+
+	if isPersisted && (a.GetCurrentVersion()-1) == a.GetPersistedVerstion() {
+		a.IncrementPersistedVerstion()
+	}
+
 	a.events = append(a.events, event)
 }
 

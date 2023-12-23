@@ -27,14 +27,14 @@ func (as *ParticipantApplicationService) GetStartedQuizCount(participantID strin
 	return p.GetStartedQuizCount(), nil
 }
 
-func (as *ParticipantApplicationService) ProcessCommand(commandDomainObject command.Command, participantID string) error {
+func (as *ParticipantApplicationService) ProcessCommand(command command.Command, participantID string) error {
 
 	p, err := as.participantRepository.FindOrCreateByID(participantID)
 	if err != nil {
 		return err
 	}
 
-	p, err = as.startQuizToEventMapper.ApplyCommand(commandDomainObject, p)
+	p, err = as.startQuizToEventMapper.ApplyCommand(command, p)
 	if err != nil {
 		return err
 	}

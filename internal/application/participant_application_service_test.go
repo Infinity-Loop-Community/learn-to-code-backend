@@ -2,7 +2,7 @@ package application_test
 
 import (
 	"learn-to-code/internal/application"
-	"learn-to-code/internal/domain/command"
+	"learn-to-code/internal/domain/quiz/participant/command"
 	errUtils "learn-to-code/internal/infrastructure/go/util/err"
 	"learn-to-code/internal/infrastructure/go/util/uuid"
 	"learn-to-code/internal/infrastructure/inmemory"

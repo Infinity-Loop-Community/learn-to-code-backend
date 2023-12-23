@@ -13,104 +13,85 @@ type Participant struct {
 	// the system.
 	id string
 
-	// quizzes holds information about active quizzes associated with the participant. This
-	// includes data about the quizzes the participant is currently engaged with and their progress.
-	quizzes map[string][]*activeQuiz
+	// quizAttempts holds information about active quizAttempts associated with the participant. This
+	// includes data about the quizAttempts the participant is currently engaged with and their progress.
+	quizAttempts map[string][]*quizAttempt
 
 	eventsource.AggregateRoot
 }
 
 func (p *Participant) apply(eventToApply eventsource.Event, isPersisted bool) error {
 
-	var err error
-
-	switch e := eventToApply.(type) {
+	switch ev := eventToApply.(type) {
 
 	case event.ParticipantCreated:
-		p.id = e.GetAggregateID()
+		p.id = ev.GetAggregateID()
 
 	case event.StartedQuiz:
-		err := p.ensureQuizNotStarted(e.QuizID)
+		err := p.ensureQuizNotStarted(ev.QuizID)
 		if err != nil {
 			return err
 		}
 
-		p.quizzes[e.QuizID] = append(p.quizzes[e.QuizID], &activeQuiz{
-			ID:                        e.QuizID,
+		p.quizAttempts[ev.QuizID] = append(p.quizAttempts[ev.QuizID], &quizAttempt{
+			ID:                        ev.QuizID,
 			providedAnswers:           nil,
-			requiredQuestionsAnswered: e.RequiredQuestionsAnswered,
+			requiredQuestionsAnswered: ev.RequiredQuestionsAnswered,
 			completed:                 false,
 		})
 
 	case event.SelectedAnswer:
-		quizAttempts, ok := p.quizzes[e.QuizID]
+		quizAttempts, ok := p.quizAttempts[ev.QuizID]
 		if !ok {
-			return fmt.Errorf("quiz %v not found", e.QuizID)
+			return fmt.Errorf("quizAttempt %v not found", ev.QuizID)
 		}
 		quizAttemptCount := len(quizAttempts)
 		quiz := quizAttempts[quizAttemptCount-1]
 
 		if quiz.completed {
-			return fmt.Errorf("can not selected an answer for quiz %v that is already completed", e.QuizID)
+			return fmt.Errorf("can not selected an answer for quizAttempt %v that is already completed", ev.QuizID)
 		}
 
 		quiz.providedAnswers = append(quiz.providedAnswers, ProvidedAnswer{
-			QuestionID: e.QuestionID,
-			AnswerID:   e.AnswerID,
+			QuestionID: ev.QuestionID,
+			AnswerID:   ev.AnswerID,
 		})
 
 	case event.FinishedQuiz:
-		quizAttempts, ok := p.quizzes[e.QuizID]
-		if !ok {
-			return fmt.Errorf("quiz %v not found", e.QuizID)
-		}
-		quizAttemptCount := len(quizAttempts)
-		quiz := quizAttempts[quizAttemptCount-1]
-
-		// check if all requests are answered
-		providedQuestionsLookupTable := map[string]bool{}
-		for _, answer := range quiz.providedAnswers {
-			providedQuestionsLookupTable[answer.QuestionID] = true
-		}
-		allAnswersProvided := true
-		missingQuestionIds := []string{}
-		for _, requiredQuestionAnswered := range quiz.requiredQuestionsAnswered {
-			_, ok = providedQuestionsLookupTable[requiredQuestionAnswered]
-			if !ok {
-				allAnswersProvided = false
-				missingQuestionIds = append(missingQuestionIds, requiredQuestionAnswered)
-			}
-		}
-		if !allAnswersProvided {
-			return fmt.Errorf("not all answers provided, the answer for the following question ids are missing: %v", missingQuestionIds)
-		}
-
-		if quiz.completed {
-			return fmt.Errorf("Quiz %v already finished", e.QuizID)
-		}
-
-		quiz.completed = true
+		quizAttempt, err := p.getCurrentQuizAttempt(ev)
 		if err != nil {
 			return err
 		}
+
+		err = quizAttempt.checkFinishAttemptValidity()
+		if err != nil {
+			return err
+		}
+
+		quizAttempt.completed = true
 
 	default:
 		panic(fmt.Sprintf("unknown event type %s", reflect.TypeOf(eventToApply)))
 	}
 
-	p.IncremenCurrentVerstion()
-
-	if isPersisted && (p.GetCurrentVersion()-1) == p.GetPersistedVerstion() {
-		p.IncrementPersistedVerstion()
-	}
-
-	p.AppendEvent(eventToApply)
+	p.AppendEvent(eventToApply, isPersisted)
 
 	return nil
 }
 
+func (p *Participant) getCurrentQuizAttempt(ev event.FinishedQuiz) (*quizAttempt, error) {
+	quizAttempts, ok := p.quizAttempts[ev.QuizID]
+	if !ok {
+		return nil, fmt.Errorf("quizAttempt %v not found", ev.QuizID)
+	}
+
+	quizAttemptCount := len(quizAttempts)
+	quizAttempt := quizAttempts[quizAttemptCount-1]
+	return quizAttempt, nil
+}
+
 func (p *Participant) ensureQuizNotStarted(id string) error {
-	for _, quizAttempts := range p.quizzes {
+	for _, quizAttempts := range p.quizAttempts {
 
 		quizAttemptCount := len(quizAttempts)
 		quiz := quizAttempts[quizAttemptCount-1]
@@ -172,13 +153,13 @@ func (p *Participant) GetID() string {
 }
 
 func (p *Participant) GetStartedQuizCount() int {
-	return len(p.quizzes)
+	return len(p.quizAttempts)
 }
 
 func (p *Participant) GetFinishedQuizCount() int {
 	finishedQuizzes := 0
 
-	for _, quizAttempts := range p.quizzes {
+	for _, quizAttempts := range p.quizAttempts {
 
 		quizAttemptCount := len(quizAttempts)
 		quiz := quizAttempts[quizAttemptCount-1]
@@ -192,7 +173,7 @@ func (p *Participant) GetFinishedQuizCount() int {
 }
 
 func (p *Participant) GetActiveQuizAnswers(quizID string) ([]ProvidedAnswer, error) {
-	quizAttempts, ok := p.quizzes[quizID]
+	quizAttempts, ok := p.quizAttempts[quizID]
 	if !ok {
 		return nil, fmt.Errorf("quiz %v not found", quizID)
 	}

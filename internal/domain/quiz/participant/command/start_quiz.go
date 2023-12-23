@@ -1,4 +1,4 @@
-package data
+package command
 
 func NewStartQuizData(quizID string, requiredQuestionsAnswered []string) StartQuiz {
 	return StartQuiz{

@@ -20,7 +20,7 @@ import (
 type MarshalFunc func(v interface{}) ([]byte, error)
 type UnmarshalFunc func(data []byte, v interface{}) error
 
-type EventPO struct {
+type EventPo struct {
 	AggregateID string    `dynamodbav:"aggregate_id"`
 	Type        string    `dynamodbav:"type"`
 	Version     uint      `dynamodbav:"version"`
@@ -85,86 +85,41 @@ func (r ParticipantRepository) appendEvent(participantID string, e eventsource.E
 	return nil
 }
 
-func (r ParticipantRepository) FindOrCreateByID(id string) (participant.Participant, error) {
-	output, err := r.fetchEventsByAggregateId(id)
+func (r ParticipantRepository) FindEventsByID(pariticipantID string) ([]eventsource.Event, error) {
+	input := &dynamodb.QueryInput{
+		TableName: &r.tableName,
+		KeyConditions: map[string]types.Condition{
+			"aggregate_id": {
+				ComparisonOperator: types.ComparisonOperatorEq,
+				AttributeValueList: []types.AttributeValue{
+					&types.AttributeValueMemberS{Value: pariticipantID},
+				},
+			},
+		},
+	}
+
+	output, err := r.dbClient.Query(r.ctx, input)
 	if err != nil {
-		return participant.Participant{}, err
+		return []eventsource.Event{}, err
 	}
 
-	if len(output.Items) == 0 {
-		return participant.NewParticipant(id)
-	}
-
-	events, err := r.deserializeEvents(output)
-	if err != nil {
-		return participant.Participant{}, err
-	}
-
-	return participant.NewFromEvents(events, true)
-}
-
-func (r ParticipantRepository) deserializeEvents(output *dynamodb.QueryOutput) ([]eventsource.Event, error) {
 	var events []eventsource.Event
 
 	for _, outputItem := range output.Items {
+		deserializedEvent, deserializeError := r.outputItemToEvent(outputItem)
 
-		eventPo := EventPO{}
-		err := attributevalue.UnmarshalMap(outputItem, &eventPo)
-		if err != nil {
-			return nil, err
+		if deserializeError != nil {
+			return nil, deserializeError
 		}
 
-		switch eventPo.Type {
-
-		case event.ParticipantCreatedTypeName:
-			joinedQuizEvent := &event.ParticipantCreated{}
-
-			err := r.deserializer([]byte(eventPo.Payload), joinedQuizEvent)
-			if err != nil {
-				return nil, err
-			}
-
-			events = append(events, *joinedQuizEvent)
-
-		case event.StartedQuizTypeName:
-			startedQuiz := &event.StartedQuiz{}
-
-			err := r.deserializer([]byte(eventPo.Payload), startedQuiz)
-			if err != nil {
-				return nil, err
-			}
-
-			events = append(events, *startedQuiz)
-
-		case event.SelectedAnswerTypeName:
-			e := &event.SelectedAnswer{}
-
-			err := r.deserializer([]byte(eventPo.Payload), e)
-			if err != nil {
-				return nil, err
-			}
-
-			events = append(events, *e)
-
-		case event.FinishedQuizTypeName:
-			finishedQuiz := &event.FinishedQuiz{}
-
-			err := r.deserializer([]byte(eventPo.Payload), finishedQuiz)
-			if err != nil {
-				return nil, err
-			}
-
-			events = append(events, *finishedQuiz)
-
-		default:
-			panic(fmt.Errorf("unknown type '%s' while reading persisted events", eventPo.Type))
-		}
-
+		events = append(events, deserializedEvent)
 	}
+
 	return events, nil
+
 }
 
-func (r ParticipantRepository) fetchEventsByAggregateId(id string) (*dynamodb.QueryOutput, error) {
+func (r ParticipantRepository) FindOrCreateByID(id string) (participant.Participant, error) {
 	input := &dynamodb.QueryInput{
 		TableName: &r.tableName,
 		KeyConditions: map[string]types.Condition{
@@ -179,7 +134,72 @@ func (r ParticipantRepository) fetchEventsByAggregateId(id string) (*dynamodb.Qu
 
 	output, err := r.dbClient.Query(r.ctx, input)
 	if err != nil {
+		return participant.Participant{}, err
+	}
+
+	if len(output.Items) == 0 {
+		return participant.NewParticipant(id)
+	}
+
+	var events []eventsource.Event
+
+	for _, outputItem := range output.Items {
+
+		deserializedEvent, deserializeError := r.outputItemToEvent(outputItem)
+
+		if deserializeError != nil {
+			return participant.Participant{}, deserializeError
+		}
+		events = append(events, deserializedEvent)
+
+	}
+
+	p, newFromEventsErr := participant.NewFromEvents(events, true)
+
+	return p, newFromEventsErr
+}
+
+func (r ParticipantRepository) outputItemToEvent(outputItem map[string]types.AttributeValue) (eventsource.Event, error) {
+	eventPo := EventPo{}
+	err := attributevalue.UnmarshalMap(outputItem, &eventPo)
+	if err != nil {
 		return nil, err
 	}
-	return output, nil
+
+	var deserializeError error
+	var deserializedEvent eventsource.Event
+
+	switch eventPo.Type {
+
+	case event.ParticipantCreatedTypeName:
+		joinedQuizEvent := &event.ParticipantCreated{}
+
+		deserializeError = r.deserializer([]byte(eventPo.Payload), joinedQuizEvent)
+		deserializedEvent = *joinedQuizEvent
+
+	case event.StartedQuizTypeName:
+		startedQuiz := &event.StartedQuiz{}
+
+		deserializeError = r.deserializer([]byte(eventPo.Payload), startedQuiz)
+
+		deserializedEvent = *startedQuiz
+
+	case event.SelectedAnswerTypeName:
+		e := &event.SelectedAnswer{}
+
+		deserializeError = r.deserializer([]byte(eventPo.Payload), e)
+
+		deserializedEvent = *e
+
+	case event.FinishedQuizTypeName:
+		finishedQuiz := &event.FinishedQuiz{}
+
+		deserializeError = r.deserializer([]byte(eventPo.Payload), finishedQuiz)
+
+		deserializedEvent = *finishedQuiz
+
+	default:
+		panic(fmt.Errorf("unknown type '%s' while reading persisted events", eventPo.Type))
+	}
+	return deserializedEvent, deserializeError
 }

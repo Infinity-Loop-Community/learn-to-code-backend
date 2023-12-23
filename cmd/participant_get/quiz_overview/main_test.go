@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"learn-to-code/internal/domain/quiz/participant/command"
+	"learn-to-code/internal/domain/command/data"
 	"learn-to-code/internal/infrastructure/config"
 	"learn-to-code/internal/infrastructure/local"
 	"learn-to-code/internal/infrastructure/testing/json"
@@ -20,7 +20,7 @@ var eventBody = fmt.Sprintf(`
 	},
    "type": "%s"
 }
-`, command.StartQuizCommandType)
+`, data.StartQuizCommandType)
 
 func TestGetQuizOverview_Returns200(t *testing.T) {
 
@@ -35,7 +35,7 @@ func TestGetQuizOverview_Returns200(t *testing.T) {
 
 	activeQuizzesResponse := json.GetJSONPathValue(getOverviewResponse, "$.activeQuizzes")
 
-	if len(activeQuizzesResponse.([]interface{})) != 1 {
+	if len(activeQuizzesResponse.(map[string]interface{})) != 1 {
 		t.Fatalf("no active quizzes in overview response")
 	}
 }

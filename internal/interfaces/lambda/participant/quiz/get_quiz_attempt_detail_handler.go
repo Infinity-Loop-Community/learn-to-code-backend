@@ -2,10 +2,11 @@ package quiz
 
 import (
 	"context"
+	"errors"
 	"fmt"
+	"learn-to-code/internal/domain/quiz/participant/projection/quizattemptdetail"
 	"learn-to-code/internal/infrastructure/config"
 	"learn-to-code/internal/infrastructure/service"
-	"strconv"
 
 	"github.com/aws/aws-lambda-go/events"
 )
@@ -28,20 +29,21 @@ func (gh *GetAttemptDetailHandler) HandleRequest(ctx context.Context, request ev
 		return serviceRegistry.ResponseCreator.CreateClientErrorResponse(err)
 	}
 
-	quizId, ok := request.PathParameters["quizId"]
+	quizID, ok := request.PathParameters["quizId"]
 	if !ok {
 		return serviceRegistry.ResponseCreator.CreateClientErrorResponse(fmt.Errorf("quizId required"))
 	}
 
-	attemptId, ok := request.PathParameters["attemptId"]
-	var attemptIdNumber int64
+	attemptID, ok := request.PathParameters["attemptId"]
 	if !ok {
-		attemptIdNumber, err = strconv.ParseInt(attemptId, 10, 0)
 		return serviceRegistry.ResponseCreator.CreateClientErrorResponse(fmt.Errorf("attemptId required"))
 	}
 
-	quizAttemptDetailProjection, quizOverviewErr := serviceRegistry.ParticipantApplicationService.GetQuizAttemptDetail(userID, quizId, int(attemptIdNumber))
-	if quizOverviewErr != nil {
+	quizAttemptDetailProjection, quizOverviewErr := serviceRegistry.ParticipantApplicationService.GetQuizAttemptDetail(userID, quizID, attemptID)
+
+	if errors.As(quizOverviewErr, &quizattemptdetail.AttemptNotFoundError{}) {
+		return serviceRegistry.ResponseCreator.CreateNotFoundResponse()
+	} else if quizOverviewErr != nil {
 		return serviceRegistry.ResponseCreator.CreateServerErrorResponse(err)
 	}
 

@@ -109,7 +109,7 @@ func TestParticipant_SelectQuizAnswer_ErrosWhenNotJoinedTheQuiz(t *testing.T) {
 	p := err.PanicIfError1(participant.New())
 	quizID := err.PanicIfError1(uuid.NewRandom()).String()
 
-	err := p.SelectQuizAnswer(quizID, selectedQuestionID, selectedAnswerID)
+	err := p.SelectQuizAnswer(quizID, selectedQuestionID, selectedAnswerID, true)
 
 	if err == nil {
 		t.Fatalf("expected error when providing an answer for a quiz that is not active")
@@ -124,7 +124,7 @@ func TestParticipant_SelectQuizAnswer_StoresSelectedAnswers(t *testing.T) {
 	quizID := err.PanicIfError1(uuid.NewRandom()).String()
 
 	err.PanicIfError(p.StartQuiz(quizID, nil))
-	err.PanicIfError(p.SelectQuizAnswer(quizID, selectedQuestionID, selectedAnswerID))
+	err.PanicIfError(p.SelectQuizAnswer(quizID, selectedQuestionID, selectedAnswerID, true))
 
 	activeQuizAnswers := err.PanicIfError1(p.GetActiveQuizAnswers(quizID))
 
@@ -146,7 +146,7 @@ func TestParticipant_SelectQuizAnswer_FailsStoringAnswersForAFinishedQuiz(t *tes
 
 	err.PanicIfError(p.StartQuiz(quizID, nil))
 	err.PanicIfError(p.FinishQuiz(quizID))
-	err := p.SelectQuizAnswer(quizID, selectedQuestionID, selectedAnswerID)
+	err := p.SelectQuizAnswer(quizID, selectedQuestionID, selectedAnswerID, true)
 
 	if err == nil {
 		t.Fatalf("does not fail selecting an answer for a finished quiz with id %v", quizID)
@@ -163,7 +163,7 @@ func TestParticipant_SelectQuizAnswer_CreatesANewEventToPersist(t *testing.T) {
 	err.PanicIfError(p.StartQuiz(quizID, nil))
 	p.GetNewEventsAndUpdatePersistedVersion()
 
-	err.PanicIfError(p.SelectQuizAnswer(quizID, selectedQuestionID, selectedAnswerID))
+	err.PanicIfError(p.SelectQuizAnswer(quizID, selectedQuestionID, selectedAnswerID, true))
 	events := p.GetNewEventsAndUpdatePersistedVersion()
 
 	if len(events) != 1 {
@@ -248,6 +248,28 @@ func TestParticipant_GetFinishedQuizCount(t *testing.T) {
 	}
 }
 
+func TestParticipant_GetQuizAttemptCount_InitiallyReturns0(t *testing.T) {
+	p := err.PanicIfError1(participant.New())
+
+	if p.GetQuizAttemptCount(inmemory.QuizID) != 0 {
+		t.Fatalf("new participant does not have 0 quiz attempts for a quiz")
+	}
+}
+
+func TestParticipant_GetQuizAttemptCount_Returns1AfterANewQuizStarted(t *testing.T) {
+	p := err.PanicIfError1(participant.New())
+	err.PanicIfError(p.StartQuiz(inmemory.QuizID, []string{}))
+	err.PanicIfError(p.FinishQuiz(inmemory.QuizID))
+
+	err.PanicIfError(p.StartQuiz("other", []string{}))
+
+	err.PanicIfError(p.StartQuiz(inmemory.QuizID, []string{}))
+
+	if p.GetQuizAttemptCount(inmemory.QuizID) != 2 {
+		t.Fatalf("new participant does not have 2 quiz attempts for a quiz that started the 2nd time")
+	}
+}
+
 func TestParticipant_FinishQuiz_GetFinishedQuizCount(t *testing.T) {
 	p := err.PanicIfError1(participant.New())
 	quizID := err.PanicIfError1(uuid.NewRandom()).String()
@@ -272,12 +294,12 @@ func TestParticipant_Events_applyAndRestoresWithSameVersion(t *testing.T) {
 	err.PanicIfError(p1.StartQuiz(quizID, nil))
 	err.PanicIfError(p1.FinishQuiz(quizID))
 
-	participantEvents := p1.GetEvents()
+	participantEvents := p1.Events
 
 	p2 := err.PanicIfError1(participant.NewFromEvents(participantEvents, true))
 
-	if p1.GetCurrentVersion() != p2.GetCurrentVersion() {
-		t.Fatalf("original participant's version is different to the restored version: %d != %d", p1.GetCurrentVersion(), p2.GetCurrentVersion())
+	if p1.CurrentVersion != p2.CurrentVersion {
+		t.Fatalf("original participant's version is different to the restored version: %d != %d", p1.CurrentVersion, p2.CurrentVersion)
 	}
 
 }
@@ -290,7 +312,7 @@ func TestParticipant_Events_createsSameEventsAfterApplyAndRestore(t *testing.T) 
 	err.PanicIfError(p1.StartQuiz(quizID, nil))
 	err.PanicIfError(p1.FinishQuiz(quizID))
 
-	participantEvents := p1.GetEvents()
+	participantEvents := p1.Events
 
 	p2 := err.PanicIfError1(participant.NewFromEvents(participantEvents, true))
 
@@ -317,12 +339,12 @@ func TestParticipant_Events_applyAndRestoresWithSameEvents(t *testing.T) {
 	err.PanicIfError(p1.StartQuiz(quizID, nil))
 	err.PanicIfError(p1.FinishQuiz(quizID))
 
-	participantEvents := p1.GetEvents()
+	participantEvents := p1.Events
 
 	p2 := err.PanicIfError1(participant.NewFromEvents(participantEvents, true))
 
-	p1EventsAsJSON := string(err.PanicIfError1(json.Marshal(p1.GetEvents())))
-	p2EventsAsJSON := string(err.PanicIfError1(json.Marshal(p2.GetEvents())))
+	p1EventsAsJSON := string(err.PanicIfError1(json.Marshal(p1.Events)))
+	p2EventsAsJSON := string(err.PanicIfError1(json.Marshal(p2.Events)))
 	if p1EventsAsJSON != p2EventsAsJSON {
 		t.Fatalf("original participant's events are different to the restored version: %s != %s", p1EventsAsJSON, p2EventsAsJSON)
 	}

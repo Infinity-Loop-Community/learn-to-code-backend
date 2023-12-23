@@ -15,6 +15,7 @@ linters:
     - revive
     - unused
     - staticcheck
+    - errcheck
 
 linters-settings:
   gofmt:

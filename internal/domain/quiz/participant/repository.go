@@ -13,5 +13,7 @@ type Repository interface {
 	StoreEvents(participantID string, events []eventsource.Event) error
 
 	// FindByID retrieves a participant by ID from the repository or creates an empty one if not exists.
-	FindOrCreateByID(id string) (Participant, error)
+	FindOrCreateByID(participantID string) (Participant, error)
+
+	FindEventsByID(pariticipantID string) ([]eventsource.Event, error)
 }

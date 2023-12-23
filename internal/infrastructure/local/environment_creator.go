@@ -17,6 +17,7 @@ type EnvironmentCreator struct {
 
 func NewEnvironmentCreator(environment config.Environment) *EnvironmentCreator {
 	cfg := setupExecutionEnvironment(environment)
+
 	return &EnvironmentCreator{
 		Cfg:            cfg,
 		requestCreator: NewRequestCreator(cfg),
@@ -35,12 +36,28 @@ func (ec *EnvironmentCreator) ExecuteLambdaHandler(handleRequest func(ctx contex
 	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreateGETRequest(
 		map[string]string{
 			"courseId": inmemory.CourseID,
-		})))
+		}, "user123")))
+	return request
+}
+
+func (ec *EnvironmentCreator) ExecuteLambdaHandlerGETWithPathParametersForUser(participantID string, handleRequest func(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error), pathParameters map[string]string) events.APIGatewayProxyResponse {
+	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreateGETRequest(pathParameters, participantID)))
 	return request
 }
 
 func (ec *EnvironmentCreator) ExecuteLambdaHandlerGETWithPathParameters(handleRequest func(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error), pathParameters map[string]string) events.APIGatewayProxyResponse {
-	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreateGETRequest(pathParameters)))
+	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreateGETRequest(pathParameters, "user123")))
+	return request
+}
+
+func (ec *EnvironmentCreator) ExecuteLambdaHandlerWithPostBodyForUser(
+	participantID string,
+	handleRequest func(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error),
+	body string) events.APIGatewayProxyResponse {
+
+	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreatePOSTRequest(body, map[string]string{
+		"userId": participantID,
+	}, participantID)))
 	return request
 }
 
@@ -50,6 +67,6 @@ func (ec *EnvironmentCreator) ExecuteLambdaHandlerWithPostBody(
 
 	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreatePOSTRequest(body, map[string]string{
 		"userId": "user123",
-	})))
+	}, "user123")))
 	return request
 }

@@ -20,12 +20,12 @@ func NewRequestCreator(cfg config.Config) *RequestCreator {
 	}
 }
 
-func (r *RequestCreator) CreateGETRequest(pathParameters map[string]string) events.APIGatewayProxyRequest {
+func (r *RequestCreator) CreateGETRequest(pathParameters map[string]string, participantID string) events.APIGatewayProxyRequest {
 	return events.APIGatewayProxyRequest{
 		Resource:                        "",
 		Path:                            "",
 		HTTPMethod:                      "GET",
-		Headers:                         map[string]string{"Cookie": r.createSessionTokenCookie(r.cfg)},
+		Headers:                         map[string]string{"Cookie": r.createSessionTokenCookie(r.cfg, participantID)},
 		MultiValueHeaders:               nil,
 		QueryStringParameters:           nil,
 		MultiValueQueryStringParameters: nil,
@@ -37,12 +37,12 @@ func (r *RequestCreator) CreateGETRequest(pathParameters map[string]string) even
 	}
 }
 
-func (r *RequestCreator) CreatePOSTRequest(body string, pathParameters map[string]string) events.APIGatewayProxyRequest {
+func (r *RequestCreator) CreatePOSTRequest(body string, pathParameters map[string]string, participantID string) events.APIGatewayProxyRequest {
 	return events.APIGatewayProxyRequest{
 		Resource:                        "",
 		Path:                            "",
 		HTTPMethod:                      "POST",
-		Headers:                         map[string]string{"Cookie": r.createSessionTokenCookie(r.cfg)},
+		Headers:                         map[string]string{"Cookie": r.createSessionTokenCookie(r.cfg, participantID)},
 		MultiValueHeaders:               nil,
 		QueryStringParameters:           nil,
 		MultiValueQueryStringParameters: nil,
@@ -54,8 +54,8 @@ func (r *RequestCreator) CreatePOSTRequest(body string, pathParameters map[strin
 	}
 }
 
-func (r *RequestCreator) createSessionTokenCookie(cfg config.Config) string {
-	validJwtToken := err.PanicIfError1(jwt.NewValidator(cfg.JwtSecret).CreateToken())
+func (r *RequestCreator) createSessionTokenCookie(cfg config.Config, participantID string) string {
+	validJwtToken := err.PanicIfError1(jwt.NewValidator(cfg.JwtSecret).CreateToken(participantID))
 
 	cookie := http.Cookie{
 		Name:     "next-auth.session-token",

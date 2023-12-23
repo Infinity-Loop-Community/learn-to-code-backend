@@ -1,9 +1,12 @@
 package application
 
 import (
+	"fmt"
+	"learn-to-code/internal/domain/command"
 	"learn-to-code/internal/domain/quiz/participant"
-	"learn-to-code/internal/domain/quiz/participant/command"
 	"learn-to-code/internal/domain/quiz/participant/projection"
+	"learn-to-code/internal/domain/quiz/participant/projection/quizattemptdetail"
+	"strconv"
 )
 
 type ParticipantApplicationService struct {
@@ -27,14 +30,14 @@ func (as *ParticipantApplicationService) GetStartedQuizCount(participantID strin
 	return p.GetStartedQuizCount(), nil
 }
 
-func (as *ParticipantApplicationService) ProcessCommand(command command.Command, participantID string) error {
+func (as *ParticipantApplicationService) ProcessCommand(commandDomainObject command.Command, participantID string) error {
 
 	p, err := as.participantRepository.FindOrCreateByID(participantID)
 	if err != nil {
 		return err
 	}
 
-	p, err = as.startQuizToEventMapper.ApplyCommand(command, p)
+	p, err = as.startQuizToEventMapper.ApplyCommand(commandDomainObject, p)
 	if err != nil {
 		return err
 	}
@@ -50,18 +53,56 @@ func (as *ParticipantApplicationService) GetQuizzes(participantID string) (proje
 		return projection.QuizOverview{}, err
 	}
 
-	quizOverview := projection.NewQuizOverview(p)
-
-	return quizOverview, nil
-}
-
-func (as *ParticipantApplicationService) GetQuizAttemptDetail(participantID string, quizId string, attemptId int) (projection.QuizAttemptDetail, error) {
-	p, err := as.participantRepository.FindOrCreateByID(participantID)
-	if err != nil {
-		return projection.QuizAttemptDetail{}, err
-	}
-
-	quizOverview, err := projection.NewQuizAttemptDetail(p, quizId, attemptId)
+	quizOverview, err := projection.NewQuizOverview(p)
 
 	return quizOverview, err
+}
+
+func (as *ParticipantApplicationService) GetQuizAttemptDetail(participantID string, quizID string, attemptID string) (quizattemptdetail.QuizAttemptDetail, error) {
+	p, err := as.participantRepository.FindOrCreateByID(participantID)
+	if err != nil {
+		return quizattemptdetail.QuizAttemptDetail{}, err
+	}
+
+	var attemptIDNumber int
+	if attemptID == "latest" {
+		attemptIDNumber = p.GetQuizAttemptCount(quizID)
+	} else {
+		attemptIDInt64, err := strconv.ParseInt(attemptID, 10, 0)
+		if err != nil {
+			return quizattemptdetail.QuizAttemptDetail{}, err
+		}
+		attemptIDNumber = int(attemptIDInt64)
+	}
+
+	quizOverview, err := quizattemptdetail.NewQuizAttemptDetail(p, quizID, attemptIDNumber)
+
+	return quizOverview, err
+}
+
+func (as *ParticipantApplicationService) GetLatestQuizAttemptDetail(participantID string, quizID string) (quizattemptdetail.QuizAttemptDetail, error) {
+	p, err := as.participantRepository.FindOrCreateByID(participantID)
+	if err != nil {
+		return quizattemptdetail.QuizAttemptDetail{}, err
+	}
+
+	quizOverview, err := projection.NewQuizOverview(p)
+	if err != nil {
+		return quizattemptdetail.QuizAttemptDetail{}, err
+	}
+
+	quizAttemptCount := len(quizOverview.FinishedQuizzes[quizID])
+
+	if quizAttemptCount == 0 {
+		return quizattemptdetail.QuizAttemptDetail{}, fmt.Errorf("no quiz with id %s finished yet", quizID)
+	}
+
+	latestAttempt := quizOverview.FinishedQuizzes[quizID][quizAttemptCount-1]
+
+	attemptDetail, err := quizattemptdetail.NewQuizAttemptDetail(p, quizID, latestAttempt.AttemptID)
+	if err != nil {
+		return quizattemptdetail.QuizAttemptDetail{}, err
+	}
+
+	return attemptDetail, nil
 }

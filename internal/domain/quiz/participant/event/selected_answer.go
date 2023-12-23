@@ -9,6 +9,7 @@ type SelectedAnswer struct {
 	QuizID     string
 	QuestionID string
 	AnswerID   string
+	IsCorrect  bool
 	eventsource.EventBase
 }
 

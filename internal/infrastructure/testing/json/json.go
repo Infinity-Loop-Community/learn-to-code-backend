@@ -12,7 +12,7 @@ func GetJSONPathValue(handlerResponse events.APIGatewayProxyResponse, path strin
 	raw := []byte(handlerResponse.Body)
 
 	var data interface{}
-	json.Unmarshal(raw, &data)
+	err.PanicIfError(json.Unmarshal(raw, &data))
 
 	courseID := err.PanicIfError1(jsonpath.Read(data, path))
 	return courseID

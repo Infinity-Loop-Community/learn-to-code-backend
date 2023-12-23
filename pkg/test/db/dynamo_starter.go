@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"learn-to-code/internal/infrastructure/dynamodb"
 	errUtils "learn-to-code/internal/infrastructure/go/util/err"
-
-	"github.com/aws/aws-sdk-go-v2/credentials"
+	"sync"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
+	"github.com/aws/aws-sdk-go-v2/credentials"
 	dynamodbsdk "github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 	"github.com/docker/go-connections/nat"
@@ -24,24 +24,16 @@ const (
 	containerImage                       = "amazon/dynamodb-local:2.0.0"
 )
 
+var globalTestcontainer testcontainers.Container
+
 type DynamoStarter struct {
 	ctx context.Context
-	tc  testcontainers.Container
 }
 
 func NewDynamoStarter() *DynamoStarter {
 	return &DynamoStarter{
 		ctx: context.Background(),
-		tc:  nil,
 	}
-}
-
-func (s *DynamoStarter) Start() *dynamodbsdk.Client {
-	s.startContainer()
-	dynamoDbClient := s.createDynamoDbClient()
-
-	s.createTables(dynamoDbClient)
-	return dynamoDbClient
 }
 
 func (s *DynamoStarter) startContainer() {
@@ -50,15 +42,24 @@ func (s *DynamoStarter) startContainer() {
 		Cmd:          []string{"-jar", "DynamoDBLocal.jar", "-inMemory"},
 		ExposedPorts: []string{fmt.Sprintf("%s/tcp", dynamoDbPort)},
 		WaitingFor:   wait.NewHostPortStrategy(dynamoDbPort),
+		Name:         "testcontainer-l2c",
 	}
 
-	s.tc = errUtils.PanicIfError1(testcontainers.GenericContainer(s.ctx, testcontainers.GenericContainerRequest{
+	globalTestcontainer = errUtils.PanicIfError1(testcontainers.GenericContainer(s.ctx, testcontainers.GenericContainerRequest{
 		ContainerRequest: req,
 		Started:          true,
+		Reuse:            true,
 	}))
 }
 
-func (s *DynamoStarter) createDynamoDbClient() *dynamodbsdk.Client {
+var mutex sync.Mutex
+
+func (s *DynamoStarter) CreateDynamoDbClient(startContainerIfNecessary bool) *dynamodbsdk.Client {
+
+	if startContainerIfNecessary {
+		s.startContainerIfNecessary()
+	}
+
 	customResolver := aws.EndpointResolverWithOptionsFunc(func(service, region string, options ...interface{}) (aws.Endpoint, error) {
 		customEndpoint := fmt.Sprintf("http://%s:%d", s.getHost(), s.getPort().Int())
 		endpoint := aws.Endpoint{
@@ -80,12 +81,23 @@ func (s *DynamoStarter) createDynamoDbClient() *dynamodbsdk.Client {
 	return dynamodbsdk.NewFromConfig(cfg)
 }
 
+func (s *DynamoStarter) startContainerIfNecessary() {
+	mutex.Lock()
+	if globalTestcontainer == nil {
+		s.startContainer()
+		dynamoDbClient := s.CreateDynamoDbClient(false)
+		s.createTables(dynamoDbClient)
+	}
+	mutex.Unlock()
+}
+
 func (s *DynamoStarter) getPort() nat.Port {
-	return errUtils.PanicIfError1(s.tc.MappedPort(s.ctx, dynamoDbPort))
+	mappedPort := errUtils.PanicIfError1(globalTestcontainer.MappedPort(s.ctx, dynamoDbPort))
+	return mappedPort
 }
 
 func (s *DynamoStarter) getHost() string {
-	return errUtils.PanicIfError1(s.tc.Host(s.ctx))
+	return errUtils.PanicIfError1(globalTestcontainer.Host(s.ctx))
 }
 
 func (s *DynamoStarter) createTables(dynamoDbClient *dynamodbsdk.Client) {
@@ -93,6 +105,12 @@ func (s *DynamoStarter) createTables(dynamoDbClient *dynamodbsdk.Client) {
 	definitions := dynamodb.GetAllTableDefinitions()
 
 	for _, definition := range definitions {
+		exists := errUtils.PanicIfError1(s.tableExists(definition.TableName, dynamoDbClient))
+
+		if exists {
+			errUtils.PanicIfError(s.deleteTable(definition.TableName, dynamoDbClient))
+		}
+
 		createTableInput := &dynamodbsdk.CreateTableInput{
 			TableName:            aws.String(definition.TableName),
 			KeySchema:            definition.KeySchemas,
@@ -102,12 +120,31 @@ func (s *DynamoStarter) createTables(dynamoDbClient *dynamodbsdk.Client) {
 				WriteCapacityUnits: aws.Int64(dynamoDbDefaultProvisionedThroughput),
 			},
 		}
-
 		_ = errUtils.PanicIfError1(dynamoDbClient.CreateTable(context.TODO(), createTableInput))
 	}
 
 }
 
+func (s *DynamoStarter) tableExists(tableName string, dynamoDbClient *dynamodbsdk.Client) (bool, error) {
+	_, err := dynamoDbClient.DescribeTable(context.Background(), &dynamodbsdk.DescribeTableInput{
+		TableName: aws.String(tableName),
+	})
+
+	if err != nil {
+		return false, nil
+	}
+
+	return true, nil
+}
+
 func (s *DynamoStarter) Terminate() {
-	errUtils.PanicIfError(s.tc.Terminate(s.ctx))
+	errUtils.PanicIfError(globalTestcontainer.Terminate(s.ctx))
+}
+
+func (s *DynamoStarter) deleteTable(tableName string, client *dynamodbsdk.Client) error {
+	_, err := client.DeleteTable(context.Background(), &dynamodbsdk.DeleteTableInput{
+		TableName: aws.String(tableName),
+	})
+
+	return err
 }

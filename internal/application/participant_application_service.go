@@ -1,8 +1,8 @@
 package application
 
 import (
-	"learn-to-code/internal/domain/command"
 	"learn-to-code/internal/domain/quiz/participant"
+	"learn-to-code/internal/domain/quiz/participant/command"
 	"learn-to-code/internal/domain/quiz/participant/projection"
 )
 

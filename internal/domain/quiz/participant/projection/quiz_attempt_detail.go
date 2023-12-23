@@ -18,7 +18,7 @@ func NewQuizAttemptDetail(p participant.Participant, quizID string, attemptId in
 
 	quizCounter := 0
 
-	for _, generalEvent := range p.Events {
+	for _, generalEvent := range p.GetEvents() {
 
 		switch e := generalEvent.(type) {
 

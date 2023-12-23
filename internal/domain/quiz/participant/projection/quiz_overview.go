@@ -20,7 +20,7 @@ func NewQuizOverview(p participant.Participant) QuizOverview {
 	activeQuizzesMap := map[string]string{}
 	finishedQuizzesMap := map[string]string{}
 
-	for _, generalEvent := range p.Events {
+	for _, generalEvent := range p.GetEvents() {
 
 		switch e := generalEvent.(type) {
 

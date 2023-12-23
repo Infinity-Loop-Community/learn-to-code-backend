@@ -2,7 +2,6 @@ package command
 
 import (
 	"fmt"
-	"learn-to-code/internal/domain/command/data"
 	"learn-to-code/internal/domain/quiz/course"
 	"learn-to-code/internal/domain/quiz/participant"
 	"learn-to-code/internal/infrastructure/inmemory"
@@ -20,25 +19,25 @@ func NewParticipantCommandApplier(courseRepository course.Repository) *Participa
 	}
 }
 
-func (m *ParticipantCommandApplier) ApplyCommand(command Command, p participant.Participant) (participant.Participant, error) {
+func (m *ParticipantCommandApplier) ApplyCommand(c Command, p participant.Participant) (participant.Participant, error) {
 	var err error
 
 	var courses map[string]course.Course = map[string]course.Course{}
 
-	switch command.Type {
-	case data.StartQuizCommandType:
-		startQuiz := data.StartQuiz{}
-		err = m.decode(command.Data, &startQuiz)
+	switch c.Type {
+	case StartQuizCommandType:
+		startQuiz := StartQuiz{}
+		err = m.decode(c.Data, &startQuiz)
 		if err != nil {
 			return participant.Participant{}, err
 		}
 
 		err = p.StartQuiz(startQuiz.QuizID, startQuiz.RequiredQuestionsAnswered)
 
-	case data.SelectAnswerCommandType:
-		selectAnswerData := data.SelectAnswer{}
+	case SelectAnswerCommandType:
+		selectAnswerData := SelectAnswer{}
 
-		err := m.decode(command.Data, &selectAnswerData)
+		err := m.decode(c.Data, &selectAnswerData)
 		if err != nil {
 			return participant.Participant{}, err
 		}
@@ -59,9 +58,9 @@ func (m *ParticipantCommandApplier) ApplyCommand(command Command, p participant.
 			return participant.Participant{}, err
 		}
 
-	case data.FinishQuizCommandType:
-		finishQuizData := data.FinishQuiz{}
-		err = m.decode(command.Data, &finishQuizData)
+	case FinishQuizCommandType:
+		finishQuizData := FinishQuiz{}
+		err = m.decode(c.Data, &finishQuizData)
 		if err != nil {
 			return participant.Participant{}, err
 		}
@@ -69,13 +68,13 @@ func (m *ParticipantCommandApplier) ApplyCommand(command Command, p participant.
 		err = p.FinishQuiz(finishQuizData.QuizID)
 
 	default:
-		return p, fmt.Errorf("unknown command type '%s'", command.Type)
+		return p, fmt.Errorf("unknown c type '%s'", c.Type)
 	}
 
 	return p, err
 }
 
-func (m *ParticipantCommandApplier) isAnswerCorrect(courses map[string]course.Course, selectAnswerData data.SelectAnswer) bool {
+func (m *ParticipantCommandApplier) isAnswerCorrect(courses map[string]course.Course, selectAnswerData SelectAnswer) bool {
 	var isAnswerCorrect bool
 	for _, step := range courses[selectAnswerData.QuizID].Steps {
 		for _, quiz := range step.Quizzes {

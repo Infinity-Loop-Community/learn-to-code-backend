@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"learn-to-code/internal/domain/command/data"
+	"learn-to-code/internal/domain/command"
 	"learn-to-code/internal/infrastructure/config"
 	"learn-to-code/internal/infrastructure/go/util/uuid"
 	"learn-to-code/internal/infrastructure/inmemory"
@@ -24,7 +24,7 @@ var startQuizPayload = fmt.Sprintf(`
 	},
    "type": "%s"
 }
-`, inmemory.QuizID, inmemory.FirstQuestionID, data.StartQuizCommandType)
+`, inmemory.QuizID, inmemory.FirstQuestionID, command.StartQuizCommandType)
 
 var selectAnswerPayload = fmt.Sprintf(`
 {
@@ -36,7 +36,7 @@ var selectAnswerPayload = fmt.Sprintf(`
 	},
    "type": "%s"
 }
-`, inmemory.QuizID, inmemory.FirstQuestionID, inmemory.FirstCorrectAnswerID, data.SelectAnswerCommandType)
+`, inmemory.QuizID, inmemory.FirstQuestionID, inmemory.FirstCorrectAnswerID, command.SelectAnswerCommandType)
 
 var finishQuizPayload = fmt.Sprintf(`
 {
@@ -46,7 +46,7 @@ var finishQuizPayload = fmt.Sprintf(`
 	},
    "type": "%s"
 }
-`, inmemory.QuizID, data.FinishQuizCommandType)
+`, inmemory.QuizID, command.FinishQuizCommandType)
 
 func TestGetAttemptDetail_Returns200(t *testing.T) {
 

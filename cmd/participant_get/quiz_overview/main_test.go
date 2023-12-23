@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"learn-to-code/internal/domain/command/data"
+	"learn-to-code/internal/domain/command"
 	"learn-to-code/internal/infrastructure/config"
 	"learn-to-code/internal/infrastructure/local"
 	"learn-to-code/internal/infrastructure/testing/json"
@@ -20,7 +20,7 @@ var eventBody = fmt.Sprintf(`
 	},
    "type": "%s"
 }
-`, data.StartQuizCommandType)
+`, command.StartQuizCommandType)
 
 func TestGetQuizOverview_Returns200(t *testing.T) {
 

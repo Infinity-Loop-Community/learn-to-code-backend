@@ -1,4 +1,4 @@
-package data
+package command
 
 func NewSelectAnswerData(quizID string, questionID string, answerID string) SelectAnswer {
 	return SelectAnswer{

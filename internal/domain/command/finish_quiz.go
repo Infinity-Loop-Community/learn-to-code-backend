@@ -1,4 +1,4 @@
-package data
+package command
 
 func NewFinishQuizData(quizID string) FinishQuiz {
 	return FinishQuiz{

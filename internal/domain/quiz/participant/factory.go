@@ -25,7 +25,7 @@ func NewParticipant(id string) (Participant, error) {
 func NewFromEvents(events []eventsource.Event, isPersisted bool) (Participant, error) {
 
 	p := Participant{
-		quizzes: map[string][]*activeQuiz{},
+		quizAttempts: map[string][]*quizAttempt{},
 	}
 
 	for _, e := range events {

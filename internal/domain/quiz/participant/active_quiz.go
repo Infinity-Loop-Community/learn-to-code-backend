@@ -1,12 +1,12 @@
 package participant
 
-type activeQuiz struct {
+type quizAttempt struct {
 	ID                        string
 	providedAnswers           []ProvidedAnswer
 	completed                 bool
 	requiredQuestionsAnswered []string
 }
 
-func (q activeQuiz) IsOngoing() bool {
+func (q quizAttempt) IsOngoing() bool {
 	return !q.completed
 }

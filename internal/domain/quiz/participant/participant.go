@@ -9,8 +9,8 @@ import (
 )
 
 type Participant struct {
-	id      string
-	quizzes map[string][]*activeQuiz
+	id           string
+	quizAttempts map[string][]*quizAttempt
 
 	eventsource.AggregateRoot
 }
@@ -30,7 +30,7 @@ func (p *Participant) apply(eventToApply eventsource.Event, isPersisted bool) er
 			return err
 		}
 
-		p.quizzes[e.QuizID] = append(p.quizzes[e.QuizID], &activeQuiz{
+		p.quizAttempts[e.QuizID] = append(p.quizAttempts[e.QuizID], &quizAttempt{
 			ID:                        e.QuizID,
 			providedAnswers:           nil,
 			requiredQuestionsAnswered: e.RequiredQuestionsAnswered,
@@ -38,7 +38,7 @@ func (p *Participant) apply(eventToApply eventsource.Event, isPersisted bool) er
 		})
 
 	case event.SelectedAnswer:
-		quizAttempts, ok := p.quizzes[e.QuizID]
+		quizAttempts, ok := p.quizAttempts[e.QuizID]
 		if !ok {
 			return fmt.Errorf("quiz %v not found", e.QuizID)
 		}
@@ -56,7 +56,7 @@ func (p *Participant) apply(eventToApply eventsource.Event, isPersisted bool) er
 		})
 
 	case event.FinishedQuiz:
-		quizAttempts, ok := p.quizzes[e.QuizID]
+		quizAttempts, ok := p.quizAttempts[e.QuizID]
 		if !ok {
 			return fmt.Errorf("quiz %v not found", e.QuizID)
 		}
@@ -100,7 +100,7 @@ func (p *Participant) apply(eventToApply eventsource.Event, isPersisted bool) er
 }
 
 func (p *Participant) ensureQuizNotStarted(id string) error {
-	for _, quizAttempts := range p.quizzes {
+	for _, quizAttempts := range p.quizAttempts {
 
 		quizAttemptCount := len(quizAttempts)
 		quiz := quizAttempts[quizAttemptCount-1]
@@ -163,13 +163,13 @@ func (p *Participant) GetID() string {
 }
 
 func (p *Participant) GetStartedQuizCount() int {
-	return len(p.quizzes)
+	return len(p.quizAttempts)
 }
 
 func (p *Participant) GetFinishedQuizCount() int {
 	finishedQuizzes := 0
 
-	for _, quizAttempts := range p.quizzes {
+	for _, quizAttempts := range p.quizAttempts {
 
 		quizAttemptCount := len(quizAttempts)
 		quiz := quizAttempts[quizAttemptCount-1]
@@ -183,7 +183,7 @@ func (p *Participant) GetFinishedQuizCount() int {
 }
 
 func (p *Participant) GetActiveQuizAnswers(quizID string) ([]ProvidedAnswer, error) {
-	quizAttempts, ok := p.quizzes[quizID]
+	quizAttempts, ok := p.quizAttempts[quizID]
 	if !ok {
 		return nil, fmt.Errorf("quiz %v not found", quizID)
 	}
@@ -194,5 +194,5 @@ func (p *Participant) GetActiveQuizAnswers(quizID string) ([]ProvidedAnswer, err
 }
 
 func (p *Participant) GetQuizAttemptCount(quizID string) int {
-	return len(p.quizzes[quizID])
+	return len(p.quizAttempts[quizID])
 }

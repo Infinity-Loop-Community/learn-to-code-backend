@@ -1,7 +1,6 @@
 package application
 
 import (
-	"fmt"
 	"learn-to-code/internal/domain/command"
 	"learn-to-code/internal/domain/quiz/participant"
 	"learn-to-code/internal/domain/quiz/participant/projection"
@@ -91,13 +90,10 @@ func (as *ParticipantApplicationService) GetLatestQuizAttemptDetail(participantI
 		return quizattemptdetail.QuizAttemptDetail{}, err
 	}
 
-	quizAttemptCount := len(quizOverview.FinishedQuizzes[quizID])
-
-	if quizAttemptCount == 0 {
-		return quizattemptdetail.QuizAttemptDetail{}, fmt.Errorf("no quiz with id %s finished yet", quizID)
+	latestAttempt, err := quizOverview.GetFinishedQuizLatestAttempt(quizID)
+	if err != nil {
+		return quizattemptdetail.QuizAttemptDetail{}, err
 	}
-
-	latestAttempt := quizOverview.FinishedQuizzes[quizID][quizAttemptCount-1]
 
 	attemptDetail, err := quizattemptdetail.NewQuizAttemptDetail(p, quizID, latestAttempt.AttemptID)
 	if err != nil {

@@ -6,15 +6,24 @@ import (
 	"learn-to-code/internal/domain/quiz/participant/event"
 )
 
-type QuizAttemptOverview struct {
-	QuizID              string
-	AttemptID           int
-	QuestionsWithAnswer map[string]string
-}
-
 type QuizOverview struct {
 	ActiveQuizzes   map[string][]QuizAttemptOverview
 	FinishedQuizzes map[string][]QuizAttemptOverview
+}
+
+func (qo QuizOverview) GetFinishedQuizLatestAttempt(quizID string) (QuizAttemptOverview, error) {
+	finishedQuiz, ok := qo.FinishedQuizzes[quizID]
+	if !ok {
+		return QuizAttemptOverview{}, fmt.Errorf("quiz %s does not exist", quizID)
+	}
+
+	if len(qo.FinishedQuizzes[quizID]) == 0 {
+		return QuizAttemptOverview{}, fmt.Errorf("no quiz with id %s finished yet", quizID)
+	}
+
+	latestQuizAttempt := finishedQuiz[len(finishedQuiz)-1]
+
+	return latestQuizAttempt, nil
 }
 
 func NewQuizOverview(p participant.Participant) (QuizOverview, error) {

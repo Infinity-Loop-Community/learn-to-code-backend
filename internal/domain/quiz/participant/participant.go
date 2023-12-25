@@ -5,6 +5,7 @@ import (
 	"learn-to-code/internal/domain/eventsource"
 	"learn-to-code/internal/domain/quiz/participant/event"
 	"reflect"
+	"strconv"
 	"time"
 )
 
@@ -193,6 +194,29 @@ func (p *Participant) GetActiveQuizAnswers(quizID string) ([]ProvidedAnswer, err
 	return quiz.providedAnswers, nil
 }
 
+func (p *Participant) GetValidAttemptID(quizID string, attemptIDOrLatest string) (int, error) {
+	var attemptIDNumber int
+	quizAttemptCount := p.getQuizAttemptCountByQuizID(quizID)
+	if attemptIDOrLatest == "latest" {
+		attemptIDNumber = quizAttemptCount
+	} else {
+		attemptIDInt64, err := strconv.ParseInt(attemptIDOrLatest, 10, 0)
+		if err != nil {
+			return 0, err
+		}
+		attemptIDNumber = int(attemptIDInt64)
+		if attemptIDNumber > quizAttemptCount {
+			return 0, fmt.Errorf("attemptID %s request, but contains only %d attempts for quiz %s", attemptIDOrLatest, quizAttemptCount, quizID)
+		}
+	}
+
+	return attemptIDNumber, nil
+}
+
 func (p *Participant) GetQuizAttemptCount(quizID string) int {
+	return p.getQuizAttemptCountByQuizID(quizID)
+}
+
+func (p *Participant) getQuizAttemptCountByQuizID(quizID string) int {
 	return len(p.quizAttempts[quizID])
 }

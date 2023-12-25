@@ -5,7 +5,6 @@ import (
 	"learn-to-code/internal/domain/quiz/participant"
 	"learn-to-code/internal/domain/quiz/participant/projection"
 	"learn-to-code/internal/domain/quiz/participant/projection/quizattemptdetail"
-	"strconv"
 )
 
 type ParticipantApplicationService struct {
@@ -57,21 +56,15 @@ func (as *ParticipantApplicationService) GetQuizzes(participantID string) (proje
 	return quizOverview, err
 }
 
-func (as *ParticipantApplicationService) GetQuizAttemptDetail(participantID string, quizID string, attemptID string) (quizattemptdetail.QuizAttemptDetail, error) {
+func (as *ParticipantApplicationService) GetQuizAttemptDetail(participantID string, quizID string, attemptIDOrLatest string) (quizattemptdetail.QuizAttemptDetail, error) {
 	p, err := as.participantRepository.FindOrCreateByID(participantID)
 	if err != nil {
 		return quizattemptdetail.QuizAttemptDetail{}, err
 	}
 
-	var attemptIDNumber int
-	if attemptID == "latest" {
-		attemptIDNumber = p.GetQuizAttemptCount(quizID)
-	} else {
-		attemptIDInt64, err := strconv.ParseInt(attemptID, 10, 0)
-		if err != nil {
-			return quizattemptdetail.QuizAttemptDetail{}, err
-		}
-		attemptIDNumber = int(attemptIDInt64)
+	attemptIDNumber, err := p.GetValidAttemptID(quizID, attemptIDOrLatest)
+	if err != nil {
+		return quizattemptdetail.QuizAttemptDetail{}, err
 	}
 
 	quizOverview, err := quizattemptdetail.NewQuizAttemptDetail(p, quizID, attemptIDNumber)

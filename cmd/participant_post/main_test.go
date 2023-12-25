@@ -9,7 +9,7 @@ import (
 	"testing"
 )
 
-var eventBody = fmt.Sprintf(`
+var startQuizCommand = fmt.Sprintf(`
 {
    "createdAt":"2023-11-17T04:55:24.059Z",
    "data": {
@@ -32,7 +32,7 @@ var eventBody2 = fmt.Sprintf(`
 }
 `, command.SelectAnswerCommandType)
 
-var eventBody3 = fmt.Sprintf(`
+var finishQuizComand = fmt.Sprintf(`
 {
    "createdAt":"2023-11-17T04:55:24.059Z",
    "data": {
@@ -70,9 +70,9 @@ func TestPutParticipantLambda_Returns200(t *testing.T) {
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
 
 	requestBodys := []string{
-		eventBody,
+		startQuizCommand,
 		eventBody2,
-		eventBody3,
+		finishQuizComand,
 	}
 
 	handleRequestFn := participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest
@@ -96,12 +96,12 @@ func TestPutParticipantLambda_InvalidQuizCompletion_Returns500(t *testing.T) {
 
 	environmentCreator.ExecuteLambdaHandlerWithPostBody(
 		handleRequestFn,
-		eventBody,
+		startQuizCommand,
 	)
 
 	handlerResponse3 := environmentCreator.ExecuteLambdaHandlerWithPostBody(
 		handleRequestFn,
-		eventBody3,
+		finishQuizComand,
 	)
 	if handlerResponse3.StatusCode != 500 {
 		t.Fatalf("lambda return code is not 500 although invalid quiz completion case: %v, %v", handlerResponse3.StatusCode, handlerResponse3.Body)
@@ -117,7 +117,7 @@ func TestPutParticipantLambda_InvalidQuestionSelection_Returns400(t *testing.T) 
 
 	environmentCreator.ExecuteLambdaHandlerWithPostBody(
 		handleRequestFn,
-		eventBody,
+		startQuizCommand,
 	)
 
 	handlerResponse2 := environmentCreator.ExecuteLambdaHandlerWithPostBody(

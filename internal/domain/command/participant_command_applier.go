@@ -5,12 +5,11 @@ import (
 	"learn-to-code/internal/domain/quiz/course"
 	"learn-to-code/internal/domain/quiz/participant"
 	"learn-to-code/internal/infrastructure/inmemory"
-
-	"github.com/mitchellh/mapstructure"
 )
 
 type ParticipantCommandApplier struct {
 	courseRepository course.Repository
+	factory          Factory
 }
 
 func NewParticipantCommandApplier(courseRepository course.Repository) *ParticipantCommandApplier {
@@ -20,24 +19,22 @@ func NewParticipantCommandApplier(courseRepository course.Repository) *Participa
 }
 
 func (m *ParticipantCommandApplier) ApplyCommand(c Command, p participant.Participant) (participant.Participant, error) {
-	var err error
-
 	var courses map[string]course.Course = map[string]course.Course{}
 
 	switch c.Type {
 	case StartQuizCommandType:
-		startQuiz := StartQuiz{}
-		err = m.decode(c.Data, &startQuiz)
+		startQuiz, err := DecodeCommand(c.Data, &StartQuiz{})
 		if err != nil {
 			return participant.Participant{}, err
 		}
 
 		err = p.StartQuiz(startQuiz.QuizID, startQuiz.RequiredQuestionsAnswered)
+		if err != nil {
+			return participant.Participant{}, err
+		}
 
 	case SelectAnswerCommandType:
-		selectAnswerData := SelectAnswer{}
-
-		err := m.decode(c.Data, &selectAnswerData)
+		selectAnswerData, err := DecodeCommand(c.Data, &SelectAnswer{})
 		if err != nil {
 			return participant.Participant{}, err
 		}
@@ -59,22 +56,24 @@ func (m *ParticipantCommandApplier) ApplyCommand(c Command, p participant.Partic
 		}
 
 	case FinishQuizCommandType:
-		finishQuizData := FinishQuiz{}
-		err = m.decode(c.Data, &finishQuizData)
+		finishQuizData, err := DecodeCommand(c.Data, &FinishQuiz{})
 		if err != nil {
 			return participant.Participant{}, err
 		}
 
 		err = p.FinishQuiz(finishQuizData.QuizID)
+		if err != nil {
+			return participant.Participant{}, err
+		}
 
 	default:
 		return p, fmt.Errorf("unknown c type '%s'", c.Type)
 	}
 
-	return p, err
+	return p, nil
 }
 
-func (m *ParticipantCommandApplier) isAnswerCorrect(courses map[string]course.Course, selectAnswerData SelectAnswer) bool {
+func (m *ParticipantCommandApplier) isAnswerCorrect(courses map[string]course.Course, selectAnswerData *SelectAnswer) bool {
 	var isAnswerCorrect bool
 	for _, step := range courses[selectAnswerData.QuizID].Steps {
 		for _, quiz := range step.Quizzes {
@@ -92,20 +91,4 @@ func (m *ParticipantCommandApplier) isAnswerCorrect(courses map[string]course.Co
 		}
 	}
 	return isAnswerCorrect
-}
-
-func (m *ParticipantCommandApplier) decode(data any, result any) error {
-	config := &mapstructure.DecoderConfig{
-		ErrorUnset: true,
-		Result:     result,
-	}
-
-	decoder, err := mapstructure.NewDecoder(config)
-	if err != nil {
-		return err
-	}
-
-	err = decoder.Decode(data)
-
-	return err
 }

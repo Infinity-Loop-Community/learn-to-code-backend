@@ -6,50 +6,72 @@ import (
 	"fmt"
 	"learn-to-code/internal/domain/eventsource"
 	"learn-to-code/internal/domain/quiz/participant"
-	"learn-to-code/internal/domain/quiz/participant/event"
 	"learn-to-code/internal/infrastructure/config"
 	"reflect"
 	"time"
 
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
-
-	"github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue"
 )
 
 type MarshalFunc func(v interface{}) ([]byte, error)
-type UnmarshalFunc func(data []byte, v interface{}) error
-
-type EventPo struct {
-	AggregateID string    `dynamodbav:"aggregate_id"`
-	Type        string    `dynamodbav:"type"`
-	Version     uint      `dynamodbav:"version"`
-	Payload     string    `dynamodbav:"payload"`
-	CreatedAt   time.Time `dynamodbav:"created_at"`
-}
 
 type ParticipantRepository struct {
-	dbClient     *dynamodb.Client
-	ctx          context.Context
-	serializer   MarshalFunc
-	deserializer UnmarshalFunc
-	tableName    string
+	dbClient            *dynamodb.Client
+	eventPODeserializer *EventPODeserializer
+	ctx                 context.Context
+	serializer          MarshalFunc
+	tableName           string
 }
 
-func NewDynamoDbParticipantRepository(ctx context.Context, environment config.Environment, client *dynamodb.Client) *ParticipantRepository {
+func NewDynamoDbParticipantRepository(ctx context.Context, environment config.Environment, client *dynamodb.Client, eventPODeserializer *EventPODeserializer) *ParticipantRepository {
 
 	tableName := fmt.Sprintf("%s_events", environment)
 
 	return &ParticipantRepository{
-		dbClient:     client,
-		ctx:          ctx,
-		serializer:   json.Marshal,
-		deserializer: json.Unmarshal,
-		tableName:    tableName,
+		dbClient:            client,
+		ctx:                 ctx,
+		serializer:          json.Marshal,
+		tableName:           tableName,
+		eventPODeserializer: eventPODeserializer,
 	}
 }
 
-func (r ParticipantRepository) StoreEvents(participantID string, events []eventsource.Event) error {
+func (r *ParticipantRepository) FindEventsByParticipantID(participantID string) ([]eventsource.Event, error) {
+	output, err := r.findEventsByParticipantID(participantID)
+	if err != nil {
+		return []eventsource.Event{}, err
+	}
+
+	events, err := r.queryOutputToEvents(output)
+	if err != nil {
+		return []eventsource.Event{}, err
+	}
+
+	return events, nil
+}
+
+func (r *ParticipantRepository) FindOrCreateByID(id string) (participant.Participant, error) {
+	output, err := r.findEventsByParticipantID(id)
+	if err != nil {
+		return participant.Participant{}, err
+	}
+
+	if len(output.Items) == 0 {
+		return participant.NewParticipant(id)
+	}
+
+	events, err := r.queryOutputToEvents(output)
+	if err != nil {
+		return participant.Participant{}, err
+	}
+
+	p, newFromEventsErr := participant.NewFromEvents(events, true)
+
+	return p, newFromEventsErr
+}
+
+func (r *ParticipantRepository) StoreEvents(participantID string, events []eventsource.Event) error {
 	for _, e := range events {
 		err := r.appendEvent(participantID, e)
 
@@ -61,12 +83,21 @@ func (r ParticipantRepository) StoreEvents(participantID string, events []events
 	return nil
 }
 
-func (r ParticipantRepository) appendEvent(participantID string, e eventsource.Event) error {
+func (r *ParticipantRepository) appendEvent(participantID string, e eventsource.Event) error {
 	serializedEvent, err := r.serializer(e)
 	if err != nil {
 		return err
 	}
 
+	err = r.putEventForParticipantID(participantID, e, serializedEvent, err)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (r *ParticipantRepository) putEventForParticipantID(participantID string, e eventsource.Event, serializedEvent []byte, err error) error {
 	input := &dynamodb.PutItemInput{
 		TableName: &r.tableName,
 		Item: map[string]types.AttributeValue{
@@ -78,48 +109,26 @@ func (r ParticipantRepository) appendEvent(participantID string, e eventsource.E
 		},
 	}
 	_, err = r.dbClient.PutItem(r.ctx, input)
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return err
 }
 
-func (r ParticipantRepository) FindEventsByID(pariticipantID string) ([]eventsource.Event, error) {
-	input := &dynamodb.QueryInput{
-		TableName: &r.tableName,
-		KeyConditions: map[string]types.Condition{
-			"aggregate_id": {
-				ComparisonOperator: types.ComparisonOperatorEq,
-				AttributeValueList: []types.AttributeValue{
-					&types.AttributeValueMemberS{Value: pariticipantID},
-				},
-			},
-		},
-	}
-
-	output, err := r.dbClient.Query(r.ctx, input)
-	if err != nil {
-		return []eventsource.Event{}, err
-	}
-
+func (r *ParticipantRepository) queryOutputToEvents(output *dynamodb.QueryOutput) ([]eventsource.Event, error) {
 	var events []eventsource.Event
 
 	for _, outputItem := range output.Items {
-		deserializedEvent, deserializeError := r.outputItemToEvent(outputItem)
+
+		deserializedEvent, deserializeError := r.eventPODeserializer.outputItemToEvent(outputItem)
 
 		if deserializeError != nil {
 			return nil, deserializeError
 		}
-
 		events = append(events, deserializedEvent)
+
 	}
-
 	return events, nil
-
 }
 
-func (r ParticipantRepository) FindOrCreateByID(id string) (participant.Participant, error) {
+func (r *ParticipantRepository) findEventsByParticipantID(id string) (*dynamodb.QueryOutput, error) {
 	input := &dynamodb.QueryInput{
 		TableName: &r.tableName,
 		KeyConditions: map[string]types.Condition{
@@ -132,74 +141,5 @@ func (r ParticipantRepository) FindOrCreateByID(id string) (participant.Particip
 		},
 	}
 
-	output, err := r.dbClient.Query(r.ctx, input)
-	if err != nil {
-		return participant.Participant{}, err
-	}
-
-	if len(output.Items) == 0 {
-		return participant.NewParticipant(id)
-	}
-
-	var events []eventsource.Event
-
-	for _, outputItem := range output.Items {
-
-		deserializedEvent, deserializeError := r.outputItemToEvent(outputItem)
-
-		if deserializeError != nil {
-			return participant.Participant{}, deserializeError
-		}
-		events = append(events, deserializedEvent)
-
-	}
-
-	p, newFromEventsErr := participant.NewFromEvents(events, true)
-
-	return p, newFromEventsErr
-}
-
-func (r ParticipantRepository) outputItemToEvent(outputItem map[string]types.AttributeValue) (eventsource.Event, error) {
-	eventPo := EventPo{}
-	err := attributevalue.UnmarshalMap(outputItem, &eventPo)
-	if err != nil {
-		return nil, err
-	}
-
-	var deserializeError error
-	var deserializedEvent eventsource.Event
-
-	switch eventPo.Type {
-
-	case event.ParticipantCreatedTypeName:
-		joinedQuizEvent := &event.ParticipantCreated{}
-
-		deserializeError = r.deserializer([]byte(eventPo.Payload), joinedQuizEvent)
-		deserializedEvent = *joinedQuizEvent
-
-	case event.StartedQuizTypeName:
-		startedQuiz := &event.StartedQuiz{}
-
-		deserializeError = r.deserializer([]byte(eventPo.Payload), startedQuiz)
-
-		deserializedEvent = *startedQuiz
-
-	case event.SelectedAnswerTypeName:
-		e := &event.SelectedAnswer{}
-
-		deserializeError = r.deserializer([]byte(eventPo.Payload), e)
-
-		deserializedEvent = *e
-
-	case event.FinishedQuizTypeName:
-		finishedQuiz := &event.FinishedQuiz{}
-
-		deserializeError = r.deserializer([]byte(eventPo.Payload), finishedQuiz)
-
-		deserializedEvent = *finishedQuiz
-
-	default:
-		panic(fmt.Errorf("unknown type '%s' while reading persisted events", eventPo.Type))
-	}
-	return deserializedEvent, deserializeError
+	return r.dbClient.Query(r.ctx, input)
 }

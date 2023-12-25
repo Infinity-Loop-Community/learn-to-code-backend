@@ -76,7 +76,7 @@ func TestParticipantRepository_StoreEventsWithPayload(t *testing.T) {
 		repo.StoreEvents(p.GetID(), p.GetNewEventsAndUpdatePersistedVersion()),
 	)
 
-	events := errUtils.PanicIfError1(repo.FindEventsByID(p.GetID()))
+	events := errUtils.PanicIfError1(repo.FindEventsByParticipantID(p.GetID()))
 
 	for _, event := range events {
 		if event.GetAggregateID() == "" {
@@ -92,7 +92,7 @@ func TestParticipantRepository_StoreEventsWithPayload(t *testing.T) {
 func getRepository() participant.Repository {
 	dbStarter := db.NewDynamoStarter()
 
-	repo := dynamodb.NewDynamoDbParticipantRepository(context.Background(), "test", dbStarter.CreateDynamoDbClient(true))
+	repo := dynamodb.NewDynamoDbParticipantRepository(context.Background(), "test", dbStarter.CreateDynamoDbClient(true), dynamodb.NewEventPODeserializer())
 
 	return repo
 }

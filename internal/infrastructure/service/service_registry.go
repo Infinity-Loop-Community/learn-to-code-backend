@@ -44,7 +44,8 @@ func NewServiceRegistry(ctx context.Context, cfg config2.Config) *Registry {
 
 	startQuizToEventMapper := command.NewParticipantCommandApplier(courseRepository)
 
-	participantRepositoryFactory := dynamodb.NewParticipantRepositoryFactory(cfg.Environment, dynamoDbClient)
+	eventPODeserializer := dynamodb.NewEventPODeserializer()
+	participantRepositoryFactory := dynamodb.NewParticipantRepositoryFactory(cfg.Environment, dynamoDbClient, eventPODeserializer)
 	participantRepository := participantRepositoryFactory.NewRepository(ctx)
 	participantApplicationService := application.NewPartcipantApplicationService(participantRepository, startQuizToEventMapper)
 	quizOverviewMapper := mapper2.NewQuizOverviewMapper()

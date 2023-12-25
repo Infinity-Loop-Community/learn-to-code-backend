@@ -22,7 +22,7 @@ var participantRepository *dynamodb.ParticipantRepository
 func TestMain(m *testing.M) {
 	dbStarter := db.NewDynamoStarter()
 
-	participantRepository = dynamodb.NewDynamoDbParticipantRepository(context.Background(), config.Test, dbStarter.CreateDynamoDbClient(true))
+	participantRepository = dynamodb.NewDynamoDbParticipantRepository(context.Background(), config.Test, dbStarter.CreateDynamoDbClient(true), dynamodb.NewEventPODeserializer())
 	as = application.NewPartcipantApplicationService(
 		participantRepository,
 		command.NewParticipantCommandApplier(inmemory.NewCourseRepository()),
@@ -59,7 +59,7 @@ func TestQuizApplicationService_MapsEventsCorrectly(t *testing.T) {
 	quizID := uuid.MustNewRandomAsString()
 	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(quizID, []string{inmemory.FirstQuestionID}), userID))
 
-	events := errUtils.PanicIfError1(participantRepository.FindEventsByID(userID))
+	events := errUtils.PanicIfError1(participantRepository.FindEventsByParticipantID(userID))
 	quizStartedEvent := events[1].(event.StartedQuiz)
 
 	if quizStartedEvent.QuizID == "" {

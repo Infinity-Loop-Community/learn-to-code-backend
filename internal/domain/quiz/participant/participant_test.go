@@ -350,6 +350,61 @@ func TestParticipant_Events_applyAndRestoresWithSameEvents(t *testing.T) {
 	}
 }
 
+func TestParticipant_GetAttemptID_latest(t *testing.T) {
+	p, quizID := createParticipantWithFinishedQuizzes(2)
+
+	attemptID, err := p.GetValidAttemptID(quizID, "latest")
+	if err != nil {
+		t.Fatalf("GetValidAttemptID failed: %v", err)
+	}
+	if attemptID != 2 {
+		t.Errorf("Expected latest attempt ID to be 2, got %d", attemptID)
+	}
+}
+
+func TestParticipant_GetAttemptID_byRealID(t *testing.T) {
+	p, quizID := createParticipantWithFinishedQuizzes(2)
+
+	attemptID, err := p.GetValidAttemptID(quizID, "2")
+	if err != nil {
+		t.Fatalf("GetValidAttemptID failed: %v", err)
+	}
+	if attemptID != 2 {
+		t.Errorf("Expected latest attempt ID to be 2, got %d", attemptID)
+	}
+}
+
+func TestParticipant_GetAttemptID_returnsErrorForInvalidID(t *testing.T) {
+	p, quizID := createParticipantWithFinishedQuizzes(2)
+
+	_, err := p.GetValidAttemptID(quizID, "abc")
+	if err == nil {
+		t.Fatalf("Expected GetValidAttemptID to fail for input abc, but did not contain an error")
+	}
+}
+
+func TestParticipant_GetAttemptID_returnsErrorForUnknownID(t *testing.T) {
+	p, quizID := createParticipantWithFinishedQuizzes(3)
+
+	_, err := p.GetValidAttemptID(quizID, "4")
+	if err == nil {
+		t.Fatalf("Expected GetValidAttemptID to fail for input abc, but did not contain an error")
+	}
+}
+
+func createParticipantWithFinishedQuizzes(finishedQuizCount int) (participant.Participant, string) {
+	p := err.PanicIfError1(participant.New())
+
+	quizID := err.PanicIfError1(uuid.NewRandom()).String()
+
+	for i := 0; i < finishedQuizCount; i++ {
+		err.PanicIfError(p.StartQuiz(quizID, nil))
+		err.PanicIfError(p.FinishQuiz(quizID))
+	}
+
+	return p, quizID
+}
+
 func newUUID() string {
 	return err.PanicIfError1(uuid.NewRandom()).String()
 }

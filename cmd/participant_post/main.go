@@ -10,6 +10,7 @@ import (
 
 func main() {
 	cfg := err.PanicIfError1(config.NewConfig())
+
 	handler := participant.NewPostParticipantCommandHandler(cfg)
 
 	lambda.Start(handler.HandleRequest)

@@ -7,12 +7,13 @@ import (
 	errUtils "learn-to-code/internal/infrastructure/go/util/err"
 	"learn-to-code/internal/infrastructure/go/util/uuid"
 	"learn-to-code/internal/infrastructure/inmemory"
-	"learn-to-code/pkg/test/db"
+	"learn-to-code/internal/infrastructure/testing/db"
 	"testing"
 )
 
 func TestRepository_FindById_ReturnsNewUser(t *testing.T) {
-	repo := getRepository()
+	repo, clean := getRepository()
+	defer clean()
 
 	p, err := repo.FindOrCreateByID("does not exist")
 
@@ -26,7 +27,8 @@ func TestRepository_FindById_ReturnsNewUser(t *testing.T) {
 }
 
 func TestRepository_FindById_HandleSingleUser(t *testing.T) {
-	repo := getRepository()
+	repo, clean := getRepository()
+	defer clean()
 
 	p := errUtils.PanicIfError1(participant.New())
 
@@ -59,7 +61,8 @@ func TestRepository_FindById_HandleSingleUser(t *testing.T) {
 }
 
 func TestParticipantRepository_StoreEventsWithPayload(t *testing.T) {
-	repo := getRepository()
+	repo, clean := getRepository()
+	defer clean()
 
 	p := errUtils.PanicIfError1(participant.New())
 
@@ -89,10 +92,10 @@ func TestParticipantRepository_StoreEventsWithPayload(t *testing.T) {
 	}
 }
 
-func getRepository() participant.Repository {
-	dbStarter := db.NewDynamoStarter()
+func getRepository() (participant.Repository, func()) {
+	dynamoDbClient, clean := db.StartDynamoDB()
 
-	repo := dynamodb.NewDynamoDbParticipantRepository(context.Background(), "test", dbStarter.CreateDynamoDbClient(true), dynamodb.NewEventPODeserializer())
+	repo := dynamodb.NewDynamoDbParticipantRepository(context.Background(), "test", dynamoDbClient, dynamodb.NewEventPODeserializer())
 
-	return repo
+	return repo, clean
 }

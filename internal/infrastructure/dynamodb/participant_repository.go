@@ -89,7 +89,7 @@ func (r *ParticipantRepository) appendEvent(participantID string, e eventsource.
 		return err
 	}
 
-	err = r.putEventForParticipantID(participantID, e, serializedEvent, err)
+	err = r.putEventForParticipantID(participantID, e, serializedEvent)
 	if err != nil {
 		return err
 	}
@@ -97,7 +97,7 @@ func (r *ParticipantRepository) appendEvent(participantID string, e eventsource.
 	return nil
 }
 
-func (r *ParticipantRepository) putEventForParticipantID(participantID string, e eventsource.Event, serializedEvent []byte, err error) error {
+func (r *ParticipantRepository) putEventForParticipantID(participantID string, e eventsource.Event, serializedEvent []byte) error {
 	input := &dynamodb.PutItemInput{
 		TableName: &r.tableName,
 		Item: map[string]types.AttributeValue{
@@ -108,7 +108,7 @@ func (r *ParticipantRepository) putEventForParticipantID(participantID string, e
 			"created_at":   &types.AttributeValueMemberS{Value: e.GetCreatedAt().Format(time.RFC3339)},
 		},
 	}
-	_, err = r.dbClient.PutItem(r.ctx, input)
+	_, err := r.dbClient.PutItem(r.ctx, input)
 	return err
 }
 

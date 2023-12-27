@@ -10,28 +10,28 @@ import (
 	errUtils "learn-to-code/internal/infrastructure/go/util/err"
 	"learn-to-code/internal/infrastructure/go/util/uuid"
 	"learn-to-code/internal/infrastructure/inmemory"
-	"learn-to-code/pkg/test/db"
-	"os"
+	"learn-to-code/internal/infrastructure/testing/db"
 	"testing"
 )
 
-var commandFactory *command.Factory
-var as *application.ParticipantApplicationService
-var participantRepository *dynamodb.ParticipantRepository
+var commandFactory = command.NewCommandFactory()
 
-func TestMain(m *testing.M) {
-	dbStarter := db.NewDynamoStarter()
+func SetupApplicationService() (*application.ParticipantApplicationService, *dynamodb.ParticipantRepository, func()) {
+	dynamoDbClient, clean := db.StartDynamoDB()
 
-	participantRepository = dynamodb.NewDynamoDbParticipantRepository(context.Background(), config.Test, dbStarter.CreateDynamoDbClient(true), dynamodb.NewEventPODeserializer())
-	as = application.NewPartcipantApplicationService(
+	participantRepository := dynamodb.NewDynamoDbParticipantRepository(context.Background(), config.Test, dynamoDbClient, dynamodb.NewEventPODeserializer())
+	as := application.NewPartcipantApplicationService(
 		participantRepository,
 		command.NewParticipantCommandApplier(inmemory.NewCourseRepository()),
 	)
 
-	os.Exit(m.Run())
+	return as, participantRepository, clean
 }
 
 func TestQuizApplicationService_StartQuiz(t *testing.T) {
+	as, _, clean := SetupApplicationService()
+	defer clean()
+
 	userID := uuid.MustNewRandomAsString()
 
 	startedQuizCount := errUtils.PanicIfError1(as.GetStartedQuizCount(userID))
@@ -49,6 +49,9 @@ func TestQuizApplicationService_StartQuiz(t *testing.T) {
 }
 
 func TestQuizApplicationService_MapsEventsCorrectly(t *testing.T) {
+	as, participantRepository, clean := SetupApplicationService()
+	defer clean()
+
 	userID := uuid.MustNewRandomAsString()
 
 	startedQuizCount := errUtils.PanicIfError1(as.GetStartedQuizCount(userID))
@@ -68,6 +71,9 @@ func TestQuizApplicationService_MapsEventsCorrectly(t *testing.T) {
 }
 
 func TestQuizApplicationService_SelectAnswer(t *testing.T) {
+	as, _, clean := SetupApplicationService()
+	defer clean()
+
 	userID := uuid.MustNewRandomAsString()
 
 	startedQuizCount := errUtils.PanicIfError1(as.GetStartedQuizCount(userID))
@@ -80,6 +86,9 @@ func TestQuizApplicationService_SelectAnswer(t *testing.T) {
 }
 
 func TestQuizApplicationService_FinishQuiz(t *testing.T) {
+	as, _, clean := SetupApplicationService()
+	defer clean()
+
 	userID := uuid.MustNewRandomAsString()
 
 	startedQuizCount := errUtils.PanicIfError1(as.GetStartedQuizCount(userID))
@@ -93,6 +102,9 @@ func TestQuizApplicationService_FinishQuiz(t *testing.T) {
 }
 
 func TestParticipantApplicationService_GetQuizAttemptDetail_NoQuizFinished_ReturnsEmpty(t *testing.T) {
+	as, _, clean := SetupApplicationService()
+	defer clean()
+
 	participantID := uuid.MustNewRandomAsString()
 
 	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizID, []string{inmemory.FirstQuestionID}), participantID))
@@ -106,6 +118,9 @@ func TestParticipantApplicationService_GetQuizAttemptDetail_NoQuizFinished_Retur
 }
 
 func TestParticipantApplicationService_GetQuizAttemptDetail_ReturnsFirstLatestAttempt(t *testing.T) {
+	as, _, clean := SetupApplicationService()
+	defer clean()
+
 	participantID := uuid.MustNewRandomAsString()
 
 	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizID, []string{inmemory.FirstQuestionID}), participantID))
@@ -121,6 +136,9 @@ func TestParticipantApplicationService_GetQuizAttemptDetail_ReturnsFirstLatestAt
 }
 
 func TestParticipantApplicationService_GetQuizAttemptDetail_ReturnsLatest(t *testing.T) {
+	as, _, clean := SetupApplicationService()
+	defer clean()
+
 	participantID := uuid.MustNewRandomAsString()
 
 	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizID, []string{inmemory.FirstQuestionID}), participantID))

@@ -9,6 +9,7 @@
         <option value="govet" />
         <option value="misspell" />
         <option value="nakedret" />
+        <option value="errcheck" />
         <option value="gofmt" />
         <option value="unused" />
         <option value="revive" />

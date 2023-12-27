@@ -12,11 +12,14 @@ import (
 	"learn-to-code/internal/infrastructure/lambda"
 	"learn-to-code/internal/interfaces/lambda/course/mapper"
 	mapper2 "learn-to-code/internal/interfaces/lambda/participant/quiz/mapper"
-	"learn-to-code/pkg/test/db"
 
 	"github.com/aws/aws-sdk-go-v2/config"
 	dynamodbsdk "github.com/aws/aws-sdk-go-v2/service/dynamodb"
 )
+
+type RegistryOverride struct {
+	DynamoDBClient *dynamodbsdk.Client
+}
 
 type Registry struct {
 	RequestValidator *lambda.RequestValidator
@@ -30,8 +33,14 @@ type Registry struct {
 	QuizAttemptDetailMapper  *mapper2.QuizAttemptDetailMapper
 }
 
-func NewServiceRegistry(ctx context.Context, cfg config2.Config) *Registry {
+func NewServiceRegistry(ctx context.Context, cfg config2.Config, registryOverrides ...RegistryOverride) *Registry {
 	dynamoDbClient := createDynamoDbClient(ctx, cfg.Environment, cfg.DefaultAwsRegion)
+
+	for _, registryOverride := range registryOverrides {
+		if registryOverride.DynamoDBClient != nil {
+			dynamoDbClient = registryOverride.DynamoDBClient
+		}
+	}
 
 	nextJsSecretParser := lambda.NewNextJsSecretParser()
 	jwtTokenValidator := authJwt.NewValidator(cfg.JwtSecret)
@@ -51,25 +60,24 @@ func NewServiceRegistry(ctx context.Context, cfg config2.Config) *Registry {
 	quizOverviewMapper := mapper2.NewQuizOverviewMapper()
 	quizAttemptDetailMapper := mapper2.NewQuizAttemptDetailMapper()
 
-	return &Registry{
-		ParticipantApplicationService: participantApplicationService,
-		CourseApplicationService:      courseApplicationService,
-		CourseMapper:                  courseMapper,
-		QuizOverviewMapper:            quizOverviewMapper,
-		QuizAttemptDetailMapper:       quizAttemptDetailMapper,
-		RequestValidator:              requestValidator,
-		ResponseCreator:               responseCreator,
+	registry := &Registry{
+		ParticipantApplicationService: err.PanicIfNil("participantApplicationService", participantApplicationService),
+		CourseApplicationService:      err.PanicIfNil("courseApplicationService", courseApplicationService),
+		CourseMapper:                  err.PanicIfNil("courseMapper", courseMapper),
+		QuizOverviewMapper:            err.PanicIfNil("quizOverviewMapper", quizOverviewMapper),
+		QuizAttemptDetailMapper:       err.PanicIfNil("quizAttemptDetailMapper", quizAttemptDetailMapper),
+		RequestValidator:              err.PanicIfNil("requestValidator", requestValidator),
+		ResponseCreator:               err.PanicIfNil("responseCreator", responseCreator),
 	}
+
+	return registry
 }
 
 func createDynamoDbClient(ctx context.Context, environment config2.Environment, defaultAwsRegion string) *dynamodbsdk.Client {
 
 	var dynamoDbClient *dynamodbsdk.Client
 
-	if environment == config2.Test {
-		dynamoStarter := db.NewDynamoStarter()
-		dynamoDbClient = dynamoStarter.CreateDynamoDbClient(true)
-	} else {
+	if environment != config2.Test {
 		dynamoDbConfig := err.PanicIfError1(config.LoadDefaultConfig(ctx))
 		dynamoDbConfig.Region = defaultAwsRegion
 		dynamoDbClient = dynamodbsdk.NewFromConfig(dynamoDbConfig)

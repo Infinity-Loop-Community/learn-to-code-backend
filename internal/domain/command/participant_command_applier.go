@@ -9,7 +9,6 @@ import (
 
 type ParticipantCommandApplier struct {
 	courseRepository course.Repository
-	factory          Factory
 }
 
 func NewParticipantCommandApplier(courseRepository course.Repository) *ParticipantCommandApplier {

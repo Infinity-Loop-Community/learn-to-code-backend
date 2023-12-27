@@ -23,8 +23,9 @@ var eventBody = fmt.Sprintf(`
 `, command.StartQuizCommandType)
 
 func TestGetQuizOverview_Returns200(t *testing.T) {
-
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
+	defer environmentCreator.Terminate()
+
 	environmentCreator.ExecuteLambdaHandlerWithPostBody(participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest, eventBody)
 
 	getOverviewResponse := environmentCreator.ExecuteLambdaHandler(quiz.NewGetParticipantQuizOverviewHandler(environmentCreator.Cfg).HandleRequest)

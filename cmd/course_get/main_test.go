@@ -22,6 +22,8 @@ func TestGetCourseLambda_Returns200(t *testing.T) {
 func TestGetCourseLambda_ContainsCourseData(t *testing.T) {
 
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
+	defer environmentCreator.Terminate()
+
 	handlerResponse := environmentCreator.ExecuteLambdaHandler(course.NewLambdaHandler(environmentCreator.Cfg).HandleRequest)
 
 	path := "$.id"

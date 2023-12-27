@@ -21,8 +21,8 @@ func NewGetParticipantQuizAttemptDetailHandler(cfg config.Config) *GetAttemptDet
 	}
 }
 
-func (gh *GetAttemptDetailHandler) HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	serviceRegistry := service.NewServiceRegistry(ctx, gh.cfg)
+func (gh *GetAttemptDetailHandler) HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest, registryOverrides ...service.RegistryOverride) (events.APIGatewayProxyResponse, error) {
+	serviceRegistry := service.NewServiceRegistry(ctx, gh.cfg, registryOverrides...)
 
 	userID, err := serviceRegistry.RequestValidator.ValidateRequest(request)
 	if err != nil {

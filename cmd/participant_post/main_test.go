@@ -66,8 +66,8 @@ var eventBodyEmptyStartQuiz = fmt.Sprintf(`
 `, command.StartQuizCommandType)
 
 func TestPutParticipantLambda_Returns200(t *testing.T) {
-
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
+	defer environmentCreator.Terminate()
 
 	requestBodys := []string{
 		startQuizCommand,
@@ -89,8 +89,8 @@ func TestPutParticipantLambda_Returns200(t *testing.T) {
 }
 
 func TestPutParticipantLambda_InvalidQuizCompletion_Returns500(t *testing.T) {
-
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
+	defer environmentCreator.Terminate()
 
 	handleRequestFn := participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest
 
@@ -110,8 +110,8 @@ func TestPutParticipantLambda_InvalidQuizCompletion_Returns500(t *testing.T) {
 }
 
 func TestPutParticipantLambda_InvalidQuestionSelection_Returns400(t *testing.T) {
-
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
+	defer environmentCreator.Terminate()
 
 	handleRequestFn := participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest
 
@@ -131,8 +131,8 @@ func TestPutParticipantLambda_InvalidQuestionSelection_Returns400(t *testing.T) 
 }
 
 func TestPutParticipantLambda_InvalidStartQuiz_Returns400(t *testing.T) {
-
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
+	defer environmentCreator.Terminate()
 
 	handleRequestFn := participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest
 

@@ -54,7 +54,7 @@ func (q *CourseRepository) getQuiz(courseID string, quizID string) (responseobje
 		return responseobject.StepQuiz{}, err
 	}
 
-	stepQuiz, err := q.parseJson(file)
+	stepQuiz, err := q.parseJSON(file)
 	if err != nil {
 		return responseobject.StepQuiz{}, err
 	}
@@ -62,7 +62,7 @@ func (q *CourseRepository) getQuiz(courseID string, quizID string) (responseobje
 	return stepQuiz, nil
 }
 
-func (q *CourseRepository) parseJson(file []byte) (responseobject.StepQuiz, error) {
+func (q *CourseRepository) parseJSON(file []byte) (responseobject.StepQuiz, error) {
 	stepQuiz := responseobject.StepQuiz{}
 	err := json.Unmarshal(file, &stepQuiz)
 	if err != nil {
@@ -72,10 +72,10 @@ func (q *CourseRepository) parseJson(file []byte) (responseobject.StepQuiz, erro
 	return stepQuiz, nil
 }
 
-func (q *CourseRepository) readQuizFromFile(requestedCourseId string, requestedQuizId string) ([]byte, error) {
-	file, err := fs.ReadFile(static.StaticJsonFiles, fmt.Sprintf("json/course/%s/quiz/%s.json", requestedCourseId, requestedQuizId))
+func (q *CourseRepository) readQuizFromFile(requestedCourseID string, requestedQuizID string) ([]byte, error) {
+	file, err := fs.ReadFile(static.StaticJSONFiles, fmt.Sprintf("json/course/%s/quiz/%s.json", requestedCourseID, requestedQuizID))
 	if err != nil {
-		return nil, fmt.Errorf("Unknown course %s or quiz %s, err: %v", requestedCourseId, requestedQuizId, err)
+		return nil, fmt.Errorf("Unknown course %s or quiz %s, err: %v", requestedCourseID, requestedQuizID, err)
 	}
 
 	return file, nil

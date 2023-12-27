@@ -127,6 +127,7 @@ func TestGetAttemptDetail_UnknownAttempt_Returns404(t *testing.T) {
 
 func requestQuizAttemptDetailByAttemptID(attemptID string) events.APIGatewayProxyResponse {
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
+	defer environmentCreator.Terminate()
 
 	environmentCreator.ExecuteLambdaHandlerWithPostBody(participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest, startQuizPayload)
 	environmentCreator.ExecuteLambdaHandlerWithPostBody(participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest, selectAnswerPayload)
@@ -142,6 +143,8 @@ func requestQuizAttemptDetailByAttemptID(attemptID string) events.APIGatewayProx
 
 func requestQuizAttemptDetailWithFinishedQuizByAttemptID(attemptID string) events.APIGatewayProxyResponse {
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
+	defer environmentCreator.Terminate()
+
 	participantID := uuid.MustNewRandomAsString()
 
 	environmentCreator.ExecuteLambdaHandlerWithPostBodyForUser(participantID, participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest, startQuizPayload)
@@ -160,6 +163,8 @@ func requestQuizAttemptDetailWithFinishedQuizByAttemptID(attemptID string) event
 
 func requestQuizAttemptDetailWithRestartedQuizByAttemptID(attemptID string) events.APIGatewayProxyResponse {
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
+	defer environmentCreator.Terminate()
+
 	participantID := uuid.MustNewRandomAsString()
 
 	environmentCreator.ExecuteLambdaHandlerWithPostBodyForUser(participantID, participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest, startQuizPayload)

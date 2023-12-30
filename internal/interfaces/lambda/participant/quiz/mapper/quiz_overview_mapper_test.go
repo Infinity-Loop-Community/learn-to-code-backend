@@ -14,7 +14,7 @@ func TestEntityToResponseObject(t *testing.T) {
 		ActiveQuizzes: map[string][]projection.QuizAttemptOverview{
 			inmemory.FirstQuestionID: {
 				{
-					QuizID:    inmemory.QuizID,
+					QuizID:    inmemory.QuizIDEssentialsOfTheWeb,
 					AttemptID: 0,
 					QuestionsWithAnswer: map[string]string{
 						inmemory.FirstQuestionID: inmemory.FirstAnswerID,
@@ -25,7 +25,7 @@ func TestEntityToResponseObject(t *testing.T) {
 		FinishedQuizzes: map[string][]projection.QuizAttemptOverview{
 			inmemory.FirstQuestionID: {
 				{
-					QuizID:    inmemory.QuizID + "F",
+					QuizID:    inmemory.QuizIDEssentialsOfTheWeb + "F",
 					AttemptID: 1,
 					QuestionsWithAnswer: map[string]string{
 						inmemory.FirstQuestionID: inmemory.FirstAnswerID + "F",

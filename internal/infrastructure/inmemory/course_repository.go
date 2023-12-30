@@ -17,29 +17,44 @@ func NewCourseRepository() *CourseRepository {
 type CourseRepository struct {
 }
 
-const CourseID = "ed86d338-84a0-4486-a314-b99b17175875"
-const CourseStepID = "c7486278-a50c-4629-89b9-cc1c74d7a538"
-const QuizID = "fcf7890f-9c72-46d3-931e-34494307be37"
+const CourseIDFrontendDevelopment = "ed86d338-84a0-4486-a314-b99b17175875"
+
+const CourseStepIDEssentialsOfTheWeb = "c7486278-a50c-4629-89b9-cc1c74d7a538"
+const QuizIDEssentialsOfTheWeb = "fcf7890f-9c72-46d3-931e-34494307be37"
 const FirstQuestionID = "14c20d31-c7e1-416d-9c8e-1f2040141f0b"
 const FirstAnswerID = "06a1956e-b659-493f-9533-b27733ddd7fe"
 const FirstCorrectAnswerID = "48a293ee-7f43-4e3d-85d1-4737e6385c7c"
 
+const CourseStepIDJavaScriptBasics = "123f372e-e176-41c8-ba8e-9fc406c9ad1e"
+const QuizIDJavaScriptBasics = "e3ce1f8b-bb40-4bdd-b31b-33cbef24d267"
+
 func (q *CourseRepository) FindByID(courseID string) (course.Course, error) {
 
-	stepQuiz, err := q.getQuiz(courseID, QuizID)
+	quizEssentialsOfTheWeb, err := q.getQuiz(courseID, QuizIDEssentialsOfTheWeb)
 	if err != nil {
 		return course.Course{}, course.ErrCourseNotFound
 	}
 
-	if courseID == CourseID {
+	quizJavaScriptBasics, err := q.getQuiz(courseID, QuizIDJavaScriptBasics)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	// Frontend Development
+	if courseID == CourseIDFrontendDevelopment {
 		return course.Course{
-			ID:   CourseID,
+			ID:   CourseIDFrontendDevelopment,
 			Name: "Frontend Development",
 			Steps: []course.Step{
 				{
-					ID:      CourseStepID,
+					ID:      CourseStepIDEssentialsOfTheWeb,
 					Name:    "The essentials of the Web",
-					Quizzes: []course.StepQuiz{q.mapQuiz(stepQuiz)},
+					Quizzes: []course.StepQuiz{q.mapQuiz(quizEssentialsOfTheWeb)},
+				},
+				{
+					ID:      CourseStepIDJavaScriptBasics,
+					Name:    "JavaScript Basics",
+					Quizzes: []course.StepQuiz{q.mapQuiz(quizJavaScriptBasics)},
 				},
 			},
 		}, nil

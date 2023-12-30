@@ -28,7 +28,7 @@ func TestGetCourseLambda_ContainsCourseData(t *testing.T) {
 
 	path := "$.id"
 	courseID := json.GetJSONPathValue(handlerResponse, path)
-	if courseID != inmemory.CourseID {
-		t.Fatalf("expected course '%s' not found: '%s'", inmemory.CourseID, courseID)
+	if courseID != inmemory.CourseIDFrontendDevelopment {
+		t.Fatalf("expected course '%s' not found: '%s'", inmemory.CourseIDFrontendDevelopment, courseID)
 	}
 }

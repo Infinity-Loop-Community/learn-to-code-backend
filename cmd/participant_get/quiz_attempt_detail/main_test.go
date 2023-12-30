@@ -24,7 +24,7 @@ var startQuizPayload = fmt.Sprintf(`
 	},
    "type": "%s"
 }
-`, inmemory.QuizID, inmemory.FirstQuestionID, command.StartQuizCommandType)
+`, inmemory.QuizIDEssentialsOfTheWeb, inmemory.FirstQuestionID, command.StartQuizCommandType)
 
 var selectAnswerPayload = fmt.Sprintf(`
 {
@@ -36,7 +36,7 @@ var selectAnswerPayload = fmt.Sprintf(`
 	},
    "type": "%s"
 }
-`, inmemory.QuizID, inmemory.FirstQuestionID, inmemory.FirstCorrectAnswerID, command.SelectAnswerCommandType)
+`, inmemory.QuizIDEssentialsOfTheWeb, inmemory.FirstQuestionID, inmemory.FirstCorrectAnswerID, command.SelectAnswerCommandType)
 
 var finishQuizPayload = fmt.Sprintf(`
 {
@@ -46,7 +46,7 @@ var finishQuizPayload = fmt.Sprintf(`
 	},
    "type": "%s"
 }
-`, inmemory.QuizID, command.FinishQuizCommandType)
+`, inmemory.QuizIDEssentialsOfTheWeb, command.FinishQuizCommandType)
 
 func TestGetAttemptDetail_Returns200(t *testing.T) {
 
@@ -135,7 +135,7 @@ func requestQuizAttemptDetailByAttemptID(attemptID string) events.APIGatewayProx
 	getDetailResponse := environmentCreator.ExecuteLambdaHandlerGETWithPathParameters(
 		quiz.NewGetParticipantQuizAttemptDetailHandler(environmentCreator.Cfg).HandleRequest,
 		map[string]string{
-			"quizId":    inmemory.QuizID,
+			"quizId":    inmemory.QuizIDEssentialsOfTheWeb,
 			"attemptId": attemptID,
 		})
 	return getDetailResponse
@@ -155,7 +155,7 @@ func requestQuizAttemptDetailWithFinishedQuizByAttemptID(attemptID string) event
 		participantID,
 		quiz.NewGetParticipantQuizAttemptDetailHandler(environmentCreator.Cfg).HandleRequest,
 		map[string]string{
-			"quizId":    inmemory.QuizID,
+			"quizId":    inmemory.QuizIDEssentialsOfTheWeb,
 			"attemptId": attemptID,
 		})
 	return getDetailResponse
@@ -176,7 +176,7 @@ func requestQuizAttemptDetailWithRestartedQuizByAttemptID(attemptID string) even
 		participantID,
 		quiz.NewGetParticipantQuizAttemptDetailHandler(environmentCreator.Cfg).HandleRequest,
 		map[string]string{
-			"quizId":    inmemory.QuizID,
+			"quizId":    inmemory.QuizIDEssentialsOfTheWeb,
 			"attemptId": attemptID,
 		})
 	return getDetailResponse

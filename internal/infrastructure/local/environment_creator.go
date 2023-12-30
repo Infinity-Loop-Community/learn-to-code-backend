@@ -61,7 +61,7 @@ func (ec *EnvironmentCreator) ExecuteLambdaHandler(
 
 	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreateGETRequest(
 		map[string]string{
-			"courseId": inmemory.CourseID,
+			"courseId": inmemory.CourseIDFrontendDevelopment,
 		}, "user123"), ec.registryOverrides...))
 	return request
 }

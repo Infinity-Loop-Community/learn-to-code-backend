@@ -1,0 +1,371 @@
+{
+  "id": "e3ce1f8b-bb40-4bdd-b31b-33cbef24d267",
+  "questions": [
+    {
+      "id": "4ad52106-7254-4919-b375-1c842a98b515",
+      "text": "What is the primary purpose of JavaScript in web development?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "71cab4df-5e4b-48fc-a20a-1fa0e6e050eb",
+          "text": "Structuring the content of a webpage",
+          "isCorrect": false,
+          "description": "Structuring the content is the responsibility of HTML."
+        },
+        {
+          "id": "1e0f9a67-4ff7-449c-ab59-2faf6df75a9e",
+          "text": "Adding interactivity to webpages",
+          "isCorrect": true,
+          "description": "JavaScript is primarily used to make webpages dynamic and interactive. It can respond to user actions, modify content, and communicate with servers in real-time."
+        },
+        {
+          "id": "e639f34d-fd9d-46c4-a15e-feef57ff9655",
+          "text": "Designing the layout of a webpage",
+          "isCorrect": false,
+          "description": "Designing the layout is done using CSS."
+        },
+        {
+          "id": "7069c296-dda2-4375-993c-e75162ce7e9f",
+          "text": "Hosting the website",
+          "isCorrect": false,
+          "description": "Hosting the website involves servers and is not directly related to JavaScript."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "questions": [
+        {
+          "id": "fd0a93d5-0fb5-4f04-8dfe-bb074168c308",
+          "text": "Which of the following is a valid way to define a function in JavaScript?",
+          "difficulty": "easy",
+          "answers": [
+            {
+              "id": "0f7c5709-7091-4c55-ad50-43c93c9a4f52",
+              "text": "`function myFunction() {}`",
+              "isCorrect": true,
+              "description": "In JavaScript, functions are defined using the `function` keyword followed by the name of the function and then a set of parentheses."
+            },
+            {
+              "id": "3ae2d733-6fae-45ca-aadc-272a006a1902",
+              "text": "`define myFunction() {}`",
+              "isCorrect": false,
+              "description": "These are not standard syntaxes for defining functions in JavaScript"
+            },
+            {
+              "id": "045ca762-bfa3-4fde-a0ad-244b84c45008",
+              "text": "`new function myFunction() {}`",
+              "isCorrect": false,
+              "description": "These are not standard syntaxes for defining functions in JavaScript"
+            },
+            {
+              "id": "900c5802-d67f-4196-ad4a-db822459a759",
+              "text": "`create myFunction() {}`",
+              "isCorrect": false,
+              "description": "These are not standard syntaxes for defining functions in JavaScript"
+            }
+          ],
+          "rating": 0,
+          "ratingCount": 0
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "id": "61b49a61-9d0e-4804-9e2a-7e65d6a879fd",
+          "text": "What does 'scope' refer to in JavaScript?",
+          "difficulty": "easy",
+          "answers": [
+            {
+              "id": "d4259048-fc3b-4862-96a4-733856e11706",
+              "text": "The range of values a variable can take",
+              "isCorrect": false,
+              "description": "This describes the domain of a variable, not its scope."
+            },
+            {
+              "id": "a725c70a-73f4-4c4c-ab01-1dda8bb95b3e",
+              "text": "The region of code where a variable can be accessed",
+              "isCorrect": true,
+              "description": "Scope determines where variables and functions are accessible within the code. Variables can have local or global scope."
+            },
+            {
+              "id": "e8ffd8ec-c047-471d-8c60-21ac8f12c9aa",
+              "text": "The duration for which a webpage runs",
+              "isCorrect": false,
+              "description": "This is not related to the concept of scope."
+            },
+            {
+              "id": "81df3b1d-ce31-4d48-b1e7-9b066386795f",
+              "text": "The size of an array",
+              "isCorrect": false,
+              "description": "The size of an array is not related to scope."
+            }
+          ],
+          "rating": 0,
+          "ratingCount": 0
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "id": "5681f4c9-c471-4f47-989a-6b59761d59f5",
+          "text": "What will the following code output? `console.log(typeof []);`",
+          "difficulty": "easy",
+          "answers": [
+            {
+              "id": "0e2be7b3-8b31-4e48-ac00-aeb2eb7998ae",
+              "text": "\"object\"",
+              "isCorrect": true,
+              "description": "In JavaScript, arrays are a type of object, so the `typeof` operator will return \"object\" for arrays."
+            },
+            {
+              "id": "1067b471-2064-481b-bfea-17bbe6201e3d",
+              "text": "\"array\"",
+              "isCorrect": false,
+              "description": "These are not the values returned by the `typeof` operator for arrays."
+            },
+            {
+              "id": "76466435-7c24-4c3b-8cd3-130074889499",
+              "text": "\"list\"",
+              "isCorrect": false,
+              "description": "These are not the values returned by the `typeof` operator for arrays."
+            },
+            {
+              "id": "a4c2a68e-5e8e-4502-be6c-d3bb2f73c642",
+              "text": "\"null\"",
+              "isCorrect": false,
+              "description": "These are not the values returned by the `typeof` operator for arrays."
+            }
+          ],
+          "rating": 0,
+          "ratingCount": 0
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "id": "51067781-2314-4c53-bcd5-ef53c352c820",
+          "text": "Which JavaScript statement is used to execute a block of code repeatedly?",
+          "difficulty": "easy",
+          "answers": [
+            {
+              "id": "5809cc82-feff-494d-a61f-25e99a03b1da",
+              "text": "if",
+              "isCorrect": false,
+              "description": "The `if` statement is used for conditionally executing code."
+            },
+            {
+              "id": "830b04e0-35b8-42d7-a6cc-bb209bb78ded",
+              "text": "switch",
+              "isCorrect": false,
+              "description": "The `switch` statement is used for multiple conditional checks."
+            },
+            {
+              "id": "edf05466-60c0-4726-9bde-ceb149dd5838",
+              "text": "loop",
+              "isCorrect": false,
+              "description": "There isn't a direct \"loop\" keyword in JavaScript."
+            },
+            {
+              "id": "2e2cb990-c111-42a3-a404-b56d32d5fdbc",
+              "text": "for",
+              "isCorrect": true,
+              "description": "The `for` loop is commonly used to repeatedly execute a block of code for a specified number of times."
+            }
+          ],
+          "rating": 0,
+          "ratingCount": 0
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "id": "e9de39aa-74a9-4a00-95a9-4648c8ba34f0",
+          "text": "In JavaScript, which of the following is used to store multiple values in a single variable?",
+          "difficulty": "easy",
+          "answers": [
+            {
+              "id": "feaeaaac-6ea1-4a7f-b012-7472045084b6",
+              "text": "Object",
+              "isCorrect": false,
+              "description": "While objects can also store multiple values, they use named properties rather than indices."
+            },
+            {
+              "id": "22795e07-ae6b-498c-bc8e-3eb3565b89f9",
+              "text": "Function",
+              "isCorrect": false,
+              "description": "Functions are blocks of reusable code."
+            },
+            {
+              "id": "95fc292f-1fa7-4ca5-a1c7-705ccb38340f",
+              "text": "Array",
+              "isCorrect": true,
+              "description": "Arrays can store multiple values in a single variable, and these values can be accessed by their index."
+            },
+            {
+              "id": "fe16d3a1-12c2-42f8-b8b2-1c128613032e",
+              "text": "Condition",
+              "isCorrect": false,
+              "description": "Conditions are used for decision-making in code."
+            }
+          ],
+          "rating": 0,
+          "ratingCount": 0
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "id": "7d5d9154-f1ee-4d89-9af0-05f8e18ff11e",
+          "text": "Which of the following is NOT a loop in JavaScript?",
+          "difficulty": "easy",
+          "answers": [
+            {
+              "id": "fbe7d6a9-c803-4275-b506-3a6efdb12b66",
+              "text": "for",
+              "isCorrect": false,
+              "description": "These are all types of loops or iterations in JavaScript."
+            },
+            {
+              "id": "9c74e6c3-6436-4e44-a98a-293befb66ab6",
+              "text": "foreach",
+              "isCorrect": false,
+              "description": "These are all types of loops or iterations in JavaScript."
+            },
+            {
+              "id": "e6b2a80a-0f1c-4faf-9388-f2159c567c2d",
+              "text": "while",
+              "isCorrect": false,
+              "description": "These are all types of loops or iterations in JavaScript."
+            },
+            {
+              "id": "8eb375ee-ba7c-4793-95a7-24273408e05c",
+              "text": "unless",
+              "isCorrect": true,
+              "description": "JavaScript has various loops like `for`, `while`, and `for...of` (which might be confused with 'foreach'). However, there is no 'unless' loop in JavaScript."
+            }
+          ],
+          "rating": 0,
+          "ratingCount": 0
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "id": "89e9ce90-7234-4c35-9004-104bebf2c2f1",
+          "text": "Which of the following methods can be used to loop through the properties of an object?",
+          "difficulty": "easy",
+          "answers": [
+            {
+              "id": "e001dae5-cddd-4f5a-beec-08bc231bda35",
+              "text": "forEach",
+              "isCorrect": false,
+              "description": "These methods are primarily associated with arrays, not object properties."
+            },
+            {
+              "id": "04d48189-b34d-47c5-9933-808e063f7064",
+              "text": "for...in",
+              "isCorrect": true,
+              "description": "The `for...in` loop is used to iterate through the properties of an object in JavaScript."
+            },
+            {
+              "id": "2a5c9145-4947-4e4c-9020-c1932acb5c4a",
+              "text": "map",
+              "isCorrect": false,
+              "description": "These methods are primarily associated with arrays, not object properties."
+            },
+            {
+              "id": "9d0046a7-956f-4cc3-b0a4-a097c4db27e9",
+              "text": "filter",
+              "isCorrect": false,
+              "description": "These methods are primarily associated with arrays, not object properties."
+            }
+          ],
+          "rating": 0,
+          "ratingCount": 0
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "id": "2a0b01d6-2984-4755-bf17-23bbcaaf4ffa",
+          "text": "Which of the following is used to check if a condition is true or false in JavaScript?",
+          "difficulty": "easy",
+          "answers": [
+            {
+              "id": "0eca6525-e6af-4f3d-9e5d-ed154d4e2960",
+              "text": "Function",
+              "isCorrect": false,
+              "description": "Functions are blocks of reusable code."
+            },
+            {
+              "id": "913b78be-2a55-4d36-bed6-ca254240f1ec",
+              "text": "Array",
+              "isCorrect": false,
+              "description": "Arrays store multiple values."
+            },
+            {
+              "id": "290cabf6-769f-4314-9574-7e4a5fdab98f",
+              "text": "Iterator",
+              "isCorrect": false,
+              "description": "Iterators are methods that allow you to loop through items."
+            },
+            {
+              "id": "de7ad2d2-1c37-4c5a-9557-538e98adb519",
+              "text": "Conditional",
+              "isCorrect": true,
+              "description": "Conditionals, like the `if` statement, are used to check conditions and execute code accordingly."
+            }
+          ],
+          "rating": 0,
+          "ratingCount": 0
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "id": "95bb1db1-1e39-4097-aa35-1741557aa587",
+          "text": "What is the output of the following code? `console.log(10 == \"10\");`",
+          "difficulty": "easy",
+          "answers": [
+            {
+              "id": "be4b0723-af95-43b9-b53e-60a2c464ccd4",
+              "text": "true",
+              "isCorrect": true,
+              "description": "In JavaScript, the `==` operator checks for equality in value but not type. So, the number 10 is considered equal to the string \"10\". For strict type and value equality, you'd use `===`."
+            },
+            {
+              "id": "452b4b6a-74a3-4cc8-9017-984060700e9d",
+              "text": "false",
+              "isCorrect": false,
+              "description": "This would be the case if `===` was used."
+            },
+            {
+              "id": "162be5c2-a583-4c1a-b28b-b0f99410be33",
+              "text": "\"10\"",
+              "isCorrect": false,
+              "description": "The `==` operator checks for equality and doesn't return one of its operands."
+            },
+            {
+              "id": "1a65f954-e426-4728-a529-e937cca4fc77",
+              "text": "error",
+              "isCorrect": false,
+              "description": "There's no error in this statement."
+            }
+          ],
+          "rating": 0,
+          "ratingCount": 0
+        }
+      ]
+    }
+  ]
+}

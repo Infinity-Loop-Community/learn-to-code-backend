@@ -14,9 +14,9 @@ func TestCourseApplicationService_GetExistingQuiz(t *testing.T) {
 		inmemory.NewCourseRepository(),
 	)
 
-	course := errUtils.PanicIfError1(as.GetCourseByID(inmemory.CourseID))
-	if course.ID != inmemory.CourseID {
-		t.Fatalf("unexpected course id '%s', should be '%s'", course.ID, inmemory.CourseID)
+	course := errUtils.PanicIfError1(as.GetCourseByID(inmemory.CourseIDFrontendDevelopment))
+	if course.ID != inmemory.CourseIDFrontendDevelopment {
+		t.Fatalf("unexpected course id '%s', should be '%s'", course.ID, inmemory.CourseIDFrontendDevelopment)
 	}
 }
 

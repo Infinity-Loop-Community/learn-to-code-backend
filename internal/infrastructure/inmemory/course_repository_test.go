@@ -6,7 +6,7 @@ import (
 
 func TestFindByID_ValidatesQuestionAndAnswerMapping(t *testing.T) {
 	repo := NewCourseRepository()
-	c, err := repo.FindByID(CourseID)
+	c, err := repo.FindByID(CourseIDFrontendDevelopment)
 
 	if err != nil {
 		t.Fatalf("FindByID returned an error: %v", err)

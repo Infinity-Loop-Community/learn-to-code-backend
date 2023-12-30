@@ -40,7 +40,7 @@ func (m *ParticipantCommandApplier) ApplyCommand(c Command, p participant.Partic
 
 		_, ok := courses[selectAnswerData.QuizID]
 		if !ok {
-			c, err := m.courseRepository.FindByID(inmemory.CourseID)
+			c, err := m.courseRepository.FindByID(inmemory.CourseIDFrontendDevelopment)
 			if err != nil {
 				return participant.Participant{}, err
 			}

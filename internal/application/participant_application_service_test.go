@@ -81,8 +81,8 @@ func TestQuizApplicationService_SelectAnswer(t *testing.T) {
 		t.Fatalf("new user, started quiz count not 0")
 	}
 
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizID, []string{inmemory.FirstQuestionID}), userID))
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateSelectAnswerCommand(inmemory.QuizID, inmemory.FirstQuestionID, inmemory.FirstAnswerID), userID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizIDEssentialsOfTheWeb, []string{inmemory.FirstQuestionID}), userID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateSelectAnswerCommand(inmemory.QuizIDEssentialsOfTheWeb, inmemory.FirstQuestionID, inmemory.FirstAnswerID), userID))
 }
 
 func TestQuizApplicationService_FinishQuiz(t *testing.T) {
@@ -96,9 +96,9 @@ func TestQuizApplicationService_FinishQuiz(t *testing.T) {
 		t.Fatalf("new user, started quiz count not 0")
 	}
 
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizID, []string{inmemory.FirstQuestionID}), userID))
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateSelectAnswerCommand(inmemory.QuizID, inmemory.FirstQuestionID, inmemory.FirstAnswerID), userID))
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateFinishQuizCommand(inmemory.QuizID), userID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizIDEssentialsOfTheWeb, []string{inmemory.FirstQuestionID}), userID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateSelectAnswerCommand(inmemory.QuizIDEssentialsOfTheWeb, inmemory.FirstQuestionID, inmemory.FirstAnswerID), userID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateFinishQuizCommand(inmemory.QuizIDEssentialsOfTheWeb), userID))
 }
 
 func TestParticipantApplicationService_GetQuizAttemptDetail_NoQuizFinished_ReturnsEmpty(t *testing.T) {
@@ -107,10 +107,10 @@ func TestParticipantApplicationService_GetQuizAttemptDetail_NoQuizFinished_Retur
 
 	participantID := uuid.MustNewRandomAsString()
 
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizID, []string{inmemory.FirstQuestionID}), participantID))
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateSelectAnswerCommand(inmemory.QuizID, inmemory.FirstQuestionID, inmemory.FirstAnswerID), participantID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizIDEssentialsOfTheWeb, []string{inmemory.FirstQuestionID}), participantID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateSelectAnswerCommand(inmemory.QuizIDEssentialsOfTheWeb, inmemory.FirstQuestionID, inmemory.FirstAnswerID), participantID))
 
-	_, err := as.GetLatestQuizAttemptDetail(participantID, inmemory.QuizID)
+	_, err := as.GetLatestQuizAttemptDetail(participantID, inmemory.QuizIDEssentialsOfTheWeb)
 
 	if err == nil {
 		t.Fatalf("does not return error for requesting the first attempt without having any quiz finished")
@@ -123,12 +123,12 @@ func TestParticipantApplicationService_GetQuizAttemptDetail_ReturnsFirstLatestAt
 
 	participantID := uuid.MustNewRandomAsString()
 
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizID, []string{inmemory.FirstQuestionID}), participantID))
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateSelectAnswerCommand(inmemory.QuizID, inmemory.FirstQuestionID, inmemory.FirstAnswerID), participantID))
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateFinishQuizCommand(inmemory.QuizID), participantID))
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizID, []string{inmemory.FirstQuestionID}), participantID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizIDEssentialsOfTheWeb, []string{inmemory.FirstQuestionID}), participantID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateSelectAnswerCommand(inmemory.QuizIDEssentialsOfTheWeb, inmemory.FirstQuestionID, inmemory.FirstAnswerID), participantID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateFinishQuizCommand(inmemory.QuizIDEssentialsOfTheWeb), participantID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizIDEssentialsOfTheWeb, []string{inmemory.FirstQuestionID}), participantID))
 
-	attemptDetail1 := errUtils.PanicIfError1(as.GetLatestQuizAttemptDetail(participantID, inmemory.QuizID))
+	attemptDetail1 := errUtils.PanicIfError1(as.GetLatestQuizAttemptDetail(participantID, inmemory.QuizIDEssentialsOfTheWeb))
 
 	if attemptDetail1.AttemptID != 1 {
 		t.Fatalf("first attempt id is not 1, %d instead", attemptDetail1.AttemptID)
@@ -141,15 +141,15 @@ func TestParticipantApplicationService_GetQuizAttemptDetail_ReturnsLatest(t *tes
 
 	participantID := uuid.MustNewRandomAsString()
 
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizID, []string{inmemory.FirstQuestionID}), participantID))
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateSelectAnswerCommand(inmemory.QuizID, inmemory.FirstQuestionID, inmemory.FirstAnswerID), participantID))
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateFinishQuizCommand(inmemory.QuizID), participantID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizIDEssentialsOfTheWeb, []string{inmemory.FirstQuestionID}), participantID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateSelectAnswerCommand(inmemory.QuizIDEssentialsOfTheWeb, inmemory.FirstQuestionID, inmemory.FirstAnswerID), participantID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateFinishQuizCommand(inmemory.QuizIDEssentialsOfTheWeb), participantID))
 
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizID, []string{inmemory.FirstQuestionID}), participantID))
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateSelectAnswerCommand(inmemory.QuizID, inmemory.FirstQuestionID, inmemory.FirstAnswerID), participantID))
-	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateFinishQuizCommand(inmemory.QuizID), participantID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateStartQuizCommand(inmemory.QuizIDEssentialsOfTheWeb, []string{inmemory.FirstQuestionID}), participantID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateSelectAnswerCommand(inmemory.QuizIDEssentialsOfTheWeb, inmemory.FirstQuestionID, inmemory.FirstAnswerID), participantID))
+	errUtils.PanicIfError(as.ProcessCommand(commandFactory.CreateFinishQuizCommand(inmemory.QuizIDEssentialsOfTheWeb), participantID))
 
-	attemptDetail2 := errUtils.PanicIfError1(as.GetLatestQuizAttemptDetail(participantID, inmemory.QuizID))
+	attemptDetail2 := errUtils.PanicIfError1(as.GetLatestQuizAttemptDetail(participantID, inmemory.QuizIDEssentialsOfTheWeb))
 
 	if len(attemptDetail2.QuestionsWithAnswer) == 0 {
 		t.Fatalf("no question and answers for latest quiz attempt")

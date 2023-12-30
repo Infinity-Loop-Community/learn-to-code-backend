@@ -251,21 +251,21 @@ func TestParticipant_GetFinishedQuizCount(t *testing.T) {
 func TestParticipant_GetQuizAttemptCount_InitiallyReturns0(t *testing.T) {
 	p := err.PanicIfError1(participant.New())
 
-	if p.GetQuizAttemptCount(inmemory.QuizID) != 0 {
+	if p.GetQuizAttemptCount(inmemory.QuizIDEssentialsOfTheWeb) != 0 {
 		t.Fatalf("new participant does not have 0 quiz attempts for a quiz")
 	}
 }
 
 func TestParticipant_GetQuizAttemptCount_Returns1AfterANewQuizStarted(t *testing.T) {
 	p := err.PanicIfError1(participant.New())
-	err.PanicIfError(p.StartQuiz(inmemory.QuizID, []string{}))
-	err.PanicIfError(p.FinishQuiz(inmemory.QuizID))
+	err.PanicIfError(p.StartQuiz(inmemory.QuizIDEssentialsOfTheWeb, []string{}))
+	err.PanicIfError(p.FinishQuiz(inmemory.QuizIDEssentialsOfTheWeb))
 
 	err.PanicIfError(p.StartQuiz("other", []string{}))
 
-	err.PanicIfError(p.StartQuiz(inmemory.QuizID, []string{}))
+	err.PanicIfError(p.StartQuiz(inmemory.QuizIDEssentialsOfTheWeb, []string{}))
 
-	if p.GetQuizAttemptCount(inmemory.QuizID) != 2 {
+	if p.GetQuizAttemptCount(inmemory.QuizIDEssentialsOfTheWeb) != 2 {
 		t.Fatalf("new participant does not have 2 quiz attempts for a quiz that started the 2nd time")
 	}
 }

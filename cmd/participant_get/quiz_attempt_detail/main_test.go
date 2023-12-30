@@ -129,11 +129,11 @@ func requestQuizAttemptDetailByAttemptID(attemptID string) events.APIGatewayProx
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
 	defer environmentCreator.Terminate()
 
-	environmentCreator.ExecuteLambdaHandlerWithPostBody(participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest, startQuizPayload)
-	environmentCreator.ExecuteLambdaHandlerWithPostBody(participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest, selectAnswerPayload)
+	environmentCreator.ExecuteLambdaHandlerWithPostBody(participant.NewPostParticipantCommandHandler, startQuizPayload)
+	environmentCreator.ExecuteLambdaHandlerWithPostBody(participant.NewPostParticipantCommandHandler, selectAnswerPayload)
 
 	getDetailResponse := environmentCreator.ExecuteLambdaHandlerGETWithPathParameters(
-		quiz.NewGetParticipantQuizAttemptDetailHandler(environmentCreator.Cfg).HandleRequest,
+		quiz.NewGetParticipantQuizAttemptDetailHandler,
 		map[string]string{
 			"quizId":    inmemory.QuizIDEssentialsOfTheWeb,
 			"attemptId": attemptID,
@@ -147,13 +147,13 @@ func requestQuizAttemptDetailWithFinishedQuizByAttemptID(attemptID string) event
 
 	participantID := uuid.MustNewRandomAsString()
 
-	environmentCreator.ExecuteLambdaHandlerWithPostBodyForUser(participantID, participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest, startQuizPayload)
-	environmentCreator.ExecuteLambdaHandlerWithPostBodyForUser(participantID, participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest, selectAnswerPayload)
-	environmentCreator.ExecuteLambdaHandlerWithPostBodyForUser(participantID, participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest, finishQuizPayload)
+	environmentCreator.ExecuteLambdaHandlerWithPostBodyForUser(participantID, participant.NewPostParticipantCommandHandler, startQuizPayload)
+	environmentCreator.ExecuteLambdaHandlerWithPostBodyForUser(participantID, participant.NewPostParticipantCommandHandler, selectAnswerPayload)
+	environmentCreator.ExecuteLambdaHandlerWithPostBodyForUser(participantID, participant.NewPostParticipantCommandHandler, finishQuizPayload)
 
 	getDetailResponse := environmentCreator.ExecuteLambdaHandlerGETWithPathParametersForUser(
 		participantID,
-		quiz.NewGetParticipantQuizAttemptDetailHandler(environmentCreator.Cfg).HandleRequest,
+		quiz.NewGetParticipantQuizAttemptDetailHandler,
 		map[string]string{
 			"quizId":    inmemory.QuizIDEssentialsOfTheWeb,
 			"attemptId": attemptID,
@@ -167,14 +167,14 @@ func requestQuizAttemptDetailWithRestartedQuizByAttemptID(attemptID string) even
 
 	participantID := uuid.MustNewRandomAsString()
 
-	environmentCreator.ExecuteLambdaHandlerWithPostBodyForUser(participantID, participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest, startQuizPayload)
-	environmentCreator.ExecuteLambdaHandlerWithPostBodyForUser(participantID, participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest, selectAnswerPayload)
-	environmentCreator.ExecuteLambdaHandlerWithPostBodyForUser(participantID, participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest, finishQuizPayload)
-	environmentCreator.ExecuteLambdaHandlerWithPostBodyForUser(participantID, participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest, startQuizPayload)
+	environmentCreator.ExecuteLambdaHandlerWithPostBodyForUser(participantID, participant.NewPostParticipantCommandHandler, startQuizPayload)
+	environmentCreator.ExecuteLambdaHandlerWithPostBodyForUser(participantID, participant.NewPostParticipantCommandHandler, selectAnswerPayload)
+	environmentCreator.ExecuteLambdaHandlerWithPostBodyForUser(participantID, participant.NewPostParticipantCommandHandler, finishQuizPayload)
+	environmentCreator.ExecuteLambdaHandlerWithPostBodyForUser(participantID, participant.NewPostParticipantCommandHandler, startQuizPayload)
 
 	getDetailResponse := environmentCreator.ExecuteLambdaHandlerGETWithPathParametersForUser(
 		participantID,
-		quiz.NewGetParticipantQuizAttemptDetailHandler(environmentCreator.Cfg).HandleRequest,
+		quiz.NewGetParticipantQuizAttemptDetailHandler,
 		map[string]string{
 			"quizId":    inmemory.QuizIDEssentialsOfTheWeb,
 			"attemptId": attemptID,

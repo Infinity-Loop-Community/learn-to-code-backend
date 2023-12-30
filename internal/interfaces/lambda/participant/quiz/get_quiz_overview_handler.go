@@ -4,22 +4,26 @@ import (
 	"context"
 	"learn-to-code/internal/infrastructure/config"
 	"learn-to-code/internal/infrastructure/service"
+	"learn-to-code/internal/interfaces/lambda"
 
 	"github.com/aws/aws-lambda-go/events"
 )
 
 type GetOverviewHandler struct {
-	cfg config.Config
+	lambda.HandlerBase
 }
 
-func NewGetParticipantQuizOverviewHandler(cfg config.Config) *GetOverviewHandler {
+func NewGetParticipantQuizOverviewHandler(cfg config.Config, registryOverride service.RegistryOverride) lambda.Handler {
 	return &GetOverviewHandler{
-		cfg: cfg,
+		lambda.HandlerBase{
+			Cfg:               cfg,
+			RegistryOverrides: []service.RegistryOverride{registryOverride},
+		},
 	}
 }
 
-func (gh *GetOverviewHandler) HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest, registryOverrides ...service.RegistryOverride) (events.APIGatewayProxyResponse, error) {
-	serviceRegistry := service.NewServiceRegistry(ctx, gh.cfg, registryOverrides...)
+func (gh *GetOverviewHandler) HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	serviceRegistry := service.NewServiceRegistry(ctx, gh.Cfg, gh.RegistryOverrides...)
 
 	userID, err := serviceRegistry.RequestValidator.ValidateRequest(request)
 	if err != nil {

@@ -7,22 +7,26 @@ import (
 	"learn-to-code/internal/domain/quiz/participant/projection/quizattemptdetail"
 	"learn-to-code/internal/infrastructure/config"
 	"learn-to-code/internal/infrastructure/service"
+	"learn-to-code/internal/interfaces/lambda"
 
 	"github.com/aws/aws-lambda-go/events"
 )
 
 type GetAttemptDetailHandler struct {
-	cfg config.Config
+	lambda.HandlerBase
 }
 
-func NewGetParticipantQuizAttemptDetailHandler(cfg config.Config) *GetAttemptDetailHandler {
+func NewGetParticipantQuizAttemptDetailHandler(cfg config.Config, registryOverride service.RegistryOverride) lambda.Handler {
 	return &GetAttemptDetailHandler{
-		cfg: cfg,
+		lambda.HandlerBase{
+			Cfg:               cfg,
+			RegistryOverrides: []service.RegistryOverride{registryOverride},
+		},
 	}
 }
 
-func (gh *GetAttemptDetailHandler) HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest, registryOverrides ...service.RegistryOverride) (events.APIGatewayProxyResponse, error) {
-	serviceRegistry := service.NewServiceRegistry(ctx, gh.cfg, registryOverrides...)
+func (gh *GetAttemptDetailHandler) HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	serviceRegistry := service.NewServiceRegistry(ctx, gh.Cfg, gh.RegistryOverrides...)
 
 	userID, err := serviceRegistry.RequestValidator.ValidateRequest(request)
 	if err != nil {

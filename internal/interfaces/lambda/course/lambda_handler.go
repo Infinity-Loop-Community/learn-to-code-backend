@@ -7,20 +7,26 @@ import (
 	"learn-to-code/internal/domain/quiz/course"
 	"learn-to-code/internal/infrastructure/config"
 	"learn-to-code/internal/infrastructure/service"
+	"learn-to-code/internal/interfaces/lambda"
 
 	"github.com/aws/aws-lambda-go/events"
 )
 
 type LambdaHandler struct {
-	cfg config.Config
+	lambda.HandlerBase
 }
 
-func NewLambdaHandler(cfg config.Config) LambdaHandler {
-	return LambdaHandler{cfg: cfg}
+func NewLambdaHandler(cfg config.Config, registryOverride service.RegistryOverride) lambda.Handler {
+	return &LambdaHandler{
+		lambda.HandlerBase{
+			Cfg:               cfg,
+			RegistryOverrides: []service.RegistryOverride{registryOverride},
+		},
+	}
 }
 
-func (l LambdaHandler) HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest, registryOverrides ...service.RegistryOverride) (events.APIGatewayProxyResponse, error) {
-	serviceRegistry := service.NewServiceRegistry(ctx, l.cfg, registryOverrides...)
+func (l *LambdaHandler) HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	serviceRegistry := service.NewServiceRegistry(ctx, l.Cfg, l.RegistryOverrides...)
 
 	_, err := serviceRegistry.RequestValidator.ValidateRequest(request)
 	if err != nil {

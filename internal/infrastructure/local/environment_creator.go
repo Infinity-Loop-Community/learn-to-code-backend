@@ -7,37 +7,38 @@ import (
 	"learn-to-code/internal/infrastructure/inmemory"
 	"learn-to-code/internal/infrastructure/service"
 	"learn-to-code/internal/infrastructure/testing/db"
+	"learn-to-code/internal/interfaces/lambda"
 	"os"
 
 	"github.com/aws/aws-lambda-go/events"
 )
 
 type EnvironmentCreator struct {
-	Cfg               config.Config
-	requestCreator    *RequestCreator
-	registryOverrides []service.RegistryOverride
-	onTerminationFns  []func()
+	Cfg              config.Config
+	requestCreator   *RequestCreator
+	RegistryOverride service.RegistryOverride
+	onTerminationFns []func()
 }
 
-func NewEnvironmentCreator(environment config.Environment, registryOverrides ...service.RegistryOverride) *EnvironmentCreator {
+func NewEnvironmentCreator(environment config.Environment) *EnvironmentCreator {
 
 	var finalOnTerminationFns []func()
-	var finalRegistryOverrides = registryOverrides
+	var registryOverride service.RegistryOverride
 
-	if environment == config.Test && len(registryOverrides) == 0 {
+	if environment == config.Test {
 		dynamoDBClient, clean := db.StartDynamoDB()
 		finalOnTerminationFns = append(finalOnTerminationFns, clean)
 
-		finalRegistryOverrides = append(finalRegistryOverrides, service.RegistryOverride{DynamoDBClient: dynamoDBClient})
+		registryOverride = service.RegistryOverride{DynamoDBClient: dynamoDBClient}
 	}
 
 	cfg := setupExecutionEnvironment(environment)
 
 	return &EnvironmentCreator{
-		Cfg:               cfg,
-		requestCreator:    NewRequestCreator(cfg),
-		registryOverrides: finalRegistryOverrides,
-		onTerminationFns:  finalOnTerminationFns,
+		Cfg:              cfg,
+		requestCreator:   NewRequestCreator(cfg),
+		RegistryOverride: registryOverride,
+		onTerminationFns: finalOnTerminationFns,
 	}
 }
 
@@ -56,55 +57,60 @@ func (ec *EnvironmentCreator) Terminate() {
 }
 
 func (ec *EnvironmentCreator) ExecuteLambdaHandler(
-	handleRequest func(ctx context.Context, request events.APIGatewayProxyRequest, registryOverrides ...service.RegistryOverride) (events.APIGatewayProxyResponse, error),
+	newLambdaHandlerFn func(cfg config.Config, registryOverride service.RegistryOverride) lambda.Handler,
 ) events.APIGatewayProxyResponse {
 
-	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreateGETRequest(
+	handler := newLambdaHandlerFn(ec.Cfg, ec.RegistryOverride)
+	request := err.PanicIfError1(handler.HandleRequest(context.Background(), ec.requestCreator.CreateGETRequest(
 		map[string]string{
 			"courseId": inmemory.CourseIDFrontendDevelopment,
-		}, "user123"), ec.registryOverrides...))
+		}, "user123")))
 	return request
 }
 
 func (ec *EnvironmentCreator) ExecuteLambdaHandlerGETWithPathParametersForUser(
 	participantID string,
-	handleRequest func(ctx context.Context, request events.APIGatewayProxyRequest, registryOverrides ...service.RegistryOverride) (events.APIGatewayProxyResponse, error),
+	newLambdaHandlerFn func(cfg config.Config, registryOverride service.RegistryOverride) lambda.Handler,
 	pathParameters map[string]string,
 ) events.APIGatewayProxyResponse {
 
-	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreateGETRequest(pathParameters, participantID), ec.registryOverrides...))
+	handler := newLambdaHandlerFn(ec.Cfg, ec.RegistryOverride)
+	request := err.PanicIfError1(handler.HandleRequest(context.Background(), ec.requestCreator.CreateGETRequest(pathParameters, participantID)))
 	return request
 }
 
 func (ec *EnvironmentCreator) ExecuteLambdaHandlerGETWithPathParameters(
-	handleRequest func(ctx context.Context, request events.APIGatewayProxyRequest, registryOverrides ...service.RegistryOverride) (events.APIGatewayProxyResponse, error),
+	newLambdaHandlerFn func(cfg config.Config, registryOverride service.RegistryOverride) lambda.Handler,
 	pathParameters map[string]string,
 ) events.APIGatewayProxyResponse {
 
-	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreateGETRequest(pathParameters, "user123"), ec.registryOverrides...))
+	handler := newLambdaHandlerFn(ec.Cfg, ec.RegistryOverride)
+	request := err.PanicIfError1(handler.HandleRequest(context.Background(), ec.requestCreator.CreateGETRequest(pathParameters, "user123")))
 	return request
 }
 
 func (ec *EnvironmentCreator) ExecuteLambdaHandlerWithPostBodyForUser(
 	participantID string,
-	handleRequest func(ctx context.Context, request events.APIGatewayProxyRequest, registryOverrides ...service.RegistryOverride) (events.APIGatewayProxyResponse, error),
+	newLambdaHandlerFn func(cfg config.Config, registryOverride service.RegistryOverride) lambda.Handler,
 	body string,
 ) events.APIGatewayProxyResponse {
 
-	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreatePOSTRequest(body, map[string]string{
+	handler := newLambdaHandlerFn(ec.Cfg, ec.RegistryOverride)
+	request := err.PanicIfError1(handler.HandleRequest(context.Background(), ec.requestCreator.CreatePOSTRequest(body, map[string]string{
 		"userId": participantID,
-	}, participantID), ec.registryOverrides...))
+	}, participantID)))
 
 	return request
 }
 
 func (ec *EnvironmentCreator) ExecuteLambdaHandlerWithPostBody(
-	handleRequest func(ctx context.Context, request events.APIGatewayProxyRequest, registryOverrides ...service.RegistryOverride) (events.APIGatewayProxyResponse, error),
+	newLambdaHandlerFn func(cfg config.Config, registryOverride service.RegistryOverride) lambda.Handler,
 	body string) events.APIGatewayProxyResponse {
 
-	request := err.PanicIfError1(handleRequest(context.Background(), ec.requestCreator.CreatePOSTRequest(body, map[string]string{
+	handler := newLambdaHandlerFn(ec.Cfg, ec.RegistryOverride)
+	request := err.PanicIfError1(handler.HandleRequest(context.Background(), ec.requestCreator.CreatePOSTRequest(body, map[string]string{
 		"userId": "user123",
-	}, "user123"), ec.registryOverrides...))
+	}, "user123")))
 
 	return request
 }

@@ -75,10 +75,10 @@ func TestPutParticipantLambda_Returns200(t *testing.T) {
 		finishQuizComand,
 	}
 
-	handleRequestFn := participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest
+	handler := participant.NewPostParticipantCommandHandler
 	for _, requestBody := range requestBodys {
 		handlerResponse := environmentCreator.ExecuteLambdaHandlerWithPostBody(
-			handleRequestFn,
+			handler,
 			requestBody,
 		)
 		if handlerResponse.StatusCode != 200 {
@@ -92,15 +92,15 @@ func TestPutParticipantLambda_InvalidQuizCompletion_Returns500(t *testing.T) {
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
 	defer environmentCreator.Terminate()
 
-	handleRequestFn := participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest
+	handler := participant.NewPostParticipantCommandHandler
 
 	environmentCreator.ExecuteLambdaHandlerWithPostBody(
-		handleRequestFn,
+		handler,
 		startQuizCommand,
 	)
 
 	handlerResponse3 := environmentCreator.ExecuteLambdaHandlerWithPostBody(
-		handleRequestFn,
+		handler,
 		finishQuizComand,
 	)
 	if handlerResponse3.StatusCode != 500 {
@@ -113,15 +113,15 @@ func TestPutParticipantLambda_InvalidQuestionSelection_Returns400(t *testing.T) 
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
 	defer environmentCreator.Terminate()
 
-	handleRequestFn := participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest
+	participantCommandHandler := participant.NewPostParticipantCommandHandler
 
 	environmentCreator.ExecuteLambdaHandlerWithPostBody(
-		handleRequestFn,
+		participantCommandHandler,
 		startQuizCommand,
 	)
 
 	handlerResponse2 := environmentCreator.ExecuteLambdaHandlerWithPostBody(
-		handleRequestFn,
+		participantCommandHandler,
 		eventBodyEmptySelectAnswer,
 	)
 	if handlerResponse2.StatusCode != 400 {
@@ -134,10 +134,10 @@ func TestPutParticipantLambda_InvalidStartQuiz_Returns400(t *testing.T) {
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
 	defer environmentCreator.Terminate()
 
-	handleRequestFn := participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest
+	handler := participant.NewPostParticipantCommandHandler
 
 	handlerResponse := environmentCreator.ExecuteLambdaHandlerWithPostBody(
-		handleRequestFn,
+		handler,
 		eventBodyEmptyStartQuiz,
 	)
 

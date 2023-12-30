@@ -12,7 +12,7 @@ import (
 func TestGetCourseLambda_Returns200(t *testing.T) {
 
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
-	handlerResponse := environmentCreator.ExecuteLambdaHandler(course.NewLambdaHandler(environmentCreator.Cfg).HandleRequest)
+	handlerResponse := environmentCreator.ExecuteLambdaHandler(course.NewLambdaHandler)
 
 	if handlerResponse.StatusCode != 200 {
 		t.Fatalf("lambda did not succeed, status code: %v", handlerResponse.StatusCode)
@@ -24,7 +24,7 @@ func TestGetCourseLambda_ContainsCourseData(t *testing.T) {
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
 	defer environmentCreator.Terminate()
 
-	handlerResponse := environmentCreator.ExecuteLambdaHandler(course.NewLambdaHandler(environmentCreator.Cfg).HandleRequest)
+	handlerResponse := environmentCreator.ExecuteLambdaHandler(course.NewLambdaHandler)
 
 	path := "$.id"
 	courseID := json.GetJSONPathValue(handlerResponse, path)

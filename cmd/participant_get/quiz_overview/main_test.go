@@ -26,9 +26,9 @@ func TestGetQuizOverview_Returns200(t *testing.T) {
 	environmentCreator := local.NewEnvironmentCreator(config.Test)
 	defer environmentCreator.Terminate()
 
-	environmentCreator.ExecuteLambdaHandlerWithPostBody(participant.NewPostParticipantCommandHandler(environmentCreator.Cfg).HandleRequest, eventBody)
+	environmentCreator.ExecuteLambdaHandlerWithPostBody(participant.NewPostParticipantCommandHandler, eventBody)
 
-	getOverviewResponse := environmentCreator.ExecuteLambdaHandler(quiz.NewGetParticipantQuizOverviewHandler(environmentCreator.Cfg).HandleRequest)
+	getOverviewResponse := environmentCreator.ExecuteLambdaHandler(quiz.NewGetParticipantQuizOverviewHandler)
 
 	if getOverviewResponse.StatusCode != 200 {
 		t.Fatalf("lambda did not succeed, status code: %v", getOverviewResponse.StatusCode)

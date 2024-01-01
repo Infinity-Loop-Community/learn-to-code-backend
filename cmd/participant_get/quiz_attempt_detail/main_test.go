@@ -101,7 +101,7 @@ func TestGetAttemptDetail_ReturnsID(t *testing.T) {
 	attemptID := json.GetJSONPathValue(getDetailResponse, "$.attemptId").(float64)
 
 	if attemptID != 1 {
-		t.Fatalf("question detail response does not contain an ID '1', but '%f' instead", attemptID)
+		t.Fatalf("question detail response does not contain an QuizID '1', but '%f' instead", attemptID)
 	}
 }
 
@@ -121,7 +121,7 @@ func TestGetAttemptDetail_UnknownAttempt_Returns404(t *testing.T) {
 	getDetailResponse := requestQuizAttemptDetailByAttemptID("0")
 
 	if getDetailResponse.StatusCode != 404 {
-		t.Fatalf("lambda did not return 404 for unknown attempt ID, status code: %v, body: %s", getDetailResponse.StatusCode, getDetailResponse.Body)
+		t.Fatalf("lambda did not return 404 for unknown attempt QuizID, status code: %v, body: %s", getDetailResponse.StatusCode, getDetailResponse.Body)
 	}
 }
 

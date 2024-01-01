@@ -19,7 +19,7 @@ func TestParticipant_GetId_CorrectSize(t *testing.T) {
 	uuidLength := len(newUUID())
 
 	if pLength != uuidLength {
-		t.Fatalf("ID length not equal to an uuid %d != %d", pLength, uuidLength)
+		t.Fatalf("QuizID length not equal to an uuid %d != %d", pLength, uuidLength)
 	}
 }
 
@@ -28,7 +28,7 @@ func TestParticipant_GetId_Unique(t *testing.T) {
 	p2 := err.PanicIfError1(participant.New())
 
 	if p1.GetID() == p2.GetID() {
-		t.Fatalf("ID not unique")
+		t.Fatalf("QuizID not unique")
 	}
 }
 
@@ -61,7 +61,7 @@ func TestParticipant_JoinQuiz_ReturnsEvent(t *testing.T) {
 
 	startedQuizEvent := newEvents[len(newEvents)-1].(event.StartedQuiz)
 	if startedQuizEvent.QuizID != quizID {
-		t.Fatalf("invalid event ID '%s' != '%s", startedQuizEvent.QuizID, quizID)
+		t.Fatalf("invalid event QuizID '%s' != '%s", startedQuizEvent.QuizID, quizID)
 	}
 }
 
@@ -236,7 +236,7 @@ func TestParticipant_FinishQuiz_eventQuizIdMatches(t *testing.T) {
 	startedQuizEvent := newEvents[len(newEvents)-1].(event.FinishedQuiz)
 
 	if startedQuizEvent.QuizID != quizID {
-		t.Fatalf("finish event quizId does not match quiz ID '%s' != '%s'", startedQuizEvent.QuizID, quizID)
+		t.Fatalf("finish event quizId does not match quiz QuizID '%s' != '%s'", startedQuizEvent.QuizID, quizID)
 	}
 }
 
@@ -358,7 +358,7 @@ func TestParticipant_GetAttemptID_latest(t *testing.T) {
 		t.Fatalf("GetValidAttemptID failed: %v", err)
 	}
 	if attemptID != 2 {
-		t.Errorf("Expected latest attempt ID to be 2, got %d", attemptID)
+		t.Errorf("Expected latest attempt QuizID to be 2, got %d", attemptID)
 	}
 }
 
@@ -370,7 +370,7 @@ func TestParticipant_GetAttemptID_byRealID(t *testing.T) {
 		t.Fatalf("GetValidAttemptID failed: %v", err)
 	}
 	if attemptID != 2 {
-		t.Errorf("Expected latest attempt ID to be 2, got %d", attemptID)
+		t.Errorf("Expected latest attempt QuizID to be 2, got %d", attemptID)
 	}
 }
 

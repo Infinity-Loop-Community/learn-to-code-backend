@@ -25,7 +25,7 @@ func TestGetFinishedQuizLatestAttempt_ExistingQuiz(t *testing.T) {
 		t.Fatalf("Expected no error, got %v", err)
 	}
 	if latestAttempt.QuizID != quizID {
-		t.Fatalf("Expected quiz ID %s, got %s", quizID, latestAttempt.QuizID)
+		t.Fatalf("Expected quiz QuizID %s, got %s", quizID, latestAttempt.QuizID)
 	}
 }
 

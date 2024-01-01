@@ -12,7 +12,7 @@ import (
 type Repository interface {
 	StoreEvents(participantID string, events []eventsource.Event) error
 
-	// FindByID retrieves a participant by ID from the repository or creates an empty one if not exists.
+	// FindByID retrieves a participant by QuizID from the repository or creates an empty one if not exists.
 	FindOrCreateByID(participantID string) (Participant, error)
 
 	FindEventsByParticipantID(pariticipantID string) ([]eventsource.Event, error)

@@ -242,7 +242,7 @@ func TestNewQuizAttemptDetail_ReturnsForFinishedQuiz(t *testing.T) {
 		t.Fatalf("quiz attempt detail creation errors for valid attempt")
 	}
 	if quizAttemptDetailProjection.AttemptID != 1 {
-		t.Fatalf("invalid attampt ID in projection, requested id 1, but received id %d", quizAttemptDetailProjection.AttemptID)
+		t.Fatalf("invalid attampt QuizID in projection, requested id 1, but received id %d", quizAttemptDetailProjection.AttemptID)
 	}
 
 	assertQuestionAnswer(t, quizAttemptDetailProjection, "a", "a-1")
@@ -254,7 +254,7 @@ func TestNewQuizAttemptDetail_ReturnsForFinishedQuiz(t *testing.T) {
 		t.Fatalf("quiz attempt detail creation errors for valid attempt")
 	}
 	if quizAttemptDetailProjection2.AttemptID != 2 {
-		t.Fatalf("invalid attampt ID in projection, requested id 2, but received id %d", quizAttemptDetailProjection2.AttemptID)
+		t.Fatalf("invalid attampt QuizID in projection, requested id 2, but received id %d", quizAttemptDetailProjection2.AttemptID)
 	}
 
 	assertQuestionAnswer(t, quizAttemptDetailProjection2, "a", "a-2")

@@ -1,0 +1,665 @@
+{
+  "id": "addb1e53-eb07-44a3-881f-217eee3a926b",
+  "questions": [
+    {
+      "id": "ea544cd7-3781-4f7c-9263-0fd52a4e50c3",
+      "text": "Which of the following best describes abstraction in computer science?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "3a57cda2-d9d8-4eff-aa0c-d01d1829997c",
+          "text": "Using a high-level language for coding",
+          "isCorrect": false,
+          "description": "Using a high-level language is about ease of programming and not directly about abstraction."
+        },
+        {
+          "id": "25305996-c057-4bb2-b67e-0844f7616848",
+          "text": "Hiding complex implementation details while exposing essential features",
+          "isCorrect": true,
+          "description": "Abstraction is about simplifying complex systems by breaking them down and hiding the more complex underlying details while exposing only the essential parts."
+        },
+        {
+          "id": "02e1e5b8-ab0d-48e5-abcc-e4fea0e58b8a",
+          "text": "Representing data in binary format",
+          "isCorrect": false,
+          "description": "Binary representation is about data encoding and not about abstraction."
+        },
+        {
+          "id": "eb297bf9-8c76-49af-9986-7afd43387aca",
+          "text": "Breaking a problem into multiple smaller problems",
+          "isCorrect": false,
+          "description": "Breaking a problem into smaller problems is related to decomposition."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "8b6c3f45-3744-45bf-bfa4-cfca72ea445e",
+      "text": "Which programming language is commonly used for web development alongside HTML and CSS?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "fb6a6065-edd0-4bed-bd02-45a251cbdd07",
+          "text": "C",
+          "isCorrect": false,
+          "description": "C is a low-level language and not primarily used for web development."
+        },
+        {
+          "id": "5efeccf7-9f3e-4f98-96a3-8a48e706e86b",
+          "text": "Python",
+          "isCorrect": false,
+          "description": "Python is a general-purpose language and, while it can be used in web development, it's not typically paired directly with HTML/CSS in the same way JavaScript is."
+        },
+        {
+          "id": "25e38f1b-b70b-45e6-ae14-576f67846d3e",
+          "text": "SQL",
+          "isCorrect": false,
+          "description": "SQL is used for database management and queries."
+        },
+        {
+          "id": "005520cd-5d49-47ea-b745-0e59c7f0c329",
+          "text": "JavaScript",
+          "isCorrect": true,
+          "description": "JavaScript is primarily used in web browsers to add interactivity to web pages and work alongside HTML and CSS."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "06f2d660-5f22-4255-a618-882b2f5a5682",
+      "text": "What is the primary purpose of algorithms in programming?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "feb569dc-57fe-492f-ad2c-304816df7a59",
+          "text": "Enhancing the look of a software application",
+          "isCorrect": false,
+          "description": "The look of an application is determined by its design and not its algorithms."
+        },
+        {
+          "id": "8b8810c6-846f-4b3e-83e4-341149c7fe25",
+          "text": "Making the software run faster",
+          "isCorrect": false,
+          "description": "While efficient algorithms can make software run faster, it's not their primary purpose."
+        },
+        {
+          "id": "7ed5e8b0-fe23-4eda-8a03-67363d6bf2e0",
+          "text": "Solving problems and performing tasks",
+          "isCorrect": true,
+          "description": "Algorithms are step-by-step procedures or formulas for solving problems or accomplishing tasks in programming."
+        },
+        {
+          "id": "9d90288a-742c-43c7-8840-88592fd23c9c",
+          "text": "Securing the application from threats",
+          "isCorrect": false,
+          "description": "Security measures protect applications, but algorithms, in general, are about problem-solving."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "90b31534-bc5a-41c5-8f48-f6977ff087f8",
+      "text": "Which term refers to the practice of restricting access to certain parts of the program?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "134fceb1-7c27-4a9c-92dc-4fb92957d099",
+          "text": "Abstraction",
+          "isCorrect": false,
+          "description": "Abstraction is about hiding complex details."
+        },
+        {
+          "id": "8aa7ac37-299f-45e5-bbf8-b20cfac3e2ed",
+          "text": "Encryption",
+          "isCorrect": false,
+          "description": "Encryption is about securing data."
+        },
+        {
+          "id": "6505ce91-b0e8-41e4-82f7-8dcfebadee75",
+          "text": "Encapsulation",
+          "isCorrect": true,
+          "description": "Encapsulation is a fundamental concept in object-oriented programming where you bundle the data and the methods into a single unit or class and restrict the access to some of the object's components."
+        },
+        {
+          "id": "15242262-a34e-4df1-a8f4-dbb9bf620232",
+          "text": "Annotation",
+          "isCorrect": false,
+          "description": "Annotation is adding comments or explanations to the code."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "a63161f6-e0b0-4b95-8c62-ea643b3f5c2d",
+      "text": "In which language would you primarily write database queries?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "5a3cc786-46fa-4cd1-a3b7-f657227dc650",
+          "text": "C",
+          "isCorrect": false,
+          "description": "C is not primarily used for database queries."
+        },
+        {
+          "id": "19425077-c6b2-4b3e-8113-548afb2c18e1",
+          "text": "JavaScript",
+          "isCorrect": false,
+          "description": "JavaScript is primarily for web development, although it can interact with databases."
+        },
+        {
+          "id": "cdcabcf5-6faa-4182-b8cd-9862bf71c59f",
+          "text": "SQL",
+          "isCorrect": true,
+          "description": "SQL stands for Structured Query Language and is used to communicate with databases, especially for querying and manipulating data."
+        },
+        {
+          "id": "90233b63-8845-42c1-ae95-c8d5eeb2f426",
+          "text": "Python",
+          "isCorrect": false,
+          "description": "Python is a general-purpose language and can interact with databases, but SQL is specifically designed for database queries."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "093bb054-5b1c-476f-ad96-52b8a76c4be0",
+      "text": "What is the primary role of CSS in web development?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "147356e8-7d8e-489c-b8c1-68b89e4b9e80",
+          "text": "Handling user input",
+          "isCorrect": false,
+          "description": "Handling user input is typically done with JavaScript."
+        },
+        {
+          "id": "049c3c5f-c2b6-4723-8838-4b88a31f473a",
+          "text": "Structuring the content",
+          "isCorrect": false,
+          "description": "Structuring content is done using HTML."
+        },
+        {
+          "id": "c5124a98-33fd-4706-be55-7b84e0bf5790",
+          "text": "Styling the webpage",
+          "isCorrect": true,
+          "description": "CSS stands for Cascading Style Sheets and is used to control the appearance of web pages including layout, colors, and fonts."
+        },
+        {
+          "id": "c72f6c23-fb80-4f1d-b82c-cde0308b02b0",
+          "text": "Storing data",
+          "isCorrect": false,
+          "description": "Storing data is done in databases or backend systems."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "0e5d62be-56c4-48d0-972f-d2d75a8dc288",
+      "text": "What concept helps in efficiently organizing and storing data for quick access and modification?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "10a0a624-0edf-4426-b1a0-779c85966d19",
+          "text": "Data algorithms",
+          "isCorrect": false,
+          "description": "Data algorithms are procedures for processing data."
+        },
+        {
+          "id": "74a67aa3-f8ad-453c-93aa-8c4fe5f80ce7",
+          "text": "Data structures",
+          "isCorrect": true,
+          "description": "Data structures help in organizing data in a way that enables efficient access and modification. Examples include arrays, linked lists, trees, and graphs."
+        },
+        {
+          "id": "0109b45f-b133-4288-8794-6d96d322113b",
+          "text": "Data annotations",
+          "isCorrect": false,
+          "description": "Annotations are explanatory notes or comments."
+        },
+        {
+          "id": "ce5f06d6-cbb9-477f-af86-ac8808ff7e7a",
+          "text": "Data encryption",
+          "isCorrect": false,
+          "description": "Encryption is about data security."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "a1ecd244-3cf5-43b8-9282-9e39e57337c1",
+      "text": "Why is resource management important in programming?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "d1ffd114-0897-4ffd-b63b-23ae96564bea",
+          "text": "To make the software look good",
+          "isCorrect": false,
+          "description": "The appearance of software is related to design."
+        },
+        {
+          "id": "74efde9d-70cd-4205-8692-60da3db0f584",
+          "text": "To ensure efficient use of system resources like memory",
+          "isCorrect": true,
+          "description": "Effective resource management ensures that resources like memory, CPU, and file handles are used efficiently and released when no longer needed, preventing resource leaks and potential system crashes."
+        },
+        {
+          "id": "34ed8e37-de52-4b53-b5e1-bfa98ee64899",
+          "text": "To make the software popular",
+          "isCorrect": false,
+          "description": "Popularity depends on various factors including functionality and user experience."
+        },
+        {
+          "id": "73deeade-c32a-405c-a33d-1c60399f6ab3",
+          "text": "To get user feedback",
+          "isCorrect": false,
+          "description": "Getting feedback is related to user testing and not resource management."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "b080dde3-1c94-4054-bc55-eb5fc17906be",
+      "text": "Which of the following best describes software engineering?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "456afd59-878b-4034-9b71-7e9ef1f77458",
+          "text": "Designing software logos",
+          "isCorrect": false,
+          "description": "Designing logos is related to graphic design."
+        },
+        {
+          "id": "4a06895e-6aad-45bc-a144-1ad1aaf08e2e",
+          "text": "Writing code in a hurry",
+          "isCorrect": false,
+          "description": "Writing quality software requires planning and testing, not haste."
+        },
+        {
+          "id": "f9228c9d-af55-4800-96fc-a5c2fbc7d6af",
+          "text": "The systematic design, development, and maintenance of software",
+          "isCorrect": true,
+          "description": "Software engineering is about applying systematic and disciplined approaches to the conception, development, operation, and maintenance of software."
+        },
+        {
+          "id": "d2447b18-f7a3-4dae-87e2-8108d56a31cd",
+          "text": "The study of software's impact on society",
+          "isCorrect": false,
+          "description": "The study of software's societal impact is more about software ethics."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "3c8afc73-ee51-4db8-959c-226d7494b8dc",
+      "text": "What is the main advantage of thinking algorithmically?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "5fc46855-4a52-459a-bb1d-dafa3ac9e9e8",
+          "text": "It helps in developing software faster",
+          "isCorrect": false,
+          "description": "Speed of development depends on various factors, not just algorithmic thinking."
+        },
+        {
+          "id": "659fce47-e70f-4e3b-882e-0ca6a32670e3",
+          "text": "It allows developers to ignore testing",
+          "isCorrect": false,
+          "description": "Testing is crucial regardless of how you think about problems."
+        },
+        {
+          "id": "24463905-4e0c-430e-bad5-2b0bb5febd32",
+          "text": "It aids in breaking down problems and finding efficient solutions",
+          "isCorrect": true,
+          "description": "Thinking algorithmically means approaching problems in a systematic and logical manner, which aids in finding optimal solutions and understanding the problem deeply."
+        },
+        {
+          "id": "445f0904-7755-4ea7-b0d9-14e4e8851dc1",
+          "text": "It helps in designing the user interface",
+          "isCorrect": false,
+          "description": "User interface design is a separate domain."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "913b246e-27d9-4442-977c-03e33f567551",
+      "text": "Which data structure is best suited for a first-in, first-out (FIFO) order?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "26059fb4-406a-4e60-b8aa-35bcdabe2336",
+          "text": "Array",
+          "isCorrect": false,
+          "description": "Arrays are general-purpose data structures."
+        },
+        {
+          "id": "a47f44c6-be06-4baf-8431-db4767936a4b",
+          "text": "Tree",
+          "isCorrect": false,
+          "description": "Trees are hierarchical structures."
+        },
+        {
+          "id": "72972a95-b51d-41d8-bd03-e1f6e06bf40b",
+          "text": "Stack",
+          "isCorrect": false,
+          "description": "Stacks follow a last-in, first-out (LIFO) principle."
+        },
+        {
+          "id": "7591d86b-976f-4535-8bed-56f838c0a661",
+          "text": "Queue",
+          "isCorrect": true,
+          "description": "A queue is a data structure that follows the FIFO (First-In, First-Out) principle, where the first element added will be the first one to be removed."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "8622ae2e-5a3c-4404-9fc2-d32608d4b6f2",
+      "text": "Why is it essential to understand security in software engineering?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "c89341f9-e784-4cde-9e3d-e75177066b40",
+          "text": "To ensure software sells more copies",
+          "isCorrect": false,
+          "description": "Sales depend on various factors, not just security."
+        },
+        {
+          "id": "0adb4a97-955a-4e48-be1d-5e32ac2e073c",
+          "text": "To ensure that software is resistant to unauthorized access, use, disclosure, disruption, or destruction",
+          "isCorrect": true,
+          "description": "Security in software engineering is about protecting software, data, and systems from malicious attacks, ensuring the confidentiality, integrity, and availability of information."
+        },
+        {
+          "id": "1253cedf-0090-41da-a348-38780e1cd16c",
+          "text": "To make the software look visually appealing",
+          "isCorrect": false,
+          "description": "Visual appeal is about design, not security."
+        },
+        {
+          "id": "7fd837ca-a3a3-4756-9d69-96f9fdeff884",
+          "text": "To make software open-source",
+          "isCorrect": false,
+          "description": "Open-source is about licensing and not directly about security."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "dd606f87-dd06-48d2-9df3-346109466a96",
+      "text": "What does \"encapsulation\" in object-oriented programming primarily help with?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "f1f3083d-f652-46c6-a391-f62cd8fdf708",
+          "text": "Speeding up software execution",
+          "isCorrect": false,
+          "description": "Execution speed depends on various factors including algorithms and system resources."
+        },
+        {
+          "id": "d2bb99ca-61d3-4a10-b737-d3edd0c34e5f",
+          "text": "Making software open-source",
+          "isCorrect": false,
+          "description": "Open-source is about licensing."
+        },
+        {
+          "id": "7628f7ad-a2a3-468a-bd2b-1f0740368eb1",
+          "text": "Reducing software size",
+          "isCorrect": false,
+          "description": "Software size is related to the amount of code and resources, not encapsulation."
+        },
+        {
+          "id": "c42fc1b9-4690-495f-92d8-3b17cee7d286",
+          "text": "Protecting an object's state and behavior from unintended interference",
+          "isCorrect": true,
+          "description": "Encapsulation in OOP allows an object to hide its data from the outside world and only expose data that is deemed necessary, ensuring data integrity and security."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "6e04f2fd-678f-4832-accf-c4832527f2d4",
+      "text": "In the context of databases, what is \"normalization\"?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "982b46e7-4303-4616-ad43-e408206a28da",
+          "text": "Making the database perform faster",
+          "isCorrect": false,
+          "description": "Performance can be affected by various factors, not just normalization."
+        },
+        {
+          "id": "05b0d29e-a61f-461b-b373-b3095606f51e",
+          "text": "Organizing data to reduce redundancy and improve data integrity",
+          "isCorrect": true,
+          "description": "Normalization is a systematic approach to decomposing tables to eliminate data redundancy and undesirable characteristics like insertion, update, and deletion anomalies."
+        },
+        {
+          "id": "6f8f7255-5b75-46cc-a894-c1976a95e9d9",
+          "text": "Encrypting the database",
+          "isCorrect": false,
+          "description": "Encryption is about security."
+        },
+        {
+          "id": "6597aabe-7e56-4201-b6da-0fc330da75c5",
+          "text": "Making the database user-friendly",
+          "isCorrect": false,
+          "description": "User-friendliness is about UI/UX, not data organization."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "5725b221-9fe6-4550-98de-40be10e5f6db",
+      "text": "Which programming paradigm focuses on \"objects\" and their interactions?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "1e467cf3-224e-4150-8bc5-aed3247f8c52",
+          "text": "Procedural programming",
+          "isCorrect": false,
+          "description": "Procedural programming is about procedures or routines."
+        },
+        {
+          "id": "e1c0d0ec-a787-41ed-a456-7edcf2e2e3b0",
+          "text": "Functional programming",
+          "isCorrect": false,
+          "description": "Functional programming is about immutable data and pure functions."
+        },
+        {
+          "id": "20c9b70f-6d8e-4be1-92df-2a335bb2daa2",
+          "text": "Logic programming",
+          "isCorrect": false,
+          "description": "Logic programming is about facts and rules."
+        },
+        {
+          "id": "92dce32b-3848-43b4-9477-cd07ebe008ce",
+          "text": "Object-oriented programming",
+          "isCorrect": true,
+          "description": "Object-oriented programming (OOP) is centered around objects (instances of classes) and focuses on the interactions between these objects."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "6732f006-5538-4256-b0fa-09adee941d85",
+      "text": "How does \"abstraction\" in software design differ from \"abstraction\" in data structures?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "83c511e1-9de3-4379-8b4d-9f43b8d29fee",
+          "text": "They are the same.",
+          "isCorrect": false,
+          "description": "They are related but applied differently in different contexts."
+        },
+        {
+          "id": "5196579f-650d-49fb-bd37-04469e545df6",
+          "text": "Software design abstraction is about interfaces, while data structure abstraction is about efficiency.",
+          "isCorrect": false,
+          "description": "Both concepts are about hiding specifics, not just about interfaces or efficiency."
+        },
+        {
+          "id": "4944fac4-ef66-4cce-9f46-48d6719ddc06",
+          "text": "Software design abstraction refers to high-level system design ignoring specifics, while data structure abstraction hides the implementation details providing a clear interface.",
+          "isCorrect": true,
+          "description": "In software design, abstraction allows focusing on what a system component does without getting bogged down in how it does it. In data structures, abstraction ensures that data is accessed and modified only through well-defined interfaces."
+        },
+        {
+          "id": "a1533903-ec22-4d38-a194-35cbb7aceeb9",
+          "text": "There's no concept of abstraction in data structures.",
+          "isCorrect": false,
+          "description": "Abstraction is a fundamental concept in data structures."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "80bba1fe-2937-4045-9978-843a61473f4e",
+      "text": "In the context of algorithms, what does \"Big O notation\" represent?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "73fb638c-3bce-401f-96fb-8c5ce8f1760b",
+          "text": "The size of the algorithm in kilobytes",
+          "isCorrect": false,
+          "description": "Size in kilobytes is about storage, not complexity."
+        },
+        {
+          "id": "5b69864a-b685-4ed6-8872-e49cd381334e",
+          "text": "The popularity of the algorithm",
+          "isCorrect": false,
+          "description": "Popularity is not a technical metric."
+        },
+        {
+          "id": "2ee500f3-1441-4dd6-b112-40c0525b08b5",
+          "text": "The worst-case runtime complexity of an algorithm",
+          "isCorrect": true,
+          "description": "Big O notation is used in computer science to describe the performance or complexity of an algorithm. It describes the upper limit of the time taken in relation to the size of the input data."
+        },
+        {
+          "id": "44d0efbb-4e95-4268-a3da-c87715a26be1",
+          "text": "The number of lines in the algorithm",
+          "isCorrect": false,
+          "description": "Number of lines is not directly related to algorithmic complexity."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "fda9b336-3bd7-41eb-b219-5f7fdc510fe4",
+      "text": "If you have to choose between a data structure that offers fast insertion but slow search and another that offers slow insertion but fast search, which application scenario would benefit from the former?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "2470176a-46b1-44db-92df-94c83f9dec87",
+          "text": "A system requiring frequent database lookups",
+          "isCorrect": false,
+          "description": "Database lookups prioritize search operations."
+        },
+        {
+          "id": "f8bdaccb-f0d1-4393-b0fb-bbb0f8cc2b3b",
+          "text": "A logging system capturing real-time events",
+          "isCorrect": true,
+          "description": "A logging system that captures real-time events would prioritize fast insertions as new logs are generated continuously. Search operations might be less frequent in comparison."
+        },
+        {
+          "id": "bdd64c4d-629f-4d5d-ae7a-c7aa8246865f",
+          "text": "A search engine indexing system",
+          "isCorrect": false,
+          "description": "Search engines prioritize search and retrieval."
+        },
+        {
+          "id": "dc9c53c9-8816-446d-863f-a64cfb4e856b",
+          "text": "A real-time multiplayer gaming server",
+          "isCorrect": false,
+          "description": "Gaming servers require fast access and retrieval."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "d4de7da5-0777-4322-84dc-fdea38829832",
+      "text": "In software engineering, what does the principle of \"Separation of Concerns\" emphasize?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "6744c24f-f9dd-452d-98e7-80eac855eaf3",
+          "text": "Keeping all software components in one place for ease of access",
+          "isCorrect": false,
+          "description": "Keeping everything in one place violates modular design principles."
+        },
+        {
+          "id": "3d6f4ee1-d06e-4713-b6c6-b4132e1ce610",
+          "text": "Making sure software is available for all users",
+          "isCorrect": false,
+          "description": "Availability is not directly related to the separation of concerns."
+        },
+        {
+          "id": "d866d491-9a10-401f-a0d7-fc385079347b",
+          "text": "Dividing a software application into distinct sections, each addressing a separate concern",
+          "isCorrect": true,
+          "description": "The principle of Separation of Concerns emphasizes that different functionalities of a software system should be managed separately to achieve modularity and ease of maintenance."
+        },
+        {
+          "id": "b84821bc-2252-42e0-b2a3-c0bc1e406fd1",
+          "text": "Ensuring software has a unique selling point",
+          "isCorrect": false,
+          "description": "Unique selling points are about marketing."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "69fe4786-6f57-41af-8d04-06425ef9aad7",
+      "text": "Why is resource management particularly critical in languages like C, compared to languages like Python?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "770ac482-38a8-4a67-9cf4-5930722155c2",
+          "text": "C is a slower language",
+          "isCorrect": false,
+          "description": "Speed depends on various factors, including how the code is written and optimized."
+        },
+        {
+          "id": "79e586cb-0339-464b-97a2-774b7ff0cc0d",
+          "text": "Python has a better syntax",
+          "isCorrect": false,
+          "description": "Syntax preference is subjective and not related to resource management."
+        },
+        {
+          "id": "f5bf49f8-804c-40c9-84e2-410470c6461c",
+          "text": "C leaves more resource management responsibilities to the programmer, while Python has automatic garbage collection",
+          "isCorrect": true,
+          "description": "In C, programmers often need to manage memory explicitly using malloc and free. In contrast, languages like Python have built-in garbage collectors that automatically reclaim unused memory."
+        },
+        {
+          "id": "46a0d325-3d86-440c-9501-3504bdf82885",
+          "text": "C is a newer language",
+          "isCorrect": false,
+          "description": "C is older than Python."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    }
+  ]
+}

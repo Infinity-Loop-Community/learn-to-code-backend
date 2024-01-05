@@ -1,0 +1,335 @@
+{
+  "id": "2819856b-ed81-4d48-92a3-acea534b3673",
+  "questions": [
+    {
+      "id": "f1e2a39b-31f2-4c0a-bf5d-7c7f9b2e8a5f",
+      "text": "Which of the following is NOT an iterator method in JavaScript?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "b87fcb2d-a31f-41a8-93bf-c5eac3d7a70f",
+          "text": "map()",
+          "isCorrect": false,
+          "description": "map() is an iterator method in JavaScript."
+        },
+        {
+          "id": "3e36b5d0-1ec4-4f6a-8b0e-316e341dbb2e",
+          "text": "filter()",
+          "isCorrect": false,
+          "description": "filter() is an iterator method in JavaScript."
+        },
+        {
+          "id": "d7d5f3d7-7abf-4b46-9f1e-9e1b3da0b7f4",
+          "text": "reduce()",
+          "isCorrect": false,
+          "description": "reduce() is an iterator method in JavaScript."
+        },
+        {
+          "id": "a8235b5c-ee2b-4671-b8b2-4b97760f37f3",
+          "text": "exist()",
+          "isCorrect": true,
+          "description": "exist() is not a standard iterator method in JavaScript."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "a23b7902-85b4-4aee-9763-7f6e3e5dcb0d",
+      "text": "Given the function `function add(a, b) { return a + b; }`, how would you call this function and pass the numbers 5 and 3 as arguments?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "9c6ee8e1-e8b3-4cd1-bd9b-07e3a5c031f7",
+          "text": "add[5, 3]",
+          "isCorrect": false,
+          "description": "Square brackets are used for arrays, not function calls."
+        },
+        {
+          "id": "8ff1f23f-c6d5-49f2-8c5f-3c8b2cbe3d7e",
+          "text": "add(5; 3)",
+          "isCorrect": false,
+          "description": "Semicolons are not used to separate function arguments."
+        },
+        {
+          "id": "0b7e5c63-d4f2-42d1-bd65-cf4e6f2a4c0b",
+          "text": "add(5, 3)",
+          "isCorrect": true,
+          "description": "This is the correct syntax for calling a function in JavaScript."
+        },
+        {
+          "id": "4c4bba70-28b5-4c9b-8b0b-c9d3c1cf331f",
+          "text": "add = 5, 3",
+          "isCorrect": false,
+          "description": "This is not the correct syntax for calling a function."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "7a8b9c0d-e1f2-4567-89ab-cdef01f23g45",
+      "text": "Which of the following correctly declares a JavaScript object with a property 'name' set to 'John'?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "123a456b-789c-01d2-e34f-56g7890h1i23",
+          "text": "var person = [\"name\": \"John\"]",
+          "isCorrect": false,
+          "description": "Square brackets denote arrays, and the syntax inside is incorrect for an object."
+        },
+        {
+          "id": "234b567c-890d-12e3-f45g-67h8902i3j45",
+          "text": "var person = {\"name\": \"John\"}",
+          "isCorrect": false,
+          "description": "This is using quotation marks incorrectly for the property name."
+        },
+        {
+          "id": "345c678d-901e-23f4-g56h-78i9013j4k56",
+          "text": "var person = {name = \"John\"}",
+          "isCorrect": false,
+          "description": "The equals sign is not used within object declarations."
+        },
+        {
+          "id": "456d789e-012f-34g5-h67i-89j0124k5l67",
+          "text": "var person = {name: \"John\"}",
+          "isCorrect": true,
+          "description": "Objects in JavaScript are key-value pairs enclosed within curly braces, separated by a colon."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "8b9c0d1e-f2g3-4567-h89a-bcde0f12g345",
+      "text": "Which of the following is true about the difference between '==' and '===' in JavaScript?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "567e890f-123g-45h6-i78j-901k23l4m567",
+          "text": "'==' checks for value equality, while '===' checks for both value and type equality.",
+          "isCorrect": true,
+          "description": "'==' will coerce types to make a match, whereas '===' requires both value and type to match."
+        },
+        {
+          "id": "678f901g-234h-56i7-j89k-012l34m5n678",
+          "text": "'==' and '===' have the same functionality.",
+          "isCorrect": false,
+          "description": "They don't have the same functionality."
+        },
+        {
+          "id": "789g012h-345i-67j8-k90l-123m45n6o789",
+          "text": "'===' checks for value equality, while '==' checks for both value and type equality.",
+          "isCorrect": false,
+          "description": "This is the opposite of the correct answer."
+        },
+        {
+          "id": "890h123i-456j-78k9-l01m-234n56o7p890",
+          "text": "Both '==' and '===' check for type equality only.",
+          "isCorrect": false,
+          "description": "This statement is incorrect."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "0d1e2f3g-4h5i-678j-9k0l-bcd1e2f34g56",
+      "text": "Which of the following is NOT true about JavaScript's scope?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "901i234j-567k-89l0-m12n-345o67p8q901",
+          "text": "Variables declared with 'var' have function scope.",
+          "isCorrect": false,
+          "description": "This statement is true regarding JavaScript's variable scope."
+        },
+        {
+          "id": "012j345k-678l-90m1-n23o-456p78q9r012",
+          "text": "Variables declared with 'let' have block scope.",
+          "isCorrect": false,
+          "description": "This statement is true regarding JavaScript's variable scope."
+        },
+        {
+          "id": "123k456l-789m-01n2-o34p-567q89r0s123",
+          "text": "Variables declared outside a function have global scope.",
+          "isCorrect": false,
+          "description": "This statement is true regarding JavaScript's variable scope."
+        },
+        {
+          "id": "234l567m-890n-12o3-p45q-678r90s1t234",
+          "text": "All variables in JavaScript have global scope by default.",
+          "isCorrect": true,
+          "description": "Not all variables have global scope by default in JavaScript."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "345m678n-901o-23p4-q56r-78s901t2u345",
+      "text": "Given the code `let x = 10; if (true) { let x = 20; } console.log(x);`, what will be logged to the console?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "567r890s-123t-45u6-v78w-901x23y4z567",
+          "text": "10",
+          "isCorrect": true,
+          "description": "The variable 'x' inside the 'if' block has a block scope due to the 'let' keyword. It doesn't affect the outer 'x', so 10 is logged."
+        },
+        {
+          "id": "678s901t-234u-56v7-w89x-012y34z5a678",
+          "text": "20",
+          "isCorrect": false,
+          "description": "The inner 'x' does not affect the value of the outer 'x'."
+        },
+        {
+          "id": "789t012u-345v-67w8-x90y-123z45a6b789",
+          "text": "30",
+          "isCorrect": false,
+          "description": "No arithmetic operation is performed to result in this value."
+        },
+        {
+          "id": "890u123v-456w-78x9-y01z-234a56b7c890",
+          "text": "undefined",
+          "isCorrect": false,
+          "description": "The variable 'x' is defined and has a value of 10."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "456v789w-567x-89y0-z12a-345b67c8d456",
+      "text": "Consider the following function: `function greet() { return \"Hello, \" + name(); function name() { return \"Alice\"; } }`. What will `greet()` return?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "901w234x-678y-90z1-a23b-456c78d9e901",
+          "text": "\"Hello, Alice\"",
+          "isCorrect": true,
+          "description": "The inner 'name()' function is defined and returns 'Alice', so 'greet()' will return \"Hello, Alice\"."
+        },
+        {
+          "id": "012x345y-789z-01a2-b34c-567d89e0f012",
+          "text": "\"Hello, \"",
+          "isCorrect": false,
+          "description": "The function is correctly defined and will execute without issues, returning \"Hello, Alice\"."
+        },
+        {
+          "id": "123y456z-890a-12b3-c45d-678e90f1g123",
+          "text": "Undefined",
+          "isCorrect": false,
+          "description": "The function is correctly defined and will execute without issues, returning \"Hello, Alice\"."
+        },
+        {
+          "id": "234z567a-901b-23c4-d56e-789f01g2h234",
+          "text": "Error",
+          "isCorrect": false,
+          "description": "The function is correctly defined and will execute without issues, returning \"Hello, Alice\"."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "456w789x-567y-89z0-12a1-345b67c8d456",
+      "text": "What is the result of the following expression: `['1', '2', '3'].map(parseInt)`?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "567x890y-678z-90a1-23b2-456c78d9e567",
+          "text": "[1, 2, 3]",
+          "isCorrect": false,
+          "description": "This is not the result of the given expression."
+        },
+        {
+          "id": "678y901z-789a-01b2-34c3-567d89e0f678",
+          "text": "[1, NaN, NaN]",
+          "isCorrect": true,
+          "description": "parseInt is called with the element and its index as arguments, leading to NaN for the second and third items."
+        },
+        {
+          "id": "789z012a-890b-12c3-45d4-678e90f1g789",
+          "text": "[\"1\", \"2\", \"3\"]",
+          "isCorrect": false,
+          "description": "This is not the result of the given expression."
+        },
+        {
+          "id": "890a123b-901c-23d4-56e5-789f01g2h890",
+          "text": "[NaN, NaN, NaN]",
+          "isCorrect": false,
+          "description": "This is not the result of the given expression."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "567x890y-678z-90a1-23b2-456c78d9e567",
+      "text": "Given the object `let person = { firstName: 'John', lastName: 'Doe' }`, which method can be used to check if the 'firstName' property exists in the 'person' object?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "678y901z-789a-01b2-34c3-567d89e0f678",
+          "text": "person.firstName",
+          "isCorrect": false,
+          "description": "This retrieves the value but doesn't check for the property's existence."
+        },
+        {
+          "id": "789z012a-890b-12c3-45d4-678e90f1g789",
+          "text": "\"firstName\" in person",
+          "isCorrect": true,
+          "description": "The 'in' operator checks if a property exists in an object."
+        },
+        {
+          "id": "890a123b-901c-23d4-56e5-789f01g2h890",
+          "text": "person.has(\"firstName\")",
+          "isCorrect": false,
+          "description": "There is no 'has' method on a standard JavaScript object."
+        },
+        {
+          "id": "901b234c-012d-34e5-56f6-890g12h3i901",
+          "text": "person[\"firstName\"]",
+          "isCorrect": false,
+          "description": "This retrieves the value but doesn't check for the property's existence."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "678y901z-789a-01b2-34c3-567d89e0f678",
+      "text": "What does the term 'hoisting' refer to in JavaScript?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "789z012a-890b-12c3-45d4-678e90f1g789",
+          "text": "Raising the priority of a function or variable in execution.",
+          "isCorrect": false,
+          "description": "This does not describe hoisting in JavaScript."
+        },
+        {
+          "id": "890a123b-901c-23d4-56e5-789f01g2h890",
+          "text": "The process of moving variable and function declarations to the top of their containing scope during the execution phase.",
+          "isCorrect": true,
+          "description": "Hoisting moves declarations to the top of their scope before code execution."
+        },
+        {
+          "id": "901b234c-012d-34e5-56f6-890g12h3i901",
+          "text": "Lifting the value of a variable from one scope to another.",
+          "isCorrect": false,
+          "description": "This does not describe hoisting in JavaScript."
+        },
+        {
+          "id": "012c345d-123e-45f6-67g7-901h23i4j012",
+          "text": "Increasing the memory allocation for a variable or function.",
+          "isCorrect": false,
+          "description": "This does not describe hoisting in JavaScript."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    }
+  ]
+}

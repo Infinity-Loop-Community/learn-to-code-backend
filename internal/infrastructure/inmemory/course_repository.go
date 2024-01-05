@@ -28,6 +28,12 @@ const FirstCorrectAnswerID = "48a293ee-7f43-4e3d-85d1-4737e6385c7c"
 const CourseStepIDJavaScriptBasics = "123f372e-e176-41c8-ba8e-9fc406c9ad1e"
 const QuizIDJavaScriptBasics = "e3ce1f8b-bb40-4bdd-b31b-33cbef24d267"
 
+const CourseStepIDComputerScienceBasics = "6ed14552-fb4d-4e90-a300-c4a04b6197e4"
+const QuizIDComputerScienceBasics = "addb1e53-eb07-44a3-881f-217eee3a926b"
+
+const CourseStepIDJavaScriptAdvanced = "c8f398b8-a712-405e-ac95-f570ffe3a057"
+const QuizIDJavaScriptAdvanced = "2819856b-ed81-4d48-92a3-acea534b3673"
+
 func (q *CourseRepository) FindByID(courseID string) (course.Course, error) {
 
 	quizEssentialsOfTheWeb, err := q.getQuiz(courseID, QuizIDEssentialsOfTheWeb)
@@ -36,6 +42,16 @@ func (q *CourseRepository) FindByID(courseID string) (course.Course, error) {
 	}
 
 	quizJavaScriptBasics, err := q.getQuiz(courseID, QuizIDJavaScriptBasics)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizComputerScience, err := q.getQuiz(courseID, QuizIDComputerScienceBasics)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizAdvancedJavaScript, err := q.getQuiz(courseID, QuizIDJavaScriptAdvanced)
 	if err != nil {
 		return course.Course{}, course.ErrCourseNotFound
 	}
@@ -55,6 +71,16 @@ func (q *CourseRepository) FindByID(courseID string) (course.Course, error) {
 					ID:      CourseStepIDJavaScriptBasics,
 					Name:    "JavaScript Basics",
 					Quizzes: []course.StepQuiz{q.mapQuiz(quizJavaScriptBasics)},
+				},
+				{
+					ID:      CourseStepIDComputerScienceBasics,
+					Name:    "Computer Science",
+					Quizzes: []course.StepQuiz{q.mapQuiz(quizComputerScience)},
+				},
+				{
+					ID:      CourseStepIDJavaScriptAdvanced,
+					Name:    "Advanced JavaScript",
+					Quizzes: []course.StepQuiz{q.mapQuiz(quizAdvancedJavaScript)},
 				},
 			},
 		}, nil

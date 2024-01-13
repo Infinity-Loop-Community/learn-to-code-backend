@@ -1,0 +1,665 @@
+{
+  "id": "ad79ce21-c9bd-424a-9e4d-8136143a07b7",
+  "questions": [
+    {
+      "id": "c8b1f489-e3fe-4b7a-a6d1-83f6b4b3c3c4",
+      "text": "What is TypeScript primarily used for?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "a1b2c3d4-e5f6-7890-g1h2-3i4j5k6l7m8n",
+          "text": "Data visualization",
+          "isCorrect": false,
+          "description": "Data visualization is typically associated with libraries like D3.js."
+        },
+        {
+          "id": "o9p8q7r6-s5t4-u3v2-w1x0-y9z8a7b6c5d4",
+          "text": "Server-side scripting",
+          "isCorrect": false,
+          "description": "Server-side scripting is more associated with languages like Node.js or PHP."
+        },
+        {
+          "id": "e4d3c2b1-a098-7654-3210-f9e8d7c6b5a4",
+          "text": "Video editing",
+          "isCorrect": false,
+          "description": "Video editing is not related to programming languages like TypeScript."
+        },
+        {
+          "id": "f4g3h2i1-j0k9-l8m7-n6o5-p4q3r2s1t0u9",
+          "text": "Superset of JavaScript that adds static types",
+          "isCorrect": true,
+          "description": "TypeScript is a language developed by Microsoft that builds upon JavaScript by adding static types."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "ba8b7642-d3f9-4c4c-afee-ec8c8f0d317b",
+      "text": "Which of the following is NOT a valid data type in TypeScript?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "d1e2f3g4-h5i6-j7k8-l9m0-n1o2p3q4r5s6",
+          "text": "`any`",
+          "isCorrect": false,
+          "description": "`any` is a type in TypeScript that allows any type of value."
+        },
+        {
+          "id": "t7u8v9w0-x1y2-z3a4-b5c6-d7e8f9g0h1i2",
+          "text": "`string`",
+          "isCorrect": false,
+          "description": "`string` represents textual data."
+        },
+        {
+          "id": "j3k4l5m6-n7o8-p9q0-r1s2-t3u4v5w6x7y8",
+          "text": "`vector`",
+          "isCorrect": true,
+          "description": "TypeScript does not have a built-in data type called `vector`. It uses standard JavaScript data types and introduces a few new ones."
+        },
+        {
+          "id": "z9a8b7c6-d5e4-f3g2-h1i0-j9k8l7m6n5o4",
+          "text": "`number`",
+          "isCorrect": false,
+          "description": "`number` represents numeric values."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "c9d8e7f6-g5h4-i3j2-k1l0-m9n8o7p6q5r4",
+      "text": "In TypeScript, which keyword is used to define an interface?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "s3t4u5v6-w7x8-y9z0-a1b2-c3d4e5f6g7h8",
+          "text": "`class`",
+          "isCorrect": false,
+          "description": "`class` is used to define classes."
+        },
+        {
+          "id": "i9j8k7l6-m5n4-o3p2-q1r0-s9t8u7v6w5x4",
+          "text": "`function`",
+          "isCorrect": false,
+          "description": "`function` is used to define functions."
+        },
+        {
+          "id": "y3z4a5b6-c7d8-e9f0-g1h2-i3j4k5l6m7n8",
+          "text": "`interface`",
+          "isCorrect": true,
+          "description": "In TypeScript, the `interface` keyword is used to define a new type shape, specifying contract structures."
+        },
+        {
+          "id": "o9p8q7r6-s5t4-u3v2-w1x0-y9z8a7b6c5d4",
+          "text": "`type`",
+          "isCorrect": false,
+          "description": "`type` can be used to define complex type aliases."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "e4f5g6h7-i8j9-k0l1-m2n3-o4p5q6r7s8t9",
+      "text": "Which of the following is a way to define a class in TypeScript?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "u7v8w9x0-y1z2-a3b4-c5d6-e7f8g9h0i1j2",
+          "text": "`interface ClassName {}`",
+          "isCorrect": false,
+          "description": "`interface` is used for defining interfaces."
+        },
+        {
+          "id": "k3l4m5n6-o7p8-q9r0-s1t2-u3v4w5x6y7z8",
+          "text": "`type ClassName = {}`",
+          "isCorrect": false,
+          "description": "`type` is for type aliases."
+        },
+        {
+          "id": "a9b8c7d6-e5f4-g3h2-i1j0-k9l8m7n6o5p4",
+          "text": "`module ClassName {}`",
+          "isCorrect": false,
+          "description": "`module` is used for module declarations."
+        },
+        {
+          "id": "q9r8s7t6-u5v4-w3x2-y1z0-a9b8c7d6e5f4",
+          "text": "`class ClassName {}`",
+          "isCorrect": true,
+          "description": "Classes in TypeScript are defined using the `class` keyword."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "g5h6i7j8-k9l0-m1n2-o3p4-q5r6s7t8u9v0",
+      "text": "What does TypeScript compile into for browser execution?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "w5x6y7z8-a9b0-c1d2-e3f4-g5h6i7j8k9l0",
+          "text": "Python bytecode",
+          "isCorrect": false,
+          "description": "Python bytecode is related to the Python language."
+        },
+        {
+          "id": "m5n6o7p8-q9r0-s1t2-u3v4-w5x6y7z8a9b0",
+          "text": "Binary code",
+          "isCorrect": false,
+          "description": "Browsers don't execute binary code directly."
+        },
+        {
+          "id": "c3d4e5f6-g7h8-i9j0-k1l2-m3n4o5p6q7r8",
+          "text": "JavaScript",
+          "isCorrect": true,
+          "description": "TypeScript is transcompiled into JavaScript so that it can be executed in browsers."
+        },
+        {
+          "id": "s1t2u3v4-w5x6-y7z8-a9b0-c1d2e3f4g5h6",
+          "text": "TypeScript bytecode",
+          "isCorrect": false,
+          "description": "There's no such thing as TypeScript bytecode."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "1a2b3c4d-5e6f-7g8h-9i0j-k1l2m3n4o5p6",
+      "text": "What is the primary advantage of using TypeScript over JavaScript?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "q7r8s9t0-u1v2-w3x4-y5z6-a7b8c9d0e1f2",
+          "text": "Improved runtime performance",
+          "isCorrect": false,
+          "description": "TypeScript does not necessarily improve runtime performance."
+        },
+        {
+          "id": "g3h4i5j6-k7l8-m9n0-o1p2-q3r4s5t6u7v8",
+          "text": "Access to new web APIs",
+          "isCorrect": false,
+          "description": "TypeScript doesn't grant access to new web APIs."
+        },
+        {
+          "id": "w9x0y1z2-a3b4-c5d6-e7f8-g9h0i1j2k3l4",
+          "text": "Static type checking",
+          "isCorrect": true,
+          "description": "TypeScript provides static type checking, which helps in catching errors during compile time rather than at runtime."
+        },
+        {
+          "id": "m5n6o7p8-q9r0-s1t2-u3v4-w5x6y7z8a9b0",
+          "text": "Reduced file size",
+          "isCorrect": false,
+          "description": "TypeScript might sometimes result in larger file sizes due to type annotations."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "c1d2e3f4-g5h6-i7j8-k9l0-m1n2o3p4q5r6",
+      "text": "Which of the following can be used to group pieces of code in TypeScript for better organization and scoping?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "s7t8u9v0-w1x2-y3z4-a5b6-c7d8e9f0g1h2",
+          "text": "Arrays",
+          "isCorrect": false,
+          "description": "Arrays are a data structure."
+        },
+        {
+          "id": "i3j4k5l6-m7n8-o9p0-q1r2-s3t4u5v6w7x8",
+          "text": "Namespaces",
+          "isCorrect": true,
+          "description": "Namespaces are used in TypeScript to group related code and prevent naming collisions."
+        },
+        {
+          "id": "y9z0a1b2-c3d4-e5f6-g7h8-i9j0k1l2m3n4",
+          "text": "Interfaces",
+          "isCorrect": false,
+          "description": "Interfaces define a contract for structures."
+        },
+        {
+          "id": "o5p6q7r8-s9t0-u1v2-w3x4-y5z6a7b8c9d0",
+          "text": "Variables",
+          "isCorrect": false,
+          "description": "Variables store values."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "e1f2g3h4-i5j6-k7l8-m9n0-o1p2q3r4s5t6",
+      "text": "If you want to export a piece of code to be used in another module in TypeScript, which keyword would you use?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "u7v8w9x0-y1z2-a3b4-c5d6-e7f8g9h0i1j2",
+          "text": "`include`",
+          "isCorrect": false,
+          "description": "`include` is not a TypeScript keyword."
+        },
+        {
+          "id": "k3l4m5n6-o7p8-q9r0-s1t2-u3v4w5x6y7z8",
+          "text": "`import`",
+          "isCorrect": false,
+          "description": "`import` is used to bring in exported code from another module."
+        },
+        {
+          "id": "a9b8c7d6-e5f4-g3h2-i1j0-k9l8m7n6o5p4",
+          "text": "`namespace`",
+          "isCorrect": false,
+          "description": "`namespace` is used for grouping related code."
+        },
+        {
+          "id": "q9r8s7t6-u5v4-w3x2-y1z0-a9b8c7d6e5f4",
+          "text": "`export`",
+          "isCorrect": true,
+          "description": "The `export` keyword is used to make a piece of code available for importing in another module."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "7h8i9j0k-1l2m-3n4o-5p6q-7r8s9t0u1v2",
+      "text": "In TypeScript, which of the following can describe the shape of an object?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "w3x4y5z6-a7b8-c9d0-e1f2-g3h4i5j6k7l8",
+          "text": "Classes",
+          "isCorrect": false,
+          "description": "Classes provide a blueprint for objects, but they also have behavior."
+        },
+        {
+          "id": "m9n0o1p2-q3r4-s5t6-u7v8-w9x0y1z2a3b4",
+          "text": "Functions",
+          "isCorrect": false,
+          "description": "Functions perform operations."
+        },
+        {
+          "id": "c5d6e7f8-g9h0-i1j2-k3l4-m5n6o7p8q9r0",
+          "text": "Arrays",
+          "isCorrect": false,
+          "description": "Arrays are data structures for storing multiple values."
+        },
+        {
+          "id": "s1t2u3v4-w5x6-y7z8-a9b0-c1d2e3f4g5h6",
+          "text": "Interfaces",
+          "isCorrect": true,
+          "description": "Interfaces in TypeScript are used to define the shape or contract of an object."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "i7j8k9l0-m1n2-o3p4-q5r6-s7t8u9v0w1x2",
+      "text": "What file extension does TypeScript use?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "y3z4a5b6-c7d8-e9f0-g1h2-i3j4k5l6m7n8",
+          "text": ".tscode",
+          "isCorrect": false,
+          "description": ".tscode is not a standard file extension."
+        },
+        {
+          "id": "o9p0q1r2-s3t4-u5v6-w7x8-y9z0a1b2c3d4",
+          "text": ".tscript",
+          "isCorrect": false,
+          "description": ".tscript is not a standard file extension."
+        },
+        {
+          "id": "e5f6g7h8-i9j0-k1l2-m3n4-o5p6q7r8s9t0",
+          "text": ".ts",
+          "isCorrect": true,
+          "description": "TypeScript files have the `.ts` file extension."
+        },
+        {
+          "id": "u7v8w9x0-y1z2-a3b4-c5d6-e7f8g9h0i1j2",
+          "text": ".typescript",
+          "isCorrect": false,
+          "description": ".typescript is verbose and not the standard extension."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "3a4b5c6d-7e8f-9g0h-1i2j-3k4l5m6n7o8p",
+      "text": "Which TypeScript feature allows you to set a type that can be one of several types?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "q9r0s1t2-u3v4-w5x6-y7z8-a9b0c1d2e3f4",
+          "text": "Union types",
+          "isCorrect": true,
+          "description": "Union types allow a value to be one of several types."
+        },
+        {
+          "id": "g5h6i7j8-k9l0-m1n2-o3p4-q5r6s7t8u9v0",
+          "text": "Intersection types",
+          "isCorrect": false,
+          "description": "Intersection types combine multiple types into one."
+        },
+        {
+          "id": "w1x2y3z4-a5b6-c7d8-e9f0-g1h2i3j4k5l6",
+          "text": "Any types",
+          "isCorrect": false,
+          "description": "Any types allow any type of value."
+        },
+        {
+          "id": "m7n8o9p0-q1r2-s3t4-u5v6-w7x8y9z0a1b2",
+          "text": "Generic types",
+          "isCorrect": false,
+          "description": "Generics allow for creating reusable components with variable types."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "c3d4e5f6-g7h8-i9j0-k1l2-m3n4o5p6q7r8",
+      "text": "What is the purpose of the `readonly` keyword in TypeScript?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "s9t0u1v2-w3x4-y5z6-a7b8-c9d0e1f2g3h4",
+          "text": "To ensure a function doesn't modify its parameters",
+          "isCorrect": false,
+          "description": "Functions don't inherently modify their parameters unless explicitly done."
+        },
+        {
+          "id": "i5j6k7l8-m9n0-o1p2-q3r4-s5t6u7v8w9x0",
+          "text": "To prevent a variable from being reassigned",
+          "isCorrect": false,
+          "description": "`const` is used to prevent variable reassignment."
+        },
+        {
+          "id": "y7z8a9b0-c1d2-e3f4-g5h6-i7j8k9l0m1n2",
+          "text": "To ensure a class method cannot be overridden",
+          "isCorrect": false,
+          "description": "Overriding class methods relates to inheritance and polymorphism."
+        },
+        {
+          "id": "o3p4q5r6-s7t8-u9v0-w1x2-y3z4a5b6c7d8",
+          "text": "To ensure a property in an object or class cannot be modified after initialization",
+          "isCorrect": true,
+          "description": "The `readonly` keyword ensures that once a property is initialized, it cannot be modified."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "e9f0g1h2-i3j4-k5l6-m7n8-o9p0q1r2s3t4",
+      "text": "In TypeScript, if you want to ensure a class adheres to a specific contract or shape, which would you use?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "u5v6w7x8-y9z0-a1b2-c3d4-e5f6g7h8i9j0",
+          "text": "Generics",
+          "isCorrect": false,
+          "description": "Generics are for reusable components with variable types."
+        },
+        {
+          "id": "k1l2m3n4-o5p6-q7r8-s9t0-u1v2w3x4y5z6",
+          "text": "Namespaces",
+          "isCorrect": false,
+          "description": "Namespaces are for grouping related code."
+        },
+        {
+          "id": "a7b8c9d0-e1f2-g3h4-i5j6-k7l8m9n0o1p2",
+          "text": "Union types",
+          "isCorrect": false,
+          "description": "Union types allow a value to be one of several types."
+        },
+        {
+          "id": "q3r4s5t6-u7v8-w9x0-y1z2-a3b4c5d6e7f8",
+          "text": "Interfaces",
+          "isCorrect": true,
+          "description": "Interfaces can be implemented by classes to ensure they adhere to a specific shape or contract."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "6g7h8i9j-0k1l-2m3n-4o5p-6q7r8s9t0u1v",
+      "text": "Which TypeScript feature allows for creating reusable components that can work over a variety of types?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "w2x3y4z5-a6b7-c8d9-e0f1-g2h3i4j5k6l7",
+          "text": "Union types",
+          "isCorrect": false,
+          "description": "Union types allow a value to be one of several types."
+        },
+        {
+          "id": "m8n9o0p1-q2r3-s4t5-u6v7-w8x9y0z1a2b3",
+          "text": "Any types",
+          "isCorrect": false,
+          "description": "Any types allow any type of value."
+        },
+        {
+          "id": "c4d5e6f7-g8h9-i0j1-k2l3-m4n5o6p7q8r9",
+          "text": "Generics",
+          "isCorrect": true,
+          "description": "Generics allow developers to create reusable components that can work over a variety of types."
+        },
+        {
+          "id": "s0t1u2v3-w4x5-y6z7-a8b9-c0d1e2f3g4h5",
+          "text": "Interfaces",
+          "isCorrect": false,
+          "description": "Interfaces define a contract for structures."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "i6j7k8l9-m0n1-o2p3-q4r5-s6t7u8v9w0x1",
+      "text": "What is the purpose of the `private` keyword when used in a TypeScript class?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "y2z3a4b5-c6d7-e8f9-g0h1-i2j3k4l5m6n7",
+          "text": "To ensure a property or method is available throughout the application",
+          "isCorrect": false,
+          "description": "`public` keyword ensures this behavior."
+        },
+        {
+          "id": "o8p9q0r1-s2t3-u4v5-w6x7-y8z9a0b1c2d3",
+          "text": "To ensure a property or method can be accessed only from within the class it is defined",
+          "isCorrect": true,
+          "description": "The `private` keyword restricts access to a property or method to within the class it is defined."
+        },
+        {
+          "id": "e4f5g6h7-i8j9-k0l1-m2n3-o4p5q6r7s8t9",
+          "text": "To ensure a property or method can be accessed from derived classes",
+          "isCorrect": false,
+          "description": "`protected` keyword ensures this behavior."
+        },
+        {
+          "id": "u9v0w1x2-y3z4-a5b6-c7d8-e9f0g1h2i3j4",
+          "text": "To ensure a property or method can be overridden in derived classes",
+          "isCorrect": false,
+          "description": "Overriding methods is related to inheritance and polymorphism, not the `private` keyword."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "8i9j0k1l-2m3n-4o5p-6q7r-8s9t0u1v2w3x",
+      "text": "If you want to allow a variable in TypeScript to have either a `string` or `null` value, which type annotation would you use?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "y4z5a6b7-c8d9-e0f1-g2h3-i4j5k6l7m8n9",
+          "text": "`string | null`",
+          "isCorrect": true,
+          "description": "The `|` denotes a union type in TypeScript, allowing a variable to have values of either of the specified types."
+        },
+        {
+          "id": "o0p1q2r3-s4t5-u6v7-w8x9-y0z1a2b3c4d5",
+          "text": "`string & null`",
+          "isCorrect": false,
+          "description": "`&` is used for intersection types, not union types."
+        },
+        {
+          "id": "e6f7g8h9-i0j1-k2l3-m4n5-o6p7q8r9s0t1",
+          "text": "`string + null`",
+          "isCorrect": false,
+          "description": "`+` is not used in type annotations."
+        },
+        {
+          "id": "u2v3w4x5-y6z7-a8b9-c0d1-e2f3g4h5i6j7",
+          "text": "`string ? null`",
+          "isCorrect": false,
+          "description": "`?` is used to denote optional properties or parameters."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "k8l9m0n1-o2p3-q4r5-s6t7-u8v9w0x1y2z3",
+      "text": "In a TypeScript class, what does the `protected` keyword denote?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "a4b5c6d7-e8f9-g0h1-i2j3-k4l5m6n7o8p9",
+          "text": "The property or method is only available within the class it's defined.",
+          "isCorrect": false,
+          "description": "This is the behavior of the `private` keyword."
+        },
+        {
+          "id": "q2r3s4t5-u6v7-w8x9-y0z1-a2b3c4d5e6f7",
+          "text": "The property or method is available throughout the application.",
+          "isCorrect": false,
+          "description": "This is the behavior of the `public` keyword."
+        },
+        {
+          "id": "g8h9i0j1-k2l3-m4n5-o6p7-q8r9s0t1u2v3",
+          "text": "The property or method can be accessed from derived classes but not from outside the class or derived classes.",
+          "isCorrect": true,
+          "description": "The `protected` keyword in TypeScript restricts access to within the class and its derived classes."
+        },
+        {
+          "id": "w4x5y6z7-a8b9-c0d1-e2f3-g4h5i6j7k8l9",
+          "text": "The property or method can only be accessed through specific methods.",
+          "isCorrect": false,
+          "description": "This is not a specific TypeScript behavior."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "m6n7o8p9-q0r1-s2t3-u4v5-w6x7y8z9a0b1",
+      "text": "When using namespaces in TypeScript, how can you make certain properties or methods available outside the namespace?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "c2d3e4f5-g6h7-i8j9-k0l1-m2n3o4p5q6r7",
+          "text": "Using the `public` keyword",
+          "isCorrect": false,
+          "description": "`public` is not used for this purpose in namespaces."
+        },
+        {
+          "id": "s8t9u0v1-w2x3-y4z5-a6b7-c8d9e0f1g2h3",
+          "text": "Using the `export` keyword",
+          "isCorrect": true,
+          "description": "The `export` keyword makes properties or methods available outside the namespace in TypeScript."
+        },
+        {
+          "id": "i4j5k6l7-m8n9-o0p1-q2r3-s4t5u6v7w8x9",
+          "text": "Using the `external` keyword",
+          "isCorrect": false,
+          "description": "`external` is not a keyword in TypeScript."
+        },
+        {
+          "id": "y6z7a8b9-c0d1-e2f3-g4h5-i6j7k8l9m0n1",
+          "text": "Namespaces do not allow any members to be accessed outside.",
+          "isCorrect": false,
+          "description": "Namespaces can indeed expose members using `export`."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "9a0b1c2d-3e4f-5g6h-7i8j-9k0l1m2n3o4p",
+      "text": "When defining an interface in TypeScript, what is the purpose of the `extends` keyword?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "q5r6s7t8-u9v0-w1x2-y3z4-a5b6c7d8e9f0",
+          "text": "To inherit properties and methods from another interface.",
+          "isCorrect": true,
+          "description": "The `extends` keyword allows an interface to inherit from another interface in TypeScript."
+        },
+        {
+          "id": "g0h1i2j3-k4l5-m6n7-o8p9-q0r1s2t3u4v5",
+          "text": "To ensure an interface can only be implemented by specific classes.",
+          "isCorrect": false,
+          "description": "Interfaces do not restrict which classes can implement them."
+        },
+        {
+          "id": "w6x7y8z9-a0b1-c2d3-e4f5-g6h7i8j9k0l1",
+          "text": "To restrict the properties that can be defined in the interface.",
+          "isCorrect": false,
+          "description": "Interfaces don't restrict properties based on the `extends` keyword."
+        },
+        {
+          "id": "m2n3o4p5-q6r7-s8t9-u0v1-w2x3y4z5a6b7",
+          "text": "To export the interface for use in other modules.",
+          "isCorrect": false,
+          "description": "`export` is used to make an interface available in other modules."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "c8d9e0f1-g2h3-i4j5-k6l7-m8n9-o0p1q2r3",
+      "text": "What is the primary difference between `interface` and `type` when defining shapes in TypeScript?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "s4t5u6v7-w8x9-y0z1-a2b3-c4d5e6f7g8h9",
+          "text": "`interface` is mutable while `type` is immutable.",
+          "isCorrect": false,
+          "description": "Both `interface` and `type` are static definitions and are not mutable."
+        },
+        {
+          "id": "i0j1k2l3-m4n5-o6p7-q8r9-s0t1u2v3w4x5",
+          "text": "`interface` can be implemented by classes, while `type` cannot.",
+          "isCorrect": true,
+          "description": "One of the main distinctions between `interface` and `type` in TypeScript is that classes can implement interfaces, but not types."
+        },
+        {
+          "id": "y6z7a8b9-c0d1-e2f3-g4h5-i6j7k8l9m0n1",
+          "text": "`interface` is used for functions, while `type` is used for objects.",
+          "isCorrect": false,
+          "description": "Both `interface` and `type` can describe object shapes and function types."
+        },
+        {
+          "id": "o2p3q4r5-s6t7-u8v9-w0x1-y2z3a4b5c6d7",
+          "text": "`interface` can only have string properties, while `type` can have any type of property.",
+          "isCorrect": false,
+          "description": "Both `interface` and `type` can describe properties of various types."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    }
+  ]
+}

@@ -1,0 +1,665 @@
+{
+  "id": "4fb71fa7-33ad-4154-8e72-991033879c3e",
+  "questions": [
+    {
+      "id": "a9e1e1a9-3a13-4b68-a80a-5f6c3c1172d7",
+      "text": "What is JSX used for in React?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "d074d5e0-5d80-4f92-bb74-2ffaa93b3f26",
+          "text": "Describing the UI structure using a syntax similar to HTML.",
+          "isCorrect": true,
+          "description": "JSX allows developers to write UI components using a syntax that looks like HTML, making it more readable and intuitive."
+        },
+        {
+          "id": "81c38a4a-06a4-487a-b4c0-409fe1e60da6",
+          "text": "Calculating mathematical operations",
+          "isCorrect": false,
+          "description": "JSX is not used for mathematical operations."
+        },
+        {
+          "id": "8c9909e2-3f0f-4594-92e2-e1a35f0f6950",
+          "text": "Managing backend services",
+          "isCorrect": false,
+          "description": "Managing backend services is generally the realm of backend languages and APIs, not JSX."
+        },
+        {
+          "id": "18b90b9b-eb0d-4a11-9e7e-62e9462db512",
+          "text": "Storing data for later use",
+          "isCorrect": false,
+          "description": "Storing data is done through state, not JSX."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "b2f69f7d-99a7-437e-b3e4-2e0b24a2c313",
+      "text": "What are React components primarily used for?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "399f4a0a-dfa0-4ea0-80da-2ac5567be34b",
+          "text": "Building reusable UI elements.",
+          "isCorrect": true,
+          "description": "React components are the building blocks of React applications, allowing developers to create reusable pieces of UI."
+        },
+        {
+          "id": "68943217-ebe2-49d1-9826-81148ed6f188",
+          "text": "Connecting to databases.",
+          "isCorrect": false,
+          "description": "React components don't directly connect to databases."
+        },
+        {
+          "id": "8a6c1cfc-15e0-475c-8b59-31f8f8e99f04",
+          "text": "Handling server-side rendering.",
+          "isCorrect": false,
+          "description": "Server-side rendering can be achieved using React, but components themselves are not specifically for this."
+        },
+        {
+          "id": "671d3a29-0ca5-457e-8a78-2b2a1dcb4a0b",
+          "text": "Styling the webpage.",
+          "isCorrect": false,
+          "description": "Styling is achieved through CSS, although components can integrate styles."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "4d77c06b-158d-4d11-96f9-4f8d5ed81359",
+      "text": "Which of the following is NOT a lifecycle method in React?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "4f103c63-4e71-4b62-a190-55f7cf4e940e",
+          "text": "renderCycle.",
+          "isCorrect": true,
+          "description": "Lifecycle methods are special methods that automatically get called as your component achieves certain milestones."
+        },
+        {
+          "id": "2b05f15c-8aaf-4a22-9b1b-7a2f684b6031",
+          "text": "componentDidMount.",
+          "isCorrect": false,
+          "description": "componentDidMount is a legitimate lifecycle method in React."
+        },
+        {
+          "id": "2f3a4e58-c63b-46f5-9bfc-705ea0ea952d",
+          "text": "shouldComponentUpdate.",
+          "isCorrect": false,
+          "description": "shouldComponentUpdate is a legitimate lifecycle method in React."
+        },
+        {
+          "id": "19773bb5-7a8b-44b9-bba5-cb89d4729efb",
+          "text": "componentWillUnmount.",
+          "isCorrect": false,
+          "description": "componentWillUnmount is a legitimate lifecycle method in React."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "3837a0a4-687c-4817-8da1-3194606d4de1",
+      "text": "What is the primary use of state in React?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "2a58e997-1bc6-4af1-8a57-d3d6d09762cb",
+          "text": "Storing and managing data within a component.",
+          "isCorrect": true,
+          "description": "State in React allows components to create and manage their own data."
+        },
+        {
+          "id": "5f19678c-1250-4a13-b5ed-55c02104bde0",
+          "text": "Styling the components.",
+          "isCorrect": false,
+          "description": "Styling is achieved through CSS."
+        },
+        {
+          "id": "fe7745ad-88ca-49d0-b28d-50ef8c2e2a12",
+          "text": "Connecting to external APIs.",
+          "isCorrect": false,
+          "description": "State doesn't directly handle API connections."
+        },
+        {
+          "id": "a292676f-0c9e-4c98-88af-0a792d8c1197",
+          "text": "Boosting the performance of the app.",
+          "isCorrect": false,
+          "description": "While state can affect performance, it's not its primary use."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "5c25b6f0-1d7c-4f66-b28a-d0db1be476db",
+      "text": "Which React feature allows you to use state and other React features without writing a class?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "f3275c53-8c88-4986-9b9c-4cf777eb7c28",
+          "text": "Hooks.",
+          "isCorrect": true,
+          "description": "Hooks are functions that let developers 'hook into' React state and lifecycle features from function components."
+        },
+        {
+          "id": "325b00b7-1261-42f1-b0ad-3f8d780d8c2a",
+          "text": "JSX.",
+          "isCorrect": false,
+          "description": "JSX is a syntax for UI description."
+        },
+        {
+          "id": "4b3c6ecf-541b-4a6e-81f6-19a15c6e9de0",
+          "text": "Components.",
+          "isCorrect": false,
+          "description": "Components are building blocks of UI."
+        },
+        {
+          "id": "2a38b52d-9b74-4f6f-b097-cd3bcb05d33a",
+          "text": "Lifecycle methods.",
+          "isCorrect": false,
+          "description": "Lifecycle methods are specific to class components."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "1a8fc5d7-1d68-4cbf-8357-3ab0cb8681db",
+      "text": "How would you prevent a component from rendering under certain conditions?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "2e36b63c-6cc0-49d6-9de5-0a997181f57c",
+          "text": "Using the **`shouldComponentUpdate()`** lifecycle method.",
+          "isCorrect": true,
+          "description": "The **`shouldComponentUpdate()`** method can be used to let React know if a component's output is not affected by a change in state or props."
+        },
+        {
+          "id": "59ea9f46-4f73-4b3b-9649-110f1988b24f",
+          "text": "Using the **`renderNow()`** method.",
+          "isCorrect": false,
+          "description": "There is no **`renderNow()`** method in React."
+        },
+        {
+          "id": "cb46124f-6f90-41f7-8f61-515cb7b98c0b",
+          "text": "Using the **`stopRender()`** method.",
+          "isCorrect": false,
+          "description": "There is no **`stopRender()`** method in React."
+        },
+        {
+          "id": "e7aeb92f-d04e-46a0-8a48-61732b5e0e75",
+          "text": "By setting state to null.",
+          "isCorrect": false,
+          "description": "Setting state to null won't prevent rendering."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "5b7722f7-7ee2-4216-b318-40888348c437",
+      "text": "Which of the following is NOT a built-in hook in React?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "a4546317-4f38-4e71-89f3-0a8f7eb49d13",
+          "text": "**`useRender()`**.",
+          "isCorrect": true,
+          "description": "React provides a number of built-in hooks, but **`useRender()`** is not one of them."
+        },
+        {
+          "id": "f33e546e-2a2e-46d4-9a77-6b4f8f1312b9",
+          "text": "**`useState()`**.",
+          "isCorrect": false,
+          "description": "**`useState()`** is a legitimate built-in hook in React."
+        },
+        {
+          "id": "df116b75-c1d9-43cb-839c-41de42ed23a0",
+          "text": "**`useEffect()`**.",
+          "isCorrect": false,
+          "description": "**`useEffect()`** is a legitimate built-in hook in React."
+        },
+        {
+          "id": "a1dd2b8c-9b76-4bc1-bfb6-1858d835855e",
+          "text": "**`useContext()`**.",
+          "isCorrect": false,
+          "description": "**`useContext()`** is a legitimate built-in hook in React."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "e04f49ae-69c5-43a7-b1e3-1e29d7c8136e",
+      "text": "If you want to run an effect only once when a component mounts, which dependency array would you use with `useEffect()`?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "df1a1d90-817e-4a18-a1cf-6b4f51373262",
+          "text": "**`[]`**.",
+          "isCorrect": true,
+          "description": "An empty dependency array **`[]`** means the **`useEffect()`** will only run once after the initial render."
+        },
+        {
+          "id": "4e90d59a-7765-4c3c-8322-852d504ab1e9",
+          "text": "**`[props]`**.",
+          "isCorrect": false,
+          "description": "**`[props]`** would run the effect whenever **`props`** changes."
+        },
+        {
+          "id": "a5c0ea45-7c0c-4074-ba9a-84d0b0a794f4",
+          "text": "**`[state]`**.",
+          "isCorrect": false,
+          "description": "**`[state]`** would run the effect whenever **`state`** changes."
+        },
+        {
+          "id": "8e3b5c9c-89f2-4c6b-9d0d-08151d1e64d3",
+          "text": "**`null`**.",
+          "isCorrect": false,
+          "description": "**`null`** is not a valid option for a dependency array."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "c6d6d7bf-0a03-40fc-b491-6d1c11b61a94",
+      "text": "Which of the following is not a correct way to style React components?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "4b909efb-2a89-4b9e-9099-7b032f0dce17",
+          "text": "Using HTML **`style`** attribute.",
+          "isCorrect": true,
+          "description": "In React, the **`style`** attribute takes an object, not a string, so you can't use the HTML style attribute directly."
+        },
+        {
+          "id": "16a3e8eb-4f31-46c4-8c0e-253c43f3b21d",
+          "text": "Inline styles.",
+          "isCorrect": false,
+          "description": "Inline styles are a valid way to style React components."
+        },
+        {
+          "id": "4e5753a0-7f90-4c92-8e0f-99505336a09c",
+          "text": "CSS-in-JS libraries.",
+          "isCorrect": false,
+          "description": "CSS-in-JS libraries are a valid way to style React components."
+        },
+        {
+          "id": "8e61b50d-3bde-465c-b926-3b7552833c82",
+          "text": "External CSS files.",
+          "isCorrect": false,
+          "description": "Using external CSS files is a valid way to style React components."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "d784f69a-09f4-4391-83ff-4867d9f7bbcb",
+      "text": "For a component with a frequently updating state, which of the following would be the most performance-optimized way to update the state?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "e64d0632-9ef9-40a0-9d92-07b579cf7ea3",
+          "text": "**`this.setState({ count: this.state.count + 1 })`**",
+          "isCorrect": false,
+          "description": "While this is a way to update state, it might not always capture the latest state."
+        },
+        {
+          "id": "72288979-5c70-4e2a-88ed-631db30d0b4c",
+          "text": "**`this.setState(prevState => ({ count: prevState.count + 1 }))`**",
+          "isCorrect": true,
+          "description": "Using a function with **`setState`** ensures that the state update is based on the latest version of the state, especially when state updates are frequent."
+        },
+        {
+          "id": "1ab2769d-8b91-46a4-b960-53a9f7aa63a6",
+          "text": "**`this.state.count++`**",
+          "isCorrect": false,
+          "description": "Directly modifying state without using **`setState`** is a bad practice in React."
+        },
+        {
+          "id": "22711f97-14b2-4673-8485-83626e5d1c88",
+          "text": "**`this.setState({ count: 10 })`**",
+          "isCorrect": false,
+          "description": "This sets the count to a fixed value and doesn't rely on the previous state."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "5c6883d0-9c5d-4807-a99f-54c7672f4dbf",
+      "text": "Which lifecycle method should you use for cleanup activities like invalidating timers or canceling network requests?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "8c6e431a-7b32-41c7-af29-4cced8542a18",
+          "text": "**`componentDidUpdate()`**",
+          "isCorrect": false,
+          "description": "The **`componentDidUpdate()`** method is not meant for cleanup activities."
+        },
+        {
+          "id": "60a5f5c0-3b41-45ed-9f9d-05c3a4d3483f",
+          "text": "**`componentWillMount()`**",
+          "isCorrect": false,
+          "description": "The **`componentWillMount()`** method is not meant for cleanup activities."
+        },
+        {
+          "id": "2c963ee7-8c82-4b15-85ac-b7db16c7f498",
+          "text": "**`componentWillUnmount()`**",
+          "isCorrect": true,
+          "description": "The **`componentWillUnmount()`** method is called just before the component is destroyed or removed from the DOM, making it the best place for cleanup activities."
+        },
+        {
+          "id": "727c4b97-16ca-4f03-9bca-961e22a0aace",
+          "text": "**`shouldComponentUpdate()`**",
+          "isCorrect": false,
+          "description": "The **`shouldComponentUpdate()`** method is not meant for cleanup activities."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "f0aa4217-2ac6-4f84-9bf1-98802d2d12f3",
+      "text": "Which hook can be used to replicate the behavior of both `componentDidMount()` and `componentDidUpdate()` lifecycle methods?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "f2622617-3cb0-49e6-b5ce-192c630c9bae",
+          "text": "**`useEffect()`**",
+          "isCorrect": true,
+          "description": "The **`useEffect()`** hook can be used to perform side effects in function components and can replicate the behavior of various lifecycle methods."
+        },
+        {
+          "id": "e7d2b307-c65a-4e5d-af13-40ea916b4c92",
+          "text": "**`useState()`**",
+          "isCorrect": false,
+          "description": "**`useState()`** is not suitable for replicating the behavior of lifecycle methods."
+        },
+        {
+          "id": "b08f8e8f-4bf4-48b1-9e5a-eefae7a72519",
+          "text": "**`useContext()`**",
+          "isCorrect": false,
+          "description": "**`useContext()`** is used for accessing context values, not for lifecycle replication."
+        },
+        {
+          "id": "515b1d0e-688d-4b3c-975d-3c95a1a39008",
+          "text": "**`useMemo()`**",
+          "isCorrect": false,
+          "description": "**`useMemo()`** is used for memoization and performance optimization, not for replicating lifecycle methods."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "0e4e7c44-3a6a-4e52-a23b-7d5a3e51f755",
+      "text": "When using the `useState()` hook, what does it return?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "84c3acdf-62d9-4b64-b14a-74f6dd5ebfe9",
+          "text": "The current state",
+          "isCorrect": false,
+          "description": "The **`useState()`** hook returns more than just the current state."
+        },
+        {
+          "id": "c680ab2c-53b5-457e-8a3a-255217dca840",
+          "text": "A function to update the state",
+          "isCorrect": false,
+          "description": "The **`useState()`** hook returns more than just a function to update the state."
+        },
+        {
+          "id": "efecf865-c5ac-442e-8c81-824e87134db2",
+          "text": "Both the current state and a function to update it",
+          "isCorrect": true,
+          "description": "The **`useState()`** hook returns a pair: the current state value and a function that lets you update it."
+        },
+        {
+          "id": "28c83b63-7d18-45c9-9b8e-ec1a35239d9f",
+          "text": "The initial state",
+          "isCorrect": false,
+          "description": "The **`useState()`** hook returns the current state, not just the initial state."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "d1a1db21-1b1c-4e05-9da3-5d0ce0e2087f",
+      "text": "In a React component, if you need to compute a value based on props and use it multiple times without recomputing it on every render, which hook should you use?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "b4939c7b-5af0-42bb-bdd7-774046d94c9e",
+          "text": "**`useEffect()`**",
+          "isCorrect": false,
+          "description": "**`useEffect()`** is not designed for memoization of computed values."
+        },
+        {
+          "id": "b4ca44f3-daed-467b-a646-6d7f4c654ec1",
+          "text": "**`useState()`**",
+          "isCorrect": false,
+          "description": "**`useState()`** is not suitable for memoization purposes."
+        },
+        {
+          "id": "e67cf1b3-3945-4a2d-b9b1-df2f4a819b61",
+          "text": "**`useReducer()`**",
+          "isCorrect": false,
+          "description": "**`useReducer()`** is used for state management, not for memoization."
+        },
+        {
+          "id": "8496ef9e-04b2-460d-93e2-75b421b20ac0",
+          "text": "**`useMemo()`**",
+          "isCorrect": true,
+          "description": "**`useMemo()`** is specifically designed to memoize computed values and avoid unnecessary recomputation."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "dfb35e6b-1d91-45a0-8c38-49d8a02a4245",
+      "text": "When breaking down a large component into smaller components in React, what principle are you applying?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "cb40925f-4eb6-4bc9-9f51-1d98436c8e5c",
+          "text": "State normalization",
+          "isCorrect": false,
+          "description": "State normalization is about organizing state in a structured manner."
+        },
+        {
+          "id": "c11927db-8bc2-4d1c-b090-5c47c3f76035",
+          "text": "Component lifecycle",
+          "isCorrect": false,
+          "description": "Component lifecycle pertains to the different phases a component goes through."
+        },
+        {
+          "id": "ce88eb1a-062d-4a9e-aab3-aa3f774de144",
+          "text": "Component decomposition",
+          "isCorrect": true,
+          "description": "Component decomposition is the practice of breaking down large components into smaller, more manageable and reusable pieces."
+        },
+        {
+          "id": "a95c7e1f-1cb5-461d-95b0-3e0b5b077d67",
+          "text": "JSX transformation",
+          "isCorrect": false,
+          "description": "JSX transformation is about converting JSX to vanilla JavaScript."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "60fc3f9c-02c9-457a-8994-5c75dd481376",
+      "text": "Which of the following statements about React's virtual DOM is NOT true?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "ccbd5b48-63ef-4a16-a882-b6dd06d69718",
+          "text": "It is a lightweight copy of the actual DOM.",
+          "isCorrect": false,
+          "description": "This statement is true."
+        },
+        {
+          "id": "d3dd409b-3b9a-4a80-82d3-6b0a81fcfa3f",
+          "text": "It allows for efficient updates and rendering.",
+          "isCorrect": false,
+          "description": "This statement is true."
+        },
+        {
+          "id": "64695a6b-e0eb-422a-8ae3-9960cc9d31b2",
+          "text": "Every change in the application directly updates the virtual DOM.",
+          "isCorrect": false,
+          "description": "This statement is true."
+        },
+        {
+          "id": "bc76ee76-6d5c-4a02-bbe9-4dd4f27e7381",
+          "text": "It replaces the real DOM on every render.",
+          "isCorrect": true,
+          "description": "This statement is NOT true; the virtual DOM updates only the parts of the real DOM that changed."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "d17a3f1e-9736-4de1-812c-73c702e87227",
+      "text": "If you want a side effect to run only when a component is unmounted, how would you do it with the `useEffect()` hook?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "0e2b8ae7-925f-4910-9dbb-3a2cfd100947",
+          "text": "Return a cleanup function without any dependencies.",
+          "isCorrect": false,
+          "description": "Without an empty dependency array, the cleanup might run more than once."
+        },
+        {
+          "id": "c9e53a07-6884-4754-877f-9cb7e601a8b7",
+          "text": "Use an empty dependency array and return a function.",
+          "isCorrect": true,
+          "description": "By using an empty dependency array, the effect runs once after the initial render. Returning a cleanup function ensures it runs when the component is unmounted."
+        },
+        {
+          "id": "11ed78bb-1dbb-4a36-8ae7-87c7c2ce3733",
+          "text": "Call **`useEffect()`** without returning anything.",
+          "isCorrect": false,
+          "description": "This would not ensure the side effect runs only at unmount."
+        },
+        {
+          "id": "4c7a3edc-1a71-4ef9-a035-3a6971001bf0",
+          "text": "Add all state and props to the dependency array.",
+          "isCorrect": false,
+          "description": "Adding all state and props would cause the effect to run frequently."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "a3e29c50-b983-4db6-8cc5-9ca40823ee96",
+      "text": "In React, what is 'prop drilling'?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "ec15d30b-1df6-4d33-9469-03ff37b9846c",
+          "text": "The process of optimizing component rendering.",
+          "isCorrect": false,
+          "description": "This refers to techniques like memoization, not prop drilling."
+        },
+        {
+          "id": "8707c1bf-787c-4ef1-b75c-3f29c9d138f5",
+          "text": "The process of passing props down multiple levels through components.",
+          "isCorrect": true,
+          "description": "Prop drilling refers to the practice of passing data from one part of the React component tree to another by going through other parts that do not need the data."
+        },
+        {
+          "id": "cb7249d8-1c64-4be3-9af9-e4e34df4f769",
+          "text": "Accessing the DOM directly using props.",
+          "isCorrect": false,
+          "description": "Direct DOM access is discouraged in React and is not related to props in this manner."
+        },
+        {
+          "id": "c7ef3e1b-23da-4882-86f2-1a8ea9eb9e86",
+          "text": "The method to define default prop values.",
+          "isCorrect": false,
+          "description": "Default prop values are set using **`defaultProps`**."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "59bfcf1c-3a52-4b28-af4a-87f8e6e87ea7",
+      "text": "Which hook allows you to tap into the context for its value, without using a Consumer component?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "f0811b22-b63b-44b2-8f3d-56807798d309",
+          "text": "**`useState()`**",
+          "isCorrect": false,
+          "description": "**`useState()`** is not designed for accessing context values."
+        },
+        {
+          "id": "40ad0e42-5830-45b2-8350-017352a7dd0f",
+          "text": "**`useEffect()`**",
+          "isCorrect": false,
+          "description": "**`useEffect()`** is used for side effects, not for accessing context."
+        },
+        {
+          "id": "d963c276-3f0f-45a3-8716-579b67c4a7e4",
+          "text": "**`useContext()`**",
+          "isCorrect": true,
+          "description": "The **`useContext()`** hook lets you access the context value without having to wrap your component inside a Consumer component."
+        },
+        {
+          "id": "f8324d3b-aa3e-4ea1-a5e7-39a9ad893d11",
+          "text": "**`useMemo()`**",
+          "isCorrect": false,
+          "description": "**`useMemo()`** is for memoization, not for accessing context."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "c97e1b63-2e8c-458b-8d96-6c85e0a6e06a",
+      "text": "When using the `useState()` hook, why is it advisable to avoid directly mutating the state?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "1a0c32ef-49d4-4573-bd65-1a2153c5572e",
+          "text": "Because it can lead to unexpected behaviors in the component.",
+          "isCorrect": true,
+          "description": "Directly mutating the state doesn't re-render the component, leading to discrepancies between what you see and what's stored in the state."
+        },
+        {
+          "id": "d8f20e01-dc81-4b01-9327-c4df179f967f",
+          "text": "Direct mutation is slower.",
+          "isCorrect": false,
+          "description": "Speed is not the primary concern here."
+        },
+        {
+          "id": "81b5c421-5250-4d6a-9b22-cb4e8fb28e3c",
+          "text": "React's virtual DOM cannot track changes made through direct mutations.",
+          "isCorrect": false,
+          "description": "The virtual DOM is not directly related to this state mutation issue."
+        },
+        {
+          "id": "a4df4420-2582-496c-bc31-0e4c20ebd28f",
+          "text": "Direct mutation causes the component to rerender multiple times.",
+          "isCorrect": false,
+          "description": "Direct mutation doesn't trigger additional rerenders; in fact, it prevents rerenders, which can be problematic."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    }
+  ]
+}

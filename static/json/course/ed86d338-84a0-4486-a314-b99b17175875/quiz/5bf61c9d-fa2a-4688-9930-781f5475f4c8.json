@@ -1,0 +1,500 @@
+{
+  "id": "5bf61c9d-fa2a-4688-9930-781f5475f4c8",
+  "questions": [
+    {
+      "id": "7b7bf1de-985b-47f5-8a29-0c183f4f8ac3",
+      "text": "What is the primary purpose of webpack?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "ebda15e0-1c68-4a8d-8e48-b80c04c8806d",
+          "text": "Debugging JavaScript code",
+          "isCorrect": false,
+          "description": "Debugging JavaScript code is generally done using developer tools in browsers or using debugging tools in IDEs."
+        },
+        {
+          "id": "f67be5a0-8c73-4e8e-b63d-bc1a8c3e73a6",
+          "text": "Bundling various assets for web development",
+          "isCorrect": true,
+          "description": "Webpack is a module bundler which takes modules with dependencies and generates static assets representing those modules."
+        },
+        {
+          "id": "2d7227b3-6a2a-4ca4-b053-26bfcb6c47e7",
+          "text": "Designing webpage layouts",
+          "isCorrect": false,
+          "description": "Designing webpage layouts is the responsibility of HTML/CSS and design tools."
+        },
+        {
+          "id": "f7d03f85-7c25-40a4-a5ab-0f193b611d75",
+          "text": "Hosting web servers",
+          "isCorrect": false,
+          "description": "Hosting web servers is done through server software, not webpack."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "24b68542-0f09-4c4f-862f-58b0c9612d8f",
+      "text": "Which of the following best describes 'Loaders' in webpack?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "17ab1a32-aa24-4c4e-b4e9-75a972f3b913",
+          "text": "They help in loading web pages faster",
+          "isCorrect": false,
+          "description": "Loading web pages faster is an outcome of efficient bundling, not loaders directly."
+        },
+        {
+          "id": "9420f6c3-6d27-4be1-960c-7317f75f158f",
+          "text": "They transform files into modules",
+          "isCorrect": true,
+          "description": "Loaders in webpack transform the source code of non-JavaScript files so that they can be treated as modules."
+        },
+        {
+          "id": "edfa00c9-e01b-4a1f-b446-5a9e51a823b2",
+          "text": "They help in creating animations",
+          "isCorrect": false,
+          "description": "Animations are usually managed with CSS or JavaScript frameworks."
+        },
+        {
+          "id": "4b635156-7642-4ed2-b380-0f950fc6d82f",
+          "text": "They are used for database operations",
+          "isCorrect": false,
+          "description": "Database operations are not a direct concern of webpack loaders."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "d3672db3-e23e-491f-8904-3d04e4a22b95",
+      "text": "What is cache busting?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "efbe4750-4f5e-4ea7-956f-b8490a5e1af9",
+          "text": "Breaking the server's cache",
+          "isCorrect": false,
+          "description": "Breaking the server's cache is not a constructive action in web development."
+        },
+        {
+          "id": "3a746b6e-3b6f-4f59-9567-228b702d5d0e",
+          "text": "A method to force the browser to load new assets",
+          "isCorrect": true,
+          "description": "Cache busting ensures that browsers don't use outdated cached assets by changing file names or adding hashes to them."
+        },
+        {
+          "id": "b63c1d15-5457-4a6b-9a13-5cf43c3da786",
+          "text": "An error in the caching system",
+          "isCorrect": false,
+          "description": "It is not an error but a deliberate strategy."
+        },
+        {
+          "id": "4f578b35-4d75-4c2c-8a5c-ec3f72131f2e",
+          "text": "A type of server",
+          "isCorrect": false,
+          "description": "Cache busting is a technique, not a server type."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "c52b88eb-6887-431a-9eef-00fbf46e05d3",
+      "text": "Why is tree-shaking important?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "aa9ea693-4c50-4f06-a36f-8c24e978b0f3",
+          "text": "It helps in shaking off bugs from the code",
+          "isCorrect": false,
+          "description": "The term doesn't relate to removing bugs."
+        },
+        {
+          "id": "f6df42c1-80e1-4c7b-ba0f-53f95ab1b0d7",
+          "text": "It is a method to clean the codebase",
+          "isCorrect": false,
+          "description": "While it can be seen as cleaning, it's specifically about removing unused code."
+        },
+        {
+          "id": "bc3a2b42-8ae5-4c69-99c4-7c2380ac377e",
+          "text": "It removes unused code from the final bundle",
+          "isCorrect": true,
+          "description": "Tree-shaking is a feature which removes dead code, thus reducing the size of the final bundle."
+        },
+        {
+          "id": "00a4c261-5ff2-4e9b-88a2-d179594f2fb5",
+          "text": "It is a tool for visualizing the code structure",
+          "isCorrect": false,
+          "description": "It doesn't visualize the code structure."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "e0ed70f6-3ce9-45c3-b2d4-07246f1e9a6c",
+      "text": "Which of the following best describes 'Hot reload'?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "eaf337e1-3354-4a5f-9ef0-7c81084b8883",
+          "text": "Restarting the server",
+          "isCorrect": false,
+          "description": "It doesn't involve server restart."
+        },
+        {
+          "id": "dfbcf6c6-038f-4c0f-bb97-bc43e4fc6d8e",
+          "text": "Instant update of changes without full page refresh",
+          "isCorrect": true,
+          "description": "Hot reload allows developers to see the changes they make in real-time without a full page refresh."
+        },
+        {
+          "id": "f9c78be9-1081-42f1-afac-8e2f4a07e61b",
+          "text": "Cooling down the CPU",
+          "isCorrect": false,
+          "description": "It has nothing to do with CPU temperatures."
+        },
+        {
+          "id": "2bfc23f5-6016-424b-9c8d-3cd9ac28c2d4",
+          "text": "A type of error in webpack",
+          "isCorrect": false,
+          "description": "It is a beneficial feature, not an error."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "5b0ad15c-34e2-488a-8700-6b3a2d2d3f49",
+      "text": "When setting up webpack, what file is typically used to configure its behavior?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "b3781591-1bf6-4a71-b90d-e9da3dd3aa5a",
+          "text": "package.json",
+          "isCorrect": false,
+          "description": "package.json is used for package dependencies and some script configurations."
+        },
+        {
+          "id": "573ef036-7870-487c-9f63-dbf4319680de",
+          "text": "webpack.config.js",
+          "isCorrect": true,
+          "description": "Webpack is typically configured using the webpack.config.js file."
+        },
+        {
+          "id": "b9c5f100-5d22-4ce0-a4c5-84a7bde91cd9",
+          "text": "index.html",
+          "isCorrect": false,
+          "description": "index.html is a standard entry point for web applications."
+        },
+        {
+          "id": "0752ac80-080b-4854-b6a4-62f6b11d7c8f",
+          "text": "app.js",
+          "isCorrect": false,
+          "description": "app.js could be an entry point for JavaScript, not for webpack configurations."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "f31d86c6-789e-4b1f-ae9d-2b7ac1b1cc6a",
+      "text": "Which of the following can be used in webpack to preprocess CSS files and convert them into regular CSS?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "f506e83f-2d9f-4072-8e5f-9c1192eb35b2",
+          "text": "Babel",
+          "isCorrect": false,
+          "description": "Babel is used for transpiling ES6+ JavaScript into backward-compatible versions."
+        },
+        {
+          "id": "f5f1ab5e-1f4f-4487-9431-9293529c417b",
+          "text": "ESLint",
+          "isCorrect": false,
+          "description": "ESLint is for linting JavaScript code."
+        },
+        {
+          "id": "242ca8da-0e77-41b6-81bf-1695d5a2ad0f",
+          "text": "Sass-Loader",
+          "isCorrect": true,
+          "description": "Sass-Loader is a loader for webpack that allows you to preprocess .scss or .sass files and convert them into regular CSS."
+        },
+        {
+          "id": "f8f3f098-8352-4bb3-913f-bd8aa9163dd4",
+          "text": "TypeScript",
+          "isCorrect": false,
+          "description": "TypeScript is a statically typed superset of JavaScript."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "9e99320b-6744-457e-a04b-739d8eb628f0",
+      "text": "If you wanted to split your code into multiple chunks that are loaded on demand, which webpack feature would you use?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "943b7dab-d79c-4a12-af74-4b31e2a3679b",
+          "text": "Cache busting",
+          "isCorrect": false,
+          "description": "Cache busting is about versioning assets."
+        },
+        {
+          "id": "c688751b-3b7f-4f25-8709-1c6e779d0a0d",
+          "text": "Hot reload",
+          "isCorrect": false,
+          "description": "Hot reload is for real-time updates."
+        },
+        {
+          "id": "890f973a-ea0b-45ea-9e57-666f16cb865c",
+          "text": "Code splitting",
+          "isCorrect": true,
+          "description": "Code splitting is a feature of webpack that allows you to split your code into smaller chunks which can be loaded on demand."
+        },
+        {
+          "id": "b5f3c6d2-c7de-4f80-a67c-1036d8cb9d0b",
+          "text": "Tree shaking",
+          "isCorrect": false,
+          "description": "Tree shaking is about removing unused code."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "f82b615a-5815-4a29-93dd-7db5e4abf18d",
+      "text": "Which of the following plugins in webpack can help in extracting CSS into separate files?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "5ec4ef63-9c71-4c4f-9a24-394f66b1993c",
+          "text": "HotModuleReplacementPlugin",
+          "isCorrect": false,
+          "description": "HotModuleReplacementPlugin is used for enabling hot module replacement."
+        },
+        {
+          "id": "ef6bfde0-c1a6-497b-a8be-25ed8b08e7da",
+          "text": "TerserPlugin",
+          "isCorrect": false,
+          "description": "TerserPlugin is used for minifying JavaScript."
+        },
+        {
+          "id": "4b9be00e-7d64-4137-8f7b-3b740aa815e7",
+          "text": "MiniCssExtractPlugin",
+          "isCorrect": true,
+          "description": "The MiniCssExtractPlugin is used in webpack to extract CSS into separate files, which is especially useful for production builds."
+        },
+        {
+          "id": "38ea232d-cf5e-4f14-858a-52f5a13d9f1f",
+          "text": "CleanWebpackPlugin",
+          "isCorrect": false,
+          "description": "CleanWebpackPlugin is used to clean the build directory."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "ce6d77e4-4c29-438c-901d-722e6d6e50d7",
+      "text": "What is the main difference between 'Hot reloading' and 'Live reloading'?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "6d3a2439-72a3-46bf-8b2c-1913e8ec7ac0",
+          "text": "They are the same.",
+          "isCorrect": false,
+          "description": "They have distinct behaviors."
+        },
+        {
+          "id": "652e02f1-158b-47b2-b85a-836ab9c878b0",
+          "text": "Live reloading refreshes the entire page.",
+          "isCorrect": true,
+          "description": "Hot reloading updates modules in-place without a full page refresh, while live reloading refreshes the entire page."
+        },
+        {
+          "id": "cf81c8a0-e193-4e89-864d-22a418b96f4a",
+          "text": "Hot reloading is faster than live reloading.",
+          "isCorrect": false,
+          "description": "Speed can vary, but the key difference is the update method."
+        },
+        {
+          "id": "66e78a71-e083-4fc4-b3a4-4eabec9e6b22",
+          "text": "Live reloading only updates CSS.",
+          "isCorrect": false,
+          "description": "Live reloading isn't limited to CSS updates."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "7b3c6d23-e6d2-4d5a-8ef4-0cda4725b98e",
+      "text": "In the context of webpack, what is 'Tree shaking'?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "d67c15fb-4a49-43de-9e11-d0e8628bfe1e",
+          "text": "A method to visualize the dependency tree",
+          "isCorrect": false,
+          "description": "It doesn't visualize dependencies; it removes dead code."
+        },
+        {
+          "id": "b7f65068-7f22-42a1-85b2-d3dd4e152e7e",
+          "text": "A technique to ensure all dependencies are loaded",
+          "isCorrect": false,
+          "description": "It doesn't ensure loading; it removes unused code."
+        },
+        {
+          "id": "c7f2f4c5-bd70-4cf5-9981-c525d5e29c85",
+          "text": "A process to remove dead code paths from the bundle",
+          "isCorrect": true,
+          "description": "Tree shaking is a feature in webpack that allows for dead code elimination based on the ES6 module system."
+        },
+        {
+          "id": "1a8ed3c1-118f-4a35-89b3-71e3a5bafae0",
+          "text": "A plugin to enhance the performance of the webpack build",
+          "isCorrect": false,
+          "description": "It's a feature, not a plugin."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "39e95c32-72c9-4562-baa7-30c48b4b995f",
+      "text": "When using code splitting in webpack, which object is crucial for dynamically importing modules?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "8a19ab88-4f01-4a5b-92d1-938cfd63d58f",
+          "text": "splitChunks",
+          "isCorrect": false,
+          "description": "splitChunks is a configuration option for optimization."
+        },
+        {
+          "id": "936fb27a-55ad-4cbb-9a97-4f6b26f8d684",
+          "text": "import()",
+          "isCorrect": true,
+          "description": "The import() function allows for dynamic imports in webpack, which returns a promise for the module."
+        },
+        {
+          "id": "c1b11b29-ea4a-4ea4-89c6-3b882eb58396",
+          "text": "treeShake",
+          "isCorrect": false,
+          "description": "treeShake isn't an actual object or method in webpack."
+        },
+        {
+          "id": "7b61c9d8-d813-4712-8ba2-b2de53795141",
+          "text": "loaders",
+          "isCorrect": false,
+          "description": "Loaders transform files, but don't handle dynamic imports."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "e4d99e61-3445-4d62-87b2-8f516b6172db",
+      "text": "How does webpack handle 'side effects' in tree shaking?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "85c2f95a-2962-4f24-aef4-35b52e4f5480",
+          "text": "It ignores them.",
+          "isCorrect": false,
+          "description": "It doesn't ignore them; it considers them."
+        },
+        {
+          "id": "1f62fcab-bf57-4f04-8a2e-853a17bb7b9b",
+          "text": "It always includes side-effectful modules.",
+          "isCorrect": false,
+          "description": "It doesn't always include them without a hint."
+        },
+        {
+          "id": "a0b06e87-4f90-4b5d-8490-64dd59867f11",
+          "text": "Developers can flag modules with 'sideEffects' property.",
+          "isCorrect": true,
+          "description": "Webpack uses the 'sideEffects' property in package.json to determine if a module has side effects, ensuring they aren't wrongly eliminated during tree shaking."
+        },
+        {
+          "id": "dcbf0ef5-0190-45d9-9f92-422c554135ff",
+          "text": "It removes side effects by default.",
+          "isCorrect": false,
+          "description": "It doesn't remove side effects by default without guidance."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "35af30da-2f7a-4fc4-81f0-e4f4f41b30da",
+      "text": "Which of the following is NOT a typical reason for using code splitting in webpack?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "59ce21a1-6287-49e4-a41d-01c0aa38e7ea",
+          "text": "Improve initial page load time",
+          "isCorrect": false,
+          "description": "Improving initial load time is a primary reason for code splitting."
+        },
+        {
+          "id": "f497a696-0a9d-4f1e-9a25-c083d13f6e67",
+          "text": "Load only the necessary code for a particular route",
+          "isCorrect": false,
+          "description": "Loading necessary code for routes is another reason for it."
+        },
+        {
+          "id": "7d03e7c2-5ebd-47b9-b8d4-165f1d66f4c2",
+          "text": "Bundle all code into a single file.",
+          "isCorrect": true,
+          "description": "Code splitting's main goal is to split code into chunks rather than bundling everything into one file."
+        },
+        {
+          "id": "170c99d4-1f0d-4871-a87a-72d9d0a7f1df",
+          "text": "Lazy load modules as they are needed",
+          "isCorrect": false,
+          "description": "Lazy loading is a feature enabled by code splitting."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "51102e75-39cb-4cf9-bc14-108cb06ab515",
+      "text": "If you wanted to ensure that a certain module is preloaded in webpack, which directive would you use?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "3b7b3f63-0802-4b9a-8d0e-049b7e3b5b45",
+          "text": "import()",
+          "isCorrect": false,
+          "description": "import() is for dynamic imports."
+        },
+        {
+          "id": "d2b0e1b9-6ea1-4b82-88ac-c186d1180b02",
+          "text": "require()",
+          "isCorrect": false,
+          "description": "require() is a CommonJS module loading method."
+        },
+        {
+          "id": "e21e60d9-1b61-4b3b-8530-bd7e23aa9fbf",
+          "text": "link:preload",
+          "isCorrect": true,
+          "description": "Using link:preload as a directive ensures that a particular module is preloaded, optimizing performance."
+        },
+        {
+          "id": "dfb7e9e5-6ec2-442d-bcfc-b03e68050e42",
+          "text": "module.exports",
+          "isCorrect": false,
+          "description": "module.exports is for exporting modules in CommonJS."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    }
+  ]
+}

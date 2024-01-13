@@ -34,6 +34,27 @@ const QuizIDComputerScienceBasics = "addb1e53-eb07-44a3-881f-217eee3a926b"
 const CourseStepIDJavaScriptAdvanced = "c8f398b8-a712-405e-ac95-f570ffe3a057"
 const QuizIDJavaScriptAdvanced = "2819856b-ed81-4d48-92a3-acea534b3673"
 
+const CourseStepIDGit = "99d51144-6a62-4c75-b19c-30508e2421c7"
+const QuizIDGit = "9db0dd4a-7827-4306-92b5-02abf8706f4b"
+
+const CourseStepIDTypeScript = "18d27e38-6336-4d00-929e-eceaebcd34a7"
+const QuizIDTypeScript = "ad79ce21-c9bd-424a-9e4d-8136143a07b7"
+
+const CourseStepIDNodeJS = "aa784d1b-6976-48fa-b9ba-f3e6bf6da585"
+const QuizIDNodeJS = "b3e4b2a9-4759-46a1-9288-4a63a3a91e45"
+
+const CourseStepIDWebpack = "36aac1a9-f786-49de-b910-629625c13355"
+const QuizIDWebpack = "5bf61c9d-fa2a-4688-9930-781f5475f4c8"
+
+const CourseStepIDTestingJest = "f7e4f315-d9e1-4d73-ae20-697369170c0e"
+const QuizIDTestingJest = "f8668659-7e63-45dc-a87b-3c74872d1c74"
+
+const CourseStepIDReact = "b38b83e4-136a-4e0f-a927-c96ab5104761"
+const QuizIDReact = "4fb71fa7-33ad-4154-8e72-991033879c3e"
+
+const CourseStepIDCIGithubActions = "f15e7c43-7b62-422e-bc5e-90c3163870f6"
+const QuizIDCIGithubActions = "29308dff-0179-4f5b-b6ca-f29e11f17661"
+
 func (q *CourseRepository) FindByID(courseID string) (course.Course, error) {
 
 	quizEssentialsOfTheWeb, err := q.getQuiz(courseID, QuizIDEssentialsOfTheWeb)
@@ -52,6 +73,41 @@ func (q *CourseRepository) FindByID(courseID string) (course.Course, error) {
 	}
 
 	quizAdvancedJavaScript, err := q.getQuiz(courseID, QuizIDJavaScriptAdvanced)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizGit, err := q.getQuiz(courseID, QuizIDGit)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizTypeScript, err := q.getQuiz(courseID, QuizIDTypeScript)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizNodeJS, err := q.getQuiz(courseID, QuizIDNodeJS)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizWebpack, err := q.getQuiz(courseID, QuizIDWebpack)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizTestingJest, err := q.getQuiz(courseID, QuizIDTestingJest)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizReact, err := q.getQuiz(courseID, QuizIDReact)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizCIGithubActions, err := q.getQuiz(courseID, QuizIDCIGithubActions)
 	if err != nil {
 		return course.Course{}, course.ErrCourseNotFound
 	}
@@ -81,6 +137,35 @@ func (q *CourseRepository) FindByID(courseID string) (course.Course, error) {
 					ID:      CourseStepIDJavaScriptAdvanced,
 					Name:    "Advanced JavaScript",
 					Quizzes: []course.StepQuiz{q.mapQuiz(quizAdvancedJavaScript)},
+				},
+				{
+					ID:      CourseStepIDGit,
+					Name:    "Git",
+					Quizzes: []course.StepQuiz{q.mapQuiz(quizGit)},
+				}, {
+					ID:      CourseStepIDTypeScript,
+					Name:    "TypeScript",
+					Quizzes: []course.StepQuiz{q.mapQuiz(quizTypeScript)},
+				}, {
+					ID:      CourseStepIDNodeJS,
+					Name:    "NodeJS",
+					Quizzes: []course.StepQuiz{q.mapQuiz(quizNodeJS)},
+				}, {
+					ID:      CourseStepIDWebpack,
+					Name:    "Webpack",
+					Quizzes: []course.StepQuiz{q.mapQuiz(quizWebpack)},
+				}, {
+					ID:      CourseStepIDTestingJest,
+					Name:    "Testing with Jest",
+					Quizzes: []course.StepQuiz{q.mapQuiz(quizTestingJest)},
+				}, {
+					ID:      CourseStepIDReact,
+					Name:    "React",
+					Quizzes: []course.StepQuiz{q.mapQuiz(quizReact)},
+				}, {
+					ID:      CourseStepIDCIGithubActions,
+					Name:    "GitHub Actions",
+					Quizzes: []course.StepQuiz{q.mapQuiz(quizCIGithubActions)},
 				},
 			},
 		}, nil

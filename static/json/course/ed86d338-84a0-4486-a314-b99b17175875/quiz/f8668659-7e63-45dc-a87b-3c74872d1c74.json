@@ -1,0 +1,500 @@
+{
+  "id": "f8668659-7e63-45dc-a87b-3c74872d1c74",
+  "questions": [
+    {
+      "id": "4ad52106-7254-4919-b375-1c842a98b515",
+      "text": "What is the primary purpose of testing in software development?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "71cab4df-5e4b-48fc-a20a-1fa0e6e050eb",
+          "text": "To find and fix all the bugs before deploying",
+          "isCorrect": false,
+          "description": "While testing can help find and fix bugs, it's not possible to find and fix all bugs before deployment."
+        },
+        {
+          "id": "1e0f9a67-4ff7-449c-ab59-2faf6df75a9e",
+          "text": "To ensure that the code meets the specified requirements",
+          "isCorrect": true,
+          "description": "Testing is crucial to ensure that the software behaves as expected and meets the specified requirements."
+        },
+        {
+          "id": "e639f34d-fd9d-46c4-a15e-feef57ff9655",
+          "text": "To increase the size of the codebase",
+          "isCorrect": false,
+          "description": "Testing doesn't necessarily increase the size of the codebase."
+        },
+        {
+          "id": "7069c296-dda2-4375-993c-e75162ce7e9f",
+          "text": "To make the application look visually appealing",
+          "isCorrect": false,
+          "description": "Visual appeal is typically the domain of design and user interface development, not testing."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "d1bb418b-2185-47b7-810d-fc9aa197512f",
+      "text": "Which of the following best describes Jest?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "56e930e0-7464-4ac1-8df9-0c68ec0b1d95",
+          "text": "A frontend framework",
+          "isCorrect": false,
+          "description": "Jest is not a frontend framework."
+        },
+        {
+          "id": "0d996bf5-0497-4214-9da4-0e72b84d3351",
+          "text": "A database system",
+          "isCorrect": false,
+          "description": "Jest is not related to databases."
+        },
+        {
+          "id": "eae832ab-3b07-477f-ae69-ff2f4a8be75c",
+          "text": "A node.js testing library",
+          "isCorrect": true,
+          "description": "Jest is a popular testing library for node.js applications."
+        },
+        {
+          "id": "9a3be77c-4c91-4bc6-bb90-84f191f561cf",
+          "text": "A CSS preprocessor",
+          "isCorrect": false,
+          "description": "Jest has no relation to CSS preprocessing."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "1cd07850-5f7e-4f0e-90d8-7121570f5362",
+      "text": "Which of the following is an essential step before running tests?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "7f719f1b-e48d-4d2e-a6f3-6f7eac2da3e7",
+          "text": "Shutting down the server",
+          "isCorrect": false,
+          "description": "Shutting down the server is not necessarily required to run tests."
+        },
+        {
+          "id": "235c86a4-3f0a-44d4-8f17-249cb758dd8a",
+          "text": "Setting up the testing environment",
+          "isCorrect": true,
+          "description": "Before running tests, it's crucial to have the right testing environment set up to ensure accurate results."
+        },
+        {
+          "id": "6944f8e6-4f5c-4c22-93fc-e92984d52ca7",
+          "text": "Publishing the application",
+          "isCorrect": false,
+          "description": "Publishing the application is not a prerequisite for testing."
+        },
+        {
+          "id": "33a7f8c9-d924-4c90-b13d-6b05c72741e1",
+          "text": "Making a coffee",
+          "isCorrect": false,
+          "description": "While making a coffee can be refreshing, it's not essential for testing."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "fcf7f6d4-9cfc-4de9-8d92-46ab57b3c36a",
+      "text": "What are matchers in Jest used for?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "ce801c41-75ed-431a-a6d2-0677c996f89a",
+          "text": "Connecting to databases",
+          "isCorrect": false,
+          "description": "Matchers aren't used for database connections."
+        },
+        {
+          "id": "e01e3d51-04f6-4ac3-bfe0-2b9d4fcf98b3",
+          "text": "Checking the results of a test",
+          "isCorrect": true,
+          "description": "Matchers in Jest are used to validate the result of a test against an expected value."
+        },
+        {
+          "id": "8a084eeb-485c-4b3b-bc9a-eb5e36b1c72b",
+          "text": "Compiling JavaScript code",
+          "isCorrect": false,
+          "description": "Jest doesn't compile JavaScript code."
+        },
+        {
+          "id": "799db7dd-8945-4479-8f72-042d54079cf7",
+          "text": "Deploying the application",
+          "isCorrect": false,
+          "description": "Deploying an application isn't related to matchers in Jest."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "22c108a7-913a-42c4-8ca6-98d8bacec8e3",
+      "text": "When testing asynchronous functions, what should you ensure?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "2185a179-1c42-43b0-b7cc-e73d4ad2c18c",
+          "text": "The function runs synchronously",
+          "isCorrect": false,
+          "description": "The function is asynchronous, so it won't run synchronously."
+        },
+        {
+          "id": "f798d1d3-4d4e-4b33-a016-78d2d66ebf05",
+          "text": "The function returns the correct value after completion",
+          "isCorrect": true,
+          "description": "Testing asynchronous functions ensures they complete their tasks and return the expected values."
+        },
+        {
+          "id": "f5a44fbb-46a7-4e29-9cd3-7e7ee1a45a01",
+          "text": "The function doesn't have any parameters",
+          "isCorrect": false,
+          "description": "Asynchronous functions can have parameters."
+        },
+        {
+          "id": "f4e1080e-6b4d-4319-9186-9bfa2f5a2c1a",
+          "text": "The function is called multiple times",
+          "isCorrect": false,
+          "description": "The number of times a function is called isn't the focus of testing asynchronous functions."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "062f3c8c-9cb1-4e58-a0ef-36610cde95b2",
+      "text": "What is the primary function of the 'beforeAll()' method in Jest?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "d7f41cd2-5f4e-4e77-94f9-25b8216f3034",
+          "text": "It runs after each test in a suite.",
+          "isCorrect": false,
+          "description": "'beforeAll()' is a hook in Jest that runs once before all the tests in a suite begin execution."
+        },
+        {
+          "id": "27f582c0-75d3-42bb-a2a1-96e70e05fcee",
+          "text": "It runs before any test in a suite.",
+          "isCorrect": true,
+          "description": "'beforeAll()' is a hook in Jest that runs once before any test in a suite begins execution."
+        },
+        {
+          "id": "48810ccf-0f17-4b96-a91b-8c3e0900c69e",
+          "text": "It runs only if the previous test failed.",
+          "isCorrect": false,
+          "description": "'beforeAll()' doesn't depend on the previous test's outcome."
+        },
+        {
+          "id": "02f96ce6-399b-4c7c-8a3b-ea0c049bd344",
+          "text": "It runs concurrently with each test.",
+          "isCorrect": false,
+          "description": "'beforeAll()' doesn't run concurrently with tests."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "7a235ac7-2067-42a6-9aef-9c9746e4c0ef",
+      "text": "Which of the following is essential for mocking a function in Jest?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "a458dfec-525e-45dd-a7d5-8e2be511d3ec",
+          "text": "Changing the original function's code",
+          "isCorrect": false,
+          "description": "Mocking doesn't require changing the original function's code."
+        },
+        {
+          "id": "b92b5025-8c9b-4fdd-8e11-0f9b43a866f0",
+          "text": "Running the tests synchronously",
+          "isCorrect": false,
+          "description": "Mocking isn't related to the synchronicity of tests."
+        },
+        {
+          "id": "d314a771-87c2-45a7-bf6d-049bc0950973",
+          "text": "Using the 'jest.fn()' method",
+          "isCorrect": true,
+          "description": "The 'jest.fn()' method allows you to mock functions in Jest, which helps in isolating tests and simulating different scenarios."
+        },
+        {
+          "id": "78e1009e-3b8b-45a5-87f1-5cde9b9246ac",
+          "text": "Deploying the application to production",
+          "isCorrect": false,
+          "description": "Mocking is not related to deploying the application to production."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "a3ef11d9-27f2-4603-bfe9-e5dfc4a6d625",
+      "text": "When using 'afterAll()' in Jest, what happens?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "81e40f8a-6e91-4864-85f9-0a74d0ffde3b",
+          "text": "It runs before all tests in a suite.",
+          "isCorrect": false,
+          "description": "'afterAll()' is a hook in Jest that runs once after all the tests in a suite have completed."
+        },
+        {
+          "id": "899edc6a-80b9-4b86-960f-b67d60a18663",
+          "text": "It repeats the last test in a suite.",
+          "isCorrect": false,
+          "description": "Jest doesn't have a built-in hook that repeats the last test."
+        },
+        {
+          "id": "68ec44ad-b660-4a7c-b88e-432870dc9ce7",
+          "text": "It runs after all tests in a suite.",
+          "isCorrect": true,
+          "description": "'afterAll()' is a hook in Jest that runs once after all the tests in a suite have completed."
+        },
+        {
+          "id": "ea2c72f7-dc4e-438f-8be2-1d50b477d0e4",
+          "text": "It skips all the tests in a suite.",
+          "isCorrect": false,
+          "description": "'afterAll()' doesn't skip any tests."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "b64d153f-bff2-4d1a-ae09-1f56e22c7770",
+      "text": "When should you avoid using mocks in testing?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "3e8403c0-4393-48f3-9936-84dd3a12e7bf",
+          "text": "When testing pure functions",
+          "isCorrect": false,
+          "description": "Mocks can be useful when testing pure functions if there are external dependencies."
+        },
+        {
+          "id": "a66ab57b-917a-4e6d-9277-369754a8c1a0",
+          "text": "When testing database integrations",
+          "isCorrect": true,
+          "description": "When testing real integrations like database interactions, it's often better to test the actual integration rather than mocking it, to ensure it works in real scenarios."
+        },
+        {
+          "id": "ac7d61a9-e90d-4f1b-bc1c-562754a26ab1",
+          "text": "When testing user interfaces",
+          "isCorrect": false,
+          "description": "Mocks can be beneficial when testing user interfaces, especially when simulating user actions or responses from APIs."
+        },
+        {
+          "id": "54d1c164-1321-4b72-90c0-5f12ac330554",
+          "text": "When testing asynchronous code",
+          "isCorrect": false,
+          "description": "Mocks are often used when testing asynchronous code to simulate various scenarios."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "e686c32a-e682-4f02-bc79-4fc9e7b1d40f",
+      "text": "Which of the following is not a benefit of testing your code?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "5272a909-17f2-4bf1-94be-cd53e1509560",
+          "text": "Catching bugs early in the development cycle",
+          "isCorrect": false,
+          "description": "Catching bugs early is a significant benefit of testing."
+        },
+        {
+          "id": "12ea8041-763f-4da5-9ba3-409c5f139c63",
+          "text": "Ensuring code quality and functionality",
+          "isCorrect": false,
+          "description": "Ensuring code quality and functionality is a key benefit of testing."
+        },
+        {
+          "id": "d73e7e15-2146-4c3d-9c11-70a34e39be57",
+          "text": "Reducing the need for documentation",
+          "isCorrect": true,
+          "description": "While tests can provide some insight into how code works, they don't replace the need for proper documentation."
+        },
+        {
+          "id": "0e1fcb65-6471-4e5b-90a3-0dcb5ef268a7",
+          "text": "Improving collaboration among developers",
+          "isCorrect": false,
+          "description": "Improving collaboration is one of the benefits of testing, as tests can clarify expected behavior."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "3d4c9500-6a7a-4d90-aabf-50df1ff06ef1",
+      "text": "Which Jest method is used to test a value for a variety of outcomes?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "d81615e6-48bb-4df3-80a0-e1b6d13fbb4f",
+          "text": "expect()",
+          "isCorrect": true,
+          "description": "The expect() function in Jest is used in conjunction with matchers to test values in different ways."
+        },
+        {
+          "id": "5ce27462-18cb-4af2-80a3-7f2cb31bf61c",
+          "text": "describe()",
+          "isCorrect": false,
+          "description": "describe() is used to group related tests."
+        },
+        {
+          "id": "b89ed9e4-440b-41ac-8740-001b2bf5f0f6",
+          "text": "test()",
+          "isCorrect": false,
+          "description": "test() is used to define a single test case."
+        },
+        {
+          "id": "59c4ed1a-535f-46d3-97da-c8239b25e05a",
+          "text": "match()",
+          "isCorrect": false,
+          "description": "match() is not a Jest method."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "fddb98b8-8486-4884-8ba4-b488995ebd8c",
+      "text": "What does Jest automatically do with a function named 'beforeEach()' in your test suite?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "e7ef74c1-72b7-43b9-b23a-1496e81d40b3",
+          "text": "Runs it once before all tests.",
+          "isCorrect": false,
+          "description": "That's the behavior of 'beforeAll()'."
+        },
+        {
+          "id": "a0d2b50f-07cd-4f5b-b5fc-2f04909e2279",
+          "text": "Runs it before each individual test.",
+          "isCorrect": true,
+          "description": "'beforeEach()' is a special hook in Jest that runs before each test in the suite."
+        },
+        {
+          "id": "e004663e-4ed1-4e91-9980-7ca94674250d",
+          "text": "Runs it after all tests.",
+          "isCorrect": false,
+          "description": "That's the behavior of 'afterAll()'."
+        },
+        {
+          "id": "93a2870a-8a36-4b1b-8e6c-29e3f11a18a7",
+          "text": "Ignores it.",
+          "isCorrect": false,
+          "description": "Jest recognizes and utilizes the 'beforeEach()' function."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "9f615b7b-8e16-4e07-9cc2-9133b2ed3f3c",
+      "text": "Why might you use mocking in Jest?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "8c167131-78d1-450b-bd8b-6db6c5029569",
+          "text": "To speed up your test suite.",
+          "isCorrect": false,
+          "description": "Mocking can make tests faster, but that's not its primary purpose."
+        },
+        {
+          "id": "1012ef05-0726-4973-8a3d-c3c63e76fb94",
+          "text": "To make the codebase smaller.",
+          "isCorrect": false,
+          "description": "Mocking doesn't affect the size of the codebase."
+        },
+        {
+          "id": "0dfc926b-565d-4d26-850c-d7d76a4c3b09",
+          "text": "To simulate specific scenarios or behavior.",
+          "isCorrect": true,
+          "description": "Mocking allows you to replace real implementations with controlled versions, helping simulate specific scenarios or behaviors."
+        },
+        {
+          "id": "8f1cc865-318d-40ef-981a-03da2f61dceb",
+          "text": "To integrate with external APIs.",
+          "isCorrect": false,
+          "description": "Mocking replaces real integrations, so it doesn't integrate with external APIs."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "271e1a13-09ac-421f-b5a3-656ebd1766da",
+      "text": "In Jest, what does the 'toMatch()' matcher check for?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "ae313130-0d4e-4832-8d42-8f7b095e41e3",
+          "text": "If a value is null.",
+          "isCorrect": false,
+          "description": "For checking null values, you'd use 'toBeNull()'."
+        },
+        {
+          "id": "147c7e60-bf10-46e7-bae2-40048cb4b3b0",
+          "text": "If a string matches a regular expression.",
+          "isCorrect": true,
+          "description": "The 'toMatch()' matcher in Jest is used with strings to check if they match a given regular expression."
+        },
+        {
+          "id": "f7353af6-d8d1-4ad7-9c01-0b9820a6db0f",
+          "text": "If an array contains a specific item.",
+          "isCorrect": false,
+          "description": "For checking array contents, you'd use 'toContain()'."
+        },
+        {
+          "id": "d1c6d1b3-eed0-4cb5-9df3-53d52ef937e3",
+          "text": "If a function throws an error.",
+          "isCorrect": false,
+          "description": "To check if a function throws, you'd use 'toThrow()'."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "7c99c0ac-96b6-448f-b2b4-0ac27ca26b54",
+      "text": "What's a potential problem with only using mock functions and not testing the real implementation?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "80fdd49c-33f5-4bb1-ae2d-1d6a4112a0b6",
+          "text": "Mock functions run slower.",
+          "isCorrect": false,
+          "description": "Mock functions typically run faster because they skip the real implementations."
+        },
+        {
+          "id": "b8b2a699-2c68-495d-8ec4-122a4932ec09",
+          "text": "It can lead to false positives.",
+          "isCorrect": true,
+          "description": "Relying solely on mock functions can lead to tests that pass even if the real implementation has issues, leading to false positives."
+        },
+        {
+          "id": "8f231eb5-7f36-4e1d-b4e2-af3f38a32121",
+          "text": "Real implementations are always error-free.",
+          "isCorrect": false,
+          "description": "Real implementations can have errors."
+        },
+        {
+          "id": "90574c20-26f6-4c13-b0a9-199d89b0af38",
+          "text": "Mock functions can't simulate asynchronous behavior.",
+          "isCorrect": false,
+          "description": "Mock functions can simulate asynchronous behavior."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    }
+  ]
+}

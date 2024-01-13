@@ -1,0 +1,632 @@
+{
+  "id": "29308dff-0179-4f5b-b6ca-f29e11f17661",
+  "questions": [
+    {
+      "id": "d5a4bf68-5469-4961-bfe9-7a9059e27688",
+      "text": "What does CI in CI/CD stand for?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "7e7f5b60-7692-4e7a-bc88-6a5c748c1a9e",
+          "text": "Continuous Input",
+          "isCorrect": false,
+          "description": "There is no term 'Continuous Input' in the context of CI/CD."
+        },
+        {
+          "id": "3e2a0377-5f61-4092-9ec3-24e3a1a294b2",
+          "text": "Continuous Improvement",
+          "isCorrect": false,
+          "description": "While 'Continuous Improvement' is a principle in agile methodologies, it's not the correct term here."
+        },
+        {
+          "id": "8b981e2f-94fc-4ef9-a15f-0a61d82ee7c6",
+          "text": "Continuous Integration",
+          "isCorrect": true,
+          "description": "Continuous Integration (CI) is the practice of integrating code changes from multiple contributors into a single software project frequently."
+        },
+        {
+          "id": "6f2144aa-73c3-4377-89c2-0a9879c415e0",
+          "text": "Continuous Inspection",
+          "isCorrect": false,
+          "description": "Continuous Inspection isn't a standard term in the CI/CD context."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "5f1e6cc0-31ea-4d96-90f0-5644b8c11815",
+      "text": "Which platform is specifically mentioned for CI/CD in the course description?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "135b55d2-ef93-432b-bbf9-d233ab458f1b",
+          "text": "Jenkins",
+          "isCorrect": false,
+          "description": "Jenkins is not mentioned in the course description."
+        },
+        {
+          "id": "836b862e-1327-4b1c-8f8e-d94653184ee2",
+          "text": "CircleCI",
+          "isCorrect": false,
+          "description": "CircleCI is not mentioned in the course description."
+        },
+        {
+          "id": "16d12d2a-bdfd-44b0-80db-24d9ef1b6c8a",
+          "text": "TravisCI",
+          "isCorrect": false,
+          "description": "TravisCI is not mentioned in the course description."
+        },
+        {
+          "id": "6b6d860e-2c4e-4770-bbe3-83e6a3ee55a3",
+          "text": "GitHub Actions",
+          "isCorrect": true,
+          "description": "GitHub Actions is mentioned in the course description as a CI/CD platform."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "1a10d59b-29c9-4a09-8b32-11f7b4a00f0d",
+      "text": "Which of the following is NOT typically automated in a CI/CD pipeline?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "c1f327aa-4dab-4ec9-8da5-621bfc20f086",
+          "text": "Code linting",
+          "isCorrect": false,
+          "description": "Code linting is typically automated in a CI/CD pipeline."
+        },
+        {
+          "id": "f595ebd9-6ff6-4e72-b9a2-974e0c656ce7",
+          "text": "Running tests",
+          "isCorrect": false,
+          "description": "Running tests is typically automated in a CI/CD pipeline."
+        },
+        {
+          "id": "f515cf04-eb15-4d7d-8f94-71a1c19d0ac5",
+          "text": "Manual code reviews",
+          "isCorrect": true,
+          "description": "Manual code reviews require human judgment and are not typically automated."
+        },
+        {
+          "id": "34b73ec1-0d40-4c51-baed-dc7c41a9a067",
+          "text": "Code formatting",
+          "isCorrect": false,
+          "description": "Code formatting is typically automated in a CI/CD pipeline."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "0867e83e-5583-4d8a-9aeb-9d72588f7e6a",
+      "text": "What is the primary goal of Continuous Deployment?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "23c046b5-5095-4ab7-8420-6a9ee4bde06a",
+          "text": "To ensure code quality",
+          "isCorrect": false,
+          "description": "Ensuring code quality is a byproduct but not the primary goal of Continuous Deployment."
+        },
+        {
+          "id": "9ef6b44f-91b3-4e2f-9c4a-8f69b81210b9",
+          "text": "To automate testing processes",
+          "isCorrect": false,
+          "description": "Automating testing is just one part of Continuous Deployment, not its primary goal."
+        },
+        {
+          "id": "fa27d6a2-273b-4f52-b86a-90715f1bf98f",
+          "text": "To release new features to users rapidly",
+          "isCorrect": true,
+          "description": "Continuous Deployment focuses on rapidly releasing new features to users."
+        },
+        {
+          "id": "3ef83214-862c-43ec-9a6d-3f0f079399b2",
+          "text": "To save storage space",
+          "isCorrect": false,
+          "description": "Saving storage space isn't directly related to Continuous Deployment."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "35a7890b-5f46-43a0-94fc-e6282e62b8ed",
+      "text": "Why is linting important in a CI/CD pipeline?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "b4c8254c-4de2-4d6a-9d3e-c0800c1eb65a",
+          "text": "It increases the runtime speed of the application",
+          "isCorrect": false,
+          "description": "Linting doesn't affect the runtime speed of the application."
+        },
+        {
+          "id": "0a31d7e0-3f53-496c-8d7c-d99308322b14",
+          "text": "It ensures consistent code style and catches certain classes of bugs",
+          "isCorrect": true,
+          "description": "Linting is used to enforce coding standards and catch potential errors in the code."
+        },
+        {
+          "id": "da7c7cd7-1b0a-4783-bb41-6f9d3a98e88d",
+          "text": "It reduces the application's file size",
+          "isCorrect": false,
+          "description": "Linting doesn't necessarily reduce the application's file size."
+        },
+        {
+          "id": "e3b6a3ca-82c9-4643-9b7b-98430009c35e",
+          "text": "It makes the application look better to end-users",
+          "isCorrect": false,
+          "description": "Linting doesn't change the application's appearance to end-users."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "b7693cfd-ec13-4f1e-9e2f-2bf5c3ef9e2a",
+      "text": "Which phase in CI/CD primarily focuses on delivering code changes to the end-users?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "1b72c195-7e1d-4ca7-bc36-b9ee2db9358e",
+          "text": "Integration",
+          "isCorrect": false,
+          "description": "Integration deals with merging code changes and ensuring they work together but is not focused on end-users."
+        },
+        {
+          "id": "285c1b76-130d-4c5d-a61c-9a9303f99009",
+          "text": "Deployment",
+          "isCorrect": true,
+          "description": "Deployment in CI/CD focuses on delivering the finalized code or changes to the end-users or production environment."
+        },
+        {
+          "id": "08b4a9c7-3c56-4dd7-b6a5-9f995c85a726",
+          "text": "Linting",
+          "isCorrect": false,
+          "description": "Linting checks for code quality and consistency, not end-user delivery."
+        },
+        {
+          "id": "ebd0787b-631e-4d7f-9fe3-3e1bf078ce15",
+          "text": "Type-checking",
+          "isCorrect": false,
+          "description": "Type-checking verifies the data types used in code but is not focused on end-user delivery."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "c0a74621-19cb-4e1c-b0aa-95a746c6a3b2",
+      "text": "Why is automation important in CI/CD?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "7516d18a-5833-4c51-9602-6db2f4a557c0",
+          "text": "To reduce human error",
+          "isCorrect": true,
+          "description": "Automation in CI/CD aims to minimize manual intervention, ensuring consistency and reducing the chances of human error."
+        },
+        {
+          "id": "28c1e9ce-9da9-4be0-bf10-17b594792fbb",
+          "text": "To design better user interfaces",
+          "isCorrect": false,
+          "description": "Automation in CI/CD doesn't directly concern user interface design."
+        },
+        {
+          "id": "c7d7d7a3-4461-42f4-859c-af11c20c128d",
+          "text": "To improve programming languages",
+          "isCorrect": false,
+          "description": "Automation in CI/CD is not focused on improving programming languages."
+        },
+        {
+          "id": "fd2f83da-429b-4c81-9e6b-8a6882c3c74f",
+          "text": "To create videos for marketing",
+          "isCorrect": false,
+          "description": "Creating videos for marketing is not the primary focus of CI/CD automation."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "a76aeb10-8c76-4682-8a94-8c33036f69a3",
+      "text": "Which of the following best describes a 'build' in CI/CD terminology?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "b56bb200-3701-44b8-9779-103a2c7b21af",
+          "text": "The process of creating the final version of an application",
+          "isCorrect": true,
+          "description": "Building refers to the process of converting source code into executable artifacts."
+        },
+        {
+          "id": "c1701a44-483e-461b-b440-383940a365e9",
+          "text": "The procedure of writing new code for a software",
+          "isCorrect": false,
+          "description": "Writing new code is termed as development, not building."
+        },
+        {
+          "id": "db6ebf11-3b06-4cfc-9462-6ebf0962c6cd",
+          "text": "The task of deploying software to a server",
+          "isCorrect": false,
+          "description": "Deploying software is a separate step."
+        },
+        {
+          "id": "cd6c8741-8f3d-4327-9293-1c7a312998aa",
+          "text": "The practice of reviewing code manually",
+          "isCorrect": false,
+          "description": "Reviewing code manually is not part of the build process."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "d8620a34-885b-439b-a20f-b4c7337f7ea7",
+      "text": "In a CI/CD pipeline, why is type-checking important?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "6d90d4a5-839e-4e38-96b7-ee08684d43c7",
+          "text": "It ensures the correct data type is being used in the code",
+          "isCorrect": true,
+          "description": "Type-checking helps prevent type-related errors, which can be a common source of runtime errors in many languages."
+        },
+        {
+          "id": "afef222f-9b76-49e3-8eaa-4d05c2f77b3e",
+          "text": "It reduces the file size of the application",
+          "isCorrect": false,
+          "description": "Type-checking doesn't impact file size."
+        },
+        {
+          "id": "ed199f1f-18d8-4bf5-8d3e-b0bb587d2c63",
+          "text": "It makes the code more readable",
+          "isCorrect": false,
+          "description": "While types can enhance readability, the main reason for type-checking is correctness."
+        },
+        {
+          "id": "66be75f5-8010-4aa0-9bc9-bf4f97ca227a",
+          "text": "It speeds up the application's runtime",
+          "isCorrect": false,
+          "description": "Type-checking doesn't affect runtime speed."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "c1f3e8c7-ee2a-4a95-855d-83ee8e1eeeb2",
+      "text": "Which of the following is NOT a benefit of automating tests in a CI/CD pipeline?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "a226bb2f-9dbb-4d03-8584-2e038f10b44d",
+          "text": "Faster feedback on code changes",
+          "isCorrect": false,
+          "description": "Faster feedback is a benefit of automating tests in a CI/CD pipeline."
+        },
+        {
+          "id": "6e0b654b-26d0-4e05-b5f2-dba942fb9647",
+          "text": "Reduced manual testing effort",
+          "isCorrect": false,
+          "description": "Reduced manual testing effort is a benefit of automating tests in a CI/CD pipeline."
+        },
+        {
+          "id": "8824f6bb-d7b0-45c6-bd8b-91409fe47dc3",
+          "text": "Eliminating the need for code reviews",
+          "isCorrect": true,
+          "description": "Automated tests provide quick feedback and catch issues, but they can't replace the insights of a manual code review."
+        },
+        {
+          "id": "8c22aa5d-8b67-44da-9f9b-61138a98d830",
+          "text": "Catching regressions early",
+          "isCorrect": false,
+          "description": "Catching regressions early is a benefit of automating tests in a CI/CD pipeline."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "c6ad6e69-6700-47da-9cd2-f4508a7a7452",
+      "text": "In the context of GitHub Actions, what is an 'action'?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "f034c5d2-daba-4cd4-8c42-1eaf54a4b905",
+          "text": "A sequence of tasks",
+          "isCorrect": false,
+          "description": "A sequence of tasks is typically referred to as a 'workflow' in GitHub Actions."
+        },
+        {
+          "id": "2aaed165-4056-4e71-9514-9fc03af163aa",
+          "text": "A user's activity on a repository",
+          "isCorrect": false,
+          "description": "User activity isn't the focus of GitHub Actions."
+        },
+        {
+          "id": "c8d7f672-c95c-4849-818c-c08b7f27bc27",
+          "text": "A reusable unit of code",
+          "isCorrect": true,
+          "description": "In GitHub Actions, an action is a piece of code that can be reused in multiple workflows to perform a specific task."
+        },
+        {
+          "id": "f1e7bdc1-5f57-4886-a3c7-156e26c8c2c3",
+          "text": "A manual trigger initiated by a user",
+          "isCorrect": false,
+          "description": "A manual trigger is not termed as an 'action' in this context."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "f492c48d-66e2-4861-9c47-9dd6a3088d87",
+      "text": "Which of the following can trigger a workflow in GitHub Actions?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "b17cf3f0-5625-45b0-b0f6-e45c214e125c",
+          "text": "A pull request creation",
+          "isCorrect": true,
+          "description": "GitHub Actions can be configured to run workflows based on various GitHub events, such as the creation of a pull request."
+        },
+        {
+          "id": "be1c97cd-0b82-4c94-bfa3-46e83777365c",
+          "text": "A user liking a repository",
+          "isCorrect": false,
+          "description": "Liking a repository isn't a trigger for GitHub Actions."
+        },
+        {
+          "id": "abe0dd90-9067-416e-8f23-40e6314ee9e6",
+          "text": "A comment deletion",
+          "isCorrect": false,
+          "description": "Comment deletion isn't a standard trigger for GitHub Actions."
+        },
+        {
+          "id": "3ec2bb70-491a-4b7b-92f4-c417d8d2c0a6",
+          "text": "A database backup",
+          "isCorrect": false,
+          "description": "Database backups are not directly tied to GitHub Actions triggers."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "0e184f18-1573-48e5-94f5-3124c8363bb0",
+      "text": "If a CI/CD pipeline includes linting, formatting, and type-checking before running tests, what is the likely reason?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "e8a66d65-cf3e-4217-93d1-088ab08ffac5",
+          "text": "To make the application run faster",
+          "isCorrect": false,
+          "description": "The order of these steps doesn't affect the application's speed directly."
+        },
+        {
+          "id": "8d09f1d3-146c-4e5b-8ef0-b9d2ef8f8bc7",
+          "text": "To ensure code quality before potentially time-consuming tests",
+          "isCorrect": true,
+          "description": "By catching basic errors before running tests, developers can get faster feedback and avoid wasting time on tests if there are fundamental issues."
+        },
+        {
+          "id": "fb9e3d0e-845d-42c5-a556-51a5a16a5fe4",
+          "text": "To reduce the file size of the application",
+          "isCorrect": false,
+          "description": "These steps don't reduce file size."
+        },
+        {
+          "id": "0a65c26f-e110-41f6-a8c6-855f6d73124b",
+          "text": "To make the application interface more user-friendly",
+          "isCorrect": false,
+          "description": "These steps don't directly affect the user interface."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "7c87e123-48bb-4c6c-94d4-83c22bb26f85",
+      "text": "In the context of GitHub Actions, what does a 'workflow' typically represent?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "c8357c8d-405e-401c-b1df-535dc69bb548",
+          "text": "A sequence of automated tasks triggered by an event",
+          "isCorrect": true,
+          "description": "In GitHub Actions, a workflow defines a sequence of jobs to be run when a specific event occurs."
+        },
+        {
+          "id": "edec8317-28cf-4c52-9140-5f3d79cc9ea0",
+          "text": "A manual process of reviewing code",
+          "isCorrect": false,
+          "description": "A manual code review process isn't typically referred to as a 'workflow' in GitHub Actions."
+        },
+        {
+          "id": "df2359ef-0d16-4c63-8c5b-2cd24290d049",
+          "text": "A chatbot integrated within GitHub",
+          "isCorrect": false,
+          "description": "GitHub Actions is not a chatbot tool."
+        },
+        {
+          "id": "d7b831f2-94a4-4da4-8d7f-0788b1b7c13f",
+          "text": "A tool for designing user interfaces",
+          "isCorrect": false,
+          "description": "GitHub Actions is not a UI design tool."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "77322aa2-2e88-44c5-b5d1-6f0df6ea1719",
+      "text": "Which of the following tasks is typically not automated within a CI/CD pipeline?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "e23c7c3c-1166-43e7-9135-e1f049e35a52",
+          "text": "Code formatting",
+          "isCorrect": false,
+          "description": "Code formatting is commonly automated in a CI/CD pipeline."
+        },
+        {
+          "id": "fc8fddac-55d5-4f05-98cb-2b46a4a8cbde",
+          "text": "Deploying to production",
+          "isCorrect": false,
+          "description": "Deployment to production can be automated in CI/CD pipelines."
+        },
+        {
+          "id": "b773b8eb-89c4-4ed5-8f16-287c26a4826d",
+          "text": "Discussing feature requirements",
+          "isCorrect": true,
+          "description": "Feature requirements discussions are inherently collaborative and require human input and decision-making."
+        },
+        {
+          "id": "7c9a63f0-f8e6-4524-9c06-1418b3ac4a70",
+          "text": "Running tests",
+          "isCorrect": false,
+          "description": "Running tests can be automated in CI/CD pipelines."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "d3b570e6-b9ed-4326-b95d-e5a4a48b651a",
+      "text": "What is the primary objective of automating linting in a CI/CD process?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "fb48db1b-8976-4dbd-8d41-580bc3df67f0",
+          "text": "To improve the aesthetics of the code",
+          "isCorrect": false,
+          "description": "Linting is more about code quality than aesthetics."
+        },
+        {
+          "id": "a0db3d3d-931a-4c45-8cf1-1df075ea7cb4",
+          "text": "To ensure that code adheres to coding standards",
+          "isCorrect": true,
+          "description": "Linting checks the code for potential errors and ensures it adheres to coding standards and best practices."
+        },
+        {
+          "id": "0bd5ef3e-4c1d-4b84-b048-4f1ec3fdefcd",
+          "text": "To make the code run faster",
+          "isCorrect": false,
+          "description": "Linting doesn't impact the runtime speed."
+        },
+        {
+          "id": "64c8cbcf-70f4-40c3-aa49-6ce512cb0e7b",
+          "text": "To reduce the file size of the final build",
+          "isCorrect": false,
+          "description": "Linting doesn't necessarily reduce the file size of the build."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "7253edc1-2a8d-407e-9e5f-7f96ab3037b5",
+      "text": "Which of the following best describes the role of 'GitHub Actions' in a CI/CD process?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "7c374343-44cd-470b-a107-ba3bf2c3e660",
+          "text": "A communication tool for developers",
+          "isCorrect": false,
+          "description": "GitHub Actions isn't primarily a communication tool."
+        },
+        {
+          "id": "4f40febc-8e15-461a-a87d-07da8ec88032",
+          "text": "A database for storing code",
+          "isCorrect": false,
+          "description": "While GitHub is a platform for code storage, GitHub Actions specifically focuses on automation."
+        },
+        {
+          "id": "e3e2ab32-04a1-490a-ae67-4cc6b4d0e54e",
+          "text": "A platform for automating workflows",
+          "isCorrect": true,
+          "description": "GitHub Actions is primarily used to automate software workflows, integrating CI/CD directly into the GitHub platform."
+        },
+        {
+          "id": "8e72d6f7-d297-419b-af13-52cb886f487b",
+          "text": "A design tool for user interfaces",
+          "isCorrect": false,
+          "description": "GitHub Actions isn't a UI design tool."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "d6a3a9a2-b1e5-442f-8c9d-7f330bb37150",
+      "text": "When setting up automated tests in a CI/CD pipeline, why is it important to ensure tests run in a consistent environment?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "78162f9a-6c70-4386-8cd6-74bb1af76ee5",
+          "text": "To make tests run faster",
+          "isCorrect": false,
+          "description": "A consistent environment doesn't necessarily speed up tests."
+        },
+        {
+          "id": "30d9e76a-6b0b-43cf-9d5f-e4f58b75a077",
+          "text": "To ensure test reliability and repeatability",
+          "isCorrect": true,
+          "description": "Running tests in a consistent environment ensures that results are reliable and repeatable, minimizing discrepancies due to environmental differences."
+        },
+        {
+          "id": "b4c1739c-720c-4c03-8d02-6de18c59d466",
+          "text": "To reduce the costs associated with testing",
+          "isCorrect": false,
+          "description": "Costs are not directly related to the consistency of the testing environment."
+        },
+        {
+          "id": "5e0412e9-832a-47d0-bb48-7ebe46fcd824",
+          "text": "To make the application's user interface more appealing",
+          "isCorrect": false,
+          "description": "The appearance of the user interface isn't related to the testing environment."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "dceff361-5daa-42c5-9a80-62f7d9507c8a",
+      "text": "In a CI/CD pipeline, what is the key benefit of automating type-checking?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "ab187ece-6fe9-4f7b-88f1-cd4750a727e0",
+          "text": "It helps in the design of user interfaces",
+          "isCorrect": false,
+          "description": "Type-checking doesn't directly relate to UI design."
+        },
+        {
+          "id": "bc9b61cc-8b6b-451a-94df-35a6a96da3a1",
+          "text": "It ensures that the application is more secure",
+          "isCorrect": false,
+          "description": "While type-checking can enhance the robustness of an application, it isn't specifically about security."
+        },
+        {
+          "id": "f36df136-b3ac-4b6a-98fc-c8f3c546ff0d",
+          "text": "It reduces the need for human reviewers",
+          "isCorrect": false,
+          "description": "Type-checking can reduce some manual review needs, but it doesn't replace the need for human reviewers."
+        },
+        {
+          "id": "a41efee0-e309-4c15-b109-3658e3b8a179",
+          "text": "It prevents potential type-related errors during runtime",
+          "isCorrect": true,
+          "description": "Type-checking can catch type-related issues early, ensuring they don't propagate to the production environment and cause runtime errors."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    }
+  ]
+}

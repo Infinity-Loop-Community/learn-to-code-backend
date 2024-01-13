@@ -1,0 +1,665 @@
+{
+  "id": "9db0dd4a-7827-4306-92b5-02abf8706f4b",
+  "questions": [
+    {
+      "id": "e5c8b7f6-3c7b-4a3b-9d9d-6f9ee1d8b6d3",
+      "text": "What is the primary purpose of version control systems like Git?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "a7d3f76a-8e0e-45f8-aa5c-7d8baf7a9f2b",
+          "text": "Monitoring website traffic",
+          "isCorrect": false,
+          "description": "Monitoring website traffic is typically achieved using analytics tools."
+        },
+        {
+          "id": "f68b3a5e-58f6-4567-9b3e-6fd5c1a34260",
+          "text": "Styling code",
+          "isCorrect": false,
+          "description": "Styling code is done through style guides and sometimes auto-formatters, not VCS."
+        },
+        {
+          "id": "c1e9b2da-3ee6-4883-a4f7-4aef067f86e1",
+          "text": "Tracking and managing code changes",
+          "isCorrect": true,
+          "description": "Version control systems like Git are designed to help developers track and manage changes to their codebase over time."
+        },
+        {
+          "id": "d96f3c17-c3f8-4dfe-a8f2-21d12d7f7f8c",
+          "text": "Connecting to databases",
+          "isCorrect": false,
+          "description": "Connecting to databases is not the primary purpose of version control systems."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "92f2a7c8-5e5f-4e2f-82d6-b01c84f4e5f2",
+      "text": "Which platform is primarily associated with Git for hosting and sharing code?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "e0b8d5a7-9085-4f67-b089-4e4b4fbeb1b2",
+          "text": "Google Drive",
+          "isCorrect": false,
+          "description": "While Google Drive can store or share files, it is not specifically designed for hosting Git repositories."
+        },
+        {
+          "id": "f5f706d7-f6da-4b0a-9b70-2d0beff8c865",
+          "text": "GitHub",
+          "isCorrect": true,
+          "description": "GitHub is a platform designed to host and share code repositories that use Git for version control."
+        },
+        {
+          "id": "95ff34c1-2f7f-4c9b-9817-3f1c3dd5f8c3",
+          "text": "Dropbox",
+          "isCorrect": false,
+          "description": "While Dropbox can store or share files, it is not specifically designed for hosting Git repositories."
+        },
+        {
+          "id": "4c37745e-5d67-4f2f-ba5e-36b1b3c22b14",
+          "text": "Slack",
+          "isCorrect": false,
+          "description": "While Slack can share files, it is not specifically designed for hosting Git repositories."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "b32f9525-37b8-4e4d-8f1d-5c3c1d6f3935",
+      "text": "What command initializes a new Git repository?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "6e45b5b1-2bdf-44c6-9f1a-58bc4bbd5c81",
+          "text": "`git pull`",
+          "isCorrect": false,
+          "description": "`git pull` fetches changes from a remote repository."
+        },
+        {
+          "id": "781f0b75-ba0f-4267-9621-5dcde2b1e8c0",
+          "text": "`git clone`",
+          "isCorrect": false,
+          "description": "`git clone` creates a copy of a remote repository on the local machine."
+        },
+        {
+          "id": "0f4a4d2a-7f5e-4b0e-a1a1-5f2ec6e8c08b",
+          "text": "`git init`",
+          "isCorrect": true,
+          "description": "The `git init` command initializes a new Git repository and starts tracking an existing directory."
+        },
+        {
+          "id": "3245d73c-5c1c-4d7d-bf7b-3df1aa15f8c7",
+          "text": "`git push`",
+          "isCorrect": false,
+          "description": "`git push` sends changes to a remote repository."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "7a2a8a2d-c7b5-4b0a-8f56-9e4f5f8c7f12",
+      "text": "Which Git command saves your changes to the local repository?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "8d1f86f5-3c0c-4fcd-92f6-8be9a9b0efcb",
+          "text": "`git save`",
+          "isCorrect": false,
+          "description": "`git save` is not a valid Git command."
+        },
+        {
+          "id": "5c0525a4-cd2d-4c2b-90b7-2d2f122e3e35",
+          "text": "`git upload`",
+          "isCorrect": false,
+          "description": "`git upload` is not a valid Git command."
+        },
+        {
+          "id": "0dbf7977-ff22-4a3c-b3e6-0263f2cf1b85",
+          "text": "`git send`",
+          "isCorrect": false,
+          "description": "`git send` is not a valid Git command."
+        },
+        {
+          "id": "1d4e8c9a-4a85-4e83-b3db-5f4f5f5f3b31",
+          "text": "`git commit`",
+          "isCorrect": true,
+          "description": "The `git commit` command saves your changes to the local repository with a message describing the changes."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "fc3d8bcb-343e-4f1e-b33e-3ccf39e4e4e4",
+      "text": "What should you do before collaborating on a shared Git repository?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "3e3d4f5c-2cd3-4d35-8973-9c8a973f5d8e",
+          "text": "Make direct changes to the master branch",
+          "isCorrect": false,
+          "description": "It's typically recommended to avoid making direct changes to the master/main branch."
+        },
+        {
+          "id": "9c29c9ab-1b0e-4f9b-a5c1-b3e5b5e5f6b6",
+          "text": "Send an email to all contributors",
+          "isCorrect": false,
+          "description": "While communication is essential, it's not a required Git step."
+        },
+        {
+          "id": "f2f8d3f2-4bb9-42f7-9c7c-62f60f1d2a4d",
+          "text": "Clone the repository",
+          "isCorrect": true,
+          "description": "Cloning the repository ensures you have a local copy to work on."
+        },
+        {
+          "id": "1d6f8d7f-fc21-4b0e-a019-2a1b6aefb7a4",
+          "text": "Rename the repository",
+          "isCorrect": false,
+          "description": "Renaming the repository is not a standard step before collaboration."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "b5c4d2c7-fd07-4058-bc4a-5c3ecb7a2f0b",
+      "text": "Which command shows the commit history?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "21d6bc59-54e5-4bae-9d4e-6e8ef77a5c9f",
+          "text": "`git history`",
+          "isCorrect": false,
+          "description": "`git history` is not a standard Git command."
+        },
+        {
+          "id": "b7d0952a-eeb6-4118-8bf8-5f7d8c3b5c5a",
+          "text": "`git log`",
+          "isCorrect": true,
+          "description": "The `git log` command shows the commit history of a repository."
+        },
+        {
+          "id": "620f1c50-9c9e-4c31-88ce-57fb7b0b4d5d",
+          "text": "`git show`",
+          "isCorrect": false,
+          "description": "While `git show` displays specific commits, it does not show the entire commit history."
+        },
+        {
+          "id": "0a1a8d0c-4a9b-4004-aa80-3b612f1c4d72",
+          "text": "`git list`",
+          "isCorrect": false,
+          "description": "`git list` is not a standard Git command."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "9e3fbb1e-7e67-4c3a-a5f3-0fefeaf7e0ce",
+      "text": "Which of the following is NOT a benefit of using version control?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "a1b9d9e7-af6b-4ad2-bd17-8b66b810da5e",
+          "text": "Collaboration with others on code",
+          "isCorrect": false,
+          "description": "Collaboration with others is a benefit of using version control."
+        },
+        {
+          "id": "11d2c7a9-198b-4b6b-bce3-5821da8f6c17",
+          "text": "Tracking changes to the codebase",
+          "isCorrect": false,
+          "description": "Tracking changes to the codebase is a benefit of using version control."
+        },
+        {
+          "id": "e5b6b3a5-50e4-4b87-b986-1f0f5d504f0f",
+          "text": "Automatically fixing bugs in the code",
+          "isCorrect": true,
+          "description": "Version control does not automatically fix bugs in the code."
+        },
+        {
+          "id": "10b73f11-5eb5-4f19-b2c8-7e9e08d6e9b7",
+          "text": "Maintaining a history of code changes",
+          "isCorrect": false,
+          "description": "Maintaining a history of code changes is a benefit of using version control."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "bf7d1f7b-cd1a-4498-ae8c-9d59db9f1b23",
+      "text": "What does the `git pull` command do?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "58a2ce7e-82a7-4f2c-814b-2f7fa3d1b8d9",
+          "text": "Pushes local changes to a remote repository",
+          "isCorrect": false,
+          "description": "This is the function of `git push`."
+        },
+        {
+          "id": "0a3b5e5f-92d5-4b9a-9308-0f6b8b60d7e9",
+          "text": "Fetches changes from a remote repository and merges them",
+          "isCorrect": true,
+          "description": "The `git pull` command fetches changes from a remote repository and then merges them into the current local branch."
+        },
+        {
+          "id": "2a0a45a6-2cda-4e80-8f6e-6f2f6af5e8e3",
+          "text": "Creates a new local branch",
+          "isCorrect": false,
+          "description": "Branch creation is not related to `git pull`."
+        },
+        {
+          "id": "b6e0f1c5-5bf8-4b3b-8391-52ad2c01a4d3",
+          "text": "Initiates a pull request on a platform like GitHub",
+          "isCorrect": false,
+          "description": "Pull requests are initiated on platforms like GitHub, not directly through Git commands."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "f1db8ab4-8b5d-40c6-a5b4-4ae2d38d4c3c",
+      "text": "Which of the following files in a Git repository dictates which files or directories to ignore from versioning?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "0e3ea717-0df3-4d7f-8b0a-4ed0e2fa5cf9",
+          "text": "`.gitignore`",
+          "isCorrect": true,
+          "description": "The `.gitignore` file specifies intentionally untracked files that Git should ignore."
+        },
+        {
+          "id": "a9e6d9e1-8156-4c0b-9e52-cb79330b9c8f",
+          "text": "`.gitconfig`",
+          "isCorrect": false,
+          "description": "`.gitconfig` contains user-specific configuration settings."
+        },
+        {
+          "id": "3f3e9f88-1e08-4ff0-8b2f-fb1f2c4d4e80",
+          "text": "`.gitkeep`",
+          "isCorrect": false,
+          "description": "`.gitkeep` is a convention to keep empty directories in Git."
+        },
+        {
+          "id": "b2f3c7d8-2b74-4c5e-b7e2-0e1e6e6d7f09",
+          "text": "`.gitattributes`",
+          "isCorrect": false,
+          "description": "`.gitattributes` sets attributes to pathnames."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "8e3d0c4a-56d4-4f86-a6d8-1e8bd807e7cf",
+      "text": "How can you switch to a different branch in Git?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "1e2e5c8e-1a4b-4d56-9b47-62cbb2e5f8b7",
+          "text": "`git branch <branch-name>`",
+          "isCorrect": false,
+          "description": "This command lists or creates branches, but doesn't switch."
+        },
+        {
+          "id": "4b1d98fe-4e1a-4023-9c79-d3f8cbbff3c2",
+          "text": "`git checkout <branch-name>`",
+          "isCorrect": true,
+          "description": "The `git checkout` command is used to switch between branches in Git."
+        },
+        {
+          "id": "f6a0f15e-e645-4a30-8ed3-3c8f8c76b62a",
+          "text": "`git move <branch-name>`",
+          "isCorrect": false,
+          "description": "`git move` is not a valid Git command."
+        },
+        {
+          "id": "0c2ad8a1-6e50-407b-9d3e-fcf803f218bf",
+          "text": "`git switch <branch-name>`",
+          "isCorrect": false,
+          "description": "While `git switch` is a newer command to switch branches, `git checkout` is more commonly known and used."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "3e0c8f78-6900-4b89-834a-2d8f87cc0a2b",
+      "text": "When collaborating, what does a 'pull request' allow you to do?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "aa10c2b7-e10c-4d8b-b4f4-32f8513f22e6",
+          "text": "Download files from the repository",
+          "isCorrect": false,
+          "description": "This is what `git pull` does, not a pull request."
+        },
+        {
+          "id": "0d349e7d-245b-4a7e-823d-4a5b9ee0dbb9",
+          "text": "Propose changes to a repository",
+          "isCorrect": true,
+          "description": "A pull request allows contributors to propose changes to a repository, which can then be reviewed and potentially merged."
+        },
+        {
+          "id": "798c5d8c-99e6-42ee-ba66-5f0e38858d25",
+          "text": "Initiate a video call with collaborators",
+          "isCorrect": false,
+          "description": "Pull requests are about code, not communication in the form of video calls."
+        },
+        {
+          "id": "16cfa8c4-6d4a-4a1a-b5bc-bf0b094e4e4d",
+          "text": "Delete branches",
+          "isCorrect": false,
+          "description": "This is not the primary purpose of pull requests."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "b98d76f5-672d-43a2-9af0-9f617dcf8b1b",
+      "text": "Which command creates a new branch without switching to it?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "7b6cf4d4-c2d1-44a7-8c07-8c39bda497d9",
+          "text": "`git checkout -b <branch-name>`",
+          "isCorrect": false,
+          "description": "This command creates and switches to a new branch."
+        },
+        {
+          "id": "f2e9ac65-c1b6-4a4e-bb47-8f67ec7b8fda",
+          "text": "`git branch <branch-name>`",
+          "isCorrect": true,
+          "description": "The `git branch` command creates a new branch without switching to it."
+        },
+        {
+          "id": "b2a8e7c6-ba15-48e6-97f0-d5dffaeea9b7",
+          "text": "`git clone <branch-name>`",
+          "isCorrect": false,
+          "description": "`git clone` is for cloning repositories."
+        },
+        {
+          "id": "68fbb8f1-f3da-4c3f-b3fe-af7d2d2bc307",
+          "text": "`git init <branch-name>`",
+          "isCorrect": false,
+          "description": "`git init` initializes repositories, not branches."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "d9b0e0a5-5a5c-4e39-b5a2-9e8e3fbef3e8",
+      "text": "Which command shows the difference between the working directory and the last commit?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "4c11c5e1-2f5e-4b0f-b9a2-7f64fcb27a98",
+          "text": "`git show`",
+          "isCorrect": false,
+          "description": "`git show` displays specific commits."
+        },
+        {
+          "id": "8f12b3ed-ebd8-4ec8-9b41-3f8b4f30b7c9",
+          "text": "`git log`",
+          "isCorrect": false,
+          "description": "`git log` shows the commit history."
+        },
+        {
+          "id": "b25d1daa-1b43-4c9f-8d25-60663e8e5b49",
+          "text": "`git diff`",
+          "isCorrect": true,
+          "description": "The `git diff` command shows the differences between the working directory and the last commit."
+        },
+        {
+          "id": "6b7a2299-1f8f-4a5f-b9e8-2ca3d3dd8b16",
+          "text": "`git status`",
+          "isCorrect": false,
+          "description": "`git status` shows the state of changes in the working directory and staging area."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "a27e5cfc-4e0a-4d2d-99b8-8b8a7d2e4611",
+      "text": "If a conflict arises after a `git merge`, what should you do?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "0f3d6a90-6b9f-4e8b-94b7-8e9c4a3f6e5d",
+          "text": "Delete the repository and clone again",
+          "isCorrect": false,
+          "description": "This is an extreme measure and would result in loss of local changes."
+        },
+        {
+          "id": "9cfb4c6b-9bdf-40d4-9e97-3c2d3a7a4a6f",
+          "text": "Manually resolve the conflict and commit the changes",
+          "isCorrect": true,
+          "description": "When a merge conflict arises, you should manually resolve the conflict in the affected files and then commit the resolved changes."
+        },
+        {
+          "id": "ab2d9d2c-6440-4b1e-a4f5-6f7d8a5b8da4",
+          "text": "Ignore the conflict and continue",
+          "isCorrect": false,
+          "description": "Ignoring conflicts can lead to unstable code."
+        },
+        {
+          "id": "7abf7a32-03d1-4f97-8a39-a1a3e9c7c8c8",
+          "text": "Use `git reset` to revert all changes",
+          "isCorrect": false,
+          "description": "While `git reset` can be used to undo changes, it's not the recommended way to handle merge conflicts."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "eeb3b0b6-9b0e-4c77-8a2e-b0c7c88eb1a5",
+      "text": "How can you stage only specific changes from a modified file, rather than all of its changes?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "2f4a4f4b-ec56-45a1-ba14-8e9e67c5a6b4",
+          "text": "`git add -p <filename>`",
+          "isCorrect": true,
+          "description": "The `git add -p` command allows users to stage specific changes (or hunks) from a file."
+        },
+        {
+          "id": "76bcef3f-2c9d-4d4e-bf4a-bb0cd3bf0d1a",
+          "text": "`git commit -p <filename>`",
+          "isCorrect": false,
+          "description": "`git commit -p` allows users to directly commit specific changes, skipping the staging step."
+        },
+        {
+          "id": "2f9c7d82-2b80-4b78-bf82-7f2057b14a3a",
+          "text": "`git stage <filename>`",
+          "isCorrect": false,
+          "description": "These are not valid Git commands for this purpose."
+        },
+        {
+          "id": "4b3c0925-c0c2-4244-973b-ae8e7e8c8c0a",
+          "text": "`git save <filename>`",
+          "isCorrect": false,
+          "description": "These are not valid Git commands for this purpose."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "f7d1e839-e8b2-4d89-9d16-0c4e6711cfc2",
+      "text": "If you want to discard changes in your working directory, which command would you use?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "a2ef3cc1-4b6e-4f5d-b8d8-2b23f72a3c9a",
+          "text": "`git reset`",
+          "isCorrect": false,
+          "description": "`git reset` undoes commits, not working directory changes."
+        },
+        {
+          "id": "5b34e418-0b9d-4427-b650-3906b5d9cbba",
+          "text": "`git discard`",
+          "isCorrect": false,
+          "description": "These are not standard Git commands for this purpose."
+        },
+        {
+          "id": "0d8e5f7e-b6e6-47b5-bdb6-5e0bce7b85d3",
+          "text": "`git checkout -- <filename>`",
+          "isCorrect": true,
+          "description": "The `git checkout -- <filename>` command discards changes in the working directory for the specified file."
+        },
+        {
+          "id": "b0e1b8b1-87c4-4c4f-b8c2-5154a378e242",
+          "text": "`git delete`",
+          "isCorrect": false,
+          "description": "These are not standard Git commands for this purpose."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "f2c5d5c2-ba12-467e-b8c1-2dfb5c57fe0f",
+      "text": "In Git, what does a 'fork' of a repository represent?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "45a1b7b1-48f8-4b8a-8c3d-d17a6b5b9e67",
+          "text": "A backup of the repository",
+          "isCorrect": false,
+          "description": "While a fork can act like a backup, its main purpose is to allow independent development."
+        },
+        {
+          "id": "baf76924-96fa-4a6e-b8e6-7b8f6a8b9b77",
+          "text": "A duplicate of the repository under another user's account",
+          "isCorrect": true,
+          "description": "Forking a repository creates a duplicate of the repository under the user's account, allowing them to make changes without affecting the original repository."
+        },
+        {
+          "id": "7958a0c6-15f8-4051-bd1c-e6d6a97d7d45",
+          "text": "A branch within the repository",
+          "isCorrect": false,
+          "description": "A fork is a separate repository, not a branch within the original repository."
+        },
+        {
+          "id": "ebd29fbb-59e0-4da7-a2d3-2a6e8d5fa6a5",
+          "text": "A compressed version of the repository",
+          "isCorrect": false,
+          "description": "Forking doesn't compress the repository."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "2c4b8d3e-0f93-4ed5-b1b3-9c6f8b3b13a3",
+      "text": "What does the command `git merge` specifically do?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "d3dc0f01-6f18-4b2b-93e6-df8a75f0f2f4",
+          "text": "Clones a repository",
+          "isCorrect": false,
+          "description": "`git clone` is for cloning repositories."
+        },
+        {
+          "id": "c8b6b9da-3bcb-4e67-b3a4-09b15f5d9a3b",
+          "text": "Combines the history of two branches",
+          "isCorrect": true,
+          "description": "The `git merge` command integrates changes from one branch into another, combining their histories."
+        },
+        {
+          "id": "76e3b8f3-5c4b-4b20-a7e7-5b726ee9b403",
+          "text": "Creates a new branch",
+          "isCorrect": false,
+          "description": "Branch creation is done using the `git branch` command."
+        },
+        {
+          "id": "9a234ef8-d3f7-402f-b9d7-1e15d8d7a2d1",
+          "text": "Deletes a branch",
+          "isCorrect": false,
+          "description": "Deleting a branch is achieved using `git branch -d`."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "89dfb77f-2d7b-4af1-8e1b-8d7fde0a90d1",
+      "text": "What does a 'remote' in Git refer to?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "0f147c1f-0f3e-4b72-9c22-8729177c1f37",
+          "text": "A backup of the repository",
+          "isCorrect": false,
+          "description": "While remotes can act like backups, their primary purpose is for collaboration."
+        },
+        {
+          "id": "e2a7b6f0-3cb0-4e5d-9e6b-3f94f1b4c3e7",
+          "text": "A distant branch in the repository",
+          "isCorrect": false,
+          "description": "Remotes are repositories, not branches."
+        },
+        {
+          "id": "b1d8e1a6-7fa7-44d3-a099-8f16b4a2cb3f",
+          "text": "A repository stored on the internet or another network",
+          "isCorrect": true,
+          "description": "In Git, a 'remote' refers to a version of the project that is hosted on the internet or another network."
+        },
+        {
+          "id": "3f116e68-91fa-4b12-9d5e-1c5ed5f3b4a2",
+          "text": "A special type of merge operation",
+          "isCorrect": false,
+          "description": "Merging is a separate concept from remotes."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "e65e11d1-fa59-4b7a-830c-891e8a0b0d3b",
+      "text": "If you want to connect your local repository to a remote repository, which command would you use?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "32a3b3fc-3e7b-468b-8e11-0f0990c1e6f6",
+          "text": "`git connect <url>`",
+          "isCorrect": false,
+          "description": "These are not valid Git commands."
+        },
+        {
+          "id": "c6f3ac7e-9d7a-4f2a-8bce-edeafcf4a2b4",
+          "text": "`git link <url>`",
+          "isCorrect": false,
+          "description": "These are not valid Git commands."
+        },
+        {
+          "id": "a1b239a8-6e15-4e8d-9d4e-e4f0c07ef4f0",
+          "text": "`git attach <url>`",
+          "isCorrect": false,
+          "description": "These are not valid Git commands."
+        },
+        {
+          "id": "e9c72fbc-30b0-491b-af3b-66912e2e0c76",
+          "text": "`git remote add <name> <url>`",
+          "isCorrect": true,
+          "description": "The `git remote add` command allows you to connect your local repository to a remote repository by giving it a name and specifying its URL."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    }
+  ]
+}

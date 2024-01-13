@@ -1,0 +1,665 @@
+{
+  "id": "addb1e53-eb07-44a3-881f-217eee3a926b",
+  "questions": [
+    {
+      "id": "8e3ec37d-9c20-4aa4-bf25-7e4b895cdf17",
+      "text": "What does npm stand for?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "824b1799-66d2-477d-8d9c-7ca06a7cc858",
+          "text": "Network Programming Module",
+          "isCorrect": false,
+          "description": "This option is incorrect as npm stands for Node Package Manager, not Network Programming Module."
+        },
+        {
+          "id": "edb4c080-e8ec-4a97-a185-864297f4d7d5",
+          "text": "Node Preprocessing Machine",
+          "isCorrect": false,
+          "description": "This option is incorrect as npm stands for Node Package Manager, not Node Preprocessing Machine."
+        },
+        {
+          "id": "2f83c071-297d-48a1-99f2-3a1955a3b425",
+          "text": "Node Package Manager",
+          "isCorrect": true,
+          "description": "npm is a package manager for JavaScript, allowing users to install and manage packages (libraries, tools, etc.) that they need for their projects."
+        },
+        {
+          "id": "6b4e9fb2-02de-43e9-9d72-20b8103f7ab3",
+          "text": "Network Packet Manager",
+          "isCorrect": false,
+          "description": "This option is incorrect as npm stands for Node Package Manager, not Network Packet Manager."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "b08d07b3-9b8e-4e76-a79b-8a9e7cbb24d2",
+      "text": "Why do developers use npm?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "2566f655-57d9-41c5-a79b-d8e8e3c0c2f3",
+          "text": "To create new programming languages",
+          "isCorrect": false,
+          "description": "npm is not used to create programming languages."
+        },
+        {
+          "id": "79225984-5864-4d3e-bb1f-7bf9ab42e3d7",
+          "text": "To manage and install JavaScript packages",
+          "isCorrect": true,
+          "description": "npm provides a centralized repository where developers can publish and share their code, as well as tools to manage and install these packages easily."
+        },
+        {
+          "id": "f38af878-aae6-4cd2-aa95-62e63be2dd95",
+          "text": "To write backend code for databases",
+          "isCorrect": false,
+          "description": "npm is not primarily used for writing backend code for databases."
+        },
+        {
+          "id": "f94ea628-68f9-46e2-90f6-b11f2dbd0a64",
+          "text": "To design website layouts",
+          "isCorrect": false,
+          "description": "Designing website layouts is typically done with HTML, CSS, and design tools, not npm."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "3988e48e-8b8f-4e60-9ac6-4ca4e4f21ba1",
+      "text": "Which command in npm is used to search for a package?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "5ee4f169-16d8-4c82-9a08-4a8a1689dca1",
+          "text": "npm find",
+          "isCorrect": false,
+          "description": "npm find is not the standard command for searching packages."
+        },
+        {
+          "id": "097ad738-8d33-4cfb-80bf-9eb13ab75ae5",
+          "text": "npm query",
+          "isCorrect": false,
+          "description": "npm query is not the standard command for searching packages."
+        },
+        {
+          "id": "51f9e863-4b62-4b6b-844b-86967538e5a5",
+          "text": "npm search",
+          "isCorrect": true,
+          "description": "Developers can search for packages using the npm search command followed by the package name or keyword."
+        },
+        {
+          "id": "bf0f5d8d-441a-4e42-91a9-7f124b05b156",
+          "text": "npm look",
+          "isCorrect": false,
+          "description": "npm look is not the standard command for searching packages."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "db9c7e5a-141b-4aa2-8922-1f1c0c2f4f22",
+      "text": "What file contains the list of packages and their versions for a Node.js project?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "41f6a17d-4a07-4477-bc36-8a88e788b365",
+          "text": "package.js",
+          "isCorrect": false,
+          "description": "package.js is not the standard file for listing packages in a Node.js project."
+        },
+        {
+          "id": "0b28d4f3-3de1-475c-bca1-92d2f8f07b3d",
+          "text": "node_modules.js",
+          "isCorrect": false,
+          "description": "node_modules.js is not the standard file for listing packages in a Node.js project."
+        },
+        {
+          "id": "39afef6d-9e84-4dcb-b12e-6dbb8df0b16d",
+          "text": "modules.json",
+          "isCorrect": false,
+          "description": "modules.json is not the standard file for listing packages in a Node.js project."
+        },
+        {
+          "id": "5e037832-6a8d-41ff-8e03-e24d08e5422f",
+          "text": "package.json",
+          "isCorrect": true,
+          "description": "The package.json file is crucial for any Node.js project. It lists all the dependencies and their specific versions, among other metadata about the project."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "b423b469-30fc-4a9f-a5a1-1c3f9f9ef88e",
+      "text": "How can you install a package globally using npm?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "35af2f38-5a38-49c9-90ed-17ef57bf7c1a",
+          "text": "npm local-install <package-name>",
+          "isCorrect": false,
+          "description": "npm local-install is not the correct command for installing a package globally."
+        },
+        {
+          "id": "ae20286a-7714-4aae-9ac7-75de18189124",
+          "text": "npm install-global <package-name>",
+          "isCorrect": false,
+          "description": "npm install-global is not the correct command for installing a package globally."
+        },
+        {
+          "id": "24af351d-92d3-4cf3-8165-7a6b6f5e4ac5",
+          "text": "npm install <package-name> --g",
+          "isCorrect": true,
+          "description": "Installing a package globally means it will be available for all projects on that system. This is achieved using the npm install <package-name> --g or -g flag."
+        },
+        {
+          "id": "acef6769-8976-44f7-b1f5-542b2be7c25d",
+          "text": "npm add <package-name>",
+          "isCorrect": false,
+          "description": "npm add is not the correct command for installing a package globally."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "cec6ac11-670f-4ef6-a3d7-7d92d48211c3",
+      "text": "What is the primary purpose of the `node_modules` directory in a Node.js project?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "3e19e5f9-ee2c-43c9-bdb5-9a6ed8e9908f",
+          "text": "To store the source code of the project",
+          "isCorrect": false,
+          "description": "The source code is usually in other directories and files of the project, not in `node_modules`."
+        },
+        {
+          "id": "bf89d5c0-3e56-4f21-8746-2e0e77b67df6",
+          "text": "To save all global npm packages",
+          "isCorrect": false,
+          "description": "Global npm packages are not stored in the `node_modules` directory of a specific project."
+        },
+        {
+          "id": "3f5a8284-d86a-46dd-9964-2ce1bebf6ba0",
+          "text": "To hold the installed project-specific npm packages",
+          "isCorrect": true,
+          "description": "Whenever you install a package using npm, it's stored in the `node_modules` directory of that project."
+        },
+        {
+          "id": "f84c1e96-d9f5-4f5c-8953-75cc81c5ea60",
+          "text": "To keep backup copies of old packages",
+          "isCorrect": false,
+          "description": "The `node_modules` directory holds the currently installed versions, not backups."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "7c4b6897-013b-4e58-b301-67b6d6d079f4",
+      "text": "How can you update all packages in a Node.js project to their latest versions?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "4d2e6a51-ebfc-4810-9bf3-49003a8f9329",
+          "text": "npm renew-all",
+          "isCorrect": false,
+          "description": "npm renew-all is not the correct command for updating packages."
+        },
+        {
+          "id": "be5a6d2c-bbf4-4d7c-9d9b-55f60d9f1b6e",
+          "text": "npm update",
+          "isCorrect": true,
+          "description": "The `npm update` command updates all listed packages in `package.json` to their latest versions, according to the version rules defined in the file."
+        },
+        {
+          "id": "7c3dbade-686b-4e8d-b8b3-967d98a4acca",
+          "text": "npm upgrade-all",
+          "isCorrect": false,
+          "description": "npm upgrade-all is not the standard command for updating packages."
+        },
+        {
+          "id": "f868e862-9b3a-4d3c-bb3a-2725eb6bdc1f",
+          "text": "npm latest",
+          "isCorrect": false,
+          "description": "npm latest is not the standard command for updating packages."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "c9f5e6da-1b95-4b8d-91be-8d56f9a7b109",
+      "text": "Which npm command allows you to view the installed version of a package in your project?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "3ac4e9a5-c84b-496d-86e0-6b93d5ebc392",
+          "text": "npm version <package-name>",
+          "isCorrect": false,
+          "description": "The `npm version` command is used to bump the version of your project, not to check package versions."
+        },
+        {
+          "id": "d163b66b-9a0b-4714-9e86-cb4c0b0b418a",
+          "text": "npm show <package-name> version",
+          "isCorrect": false,
+          "description": "npm show <package-name> version is not the standard command for checking package versions."
+        },
+        {
+          "id": "f384acdf-2e47-4fc6-9d77-6e365ed63d4e",
+          "text": "npm list <package-name>",
+          "isCorrect": true,
+          "description": "The `npm list` command displays the dependency tree of your project, and when used with a package name, it shows the installed version of that package."
+        },
+        {
+          "id": "eaf202a9-68a3-4610-aa5e-0f572fc8c743",
+          "text": "npm inspect <package-name>",
+          "isCorrect": false,
+          "description": "npm inspect <package-name> is not the standard command for checking package versions."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "f9e4d79f-53d7-457e-a19c-1b7f4ff03d9f",
+      "text": "When installing a package, which flag will save it as a development dependency?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "cde4da0a-4a9b-47aa-a9a5-4a98ce891c21",
+          "text": "--global",
+          "isCorrect": false,
+          "description": "The --global flag installs a package globally, not as a development dependency."
+        },
+        {
+          "id": "9c1ed9d8-ba17-4f59-b497-bd62af8a49a1",
+          "text": "--dev-only",
+          "isCorrect": false,
+          "description": "The --dev-only flag is not a standard npm flag for saving packages as development dependencies."
+        },
+        {
+          "id": "a1f1ea95-d8f2-4a08-9f57-73599ad13488",
+          "text": "--save-dev",
+          "isCorrect": true,
+          "description": "The --save-dev flag ensures that the package is listed under devDependencies in package.json, indicating it's only needed for development."
+        },
+        {
+          "id": "cd2a8bf6-525f-4dd5-990b-3749c54b7c19",
+          "text": "--dev-dependency",
+          "isCorrect": false,
+          "description": "The --dev-dependency flag is not a standard npm flag for saving packages as development dependencies."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "c18c016a-d440-4c8f-b96f-7eb38e3e2c21",
+      "text": "Which file should be included in a `.gitignore` when working with Node.js projects to avoid uploading unnecessary files to a repository?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "id": "2e201c70-89c3-4d7f-9687-e107255c4159",
+          "text": "package.json",
+          "isCorrect": false,
+          "description": "The `package.json` file is crucial for defining project dependencies and should be included in version control."
+        },
+        {
+          "id": "ca4cbbf1-6eb9-4d5d-9d06-c7a0e70e4c3c",
+          "text": ".npmrc",
+          "isCorrect": false,
+          "description": ".npmrc contains npm configuration but is not as bulky as the `node_modules` directory."
+        },
+        {
+          "id": "a58d1650-14f4-45d2-99de-6da2bca0e8a4",
+          "text": "node_modules",
+          "isCorrect": true,
+          "description": "The `node_modules` directory contains all the installed packages, which can be bulky. It's unnecessary to include in version control since the `package.json` file already lists the required packages."
+        },
+        {
+          "id": "b0e1ef6d-4d29-4ef7-b190-4a9366ce5ff3",
+          "text": ".env",
+          "isCorrect": false,
+          "description": ".env files should also be ignored (they contain sensitive environment variables), but the main file related to npm is `node_modules`."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "58f8e172-4e6b-4a06-a4e7-1d6e175e7ab6",
+      "text": "How can you install a specific version of a package using npm?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "94e657c9-b97a-48a9-8c9d-e30e0f038487",
+          "text": "npm install <package-name>==<version>",
+          "isCorrect": false,
+          "description": "The == is not the correct syntax for specifying versions in npm."
+        },
+        {
+          "id": "2eb9c717-920e-4f64-a91c-5db51e8d6b08",
+          "text": "npm install <package-name>@<version>",
+          "isCorrect": true,
+          "description": "The syntax for installing a specific version of a package is to use the @ symbol followed by the version number."
+        },
+        {
+          "id": "f2c1bf32-4c02-431d-a6cd-1f86c522aad6",
+          "text": "npm install-version <package-name> <version>",
+          "isCorrect": false,
+          "description": "npm install-version is not a standard npm command."
+        },
+        {
+          "id": "0e1e128f-0ba3-49ac-8f20-825d75840c58",
+          "text": "npm get <package-name> <version>",
+          "isCorrect": false,
+          "description": "npm get is not the correct command for installing specific package versions."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "9ac8c854-204e-4f5f-9a64-6b58bf8213bf",
+      "text": "Which command can help you identify outdated packages in your Node.js project?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "f6a37a03-5c32-4c1a-8f9a-9a15972a81ea",
+          "text": "npm check",
+          "isCorrect": false,
+          "description": "npm check is not the correct command for checking outdated packages."
+        },
+        {
+          "id": "c667f7ea-02ab-4d76-a345-1e27ac5ce28b",
+          "text": "npm verify",
+          "isCorrect": false,
+          "description": "npm verify is not the standard command for checking outdated packages."
+        },
+        {
+          "id": "ccd0ebe4-38cb-4eb5-97e6-7f91c58c86b7",
+          "text": "npm outdated",
+          "isCorrect": true,
+          "description": "The npm outdated command lists all packages that have newer versions available than the ones currently installed in your project."
+        },
+        {
+          "id": "e16b2ef3-6562-418a-b06b-4a6d8eaa02d1",
+          "text": "npm validate",
+          "isCorrect": false,
+          "description": "npm validate is not the standard command for checking outdated packages."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "3cd349ff-8520-4c6c-b7d9-7d943a19d6ab",
+      "text": "If you want to uninstall a package from your Node.js project, which npm command should you use?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "575a65a9-07aa-4ee0-b50e-e8311c413d54",
+          "text": "npm delete <package-name>",
+          "isCorrect": false,
+          "description": "npm delete is not the correct command for uninstalling packages."
+        },
+        {
+          "id": "e51db136-4ab2-40ea-8ed2-e099d4e54e60",
+          "text": "npm remove <package-name>",
+          "isCorrect": false,
+          "description": "npm remove is not the correct command for uninstalling packages."
+        },
+        {
+          "id": "949c1077-39f1-409e-9775-9593cb2b8d95",
+          "text": "npm discard <package-name>",
+          "isCorrect": false,
+          "description": "npm discard is not the correct command for uninstalling packages."
+        },
+        {
+          "id": "a8d450e7-282c-46e5-b8cb-0b2ce6c8fca9",
+          "text": "npm uninstall <package-name>",
+          "isCorrect": true,
+          "description": "The npm uninstall command is used to remove a package from a Node.js project."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "0e8ca2d0-95d2-4f8f-8c8d-1b191187b8b7",
+      "text": "Which file contains user-specific configurations for npm?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "d51e91e3-2169-4e58-8a6a-3e4303d4875d",
+          "text": "npm-config.json",
+          "isCorrect": false,
+          "description": "npm-config.json is not the standard configuration file for npm."
+        },
+        {
+          "id": "ea81ee3b-dc4b-41ce-8e1b-36f63c159819",
+          "text": ".npmrc",
+          "isCorrect": true,
+          "description": "The .npmrc file contains user-specific configurations for npm, which can be located at the user's home directory or at the root of a project."
+        },
+        {
+          "id": "d25737aa-ba8a-4b91-871d-e6a29cfe6d28",
+          "text": "npm-user.json",
+          "isCorrect": false,
+          "description": "npm-user.json is not the standard configuration file for npm."
+        },
+        {
+          "id": "318b15b9-68f9-43b6-86e6-79e2d429f15c",
+          "text": ".npmconfig",
+          "isCorrect": false,
+          "description": ".npmconfig is not the standard configuration file for npm."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "982f59eb-17da-44b7-88c2-df92e67ea48b",
+      "text": "What does the `npm init` command do?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "id": "5050b682-4c51-4cde-8d74-84b3ea0a471d",
+          "text": "Initializes a new Git repository",
+          "isCorrect": false,
+          "description": "Git operations are not directly related to npm commands."
+        },
+        {
+          "id": "b56ac3c5-4a24-4d6c-8e3b-7b29ab667d03",
+          "text": "Starts a new npm process",
+          "isCorrect": false,
+          "description": "Starting processes is not the purpose of this command."
+        },
+        {
+          "id": "d88897a6-18f0-4f69-af5f-c9e49a8a04c7",
+          "text": "Installs all packages listed in package.json",
+          "isCorrect": false,
+          "description": "Installing packages is done using the `npm install` command."
+        },
+        {
+          "id": "1d7a9cd7-014e-4d76-b105-54a25f0d423e",
+          "text": "Creates a new package.json file in the project",
+          "isCorrect": true,
+          "description": "The `npm init` command starts a prompt to create a new `package.json` file, which will contain project metadata and dependencies."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "efc84d24-0a29-4ed1-93a2-f3f93a48a537",
+      "text": "When you install a package without the `-g` flag, where is it installed?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "4da6533b-47f2-4c1d-9e1c-e1929e3a18ff",
+          "text": "In the global npm directory",
+          "isCorrect": false,
+          "description": "The package is installed locally in the project's node_modules directory, not globally."
+        },
+        {
+          "id": "feea7b6c-0de2-4d91-97e1-d0ef037b29ff",
+          "text": "In the OS's system directory",
+          "isCorrect": false,
+          "description": "The package is installed locally in the project's node_modules directory, not in the system directory."
+        },
+        {
+          "id": "f188d97a-21aa-44dd-89d1-68ec68e8d3d1",
+          "text": "In the project's node_modules directory",
+          "isCorrect": true,
+          "description": "Packages installed without the -g flag are installed locally in the project's node_modules directory."
+        },
+        {
+          "id": "ad04d86f-47e4-4e15-b0db-8fb0b44f8186",
+          "text": "It's not installed; it's only cached",
+          "isCorrect": false,
+          "description": "The package is indeed installed locally."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "f848e1f6-af4c-41b1-852d-6991520ecb8a",
+      "text": "Why might a developer choose to save a package as a devDependency instead of a regular dependency?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "9f62d241-dc5d-4f2f-b6ed-36596014b874",
+          "text": "Because devDependencies are faster to install",
+          "isCorrect": false,
+          "description": "The installation speed is not a factor in this distinction."
+        },
+        {
+          "id": "5424ed23-69ff-4c44-8125-9edca8d89749",
+          "text": "Because devDependencies are only needed during development and not in production",
+          "isCorrect": true,
+          "description": "devDependencies are packages required during development, not in production."
+        },
+        {
+          "id": "f5f83e1a-0160-47ef-854e-07e23f9ccf9b",
+          "text": "Because devDependencies are free while regular dependencies are not",
+          "isCorrect": false,
+          "description": "The cost is not a factor in this distinction."
+        },
+        {
+          "id": "74100b6a-e4bf-4b8a-b340-3497f272e292",
+          "text": "There's no difference; it's just a naming convention",
+          "isCorrect": false,
+          "description": "There is a functional difference in how these dependencies are used."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "60c57aa7-82a9-4c98-a6b3-847850d142bb",
+      "text": "What happens if you run `npm install` without any package name?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "c1fbc838-33ec-4a5b-b6f6-9a683a1c4b23",
+          "text": "npm will prompt an error",
+          "isCorrect": false,
+          "description": "Running npm install without a package name will not prompt an error."
+        },
+        {
+          "id": "ec11b447-6dfb-46c0-85a1-186531401232",
+          "text": "npm will install the latest version of Node.js",
+          "isCorrect": false,
+          "description": "npm install does not install Node.js itself."
+        },
+        {
+          "id": "56a268bf-c1f9-45b4-8f77-88c9174583d2",
+          "text": "npm will install all the packages listed in package.json",
+          "isCorrect": true,
+          "description": "Running npm install without specifying a package name installs all the dependencies listed in package.json."
+        },
+        {
+          "id": "b3f39b0b-c439-4f4a-a73b-cc62ad186cc4",
+          "text": "npm will uninstall all packages",
+          "isCorrect": false,
+          "description": "Running npm install without specifying a package name does not uninstall packages."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "6d7395f2-3b48-457e-b761-56d5db791dd4",
+      "text": "Which npm command can be used to display a tree of all installed packages and their dependencies?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "b62a253c-981e-4509-b27d-3f87ecfde5f4",
+          "text": "npm tree",
+          "isCorrect": false,
+          "description": "npm tree is not the standard command for displaying the package dependency tree."
+        },
+        {
+          "id": "10f161ae-5749-483d-bb3e-93e7c8142eeb",
+          "text": "npm show-deps",
+          "isCorrect": false,
+          "description": "npm show-deps is not a standard npm command for displaying package dependencies."
+        },
+        {
+          "id": "a8389d1a-54b0-47f3-ba47-19b195da2f92",
+          "text": "npm list",
+          "isCorrect": true,
+          "description": "The npm list command displays a tree-like structure of all installed packages and their dependencies."
+        },
+        {
+          "id": "f8e6d32a-8849-45ad-8ec6-249134a63e4e",
+          "text": "npm display",
+          "isCorrect": false,
+          "description": "npm display is not the standard command for displaying package dependencies."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    },
+    {
+      "id": "6e4f0c92-30a9-42f4-8621-74129a441a2a",
+      "text": "In what scenario would you use the `npm audit` command?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "id": "92e1bc85-4632-4cc0-80db-ff8f63f1d485",
+          "text": "When you want to check the npm version",
+          "isCorrect": false,
+          "description": "The npm audit command is not used to check the npm version."
+        },
+        {
+          "id": "b01ae2e0-6877-4f19-9ab7-682e24b5b6a2",
+          "text": "When you want to view the download statistics of a package",
+          "isCorrect": false,
+          "description": "npm audit does not provide download statistics of a package."
+        },
+        {
+          "id": "af7f0a0e-25c2-45f7-90d8-42e4a9239867",
+          "text": "When you want to check for vulnerabilities in your project's dependencies",
+          "isCorrect": true,
+          "description": "npm audit reviews the project's dependency tree for known vulnerabilities."
+        },
+        {
+          "id": "31213e1c-0a1b-483d-a3ce-665cf8a042a1",
+          "text": "When you want to publish a package to the npm registry",
+          "isCorrect": false,
+          "description": "Publishing a package is a different process and is not performed with npm audit."
+        }
+      ],
+      "rating": 0,
+      "ratingCount": 0
+    }
+  ]
+}

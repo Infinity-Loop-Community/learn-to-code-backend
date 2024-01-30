@@ -99,6 +99,50 @@ func TestQuizAttemptOverview_QuizAttemptCount(t *testing.T) {
 	}
 }
 
+func TestQuizAttemptOverview_PassIsFalseForUnfinishedQuizzes(t *testing.T) {
+	quizID := "test-quiz-id"
+
+	p := err.PanicIfError1(participant.New())
+	p.StartQuiz(quizID, []string{"a"})
+	p.SelectQuizAnswer(quizID, "a", "a-1", true)
+
+	qo := err.PanicIfError1(projection.NewQuizOverview(p))
+
+	if qo.ActiveQuizzes[quizID][0].Pass != false {
+		t.Fatalf("Expected pass for not finished quizzes to be false, got %v", qo.ActiveQuizzes[quizID][0].Pass)
+	}
+}
+
+func TestQuizAttemptOverview_PassIsTrueForFinishedCorrectQuizzes(t *testing.T) {
+	quizID := "test-quiz-id"
+
+	p := err.PanicIfError1(participant.New())
+	err.PanicIfError(p.StartQuiz(quizID, []string{"a"}))
+	err.PanicIfError(p.SelectQuizAnswer(quizID, "a", "a-1", true))
+	err.PanicIfError(p.FinishQuiz(quizID))
+
+	qo := err.PanicIfError1(projection.NewQuizOverview(p))
+
+	if qo.FinishedQuizzes[quizID][0].Pass != true {
+		t.Fatalf("Expected pass for finished and correct quizzes to be true, got %v", qo.FinishedQuizzes[quizID][0].Pass)
+	}
+}
+
+func TestQuizAttemptOverview_PassIsFalseForFinishedWrongQuizzes(t *testing.T) {
+	quizID := "test-quiz-id"
+
+	p := err.PanicIfError1(participant.New())
+	err.PanicIfError(p.StartQuiz(quizID, []string{"a"}))
+	err.PanicIfError(p.SelectQuizAnswer(quizID, "a", "a-1", false))
+	err.PanicIfError(p.FinishQuiz(quizID))
+
+	qo := err.PanicIfError1(projection.NewQuizOverview(p))
+
+	if qo.FinishedQuizzes[quizID][0].Pass != false {
+		t.Fatalf("Expected pass for finished and wrong quizzes to be false, got %v", qo.FinishedQuizzes[quizID][0].Pass)
+	}
+}
+
 func newParticipant() participant.Participant {
 	return err.PanicIfError1(participant.NewParticipant(uuid.MustNewRandomAsString()))
 }

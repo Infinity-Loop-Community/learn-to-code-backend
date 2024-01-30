@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"learn-to-code/internal/domain/quiz/participant"
 	"learn-to-code/internal/domain/quiz/participant/event"
+	"learn-to-code/internal/domain/quiz/participant/projection/quizattemptdetail"
 )
 
 type QuizOverview struct {
@@ -35,6 +36,8 @@ func NewQuizOverview(p participant.Participant) (QuizOverview, error) {
 
 	quizAttemptCounter := map[string]int{}
 	quizFinishCounter := map[string]int{}
+	quizAttemptCorrectAnswerCounter := map[string]int{}
+	quizAttemptWrongAnswerCounter := map[string]int{}
 
 	var activeQuizAttempts = map[string]*QuizAttemptOverview{}
 
@@ -59,6 +62,24 @@ func NewQuizOverview(p participant.Participant) (QuizOverview, error) {
 				QuestionsWithAnswer: map[string]string{},
 			}
 
+		case event.SelectedAnswer:
+			attemptAnswerCounterIndex := getQuizAttemptCorrectAnswerCounterIndex(e.QuizID, quizAttemptCounter)
+			_, ok := quizAttemptCorrectAnswerCounter[attemptAnswerCounterIndex]
+			if !ok {
+				quizAttemptCorrectAnswerCounter[attemptAnswerCounterIndex] = 0
+			}
+
+			_, ok2 := quizAttemptWrongAnswerCounter[attemptAnswerCounterIndex]
+			if !ok2 {
+				quizAttemptWrongAnswerCounter[attemptAnswerCounterIndex] = 0
+			}
+
+			if e.IsCorrect {
+				quizAttemptCorrectAnswerCounter[attemptAnswerCounterIndex]++
+			} else {
+				quizAttemptWrongAnswerCounter[attemptAnswerCounterIndex]++
+			}
+
 		case event.FinishedQuiz:
 			_, ok := quizFinishCounter[e.QuizID]
 			if !ok {
@@ -70,6 +91,13 @@ func NewQuizOverview(p participant.Participant) (QuizOverview, error) {
 			if !ok {
 				qo.FinishedQuizzes[e.QuizID] = []QuizAttemptOverview{}
 			}
+
+			attemptAnswerCounterIndex := getQuizAttemptCorrectAnswerCounterIndex(e.QuizID, quizAttemptCounter)
+
+			activeQuizAttempts[e.QuizID].Pass = isPass(
+				quizAttemptCorrectAnswerCounter[attemptAnswerCounterIndex],
+				quizAttemptWrongAnswerCounter[attemptAnswerCounterIndex],
+			)
 
 			qo.FinishedQuizzes[e.QuizID] = append(qo.FinishedQuizzes[e.QuizID], *activeQuizAttempts[e.QuizID])
 			delete(activeQuizAttempts, e.QuizID)
@@ -86,8 +114,29 @@ func NewQuizOverview(p participant.Participant) (QuizOverview, error) {
 			QuizID:              activeQuizID,
 			AttemptID:           activeQuizAttemptOverview.AttemptID,
 			QuestionsWithAnswer: activeQuizAttemptOverview.QuestionsWithAnswer,
+			Pass:                false,
 		})
 	}
 
 	return qo, nil
+}
+
+func getQuizAttemptCorrectAnswerCounterIndex(quizID string, quizAttemptCounter map[string]int) string {
+	return quizID + "-" + fmt.Sprintf("%d", quizAttemptCounter[quizID])
+}
+
+func getCorrectnessRatio(correctAnswerCounter int, incorrectAnswerCounter int) float64 {
+	if correctAnswerCounter+incorrectAnswerCounter == 0 {
+		return 0
+	}
+
+	return (float64(correctAnswerCounter) / (float64(correctAnswerCounter) + float64(incorrectAnswerCounter)))
+}
+
+func isPass(correctAnswerCounter int, incorrectAnswerCounter int) bool {
+	if correctAnswerCounter+incorrectAnswerCounter == 0 {
+		return true
+	}
+
+	return getCorrectnessRatio(correctAnswerCounter, incorrectAnswerCounter) >= quizattemptdetail.QuizPassThresold
 }

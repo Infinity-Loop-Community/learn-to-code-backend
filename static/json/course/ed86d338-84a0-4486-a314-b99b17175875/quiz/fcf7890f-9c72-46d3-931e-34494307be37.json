@@ -41,21 +41,21 @@
       "answers": [
         {
           "id": "289016f8-d546-489b-b50d-5b9193cda0f4",
-          "text": "<heading>",
+          "text": "`<heading>`",
           "isCorrect": false,
-          "description": "The term <heading> is not used as an HTML element. Instead, we have heading tags that range from <h1> to <h6> to denote headings of different levels."
+          "description": "The term `<heading>` is not used as an HTML element. Instead, we have heading tags that range from <h1> to <h6> to denote headings of different levels."
         },
         {
           "id": "1c2f637a-be46-48ef-84b0-74b8dd97f550",
-          "text": "<paragraph>",
+          "text": "`<paragraph>`",
           "isCorrect": false,
-          "description": "<paragraph> is not the correct HTML element for creating paragraphs. The right tag for a paragraph in HTML is <p>."
+          "description": "`<paragraph>` is not the correct HTML element for creating paragraphs. The right tag for a paragraph in HTML is <p>."
         },
         {
           "id": "2473afe5-bfc7-4903-8f67-c8e109860420",
-          "text": "<list>",
+          "text": "`<list>`",
           "isCorrect": false,
-          "description": "While you can create lists in HTML, the tag <list> doesn't exist. For lists, we use <ul> for unordered lists and <ol> for ordered lists."
+          "description": "While you can create lists in HTML, the tag `<list>` doesn't exist. For lists, we use `<ul>` for unordered lists and `<ol>` for ordered lists."
         },
         {
           "id": "846326cd-d809-496e-9789-7588401101ce",
@@ -272,27 +272,27 @@
       "answers": [
         {
           "id": "8c2f89eb-fc21-49cc-adc4-8ed330d4c5a3",
-          "text": "<header>",
+          "text": "`<header>`",
           "isCorrect": false,
-          "description": "The <header> element typically contains introductory content or navigation links and not used as a standard heading."
+          "description": "The `<header>` element typically contains introductory content or navigation links and not used as a standard heading."
         },
         {
           "id": "58a7b8e4-638a-49a3-8809-0f2513fa3093",
-          "text": "<heading>",
+          "text": "`<heading>`",
           "isCorrect": false,
-          "description": "There is no standard <heading> tag in HTML."
+          "description": "There is no standard `<heading>` tag in HTML."
         },
         {
           "id": "bc81de7d-8fd4-4f8f-9b3d-6abae72fb020",
-          "text": "<h1>",
+          "text": "`<h1>`",
           "isCorrect": true,
-          "description": "The <h1> tag in HTML is used to represent the top-level heading, making it the most important among the heading tags ranging from <h1> to <h6>."
+          "description": "The `<h1>` tag in HTML is used to represent the top-level heading, making it the most important among the heading tags ranging from `<h1>` to `<h6>`."
         },
         {
           "id": "48fd0307-1982-431b-b188-60d0d19b1b73",
-          "text": "<top>",
+          "text": "`<top>`",
           "isCorrect": false,
-          "description": "The <top> tag doesn't exist in standard HTML."
+          "description": "The `<top>` tag doesn't exist in standard HTML."
         }
       ],
       "rating": 0,
@@ -305,27 +305,27 @@
       "answers": [
         {
           "id": "e0e13029-1ce7-40da-8e1c-c25b702ae20a",
-          "text": "<ol>",
+          "text": "`<ol>`",
           "isCorrect": false,
-          "description": "The <ol> tag is used for ordered lists, where the order of items is important."
+          "description": "The `<ol>` tag is used for ordered lists, where the order of items is important."
         },
         {
           "id": "13d5072c-6b28-4008-afe6-5adf1d67fe3e",
-          "text": "<dl>",
+          "text": "`<dl>`",
           "isCorrect": false,
-          "description": "The <dl> tag is for description lists and isn't typically used for general lists."
+          "description": "The `<dl>` tag is for description lists and isn't typically used for general lists."
         },
         {
           "id": "f055cf1e-78d2-4031-89ce-ef3fd28cc8ab",
-          "text": "<ul>",
+          "text": "`<ul>`",
           "isCorrect": true,
-          "description": "The <ul> tag stands for unordered list, which is used for lists where order doesn't matter."
+          "description": "The `<ul>` tag stands for unordered list, which is used for lists where order doesn't matter."
         },
         {
           "id": "04fb764e-bcbb-42ea-a1e7-a49ccddd9918",
-          "text": "<list>",
+          "text": "`<list>`",
           "isCorrect": false,
-          "description": "There is no standard <list> tag in HTML."
+          "description": "There is no standard `<list>` tag in HTML."
         }
       ],
       "rating": 0,
@@ -373,7 +373,7 @@
           "id": "ff9f0f84-5b73-4dde-abe6-87ce8ee300e1",
           "text": "The visible area of a webpage that the user can interact with.",
           "isCorrect": true,
-          "description": "The viewport is the user's visible area of a web page. It varies with the device, and it can be controlled using the <meta> viewport element."
+          "description": "The viewport is the user's visible area of a web page. It varies with the device, and it can be controlled using the `<meta>` viewport element."
         },
         {
           "id": "b9902d50-b70f-466a-b804-29a93d3acabc",
@@ -569,27 +569,27 @@
       "answers": [
         {
           "id": "65fd438a-a6b3-496a-b3e5-d6b9c7e2af49",
-          "text": "<sidebar>",
+          "text": "`<sidebar>`",
           "isCorrect": false,
-          "description": "There is no standard <sidebar> element in HTML."
+          "description": "There is no standard `<sidebar>` element in HTML."
         },
         {
           "id": "b1f846d4-d7e0-4690-9bd2-8910c59253e9",
-          "text": "<navbar>",
+          "text": "`<navbar>`",
           "isCorrect": false,
-          "description": "While navbar is commonly used as a term in certain frameworks (e.g., Bootstrap), there's no <navbar> tag in standard HTML."
+          "description": "While navbar is commonly used as a term in certain frameworks (e.g., Bootstrap), there's no `<navbar>` tag in standard HTML."
         },
         {
           "id": "b0609bd8-3e1b-4aab-bcc7-96cdf3eccd3f",
-          "text": "<menu>",
+          "text": "`<menu>`",
           "isCorrect": false,
-          "description": "<menu> isn't specifically for navigation links."
+          "description": "`<menu>` isn't specifically for navigation links."
         },
         {
           "id": "ec10dbd4-f889-425c-b1bd-d7ed2524aecd",
-          "text": "<nav>",
+          "text": "`<nav>`",
           "isCorrect": true,
-          "description": "The <nav> element in HTML5 is specifically meant to enclose navigation links."
+          "description": "The `<nav>` element in HTML5 is specifically meant to enclose navigation links."
         }
       ],
       "rating": 0,

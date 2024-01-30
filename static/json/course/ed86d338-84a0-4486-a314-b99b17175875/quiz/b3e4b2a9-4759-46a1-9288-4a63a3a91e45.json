@@ -338,25 +338,25 @@
       "answers": [
         {
           "id": "94e657c9-b97a-48a9-8c9d-e30e0f038487",
-          "text": "npm install <package-name>==<version>",
+          "text": "`npm install <package-name>==<version>`",
           "isCorrect": false,
           "description": "The == is not the correct syntax for specifying versions in npm."
         },
         {
           "id": "2eb9c717-920e-4f64-a91c-5db51e8d6b08",
-          "text": "npm install <package-name>@<version>",
+          "text": "`npm install <package-name>@<version>`",
           "isCorrect": true,
           "description": "The syntax for installing a specific version of a package is to use the @ symbol followed by the version number."
         },
         {
           "id": "f2c1bf32-4c02-431d-a6cd-1f86c522aad6",
-          "text": "npm install-version <package-name> <version>",
+          "text": "`npm install-version <package-name> <version>`",
           "isCorrect": false,
           "description": "npm install-version is not a standard npm command."
         },
         {
           "id": "0e1e128f-0ba3-49ac-8f20-825d75840c58",
-          "text": "npm get <package-name> <version>",
+          "text": "`npm get <package-name> <version>`",
           "isCorrect": false,
           "description": "npm get is not the correct command for installing specific package versions."
         }

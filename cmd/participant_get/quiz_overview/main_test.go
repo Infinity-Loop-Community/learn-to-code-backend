@@ -58,4 +58,8 @@ func TestGetQuizOverview_ReturnsPassInformation(t *testing.T) {
 	if activeQuizzesResponse.(map[string]interface{})["pass"] != false {
 		t.Fatalf("expected active quiz to have pass false, but it is true")
 	}
+
+	if activeQuizzesResponse.(map[string]interface{})["questionCorrectRatio"] != 1.0 {
+		t.Fatalf("expected active quiz to have questionCorrectRatio false, but it is true")
+	}
 }

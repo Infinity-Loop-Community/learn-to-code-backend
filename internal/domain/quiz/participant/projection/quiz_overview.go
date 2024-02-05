@@ -99,6 +99,11 @@ func NewQuizOverview(p participant.Participant) (QuizOverview, error) {
 				quizAttemptWrongAnswerCounter[attemptAnswerCounterIndex],
 			)
 
+			activeQuizAttempts[e.QuizID].QuestionCorrectRatio = getCorrectnessRatio(
+				quizAttemptCorrectAnswerCounter[attemptAnswerCounterIndex],
+				quizAttemptWrongAnswerCounter[attemptAnswerCounterIndex],
+			)
+
 			qo.FinishedQuizzes[e.QuizID] = append(qo.FinishedQuizzes[e.QuizID], *activeQuizAttempts[e.QuizID])
 			delete(activeQuizAttempts, e.QuizID)
 		}

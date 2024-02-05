@@ -26,10 +26,11 @@ func (cm *QuizOverviewMapper) toAttemptDetailResponseObjects(attemptEntities map
 	for quizID, attemptOverviewEntities := range attemptEntities {
 		for _, attemptOverviewEntity := range attemptOverviewEntities {
 			attemptResponses[quizID] = append(attemptResponses[quizID], responseobject.QuizAttemptOverview{
-				AttemptID:           attemptOverviewEntity.AttemptID,
-				QuizID:              attemptOverviewEntity.QuizID,
-				Pass:                attemptOverviewEntity.Pass,
-				QuestionsWithAnswer: attemptOverviewEntity.QuestionsWithAnswer,
+				AttemptID:            attemptOverviewEntity.AttemptID,
+				QuizID:               attemptOverviewEntity.QuizID,
+				Pass:                 attemptOverviewEntity.Pass,
+				QuestionsWithAnswer:  attemptOverviewEntity.QuestionsWithAnswer,
+				QuestionCorrectRatio: attemptOverviewEntity.QuestionCorrectRatio,
 			})
 		}
 

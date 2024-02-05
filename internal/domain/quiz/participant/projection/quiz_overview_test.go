@@ -143,6 +143,22 @@ func TestQuizAttemptOverview_PassIsFalseForFinishedWrongQuizzes(t *testing.T) {
 	}
 }
 
+func TestQuizAttemptOverview_QuestionCorrectRatioExistsForFinishedQuizzes(t *testing.T) {
+	quizID := "test-quiz-id"
+
+	p := err.PanicIfError1(participant.New())
+	err.PanicIfError(p.StartQuiz(quizID, []string{"a", "b"}))
+	err.PanicIfError(p.SelectQuizAnswer(quizID, "a", "a-1", true))
+	err.PanicIfError(p.SelectQuizAnswer(quizID, "b", "b-1", false))
+	err.PanicIfError(p.FinishQuiz(quizID))
+
+	qo := err.PanicIfError1(projection.NewQuizOverview(p))
+
+	if qo.FinishedQuizzes[quizID][0].QuestionCorrectRatio != 0.5 {
+		t.Fatalf("Expected QuestionCorrectRatio for finished to be 0.5, got %v", qo.FinishedQuizzes[quizID][0].QuestionCorrectRatio)
+	}
+}
+
 func newParticipant() participant.Participant {
 	return err.PanicIfError1(participant.NewParticipant(uuid.MustNewRandomAsString()))
 }

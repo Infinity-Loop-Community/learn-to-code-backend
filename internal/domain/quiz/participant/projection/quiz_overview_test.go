@@ -103,8 +103,8 @@ func TestQuizAttemptOverview_PassIsFalseForUnfinishedQuizzes(t *testing.T) {
 	quizID := "test-quiz-id"
 
 	p := err.PanicIfError1(participant.New())
-	p.StartQuiz(quizID, []string{"a"})
-	p.SelectQuizAnswer(quizID, "a", "a-1", true)
+	err.PanicIfError(p.StartQuiz(quizID, []string{"a"}))
+	err.PanicIfError(p.SelectQuizAnswer(quizID, "a", "a-1", true))
 
 	qo := err.PanicIfError1(projection.NewQuizOverview(p))
 

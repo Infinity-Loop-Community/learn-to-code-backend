@@ -20,14 +20,18 @@ Parameters:
   JwtSecret:
     Type: String
     Default: test
+  CorsUrl:
+    Type: String
+    Default: "https://learn.sebastiansigl.com"
 
 Resources:
 
   ProdApiCustomDomain:
     Type: 'AWS::ApiGateway::DomainName'
+    Condition: IsProduction
     Properties:
-      DomainName: "api.learn-to-code.io"
-      CertificateArn: "arn:aws:acm:us-east-1:127870186360:certificate/1fe844b0-2158-4f2f-835a-c1a5742db254"
+      DomainName: "api.learn.sebastiansigl.com"
+      CertificateArn: "arn:aws:acm:us-east-1:127870186360:certificate/36e83c64-33ba-4ae3-8295-8867a89507cf"
 
   DevApiCustomDomain:
     Type: 'AWS::ApiGateway::DomainName'
@@ -59,7 +63,7 @@ Resources:
       Cors:
         AllowMethods: "'GET,PUT,POST,DELETE,OPTIONS'"
         AllowHeaders: "'Cookie,Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-        AllowOrigin: "'http://localhost:3000'"
+        AllowOrigin: !Sub "'${CorsUrl}'"
         AllowCredentials: true
 
   CourseGet:
@@ -83,7 +87,7 @@ Resources:
         Variables:
           ENVIRONMENT: !Sub "${StageName}"
           JWT_SECRET: !Sub "${JwtSecret}" # More secure would be to use AWS Secret manager with secret rotation. That's postponed to save costs.
-          CORS_ALLOW_ORIGIN_URL: !FindInMap [EnvironmentConfig, !Ref StageName, CorsUrl]
+          CORS_ALLOW_ORIGIN_URL: !Sub "${CorsUrl}"
 
   ParticipantPost:
     Type: AWS::Serverless::Function
@@ -106,7 +110,7 @@ Resources:
         Variables:
           ENVIRONMENT: !Sub "${StageName}"
           JWT_SECRET: !Sub "${JwtSecret}" # More secure would be to use AWS Secret manager with secret rotation. That's postponed to save costs.
-          CORS_ALLOW_ORIGIN_URL: !FindInMap [EnvironmentConfig, !Ref StageName, CorsUrl]
+          CORS_ALLOW_ORIGIN_URL: !Sub "${CorsUrl}"
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Sub "${StageName}_events"
@@ -132,7 +136,7 @@ Resources:
         Variables:
           ENVIRONMENT: !Sub "${StageName}"
           JWT_SECRET: !Sub "${JwtSecret}" # More secure would be to use AWS Secret manager with secret rotation. That's postponed to save costs.
-          CORS_ALLOW_ORIGIN_URL: !FindInMap [EnvironmentConfig, !Ref StageName, CorsUrl]
+          CORS_ALLOW_ORIGIN_URL: !Sub "${CorsUrl}"
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Sub "${StageName}_events"
@@ -158,7 +162,7 @@ Resources:
         Variables:
           ENVIRONMENT: !Sub "${StageName}"
           JWT_SECRET: !Sub "${JwtSecret}" # More secure would be to use AWS Secret manager with secret rotation. That's postponed to save costs.
-          CORS_ALLOW_ORIGIN_URL: !FindInMap [EnvironmentConfig, !Ref StageName, CorsUrl]
+          CORS_ALLOW_ORIGIN_URL: !Sub "${CorsUrl}"
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Sub "${StageName}_events"
@@ -183,10 +187,3 @@ Outputs:
     Value: !Sub "https://${RestApi}.execute-api.${AWS::Region}.amazonaws.com/${StageName}/courses/{courseId}/"
   CourseGetARN:
     Value: !GetAtt CourseGet.Arn
-
-Mappings:
-  EnvironmentConfig:
-    dev:
-      CorsUrl: "http://localhost:3000"
-    prod:
-      CorsUrl: "https://www.learn-to-code.io"

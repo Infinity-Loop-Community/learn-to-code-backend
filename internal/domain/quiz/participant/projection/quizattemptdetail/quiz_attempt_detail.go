@@ -47,8 +47,7 @@ func NewQuizAttemptDetail(p participant.Participant, quizID string, attemptID in
 	prevCorrectAnswerCounter := 0
 	prevIncorrectAnswerCounter := 0
 
-	correctAnswerCounter := 0
-	incorrectAnswerCounter := 0
+	correctAnswers := map[string]bool{}
 
 	startQuizTime := time.Time{}
 	endQuizTime := time.Time{}
@@ -81,9 +80,9 @@ func NewQuizAttemptDetail(p participant.Participant, quizID string, attemptID in
 				if (quizCounter) == attemptID {
 					qad.QuestionsWithAnswer[e.QuestionID] = e.AnswerID
 					if e.IsCorrect {
-						correctAnswerCounter++
+						correctAnswers[e.QuestionID] = true
 					} else {
-						incorrectAnswerCounter++
+						correctAnswers[e.QuestionID] = false
 					}
 				}
 			}
@@ -116,6 +115,7 @@ func NewQuizAttemptDetail(p participant.Participant, quizID string, attemptID in
 	}
 
 	if qad.AttemptStatus == AttemptStatusFinished {
+		correctAnswerCounter, incorrectAnswerCounter := getCorrectAndIncorrectAnswerCounter(correctAnswers)
 		correctnessRatio := getCorrectnessRatio(correctAnswerCounter, incorrectAnswerCounter)
 		prevCorrectnessRatio := getCorrectnessRatio(prevCorrectAnswerCounter, prevIncorrectAnswerCounter)
 		comparedToCorrectRatioLastTryPercentage := int(math.Round((correctnessRatio - prevCorrectnessRatio) * 100))
@@ -134,6 +134,21 @@ func NewQuizAttemptDetail(p participant.Participant, quizID string, attemptID in
 	}
 
 	return qad, nil
+}
+
+func getCorrectAndIncorrectAnswerCounter(correctAnswers map[string]bool) (int, int) {
+	correctAnswerCounter := 0
+	incorrectAnswerCounter := 0
+
+	for _, isCorrect := range correctAnswers {
+		if isCorrect {
+			correctAnswerCounter++
+		} else {
+			incorrectAnswerCounter++
+		}
+	}
+
+	return correctAnswerCounter, incorrectAnswerCounter
 }
 
 func getCorrectnessRatio(correctAnswerCounter int, incorrectAnswerCounter int) float64 {

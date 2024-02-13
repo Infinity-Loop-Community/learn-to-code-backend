@@ -147,6 +147,23 @@ func TestNewQuizAttemptDetail_FinishedQuizSeveralIncorrectAnswers_ReturnsCorrect
 	}
 }
 
+func TestNewQuizAttemptDetail_FinishedQuizWithDuplicatedAnswers_ReturnsCorrectnessRatio(t *testing.T) {
+	p := newParticipant()
+
+	err.PanicIfError(p.StartQuiz(inmemory.QuizIDEssentialsOfTheWeb, []string{"q1", "q2", "q3"}))
+	err.PanicIfError(p.SelectQuizAnswer(inmemory.QuizIDEssentialsOfTheWeb, "q1", "a1", true))
+	err.PanicIfError(p.SelectQuizAnswer(inmemory.QuizIDEssentialsOfTheWeb, "q2", "a2", false))
+	err.PanicIfError(p.SelectQuizAnswer(inmemory.QuizIDEssentialsOfTheWeb, "q2", "a2", true))
+	err.PanicIfError(p.SelectQuizAnswer(inmemory.QuizIDEssentialsOfTheWeb, "q3", "a3", true))
+	err.PanicIfError(p.FinishQuiz(inmemory.QuizIDEssentialsOfTheWeb))
+
+	quizAttemptDetailProjection := err.PanicIfError1(NewQuizAttemptDetail(p, inmemory.QuizIDEssentialsOfTheWeb, p.GetQuizAttemptCount(inmemory.QuizIDEssentialsOfTheWeb)))
+
+	if quizAttemptDetailProjection.AttemptResult.QuestionCorrectRatio != 1 {
+		t.Fatalf("expected correctness ratio of 1 but was %f", quizAttemptDetailProjection.AttemptResult.QuestionCorrectRatio)
+	}
+}
+
 func TestNewQuizAttemptDetail_FinishedQuizSeveralIncorrectAnswers_ReturnsComparedToAverageRatio(t *testing.T) {
 	p := newParticipant()
 	err.PanicIfError(p.StartQuiz(inmemory.QuizIDEssentialsOfTheWeb, []string{"q1", "q2", "q3", "q4", "q5"}))

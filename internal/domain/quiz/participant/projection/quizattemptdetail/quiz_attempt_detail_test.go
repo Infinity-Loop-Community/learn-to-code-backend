@@ -159,8 +159,10 @@ func TestNewQuizAttemptDetail_FinishedQuizSeveralIncorrectAnswers_ReturnsCompare
 
 	quizAttemptDetailProjection := err.PanicIfError1(NewQuizAttemptDetail(p, inmemory.QuizIDEssentialsOfTheWeb, p.GetQuizAttemptCount(inmemory.QuizIDEssentialsOfTheWeb)))
 
-	if quizAttemptDetailProjection.AttemptResult.ComparedToTimeAveragePercentage != 900 {
-		t.Fatalf("expected compared to average time percentage of 900 percentage but was %d", quizAttemptDetailProjection.AttemptResult.ComparedToTimeAveragePercentage)
+	// the minimum duration for the calculation is 1m, and we have 10 questions for each question 1m
+	// means 1/10 - 1 = -0.9 * 100 = -90
+	if quizAttemptDetailProjection.AttemptResult.ComparedToTimeAveragePercentage != -90 {
+		t.Fatalf("expected compared to average time percentage of -90 percentage but was %d", quizAttemptDetailProjection.AttemptResult.ComparedToTimeAveragePercentage)
 	}
 }
 

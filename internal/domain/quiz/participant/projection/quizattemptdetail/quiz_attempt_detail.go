@@ -122,7 +122,7 @@ func NewQuizAttemptDetail(p participant.Participant, quizID string, attemptID in
 
 		timeTakenMins := max(int(math.Round(endQuizTime.Sub(startQuizTime).Minutes())), 1)
 		averageTimeMins := float64(len(qad.QuestionsWithAnswer) * AverageTimePerQuestionMins)
-		comparedToTimeAveragePercentage := int(math.Round(((averageTimeMins / float64(timeTakenMins)) - 1) * 100))
+		comparedToTimeAveragePercentage := int(math.Round(((float64(timeTakenMins) / float64(averageTimeMins)) - 1) * 100))
 
 		qad.AttemptResult = AttemptResult{
 			Pass:                                    isPass(correctAnswerCounter, incorrectAnswerCounter),

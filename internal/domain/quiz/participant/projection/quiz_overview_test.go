@@ -143,6 +143,26 @@ func TestQuizAttemptOverview_PassIsFalseForFinishedWrongQuizzes(t *testing.T) {
 	}
 }
 
+func TestQuizAttemptOverview_LatestAnsweresAreUsedForQuizzes(t *testing.T) {
+	quizID := "test-quiz-id"
+
+	p := err.PanicIfError1(participant.New())
+	err.PanicIfError(p.StartQuiz(quizID, []string{"a"}))
+	err.PanicIfError(p.SelectQuizAnswer(quizID, "a", "a-1", false))
+	err.PanicIfError(p.SelectQuizAnswer(quizID, "a", "a-2", true))
+	err.PanicIfError(p.FinishQuiz(quizID))
+
+	qo := err.PanicIfError1(projection.NewQuizOverview(p))
+
+	if qo.FinishedQuizzes[quizID][0].Pass != true {
+		t.Fatalf("Expected pass to be true for single correct last answer, got %v", qo.FinishedQuizzes[quizID][0].Pass)
+	}
+
+	if qo.FinishedQuizzes[quizID][0].QuestionCorrectRatio != 1 {
+		t.Fatalf("Expected question correct ratio to be 1, got %v", qo.FinishedQuizzes[quizID][0].QuestionCorrectRatio)
+	}
+}
+
 func TestQuizAttemptOverview_QuestionCorrectRatioExistsForFinishedQuizzes(t *testing.T) {
 	quizID := "test-quiz-id"
 

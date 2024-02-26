@@ -3,8 +3,8 @@ package projection
 import (
 	"fmt"
 	"learn-to-code/internal/domain/quiz/participant"
+	"learn-to-code/internal/domain/quiz/participant/calculator"
 	"learn-to-code/internal/domain/quiz/participant/event"
-	"learn-to-code/internal/domain/quiz/participant/projection/quizattemptdetail"
 )
 
 type QuizOverview struct {
@@ -36,8 +36,8 @@ func NewQuizOverview(p participant.Participant) (QuizOverview, error) {
 
 	quizAttemptCounter := map[string]int{}
 	quizFinishCounter := map[string]int{}
-	quizAttemptCorrectAnswerCounter := map[string]int{}
-	quizAttemptWrongAnswerCounter := map[string]int{}
+
+	quizResultCalculators := map[string]*calculator.QuizResult{}
 
 	var activeQuizAttempts = map[string]*QuizAttemptOverview{}
 
@@ -56,6 +56,12 @@ func NewQuizOverview(p participant.Participant) (QuizOverview, error) {
 				return QuizOverview{}, fmt.Errorf("invalid multiple active attempts for quiz %s", e.QuizID)
 			}
 
+			attemptAnswerCounterIndex := getQuizAttemptResultCalculatorKey(e.QuizID, quizAttemptCounter)
+			_, ok = quizResultCalculators[attemptAnswerCounterIndex]
+			if !ok {
+				quizResultCalculators[attemptAnswerCounterIndex] = calculator.NewQuizResultCalculator()
+			}
+
 			activeQuizAttempts[e.QuizID] = &QuizAttemptOverview{
 				QuizID:              e.QuizID,
 				AttemptID:           quizAttemptCounter[e.QuizID],
@@ -63,21 +69,12 @@ func NewQuizOverview(p participant.Participant) (QuizOverview, error) {
 			}
 
 		case event.SelectedAnswer:
-			attemptAnswerCounterIndex := getQuizAttemptCorrectAnswerCounterIndex(e.QuizID, quizAttemptCounter)
-			_, ok := quizAttemptCorrectAnswerCounter[attemptAnswerCounterIndex]
-			if !ok {
-				quizAttemptCorrectAnswerCounter[attemptAnswerCounterIndex] = 0
-			}
-
-			_, ok2 := quizAttemptWrongAnswerCounter[attemptAnswerCounterIndex]
-			if !ok2 {
-				quizAttemptWrongAnswerCounter[attemptAnswerCounterIndex] = 0
-			}
+			attemptAnswerCounterIndex := getQuizAttemptResultCalculatorKey(e.QuizID, quizAttemptCounter)
 
 			if e.IsCorrect {
-				quizAttemptCorrectAnswerCounter[attemptAnswerCounterIndex]++
+				quizResultCalculators[attemptAnswerCounterIndex].AddAnswer(e.QuestionID, true)
 			} else {
-				quizAttemptWrongAnswerCounter[attemptAnswerCounterIndex]++
+				quizResultCalculators[attemptAnswerCounterIndex].AddAnswer(e.QuestionID, false)
 			}
 
 		case event.FinishedQuiz:
@@ -92,17 +89,10 @@ func NewQuizOverview(p participant.Participant) (QuizOverview, error) {
 				qo.FinishedQuizzes[e.QuizID] = []QuizAttemptOverview{}
 			}
 
-			attemptAnswerCounterIndex := getQuizAttemptCorrectAnswerCounterIndex(e.QuizID, quizAttemptCounter)
+			calculatorKey := getQuizAttemptResultCalculatorKey(e.QuizID, quizAttemptCounter)
+			activeQuizAttempts[e.QuizID].Pass = quizResultCalculators[calculatorKey].IsPass()
 
-			activeQuizAttempts[e.QuizID].Pass = isPass(
-				quizAttemptCorrectAnswerCounter[attemptAnswerCounterIndex],
-				quizAttemptWrongAnswerCounter[attemptAnswerCounterIndex],
-			)
-
-			activeQuizAttempts[e.QuizID].QuestionCorrectRatio = getCorrectnessRatio(
-				quizAttemptCorrectAnswerCounter[attemptAnswerCounterIndex],
-				quizAttemptWrongAnswerCounter[attemptAnswerCounterIndex],
-			)
+			activeQuizAttempts[e.QuizID].QuestionCorrectRatio = quizResultCalculators[calculatorKey].GetCorrectRatio()
 
 			qo.FinishedQuizzes[e.QuizID] = append(qo.FinishedQuizzes[e.QuizID], *activeQuizAttempts[e.QuizID])
 			delete(activeQuizAttempts, e.QuizID)
@@ -126,22 +116,6 @@ func NewQuizOverview(p participant.Participant) (QuizOverview, error) {
 	return qo, nil
 }
 
-func getQuizAttemptCorrectAnswerCounterIndex(quizID string, quizAttemptCounter map[string]int) string {
+func getQuizAttemptResultCalculatorKey(quizID string, quizAttemptCounter map[string]int) string {
 	return quizID + "-" + fmt.Sprintf("%d", quizAttemptCounter[quizID])
-}
-
-func getCorrectnessRatio(correctAnswerCounter int, incorrectAnswerCounter int) float64 {
-	if correctAnswerCounter+incorrectAnswerCounter == 0 {
-		return 0
-	}
-
-	return (float64(correctAnswerCounter) / (float64(correctAnswerCounter) + float64(incorrectAnswerCounter)))
-}
-
-func isPass(correctAnswerCounter int, incorrectAnswerCounter int) bool {
-	if correctAnswerCounter+incorrectAnswerCounter == 0 {
-		return true
-	}
-
-	return getCorrectnessRatio(correctAnswerCounter, incorrectAnswerCounter) >= quizattemptdetail.QuizPassThresold
 }

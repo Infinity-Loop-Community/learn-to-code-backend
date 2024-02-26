@@ -78,8 +78,8 @@ func TestNewQuizAttemptDetail_FinishedQuiz_ReturnsQuizResultPass(t *testing.T) {
 
 	quizAttemptDetailProjection := err.PanicIfError1(NewQuizAttemptDetail(p, inmemory.QuizIDEssentialsOfTheWeb, p.GetQuizAttemptCount(inmemory.QuizIDEssentialsOfTheWeb)))
 
-	if quizAttemptDetailProjection.AttemptResult.Pass != true {
-		t.Fatalf("finished quiz with no questions did not pass")
+	if quizAttemptDetailProjection.AttemptResult.Pass != false {
+		t.Fatalf("finished quiz without questions did pass but should fail")
 	}
 }
 

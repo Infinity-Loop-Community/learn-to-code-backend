@@ -46,18 +46,14 @@ func NewQuizOverview(p participant.Participant) (QuizOverview, error) {
 		switch e := generalEvent.(type) {
 
 		case event.StartedQuiz:
-			_, ok := quizAttemptCounter[e.QuizID]
-			if !ok {
-				quizAttemptCounter[e.QuizID] = 0
-			}
-			quizAttemptCounter[e.QuizID]++
+			incrementQuizAttemptCounter(quizAttemptCounter, e)
 
 			if activeQuizAttempts[e.QuizID] != nil {
 				return QuizOverview{}, fmt.Errorf("invalid multiple active attempts for quiz %s", e.QuizID)
 			}
 
 			attemptAnswerCounterIndex := getQuizAttemptResultCalculatorKey(e.QuizID, quizAttemptCounter)
-			_, ok = quizResultCalculators[attemptAnswerCounterIndex]
+			_, ok := quizResultCalculators[attemptAnswerCounterIndex]
 			if !ok {
 				quizResultCalculators[attemptAnswerCounterIndex] = calculator.NewQuizResultCalculator()
 			}
@@ -78,13 +74,9 @@ func NewQuizOverview(p participant.Participant) (QuizOverview, error) {
 			}
 
 		case event.FinishedQuiz:
-			_, ok := quizFinishCounter[e.QuizID]
-			if !ok {
-				quizFinishCounter[e.QuizID] = 0
-			}
-			quizFinishCounter[e.QuizID]++
+			incrementQuizFinishCounter(quizFinishCounter, e)
 
-			_, ok = qo.FinishedQuizzes[e.QuizID]
+			_, ok := qo.FinishedQuizzes[e.QuizID]
 			if !ok {
 				qo.FinishedQuizzes[e.QuizID] = []QuizAttemptOverview{}
 			}
@@ -114,6 +106,22 @@ func NewQuizOverview(p participant.Participant) (QuizOverview, error) {
 	}
 
 	return qo, nil
+}
+
+func incrementQuizFinishCounter(quizFinishCounter map[string]int, e event.FinishedQuiz) {
+	_, ok := quizFinishCounter[e.QuizID]
+	if !ok {
+		quizFinishCounter[e.QuizID] = 0
+	}
+	quizFinishCounter[e.QuizID]++
+}
+
+func incrementQuizAttemptCounter(quizAttemptCounter map[string]int, e event.StartedQuiz) {
+	_, ok := quizAttemptCounter[e.QuizID]
+	if !ok {
+		quizAttemptCounter[e.QuizID] = 0
+	}
+	quizAttemptCounter[e.QuizID]++
 }
 
 func getQuizAttemptResultCalculatorKey(quizID string, quizAttemptCounter map[string]int) string {

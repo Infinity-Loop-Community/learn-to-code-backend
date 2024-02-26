@@ -2,6 +2,7 @@ package quizattemptdetail
 
 import (
 	"learn-to-code/internal/domain/quiz/participant"
+	"learn-to-code/internal/domain/quiz/participant/calculator"
 	"learn-to-code/internal/domain/quiz/participant/event"
 	"math"
 	"time"
@@ -11,7 +12,6 @@ type AttemptStatus string
 
 const AttemptStatusOngoing = "ongoing"
 const AttemptStatusFinished = "finished"
-const QuizPassThresold = 0.8
 
 // taken from the last 1000 quizzes solved
 const AverageTimePerQuestionMins = 2
@@ -44,13 +44,11 @@ func NewQuizAttemptDetail(p participant.Participant, quizID string, attemptID in
 
 	quizCounter := 0
 
-	prevCorrectAnswerCounter := 0
-	prevIncorrectAnswerCounter := 0
-
-	correctAnswers := map[string]bool{}
-
 	startQuizTime := time.Time{}
 	endQuizTime := time.Time{}
+
+	prevQuizResultCalculator := calculator.NewQuizResultCalculator()
+	quizResultCalculator := calculator.NewQuizResultCalculator()
 
 	for _, generalEvent := range p.GetEvents() {
 
@@ -71,18 +69,18 @@ func NewQuizAttemptDetail(p participant.Participant, quizID string, attemptID in
 
 				if (quizCounter) == attemptID-1 {
 					if e.IsCorrect {
-						prevCorrectAnswerCounter++
+						prevQuizResultCalculator.AddAnswer(e.QuestionID, true)
 					} else {
-						prevIncorrectAnswerCounter++
+						prevQuizResultCalculator.AddAnswer(e.QuestionID, false)
 					}
 				}
 
 				if (quizCounter) == attemptID {
 					qad.QuestionsWithAnswer[e.QuestionID] = e.AnswerID
 					if e.IsCorrect {
-						correctAnswers[e.QuestionID] = true
+						quizResultCalculator.AddAnswer(e.QuestionID, true)
 					} else {
-						correctAnswers[e.QuestionID] = false
+						quizResultCalculator.AddAnswer(e.QuestionID, false)
 					}
 				}
 			}
@@ -115,18 +113,16 @@ func NewQuizAttemptDetail(p participant.Participant, quizID string, attemptID in
 	}
 
 	if qad.AttemptStatus == AttemptStatusFinished {
-		correctAnswerCounter, incorrectAnswerCounter := getCorrectAndIncorrectAnswerCounter(correctAnswers)
-		correctnessRatio := getCorrectnessRatio(correctAnswerCounter, incorrectAnswerCounter)
-		prevCorrectnessRatio := getCorrectnessRatio(prevCorrectAnswerCounter, prevIncorrectAnswerCounter)
-		comparedToCorrectRatioLastTryPercentage := int(math.Round((correctnessRatio - prevCorrectnessRatio) * 100))
+
+		comparedToCorrectRatioLastTryPercentage := quizResultCalculator.GetCorrectnessRatioComparedToOtherQuizResult(prevQuizResultCalculator)
 
 		timeTakenMins := max(int(math.Round(endQuizTime.Sub(startQuizTime).Minutes())), 1)
 		averageTimeMins := float64(len(qad.QuestionsWithAnswer) * AverageTimePerQuestionMins)
 		comparedToTimeAveragePercentage := int(math.Round(((float64(timeTakenMins) / float64(averageTimeMins)) - 1) * 100))
 
 		qad.AttemptResult = AttemptResult{
-			Pass:                                    isPass(correctAnswerCounter, incorrectAnswerCounter),
-			QuestionCorrectRatio:                    correctnessRatio,
+			Pass:                                    quizResultCalculator.IsPass(),
+			QuestionCorrectRatio:                    quizResultCalculator.GetCorrectRatio(),
 			TimeTakenMins:                           timeTakenMins,
 			ComparedToTimeAveragePercentage:         comparedToTimeAveragePercentage,
 			ComparedToCorrectRatioLastTryPercentage: comparedToCorrectRatioLastTryPercentage,
@@ -134,35 +130,4 @@ func NewQuizAttemptDetail(p participant.Participant, quizID string, attemptID in
 	}
 
 	return qad, nil
-}
-
-func getCorrectAndIncorrectAnswerCounter(correctAnswers map[string]bool) (int, int) {
-	correctAnswerCounter := 0
-	incorrectAnswerCounter := 0
-
-	for _, isCorrect := range correctAnswers {
-		if isCorrect {
-			correctAnswerCounter++
-		} else {
-			incorrectAnswerCounter++
-		}
-	}
-
-	return correctAnswerCounter, incorrectAnswerCounter
-}
-
-func getCorrectnessRatio(correctAnswerCounter int, incorrectAnswerCounter int) float64 {
-	if correctAnswerCounter+incorrectAnswerCounter == 0 {
-		return 0
-	}
-
-	return (float64(correctAnswerCounter) / (float64(correctAnswerCounter) + float64(incorrectAnswerCounter)))
-}
-
-func isPass(correctAnswerCounter int, incorrectAnswerCounter int) bool {
-	if correctAnswerCounter+incorrectAnswerCounter == 0 {
-		return true
-	}
-
-	return getCorrectnessRatio(correctAnswerCounter, incorrectAnswerCounter) >= QuizPassThresold
 }

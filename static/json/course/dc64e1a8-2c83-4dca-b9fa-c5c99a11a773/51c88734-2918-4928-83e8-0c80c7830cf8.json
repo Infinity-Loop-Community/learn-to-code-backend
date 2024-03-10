@@ -1,0 +1,665 @@
+{
+    "id": "51c88734-2918-4928-83e8-0c80c7830cf8",
+    "questions": [
+        {
+            "id": "d90d1459-8648-4bf0-aadf-3b51b9e42d2a",
+            "text": "What is Gradle primarily used for?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "59373649-13c0-49a6-8a2e-6d7028b5509d",
+                    "text": "Web development",
+                    "isCorrect": false,
+                    "description": "Gradle is not primarily used for web development."
+                },
+                {
+                    "id": "512f3500-c5c4-46c2-b4e4-bde7d4e91279",
+                    "text": "Game development",
+                    "isCorrect": false,
+                    "description": "Gradle is not primarily used for game development."
+                },
+                {
+                    "id": "6835b4f2-aa2a-4a3b-91b5-57941329b09b",
+                    "text": "Build automation",
+                    "isCorrect": true,
+                    "description": "Gradle is a build automation tool primarily used for compiling, testing, and deploying code."
+                },
+                {
+                    "id": "5e73ac81-7d34-4ab5-82a3-5c02cc4d8f45",
+                    "text": "Database management",
+                    "isCorrect": false,
+                    "description": "Gradle is not primarily used for database management."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "2d58422f-4906-4933-8e5b-aa5a99145d9d",
+            "text": "What language is Gradle build scripts written in?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "cb330f94-1d03-4429-b4a6-876c30c1982b",
+                    "text": "Python",
+                    "isCorrect": false,
+                    "description": "Gradle build scripts are not typically written in Python."
+                },
+                {
+                    "id": "01fb59c5-3f5e-41ee-9202-41ed0510aa92",
+                    "text": "Groovy",
+                    "isCorrect": true,
+                    "description": "Gradle build scripts are typically written in Groovy, although Kotlin is also supported."
+                },
+                {
+                    "id": "b1534c0c-c4d1-4c42-b472-d913bf1e31c6",
+                    "text": "JavaScript",
+                    "isCorrect": false,
+                    "description": "Gradle build scripts are not typically written in JavaScript."
+                },
+                {
+                    "id": "ef65f5e6-72f6-4fd2-b3f4-3e99840032cd",
+                    "text": "Ruby",
+                    "isCorrect": false,
+                    "description": "Gradle build scripts are not typically written in Ruby."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "d319c787-4b09-4a8b-bf57-5477256ac10d",
+            "text": "What is the Gradle Daemon?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "1e19276f-88af-4c9e-80b4-d79906a1b70f",
+                    "text": "A security feature",
+                    "isCorrect": false,
+                    "description": "The Gradle Daemon is not a security feature."
+                },
+                {
+                    "id": "eb74d0c8-daf0-4417-8f95-390f0e086c5a",
+                    "text": "A background process to speed up builds",
+                    "isCorrect": true,
+                    "description": "The Gradle Daemon is a background process designed to make Gradle builds faster by caching build information."
+                },
+                {
+                    "id": "79e8e77b-c4d7-4f2f-a3d1-d717c97ab907",
+                    "text": "A debugging tool",
+                    "isCorrect": false,
+                    "description": "The Gradle Daemon is not a debugging tool."
+                },
+                {
+                    "id": "c8c0eb3d-3042-4c5a-9b91-6438e50aa91b",
+                    "text": "A version control system",
+                    "isCorrect": false,
+                    "description": "The Gradle Daemon is not a version control system."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "eeb953d7-d7f5-4f9d-a746-1ad3fd9ed907",
+            "text": "What is the default build file for a Gradle project?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "a97b07d2-07ed-4f30-834d-9e0e20377508",
+                    "text": "build.gradle",
+                    "isCorrect": true,
+                    "description": "The default build file for a Gradle project is build.gradle."
+                },
+                {
+                    "id": "7fc4ab29-4085-43b7-b0e3-31c2c5cb9df6",
+                    "text": "gradle.properties",
+                    "isCorrect": false,
+                    "description": "gradle.properties is for configuration settings."
+                },
+                {
+                    "id": "9ee40a02-1aa1-499d-9a92-9ab39478c70f",
+                    "text": "build.xml",
+                    "isCorrect": false,
+                    "description": "build.xml is used in Ant projects."
+                },
+                {
+                    "id": "b71c73d7-5f99-4526-b417-3f0408f4fd79",
+                    "text": "Makefile",
+                    "isCorrect": false,
+                    "description": "Makefile is used in Make projects."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "84326fd5-8f04-4d0c-9aaf-8af90cfdd0c5",
+            "text": "What command initializes a new Gradle project?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "6baf64d0-5b1a-42cb-b64d-d4c457a5ee41",
+                    "text": "gradle init",
+                    "isCorrect": true,
+                    "description": "The gradle init command initializes a new Gradle project."
+                },
+                {
+                    "id": "1d87490d-1fe1-469d-bc95-fb7b4b5d5c8d",
+                    "text": "gradle new",
+                    "isCorrect": false,
+                    "description": "gradle new is not a valid command."
+                },
+                {
+                    "id": "3a108fd9-ba85-404a-9052-0957a5a6cb46",
+                    "text": "gradle start",
+                    "isCorrect": false,
+                    "description": "gradle start is not a valid command."
+                },
+                {
+                    "id": "b9a6be15-f62e-4f09-8c27-4c52c1a1e0a6",
+                    "text": "gradle create",
+                    "isCorrect": false,
+                    "description": "gradle create is not a valid command."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "b470ff9a-cd5b-4d1e-8cf5-67f2750652a3",
+            "text": "What is the purpose of the `gradle clean` command?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "309d50d1-68ed-41a8-a408-21b1b5db0e14",
+                    "text": "To update dependencies",
+                    "isCorrect": false,
+                    "description": "`gradle clean` does not update dependencies."
+                },
+                {
+                    "id": "bc3721c8-bd04-4ef7-a4e0-aa09d17b53b2",
+                    "text": "To remove the build directory",
+                    "isCorrect": true,
+                    "description": "`gradle clean` removes the build directory, cleaning up previous build artifacts."
+                },
+                {
+                    "id": "a46f8d69-0e65-4b9d-b420-3a21ccaa8b5c",
+                    "text": "To compile the code",
+                    "isCorrect": false,
+                    "description": "Compiling the code is not the purpose of `gradle clean`."
+                },
+                {
+                    "id": "e7895e56-3dd6-4427-b382-9dbfb5120d44",
+                    "text": "To run tests",
+                    "isCorrect": false,
+                    "description": "Running tests is not the purpose of `gradle clean`."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "b80f0a2b-5e6b-4767-bc07-af9c57bbab91",
+            "text": "What does the `gradle assemble` command do?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "d64e01f7-c205-4e5a-ae9e-facdcbe83d0c",
+                    "text": "Runs unit tests",
+                    "isCorrect": false,
+                    "description": "`gradle assemble` does not run unit tests."
+                },
+                {
+                    "id": "6a7b7b22-2a43-48bb-98ae-57b823f810f9",
+                    "text": "Compiles and packages code without running tests",
+                    "isCorrect": true,
+                    "description": "`gradle assemble` compiles and packages code without running tests."
+                },
+                {
+                    "id": "05ee86ad-1318-4397-b1cd-91da7dbb6a59",
+                    "text": "Deletes the build directory",
+                    "isCorrect": false,
+                    "description": "Deleting the build directory is the purpose of `gradle clean`."
+                },
+                {
+                    "id": "ad9347d2-529f-4b77-9d4f-c200e89b4e2c",
+                    "text": "Downloads dependencies",
+                    "isCorrect": false,
+                    "description": "Downloading dependencies is not the purpose of `gradle assemble`."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "6aaf2159-1653-43d6-8541-4a1f8a480847",
+            "text": "What is the Gradle Wrapper?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "994f74e7-9509-4fd9-aaf5-34c4e8de29f0",
+                    "text": "A security feature",
+                    "isCorrect": false,
+                    "description": "The Gradle Wrapper is not a security feature."
+                },
+                {
+                    "id": "07b901e1-2de8-42ef-88c1-dad3a2ed02c3",
+                    "text": "A version management tool for Gradle",
+                    "isCorrect": true,
+                    "description": "The Gradle Wrapper allows you to run Gradle builds with a specific version of Gradle, ensuring consistency across environments."
+                },
+                {
+                    "id": "129ab23c-4b0b-4914-b70a-5d907001759f",
+                    "text": "A plugin manager",
+                    "isCorrect": false,
+                    "description": "The Gradle Wrapper is not a plugin manager."
+                },
+                {
+                    "id": "0d8f0a64-60b0-4e45-93d1-0d11fd200cf7",
+                    "text": "A debugging tool",
+                    "isCorrect": false,
+                    "description": "The Gradle Wrapper is not a debugging tool."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "102d09ee-2f1d-41f3-91aa-621d8c01e3f1",
+            "text": "What is the purpose of the `build.gradle` file?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "7b760a8d-0f03-4a94-8025-eabe6f8e78fb",
+                    "text": "To list project dependencies",
+                    "isCorrect": false,
+                    "description": "Listing project dependencies is just one of its functions."
+                },
+                {
+                    "id": "a6f6c65b-25a1-4d39-a694-4ab3b50bb472",
+                    "text": "To define build tasks",
+                    "isCorrect": false,
+                    "description": "Defining build tasks is just one of its functions."
+                },
+                {
+                    "id": "0629d272-f9b7-4ff4-85fc-3705c8fe6fc2",
+                    "text": "To specify project settings",
+                    "isCorrect": false,
+                    "description": "Specifying project settings is just one of its functions."
+                },
+                {
+                    "id": "c97a5c7c-8812-4c6a-905a-3983a953b101",
+                    "text": "All of the above",
+                    "isCorrect": true,
+                    "description": "`build.gradle` serves multiple purposes including listing dependencies, defining build tasks, and specifying project settings."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "926b0e59-0190-4625-85b0-9a800eab536f",
+            "text": "What is a Gradle plugin?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "1c3f19c8-f1ff-4d4b-a3f4-f32a432d42d2",
+                    "text": "A third-party library",
+                    "isCorrect": false,
+                    "description": "A Gradle plugin is not a third-party library, although it may use one."
+                },
+                {
+                    "id": "d7648d6d-c8f5-47d5-b768-5488e86f70c1",
+                    "text": "An extension to add functionality to Gradle",
+                    "isCorrect": true,
+                    "description": "A Gradle plugin is an extension that adds specific functionality to a Gradle build script."
+                },
+                {
+                    "id": "d70766d8-ba9d-46eb-bf5c-2fd8db2f350a",
+                    "text": "A version control system",
+                    "isCorrect": false,
+                    "description": "A Gradle plugin is not a version control system."
+                },
+                {
+                    "id": "94b85b6b-c67a-4840-a2c0-6505db4870f0",
+                    "text": "A debugging tool",
+                    "isCorrect": false,
+                    "description": "A Gradle plugin is not a debugging tool."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "bb3b1f8e-9623-47fc-b7a1-66cc8f75d144",
+            "text": "How can you specify a specific version of Java for a Gradle project?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "90328c4d-7fc0-4d34-a4b6-d4b8c6486b2a",
+                    "text": "In the **`gradle.properties`** file",
+                    "isCorrect": false,
+                    "description": "The **`gradle.properties`** file is not used for specifying Java versions."
+                },
+                {
+                    "id": "ed99f8b7-953e-40d7-916d-0f08ed77ab5f",
+                    "text": "In the **`build.gradle`** file using the **`java`** plugin",
+                    "isCorrect": true,
+                    "description": "You can specify a Java version in the **`build.gradle`** file using the **`java`** plugin and its **`sourceCompatibility`** and **`targetCompatibility`** properties."
+                },
+                {
+                    "id": "c0b23b12-65d9-4645-9e8b-f91650b4a0a2",
+                    "text": "In the **`settings.gradle`** file",
+                    "isCorrect": false,
+                    "description": "The **`settings.gradle`** file is not used for specifying Java versions."
+                },
+                {
+                    "id": "63e1d1c4-7b43-42da-8f3a-cb04880b1c92",
+                    "text": "By setting the **`JAVA_HOME`** environment variable",
+                    "isCorrect": false,
+                    "description": "While **`JAVA_HOME`** can affect the build, it's not the Gradle-specific way to set the Java version."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "cfbfe76f-0d8e-45b5-8047-03238a289eb6",
+            "text": "What is the difference between `implementation` and `api` in Gradle dependencies?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "bb7a8924-c376-4f5c-9fb0-34c7702e64d6",
+                    "text": "**`implementation`** is for compile-time, **`api`** is for runtime",
+                    "isCorrect": false,
+                    "description": "Both **`implementation`** and **`api`** can affect compile-time and runtime."
+                },
+                {
+                    "id": "88c06f5f-8e07-4943-907a-c96e4d91c747",
+                    "text": "**`implementation`** hides the dependency from consumers, **`api`** exposes it",
+                    "isCorrect": true,
+                    "description": "When you use **`implementation`**, the dependency is not exposed to consumers of your library, whereas **`api`** exposes the dependency."
+                },
+                {
+                    "id": "0724aae7-2d9f-4866-a697-67eb50e5d4f3",
+                    "text": "**`implementation`** is for Java projects, **`api`** is for Android projects",
+                    "isCorrect": false,
+                    "description": "Both can be used in Java and Android projects."
+                },
+                {
+                    "id": "d65a2874-35de-40d4-b3e1-86f6df7a93fd",
+                    "text": "There is no difference",
+                    "isCorrect": false,
+                    "description": "There is a significant difference."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "9bfa2c8e-69c5-46a5-8c14-c6d566f73b88",
+            "text": "How can you exclude a transitive dependency in Gradle?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "6072c221-68ac-4e4b-88fb-5c7d6fd1854b",
+                    "text": "By using the **`exclude`** keyword in the dependency declaration",
+                    "isCorrect": true,
+                    "description": "You can exclude a transitive dependency either by using the **`exclude`** keyword in the dependency declaration."
+                },
+                {
+                    "id": "2032a4aa-e76d-4c1a-bb5d-cc0b1636e4e7",
+                    "text": "By deleting it from the **`build`** directory",
+                    "isCorrect": false,
+                    "description": "Deleting from the **`build`** directory is not a proper way to manage dependencies."
+                },
+                {
+                    "id": "0b4f1527-78bb-46a3-a0c1-cc7b60ed2b3a",
+                    "text": "By setting **`transitive = false`** in the dependency declaration",
+                    "isCorrect": true,
+                    "description": "You can exclude a transitive dependency either by setting **`transitive = false`**."
+                },
+                {
+                    "id": "c3d4d657-aa67-4c41-91de-b2bb56f01d4b",
+                    "text": "Both a and c",
+                    "isCorrect": false,
+                    "description": "While both are correct ways, they are not the same."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "0652ed36-4bc2-456b-a661-df49edf30a26",
+            "text": "What is the purpose of a Gradle task?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "07fa2902-e26d-4488-9d92-429723f345cb",
+                    "text": "To define a unit of work in the build process",
+                    "isCorrect": true,
+                    "description": "A Gradle task represents a single atomic piece of work for a build, such as compiling code or generating documentation."
+                },
+                {
+                    "id": "e506e402-d06c-4ee8-bf79-20706ccfbc11",
+                    "text": "To manage dependencies",
+                    "isCorrect": false,
+                    "description": "Managing dependencies is not the primary purpose of a task."
+                },
+                {
+                    "id": "495ec611-6a4b-4982-8343-e12d9205a7a9",
+                    "text": "To specify project settings",
+                    "isCorrect": false,
+                    "description": "Specifying project settings is not the purpose of a task."
+                },
+                {
+                    "id": "87c3b1ff-5fb1-4c1f-b70c-b8a43839a7cc",
+                    "text": "To run tests",
+                    "isCorrect": false,
+                    "description": "Running tests is just one type of task."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "de5c4776-400d-4dfb-88fb-2050ee91748d",
+            "text": "What is a multi-project build in Gradle?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "36396c26-09d1-4749-a6a2-8100b4800974",
+                    "text": "A build that targets multiple platforms",
+                    "isCorrect": false,
+                    "description": "Targeting multiple platforms is not what defines a multi-project build."
+                },
+                {
+                    "id": "4cf2cf1c-52b9-493b-bd02-1cb15a1d2c04",
+                    "text": "A build that includes multiple projects as part of a single build",
+                    "isCorrect": true,
+                    "description": "A multi-project build in Gradle includes multiple sub-projects that are built together as part of a single build process."
+                },
+                {
+                    "id": "ea1e402a-b5c8-4768-abe4-6ae0d6cb9c29",
+                    "text": "A build that uses multiple build files",
+                    "isCorrect": false,
+                    "description": "Using multiple build files is not what defines a multi-project build."
+                },
+                {
+                    "id": "cefb9f50-60c8-4659-b4b0-f45e26ebfca4",
+                    "text": "A build that has multiple tasks",
+                    "isCorrect": false,
+                    "description": "Having multiple tasks is common in single and multi-project builds."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "4dc2d47b-6789-4260-977b-4d8c20e7c585",
+            "text": "How can you create a custom Gradle task?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "b19fd85e-4794-4b7e-8b12-9a55d4fc3c42",
+                    "text": "By extending the **`DefaultTask`** class",
+                    "isCorrect": true,
+                    "description": "Custom tasks can be created by extending the **`DefaultTask`** class."
+                },
+                {
+                    "id": "e7875b8c-6176-4b30-bc0f-fb0a4a042733",
+                    "text": "By modifying an existing task",
+                    "isCorrect": true,
+                    "description": "Custom tasks can be created by modifying an existing task."
+                },
+                {
+                    "id": "5b2d55a7-1297-4263-8b65-578d6ee0423e",
+                    "text": "By using the **`task`** keyword in **`build.gradle`**",
+                    "isCorrect": true,
+                    "description": "Custom tasks can be created by using the **`task`** keyword in **`build.gradle`**."
+                },
+                {
+                    "id": "18b6ed61-c56e-42f4-b25f-d44c5c7d240d",
+                    "text": "All of the above",
+                    "isCorrect": true,
+                    "description": "All of these methods can be used to create custom Gradle tasks."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "084ff5a0-7b2f-45cb-bc0e-fd6ae1d9882b",
+            "text": "What is the `buildSrc` directory in a Gradle project?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "a9b5d8e0-6114-4726-8be7-41f320e2d6ff",
+                    "text": "A directory for storing build outputs",
+                    "isCorrect": false,
+                    "description": "Build outputs are usually in the **`build/`** directory."
+                },
+                {
+                    "id": "2cf3904b-cb29-4e57-92ff-03cf080059f3",
+                    "text": "A directory for custom build logic",
+                    "isCorrect": true,
+                    "description": "The **`buildSrc`** directory is used for custom build logic."
+                },
+                {
+                    "id": "63222279-73d6-4a90-ae0b-9ab72563e879",
+                    "text": "A directory for storing dependencies",
+                    "isCorrect": false,
+                    "description": "Dependencies are not stored in **`buildSrc`**."
+                },
+                {
+                    "id": "6c5d650a-d45e-4316-834f-af10316d49e4",
+                    "text": "A directory for temporary files",
+                    "isCorrect": false,
+                    "description": "Temporary files are not stored in **`buildSrc`**."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "6a9266d9-30c5-4687-bc2d-d8a40743d2f7",
+            "text": "How can you make a task depend on another task in Gradle?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "88fb828b-51a3-42ac-b6f0-4587ad1f8458",
+                    "text": "Using **`dependsOn`**",
+                    "isCorrect": true,
+                    "description": "Task dependencies can be defined using **`dependsOn`**."
+                },
+                {
+                    "id": "97e44de7-6c42-4ad2-80c4-54c9ee146c3e",
+                    "text": "Using **`mustRunAfter`**",
+                    "isCorrect": true,
+                    "description": "Task dependencies can be defined using **`mustRunAfter`**."
+                },
+                {
+                    "id": "b3053ef4-1d9c-44da-b7d6-13b80fd29c54",
+                    "text": "Using **`finalizedBy`**",
+                    "isCorrect": true,
+                    "description": "Task dependencies can be defined using **`finalizedBy`**."
+                },
+                {
+                    "id": "9cc49758-4b85-45d4-9d1c-5a7f4af514d2",
+                    "text": "All of the above",
+                    "isCorrect": true,
+                    "description": "All of these methods can be used to make a task depend on another task."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "8d706c2f-70a6-4a86-8105-0ac62bc9a4d7",
+            "text": "What is the `doFirst` method in a Gradle task?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "26a30744-4f54-45ee-8726-1a3e83195e24",
+                    "text": "It specifies actions to be executed before the task",
+                    "isCorrect": true,
+                    "description": "The **`doFirst`** method specifies actions that are executed before the main action of the task."
+                },
+                {
+                    "id": "d6f89618-654d-4b32-a7d0-21f8e9b35b7c",
+                    "text": "It specifies actions to be executed after the task",
+                    "isCorrect": false,
+                    "description": "Actions to be executed after the task are specified using **`doLast`**."
+                },
+                {
+                    "id": "3c30df07-ea4b-4417-9cf7-50e3a64377c6",
+                    "text": "It specifies actions to be executed if the task fails",
+                    "isCorrect": false,
+                    "description": "It does not specify actions for failure."
+                },
+                {
+                    "id": "f41a82b4-366b-48d5-bb9f-7d0a8b7b129b",
+                    "text": "It specifies actions to be executed in parallel with the task",
+                    "isCorrect": false,
+                    "description": "It does not specify parallel actions."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "90de8c0d-ff7c-4f1f-a3bc-4d2a7a1a5d2d",
+            "text": "How can you skip a task conditionally in Gradle?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "a932f19d-59d5-4980-9505-4ab64f09ed94",
+                    "text": "Using **`onlyIf`**",
+                    "isCorrect": true,
+                    "description": "The **`onlyIf`** method allows you to conditionally skip a task based on a specified condition."
+                },
+                {
+                    "id": "b9a8e905-4577-4e20-a76f-6eb29c9cf5f7",
+                    "text": "Using **`skip`**",
+                    "isCorrect": false,
+                    "description": "The **`skip`** method does not exist for this purpose."
+                },
+                {
+                    "id": "37ed19a1-63fc-4a1c-bf27-d6f86d4e90d5",
+                    "text": "Using **`ignore`**",
+                    "isCorrect": false,
+                    "description": "The **`ignore`** method does not exist for this purpose."
+                },
+                {
+                    "id": "a4d9b1c5-1f29-48ff-b6eb-c51a4284c251",
+                    "text": "Using **`exclude`**",
+                    "isCorrect": false,
+                    "description": "The **`exclude`** method does not exist for this purpose."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        }
+    ]
+}

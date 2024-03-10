@@ -1,0 +1,667 @@
+{
+    "id": "2dd320c6-e8b9-4d8d-8ebc-84afab4a5276",
+    "questions": [
+        {
+            "id": "a25d8be4-8834-40ab-9e8e-31f20f1602c6",
+            "text": "What is the purpose of JUnit in Java?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "f11a29fd-97a7-4b08-94d4-11a2da431537",
+                    "text": "Code optimization",
+                    "isCorrect": false,
+                    "description": "Code optimization is generally not the responsibility of JUnit."
+                },
+                {
+                    "id": "aa8532e5-d567-4d3c-b70a-02e35892fd02",
+                    "text": "Code compilation",
+                    "isCorrect": false,
+                    "description": "Code compilation is done by the Java compiler, not JUnit."
+                },
+                {
+                    "id": "b9c9de85-98d1-4e3b-bf8c-1f5948a56c59",
+                    "text": "Code testing",
+                    "isCorrect": true,
+                    "description": "JUnit is a widely-used testing framework in Java for the purpose of writing and running tests to ensure code quality."
+                },
+                {
+                    "id": "5c72381e-58bc-4bb7-b6a3-162067ce6a19",
+                    "text": "Code deployment",
+                    "isCorrect": false,
+                    "description": "Code deployment is generally handled by CI/CD tools, not JUnit."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "0788d58e-19d7-438f-b4fb-381f79e20c2d",
+            "text": "What is a test fixture?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "3a1f1182-58f6-46c7-95e0-63cbb2c16f0b",
+                    "text": "A type of assertion",
+                    "isCorrect": false,
+                    "description": "Assertions are used to validate test outcomes."
+                },
+                {
+                    "id": "8654c381-5e56-40c0-b19c-8a540c095c8b",
+                    "text": "A set of preconditions for running tests",
+                    "isCorrect": true,
+                    "description": "A test fixture sets up the conditions needed to run a test effectively, such as initializing objects or setting variables."
+                },
+                {
+                    "id": "54a78e9e-03a7-457e-b8c8-91d1ad6c56a4",
+                    "text": "A Java class",
+                    "isCorrect": false,
+                    "description": "While a Java class may contain a test fixture, they are not synonymous."
+                },
+                {
+                    "id": "fc209409-f494-4ed6-a1ad-173b7cbb6016",
+                    "text": "A bug in the code",
+                    "isCorrect": false,
+                    "description": "A bug is an error in the code, not a precondition for testing."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "0fb0d8f6-6d4e-4927-88d3-80abae9b96c4",
+            "text": "What does the `@Test` annotation signify?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "1c8b4bd5-0c16-40d2-bb5b-b3de6e14a12c",
+                    "text": "The method will be ignored during testing",
+                    "isCorrect": false,
+                    "description": "Ignored methods use the **`@Ignore`** annotation."
+                },
+                {
+                    "id": "d8dc5a89-27aa-48b7-b694-8a9af0755c0b",
+                    "text": "The method is a test case",
+                    "isCorrect": true,
+                    "description": "The **`@Test`** annotation indicates that the annotated method is a test case that should be executed by the test runner."
+                },
+                {
+                    "id": "0c8bcf57-ee65-4580-9536-eb755774a4aa",
+                    "text": "The method will run before all test cases",
+                    "isCorrect": false,
+                    "description": "Methods to run before all test cases use the **`@BeforeClass`** annotation."
+                },
+                {
+                    "id": "4f63e83f-4b3f-43fc-b55a-e279b3c42408",
+                    "text": "The method will run after all test cases",
+                    "isCorrect": false,
+                    "description": "Methods to run after all test cases use the **`@AfterClass`** annotation."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "3c80e034-ee9f-47a0-ae20-d35d88b3a4fd",
+            "text": "What is the role of assertions in testing?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "2f38eb08-b17b-4b5f-ba39-f62a95af4c5e",
+                    "text": "To compile the code",
+                    "isCorrect": false,
+                    "description": "Compilation is not related to assertions."
+                },
+                {
+                    "id": "eb92f6fb-fac7-4c0b-9879-8a3c23b1343f",
+                    "text": "To deploy the code",
+                    "isCorrect": false,
+                    "description": "Deployment is not related to assertions."
+                },
+                {
+                    "id": "6ef1a2ae-2b46-4600-9a6a-1711e9fb0989",
+                    "text": "To validate the test outcome",
+                    "isCorrect": true,
+                    "description": "Assertions are used to validate if the test conditions are met, thereby determining the success or failure of a test case."
+                },
+                {
+                    "id": "b3ae63b0-026f-4bc2-8ee0-01f0a9971f1f",
+                    "text": "To debug the code",
+                    "isCorrect": false,
+                    "description": "While debugging may involve assertions, their primary role is in testing."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "9d090a9e-cedf-4dc4-ace2-d1fcce35f3d3",
+            "text": "What does the `@Before` annotation do?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "9cf54d0b-2a24-4b35-9437-ee50941645cf",
+                    "text": "Runs before all test methods in the class",
+                    "isCorrect": false,
+                    "description": "**`@BeforeClass`** runs before all test methods in the class."
+                },
+                {
+                    "id": "bfc74aa7-58dc-4f78-8b67-af5b383f86ff",
+                    "text": "Runs before each test method",
+                    "isCorrect": true,
+                    "description": "The **`@Before`** annotation is used to specify a method that will be executed before each test method in the test class."
+                },
+                {
+                    "id": "c5e58f19-4a7e-4ab5-925e-06d2c16c90cf",
+                    "text": "Runs after each test method",
+                    "isCorrect": false,
+                    "description": "**`@After`** runs after each test method."
+                },
+                {
+                    "id": "3dc285d1-ae5c-46c6-bfd1-42f8aa6f16f9",
+                    "text": "Runs after all test methods in the class",
+                    "isCorrect": false,
+                    "description": "**`@AfterClass`** runs after all test methods in the class."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "7d071f5f-f1a5-4ed1-85d7-c64f18e2e589",
+            "text": "What is the purpose of mocking in tests?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "ba195375-2cf0-48f3-8968-3ee19d52913f",
+                    "text": "To generate fake data",
+                    "isCorrect": false,
+                    "description": "While mocking can involve fake data, its primary purpose is behavior simulation."
+                },
+                {
+                    "id": "f01cb355-9771-4785-9268-f7e12277d60b",
+                    "text": "To simulate behavior of real objects",
+                    "isCorrect": true,
+                    "description": "Mocking is used to simulate the behavior of real objects in order to isolate the code under test from external dependencies."
+                },
+                {
+                    "id": "6df7d822-54ef-43d8-894d-20d0a3db2318",
+                    "text": "To debug the code",
+                    "isCorrect": false,
+                    "description": "Debugging is not the primary purpose of mocking."
+                },
+                {
+                    "id": "fa58b8bc-ebe3-47d7-a500-1768505127cb",
+                    "text": "To deploy the code",
+                    "isCorrect": false,
+                    "description": "Deployment is not related to mocking."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "b2260a8e-9a27-499b-b100-832d60d631a2",
+            "text": "What is integration testing?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "fd5fca1b-d88a-41b8-a10f-539b868fbb6b",
+                    "text": "Testing individual components",
+                    "isCorrect": false,
+                    "description": "Testing individual components is known as unit testing."
+                },
+                {
+                    "id": "05f21f45-8b33-409b-8d1f-2e85f83ad4fb",
+                    "text": "Testing the interaction between components",
+                    "isCorrect": true,
+                    "description": "Integration testing focuses on verifying the interaction between multiple components of a system to ensure they work well together."
+                },
+                {
+                    "id": "3f8dd51b-8ec2-4543-a3b3-8c3c7b21d2e0",
+                    "text": "Testing user interface",
+                    "isCorrect": false,
+                    "description": "User interface testing is a different type of testing."
+                },
+                {
+                    "id": "f593bb1a-b69c-40d6-91a1-01b0c9e2dc41",
+                    "text": "Testing database connections only",
+                    "isCorrect": false,
+                    "description": "While database connections may be part of it, integration testing is not limited to this."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "5faad07e-6fe0-460a-9a06-4bbf6cd41635",
+            "text": "What is the purpose of the assertEquals method?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "0d5cf011-2f8d-490b-96bc-9e22da4bc995",
+                    "text": "To check if two values are different",
+                    "isCorrect": false,
+                    "description": "assertNotEquals checks if two values are different."
+                },
+                {
+                    "id": "7d4e8b61-1934-4b6d-8b23-0f33a1ff9301",
+                    "text": "To check if two values are equal",
+                    "isCorrect": true,
+                    "description": "The assertEquals method is used to assert that two values are equal. If they are not, the test will fail."
+                },
+                {
+                    "id": "15b09aee-6079-4208-991e-71ff20766f48",
+                    "text": "To check if a value is null",
+                    "isCorrect": false,
+                    "description": "assertNull checks if a value is null."
+                },
+                {
+                    "id": "389e7333-e1f3-4668-a129-7e025199dfec",
+                    "text": "To check if a value is true",
+                    "isCorrect": false,
+                    "description": "assertTrue checks if a value is true."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "f9a30d1a-318d-4410-8133-0a3c9e02434c",
+            "text": "What does TDD stand for?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "583a9fa9-4985-4b15-9d14-78683d731e5d",
+                    "text": "Test-Driven Deployment",
+                    "isCorrect": false,
+                    "description": "There is no such thing as Test-Driven Deployment in standard terminology."
+                },
+                {
+                    "id": "1d0e4222-044f-4e5c-b9b5-47c104ab0541",
+                    "text": "Test-Driven Design",
+                    "isCorrect": false,
+                    "description": "While design is a part of it, TDD specifically refers to development."
+                },
+                {
+                    "id": "f5d16e7d-0942-4772-8b25-df30889b85c5",
+                    "text": "Test-Driven Development",
+                    "isCorrect": true,
+                    "description": "TDD stands for Test-Driven Development, a software development approach where tests are written before the code that needs to be tested."
+                },
+                {
+                    "id": "cc24c785-7f02-48d9-8c2b-108f64b9fb32",
+                    "text": "Test-Driven Debugging",
+                    "isCorrect": false,
+                    "description": "Debugging is not the primary focus of TDD."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "5fbae025-d50b-4a2f-982a-6f4869f1f49f",
+            "text": "What is a test suite?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "aad82e69-36d5-4489-a6a5-77baaeb46b73",
+                    "text": "A single test case",
+                    "isCorrect": false,
+                    "description": "A single test case is not a test suite."
+                },
+                {
+                    "id": "6d2f1b47-85b5-4b6d-9ee1-3d64e35b8a5d",
+                    "text": "A collection of test cases",
+                    "isCorrect": true,
+                    "description": "A test suite is a collection of test cases that are intended to be executed together."
+                },
+                {
+                    "id": "5bebfda2-7dd2-4c4e-8a1c-1df0781ab9b0",
+                    "text": "A Java class",
+                    "isCorrect": false,
+                    "description": "While a Java class may contain a test suite, they are not synonymous."
+                },
+                {
+                    "id": "ca02a88e-9320-4d65-84c4-18aa35cb8010",
+                    "text": "A type of assertion",
+                    "isCorrect": false,
+                    "description": "Assertions are used to validate test outcomes, not to group tests."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "58b0d5d4-f688-477e-9fb1-cac5ff1160e7",
+            "text": "What is the difference between `@Before` and `@BeforeClass` annotations?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "7a34cb76-4474-4d9e-a71f-8ec5cfd60d14",
+                    "text": "`@Before` runs before each test method, `@BeforeClass` runs once before all test methods",
+                    "isCorrect": true,
+                    "description": "`@Before` is used for methods that need to run before each test method, whereas `@BeforeClass` is used for methods that run once before any test methods in the class are executed."
+                },
+                {
+                    "id": "2e7a15a7-0f6c-4720-a2bc-3aebf26d3ba7",
+                    "text": "`@Before` runs once before all test methods, `@BeforeClass` runs before each test method",
+                    "isCorrect": false,
+                    "description": "The roles are reversed in this option."
+                },
+                {
+                    "id": "46d0b8c4-c6e9-4ff7-b5a2-2be331e6c01a",
+                    "text": "Both are the same",
+                    "isCorrect": false,
+                    "description": "They serve different purposes."
+                },
+                {
+                    "id": "44244e99-c8de-4d82-a929-b1e17d482c5d",
+                    "text": "`@Before` is deprecated, `@BeforeClass` is the updated version",
+                    "isCorrect": false,
+                    "description": "Neither is deprecated; both are actively used for different scenarios."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "1a90d3c0-30e4-4c9e-849d-38c9779b18e5",
+            "text": "What is the purpose of `@After` and `@AfterClass` annotations?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "98d1d2b6-20d3-4ef2-8509-4950c43843ad",
+                    "text": "`@After` runs after each test method, `@AfterClass` runs once after all test methods",
+                    "isCorrect": true,
+                    "description": "`@After` is used for methods that need to run after each test method, whereas `@AfterClass` is used for methods that run once after all test methods in the class have been executed."
+                },
+                {
+                    "id": "3c47b7e1-2459-4de9-aa17-df6742b36ef8",
+                    "text": "`@After` runs once after all test methods, `@AfterClass` runs after each test method",
+                    "isCorrect": false,
+                    "description": "The roles are reversed in this option."
+                },
+                {
+                    "id": "eb2f2a0e-10a4-44f5-8855-cbc86aa8cf70",
+                    "text": "Both are the same",
+                    "isCorrect": false,
+                    "description": "They serve different purposes."
+                },
+                {
+                    "id": "e6c9f41c-0f95-4d56-8dd9-45fe9fcddfcf",
+                    "text": "`@After` is deprecated, `@AfterClass` is the updated version",
+                    "isCorrect": false,
+                    "description": "Neither is deprecated; both are actively used for different scenarios."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "5c35ba20-1cb5-4720-b87f-d1704438a872",
+            "text": "What is the difference between `fail()` and `assertTrue(false)` in JUnit?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "7acbd8e4-1475-44f2-ae2d-65660dd83334",
+                    "text": "`fail()` stops the test immediately, `assertTrue(false)` does not",
+                    "isCorrect": true,
+                    "description": "Both `fail()` and `assertTrue(false)` will cause the test to fail, but `fail()` will stop the test immediately, whereas `assertTrue(false)` will allow other assertions to run before the test is marked as failed."
+                },
+                {
+                    "id": "ed3f70fb-bcf5-4eb5-af14-f91f1d65bc0d",
+                    "text": "`fail()` generates a failure report, `assertTrue(false)` generates an error report",
+                    "isCorrect": false,
+                    "description": "Both generate a failure report."
+                },
+                {
+                    "id": "b74d84cb-ff32-44cc-95ff-67b839bc7790",
+                    "text": "`fail()` is used for debugging, `assertTrue(false)` is used for testing",
+                    "isCorrect": false,
+                    "description": "Both are used for testing, not debugging."
+                },
+                {
+                    "id": "fa1a27ac-4d9f-4498-8969-ef1d7dd30ae0",
+                    "text": "There is no difference",
+                    "isCorrect": false,
+                    "description": "There is a subtle difference in how they operate."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "850a0cf0-0d6b-4fc9-9b76-3832cc349be0",
+            "text": "What is parameterized testing?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "dd44365b-425d-4658-b950-5c41f50e6708",
+                    "text": "Running the same test with multiple sets of data",
+                    "isCorrect": true,
+                    "description": "Parameterized testing allows you to run the same test method multiple times with different sets of data, thereby increasing test coverage without writing multiple test methods."
+                },
+                {
+                    "id": "c508de6a-722b-426a-b839-4982444728ae",
+                    "text": "Running the test in parallel",
+                    "isCorrect": false,
+                    "description": "Parallel testing is different from parameterized testing."
+                },
+                {
+                    "id": "d25f64f4-0895-4f88-bb68-0f2cde830672",
+                    "text": "Running the test with a single set of data",
+                    "isCorrect": false,
+                    "description": "A single set of data is typical for non-parameterized tests."
+                },
+                {
+                    "id": "b383ad7f-ea8e-4aeb-8741-5459dcd58f4a",
+                    "text": "Running the test without any data",
+                    "isCorrect": false,
+                    "description": "Tests usually require some form of data for meaningful results."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "6fcff0f2-19f7-4092-b3ec-f6a4ac7f18b3",
+            "text": "What is the role of Hamcrest Matchers in JUnit?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "a40f9f44-715f-46d8-aa39-35812c09591c",
+                    "text": "To provide a more readable and expressive syntax for assertions",
+                    "isCorrect": true,
+                    "description": "Hamcrest Matchers are used to make the test assertions more readable and expressive, thereby making the test code easier to understand."
+                },
+                {
+                    "id": "eff3dc94-1962-4b8c-b1fb-87dbaae9b63c",
+                    "text": "To compile the code",
+                    "isCorrect": false,
+                    "description": "Compilation is not related to Hamcrest Matchers."
+                },
+                {
+                    "id": "5c05d0ff-e205-45a9-af0a-08c160b3d5a7",
+                    "text": "To run the tests in parallel",
+                    "isCorrect": false,
+                    "description": "Parallel testing is not the purpose of Hamcrest Matchers."
+                },
+                {
+                    "id": "42fbf146-9f8e-4a34-9e8d-076ab55cb972",
+                    "text": "To debug the code",
+                    "isCorrect": false,
+                    "description": "Debugging is not the primary role of Hamcrest Matchers."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        [
+            {
+                "id": "b30cc245-18c8-493b-bd4b-b49f893c2c32",
+                "text": "What is the difference between Black Box and White Box testing?",
+                "difficulty": "hard",
+                "answers": [
+                    {
+                        "id": "ac221e56-9068-45d4-869b-4f38076b8a88",
+                        "text": "Black Box tests without knowing internal structures, White Box tests with knowledge of internal structures",
+                        "isCorrect": true,
+                        "description": "Black Box testing focuses on the functionality without knowing the internal code structure, while White Box testing involves testing the internal structures or workings of an application."
+                    },
+                    {
+                        "id": "f2392356-e7a1-484e-a4a0-f86a41f4d3c1",
+                        "text": "Black Box tests internal structures, White Box does not",
+                        "isCorrect": false,
+                        "description": "The roles are reversed in this option."
+                    },
+                    {
+                        "id": "b61b28ac-d345-44b8-a786-47bda9885b98",
+                        "text": "Both are the same",
+                        "isCorrect": false,
+                        "description": "They serve different purposes."
+                    },
+                    {
+                        "id": "29fb83a6-10d0-4a0c-bb90-0d54f9b05c07",
+                        "text": "Black Box is outdated, White Box is the modern approach",
+                        "isCorrect": false,
+                        "description": "Neither is outdated; both have their own use-cases."
+                    }
+                ],
+                "rating": 0,
+                "ratingCount": 0
+            },
+            {
+                "id": "f9b252f4-25c0-4d90-9b0e-95352ef2e0aa",
+                "text": "What is mutation testing?",
+                "difficulty": "hard",
+                "answers": [
+                    {
+                        "id": "7fb5c51b-7f41-4905-80e3-cadfe5cb6767",
+                        "text": "Changing the code to check if tests catch the changes",
+                        "isCorrect": true,
+                        "description": "Mutation testing involves modifying the code in small ways to check if the existing tests catch these changes, thereby evaluating the quality of the test cases."
+                    },
+                    {
+                        "id": "21a14d8c-50e2-4427-8f38-38d4461fb049",
+                        "text": "Running the tests in a different order",
+                        "isCorrect": false,
+                        "description": "Order of test execution is not related to mutation testing."
+                    },
+                    {
+                        "id": "4b5b8fd5-0485-48bc-b4e8-9ad7f06a3287",
+                        "text": "Testing the user interface for changes",
+                        "isCorrect": false,
+                        "description": "UI testing is a different type of testing."
+                    },
+                    {
+                        "id": "f2fc589e-bf0b-41f8-8e48-6cd6d14d24dd",
+                        "text": "Testing the database for changes",
+                        "isCorrect": false,
+                        "description": "Database testing is not the focus of mutation testing."
+                    }
+                ],
+                "rating": 0,
+                "ratingCount": 0
+            },
+            {
+                "id": "3b200084-4e8e-445d-a03f-6ab65635b308",
+                "text": "What is the Contract-First approach in integration testing?",
+                "difficulty": "hard",
+                "answers": [
+                    {
+                        "id": "a5ad0fd1-45a2-4fa2-862f-eb3a8a4b6005",
+                        "text": "Writing the contract or specification first and then writing tests and code",
+                        "isCorrect": true,
+                        "description": "In the Contract-First approach, the contract or specification is written first. Both the provider and consumer adhere to this contract, making it easier to write tests and code."
+                    },
+                    {
+                        "id": "60f44cd2-5fc4-4f48-a05c-82b100f9a047",
+                        "text": "Writing the tests before writing the code",
+                        "isCorrect": false,
+                        "description": "This describes Test-Driven Development, not Contract-First."
+                    },
+                    {
+                        "id": "f2b3b2d5-236a-4c1d-8120-c6d6f20b16d8",
+                        "text": "Writing the code before writing the tests",
+                        "isCorrect": false,
+                        "description": "This is the opposite of Contract-First."
+                    },
+                    {
+                        "id": "5401b7e0-501b-497f-b8ac-6dd69cb14057",
+                        "text": "Writing the tests and code simultaneously",
+                        "isCorrect": false,
+                        "description": "This does not specifically describe Contract-First."
+                    }
+                ],
+                "rating": 0,
+                "ratingCount": 0
+            },
+            {
+                "id": "f1763ea7-15f8-41d7-a0a1-54fe02d1e1f7",
+                "text": "What is the Spring `MockMvc` primarily used for?",
+                "difficulty": "hard",
+                "answers": [
+                    {
+                        "id": "24c1303d-512a-4eac-b0f4-e0ad0b72c8a0",
+                        "text": "To test Spring MVC applications",
+                        "isCorrect": true,
+                        "description": "Spring `MockMvc` is primarily used for testing the controllers in Spring MVC applications by simulating HTTP requests and generating responses."
+                    },
+                    {
+                        "id": "26899b89-8a77-4a39-bf87-95a8cfd90b2b",
+                        "text": "To mock database connections",
+                        "isCorrect": false,
+                        "description": "Mocking databases is not the primary use-case for `MockMvc`."
+                    },
+                    {
+                        "id": "1a11989f-70ad-466d-b4a3-94c6474ecb38",
+                        "text": "To run parameterized tests",
+                        "isCorrect": false,
+                        "description": "Parameterized tests are not specific to `MockMvc`."
+                    },
+                    {
+                        "id": "aefef7b7-1563-4cc3-9263-2e73fd158105",
+                        "text": "To test RESTful web services",
+                        "isCorrect": false,
+                        "description": "While it can be used for RESTful services, its primary focus is Spring MVC applications."
+                    }
+                ],
+                "rating": 0,
+                "ratingCount": 0
+            },
+            {
+                "id": "e158a46b-34e9-4d7e-99c4-ea932e2b80c5",
+                "text": "What is the role of Spies in mocking frameworks like Mockito?",
+                "difficulty": "hard",
+                "answers": [
+                    {
+                        "id": "39a48750-78ef-4261-a1a6-b550e1ec4a32",
+                        "text": "To partially mock objects while allowing some real method calls",
+                        "isCorrect": true,
+                        "description": "Spies are used when you want to partially mock an object. With a spy, some methods can be stubbed while others can still execute real code."
+                    },
+                    {
+                        "id": "7ec1f57f-b37b-4aa3-b2b7-1604b1116e5b",
+                        "text": "To completely fake the behavior of real objects",
+                        "isCorrect": false,
+                        "description": "Completely faking behavior is the role of regular mocks, not spies."
+                    },
+                    {
+                        "id": "3a876b1a-fb17-44c2-8f6e-1c3d7c3e4a10",
+                        "text": "To run tests in parallel",
+                        "isCorrect": false,
+                        "description": "Parallel testing is not related to spies."
+                    },
+                    {
+                        "id": "ca6e786b-0377-4a49-bafe-f7d21b98d5b8",
+                        "text": "To generate test reports",
+                        "isCorrect": false,
+                        "description": "Generating test reports is not the role of spies."
+                    }
+                ],
+                "rating": 0,
+                "ratingCount": 0
+            }
+        ]
+    ]
+}

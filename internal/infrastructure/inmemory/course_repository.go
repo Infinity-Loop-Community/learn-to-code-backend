@@ -56,15 +56,6 @@ const QuizIDReact = "4fb71fa7-33ad-4154-8e72-991033879c3e"
 const CourseStepIDCIGithubActions = "f15e7c43-7b62-422e-bc5e-90c3163870f6"
 const QuizIDCIGithubActions = "29308dff-0179-4f5b-b6ca-f29e11f17661"
 
-// backend course
-const CourseIDBackendDevelopment = "dc64e1a8-2c83-4dca-b9fa-c5c99a11a773"
-
-const CourseStepIDJavaBasics = "dbbed51d-845f-4084-a0c4-f5bea6502dd0"
-const QuizIDJavaBasics = "ce2cae3e-5eb6-4293-afee-3e97bb5802ad"
-
-const CourseStepIDCS = "859fe3e7-f05b-4e4d-afb3-f09f947cf244"
-const QuizIDCS = "705d6ea3-4407-4818-acf6-4835168c648c"
-
 func (q *CourseRepository) FindByID(courseID string) (course.Course, error) {
 
 	if courseID == CourseIDFrontendDevelopment {
@@ -191,6 +182,24 @@ func (q *CourseRepository) getFrontendCourse() (course.Course, error) {
 	}, nil
 }
 
+// backend course
+const CourseIDBackendDevelopment = "dc64e1a8-2c83-4dca-b9fa-c5c99a11a773"
+
+const CourseStepIDJavaBasics = "dbbed51d-845f-4084-a0c4-f5bea6502dd0"
+const QuizIDJavaBasics = "ce2cae3e-5eb6-4293-afee-3e97bb5802ad"
+
+const CourseStepIDCS = "859fe3e7-f05b-4e4d-afb3-f09f947cf244"
+const QuizIDCS = "705d6ea3-4407-4818-acf6-4835168c648c"
+
+const CourseStepIDGradle = "08d0fd0b-cb07-4e43-8b98-a6bed80ceecf"
+const QuizIDGradle = "51c88734-2918-4928-83e8-0c80c7830cf8"
+
+const CourseStepIDTesting = "247b2089-72dc-4d51-ad1d-dac3a70183f5"
+const QuizIDTesting = "2dd320c6-e8b9-4d8d-8ebc-84afab4a5276"
+
+const CourseStepIDTDD = "2656d99c-28f9-4b25-a842-7c4aa0c35329"
+const QuizIDTDD = "fcb9218c-422e-42b5-94ab-abde486c3629"
+
 func (q *CourseRepository) getBackendCourse() (course.Course, error) {
 
 	quizJavaBasics, err := q.getQuiz(CourseIDBackendDevelopment, QuizIDJavaBasics)
@@ -204,6 +213,21 @@ func (q *CourseRepository) getBackendCourse() (course.Course, error) {
 	}
 
 	quizGit, err := q.getQuiz(CourseIDBackendDevelopment, QuizIDGit)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizGradle, err := q.getQuiz(CourseIDBackendDevelopment, QuizIDGradle)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizTesting, err := q.getQuiz(CourseIDBackendDevelopment, QuizIDTesting)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizTDD, err := q.getQuiz(CourseIDBackendDevelopment, QuizIDTDD)
 	if err != nil {
 		return course.Course{}, course.ErrCourseNotFound
 	}
@@ -224,6 +248,18 @@ func (q *CourseRepository) getBackendCourse() (course.Course, error) {
 				ID:      CourseStepIDGit,
 				Name:    "Git",
 				Quizzes: []course.StepQuiz{q.mapQuiz(quizGit)},
+			}, {
+				ID:      CourseStepIDGradle,
+				Name:    "Gradle",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizGradle)},
+			}, {
+				ID:      CourseStepIDTesting,
+				Name:    "Testing",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizTesting)},
+			}, {
+				ID:      CourseStepIDTDD,
+				Name:    "Test Driven Development",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizTDD)},
 			},
 		},
 	}, nil

@@ -17,6 +17,7 @@ func NewCourseRepository() *CourseRepository {
 type CourseRepository struct {
 }
 
+// frontend course
 const CourseIDFrontendDevelopment = "ed86d338-84a0-4486-a314-b99b17175875"
 
 const CourseStepIDEssentialsOfTheWeb = "c7486278-a50c-4629-89b9-cc1c74d7a538"
@@ -55,123 +56,177 @@ const QuizIDReact = "4fb71fa7-33ad-4154-8e72-991033879c3e"
 const CourseStepIDCIGithubActions = "f15e7c43-7b62-422e-bc5e-90c3163870f6"
 const QuizIDCIGithubActions = "29308dff-0179-4f5b-b6ca-f29e11f17661"
 
+// backend course
+const CourseIDBackendDevelopment = "dc64e1a8-2c83-4dca-b9fa-c5c99a11a773"
+
+const CourseStepIDJavaBasics = "dbbed51d-845f-4084-a0c4-f5bea6502dd0"
+const QuizIDJavaBasics = "ce2cae3e-5eb6-4293-afee-3e97bb5802ad"
+
+const CourseStepIDCS = "859fe3e7-f05b-4e4d-afb3-f09f947cf244"
+const QuizIDCS = "705d6ea3-4407-4818-acf6-4835168c648c"
+
 func (q *CourseRepository) FindByID(courseID string) (course.Course, error) {
 
-	quizEssentialsOfTheWeb, err := q.getQuiz(courseID, QuizIDEssentialsOfTheWeb)
-	if err != nil {
-		return course.Course{}, course.ErrCourseNotFound
-	}
-
-	quizJavaScriptBasics, err := q.getQuiz(courseID, QuizIDJavaScriptBasics)
-	if err != nil {
-		return course.Course{}, course.ErrCourseNotFound
-	}
-
-	quizComputerScience, err := q.getQuiz(courseID, QuizIDComputerScienceBasics)
-	if err != nil {
-		return course.Course{}, course.ErrCourseNotFound
-	}
-
-	quizAdvancedJavaScript, err := q.getQuiz(courseID, QuizIDJavaScriptAdvanced)
-	if err != nil {
-		return course.Course{}, course.ErrCourseNotFound
-	}
-
-	quizGit, err := q.getQuiz(courseID, QuizIDGit)
-	if err != nil {
-		return course.Course{}, course.ErrCourseNotFound
-	}
-
-	quizTypeScript, err := q.getQuiz(courseID, QuizIDTypeScript)
-	if err != nil {
-		return course.Course{}, course.ErrCourseNotFound
-	}
-
-	quizNodeJS, err := q.getQuiz(courseID, QuizIDNodeJS)
-	if err != nil {
-		return course.Course{}, course.ErrCourseNotFound
-	}
-
-	quizWebpack, err := q.getQuiz(courseID, QuizIDWebpack)
-	if err != nil {
-		return course.Course{}, course.ErrCourseNotFound
-	}
-
-	quizTestingJest, err := q.getQuiz(courseID, QuizIDTestingJest)
-	if err != nil {
-		return course.Course{}, course.ErrCourseNotFound
-	}
-
-	quizReact, err := q.getQuiz(courseID, QuizIDReact)
-	if err != nil {
-		return course.Course{}, course.ErrCourseNotFound
-	}
-
-	quizCIGithubActions, err := q.getQuiz(courseID, QuizIDCIGithubActions)
-	if err != nil {
-		return course.Course{}, course.ErrCourseNotFound
-	}
-
-	// Frontend Development
 	if courseID == CourseIDFrontendDevelopment {
-		return course.Course{
-			ID:   CourseIDFrontendDevelopment,
-			Name: "Frontend Development",
-			Steps: []course.Step{
-				{
-					ID:      CourseStepIDEssentialsOfTheWeb,
-					Name:    "The essentials of the Web",
-					Quizzes: []course.StepQuiz{q.mapQuiz(quizEssentialsOfTheWeb)},
-				},
-				{
-					ID:      CourseStepIDJavaScriptBasics,
-					Name:    "JavaScript Basics",
-					Quizzes: []course.StepQuiz{q.mapQuiz(quizJavaScriptBasics)},
-				},
-				{
-					ID:      CourseStepIDComputerScienceBasics,
-					Name:    "Computer Science",
-					Quizzes: []course.StepQuiz{q.mapQuiz(quizComputerScience)},
-				},
-				{
-					ID:      CourseStepIDJavaScriptAdvanced,
-					Name:    "Advanced JavaScript",
-					Quizzes: []course.StepQuiz{q.mapQuiz(quizAdvancedJavaScript)},
-				},
-				{
-					ID:      CourseStepIDGit,
-					Name:    "Git",
-					Quizzes: []course.StepQuiz{q.mapQuiz(quizGit)},
-				}, {
-					ID:      CourseStepIDTypeScript,
-					Name:    "TypeScript",
-					Quizzes: []course.StepQuiz{q.mapQuiz(quizTypeScript)},
-				}, {
-					ID:      CourseStepIDNodeJS,
-					Name:    "NodeJS",
-					Quizzes: []course.StepQuiz{q.mapQuiz(quizNodeJS)},
-				}, {
-					ID:      CourseStepIDWebpack,
-					Name:    "Webpack",
-					Quizzes: []course.StepQuiz{q.mapQuiz(quizWebpack)},
-				}, {
-					ID:      CourseStepIDTestingJest,
-					Name:    "Testing with Jest",
-					Quizzes: []course.StepQuiz{q.mapQuiz(quizTestingJest)},
-				}, {
-					ID:      CourseStepIDReact,
-					Name:    "React",
-					Quizzes: []course.StepQuiz{q.mapQuiz(quizReact)},
-				}, {
-					ID:      CourseStepIDCIGithubActions,
-					Name:    "GitHub Actions",
-					Quizzes: []course.StepQuiz{q.mapQuiz(quizCIGithubActions)},
-				},
-			},
-		}, nil
+		return q.getFrontendCourse()
+	}
+
+	if courseID == CourseIDBackendDevelopment {
+		return q.getBackendCourse()
 	}
 
 	return course.Course{}, course.ErrCourseNotFound
+}
+
+func (q *CourseRepository) getFrontendCourse() (course.Course, error) {
+	quizEssentialsOfTheWeb, err := q.getQuiz(CourseIDFrontendDevelopment, QuizIDEssentialsOfTheWeb)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizJavaScriptBasics, err := q.getQuiz(CourseIDFrontendDevelopment, QuizIDJavaScriptBasics)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizComputerScience, err := q.getQuiz(CourseIDFrontendDevelopment, QuizIDComputerScienceBasics)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizAdvancedJavaScript, err := q.getQuiz(CourseIDFrontendDevelopment, QuizIDJavaScriptAdvanced)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizGit, err := q.getQuiz(CourseIDFrontendDevelopment, QuizIDGit)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizTypeScript, err := q.getQuiz(CourseIDFrontendDevelopment, QuizIDTypeScript)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizNodeJS, err := q.getQuiz(CourseIDFrontendDevelopment, QuizIDNodeJS)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizWebpack, err := q.getQuiz(CourseIDFrontendDevelopment, QuizIDWebpack)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizTestingJest, err := q.getQuiz(CourseIDFrontendDevelopment, QuizIDTestingJest)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizReact, err := q.getQuiz(CourseIDFrontendDevelopment, QuizIDReact)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizCIGithubActions, err := q.getQuiz(CourseIDFrontendDevelopment, QuizIDCIGithubActions)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	return course.Course{
+		ID:   CourseIDFrontendDevelopment,
+		Name: "Frontend Development",
+		Steps: []course.Step{
+			{
+				ID:      CourseStepIDEssentialsOfTheWeb,
+				Name:    "The essentials of the Web",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizEssentialsOfTheWeb)},
+			},
+			{
+				ID:      CourseStepIDJavaScriptBasics,
+				Name:    "JavaScript Basics",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizJavaScriptBasics)},
+			},
+			{
+				ID:      CourseStepIDComputerScienceBasics,
+				Name:    "Computer Science",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizComputerScience)},
+			},
+			{
+				ID:      CourseStepIDJavaScriptAdvanced,
+				Name:    "Advanced JavaScript",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizAdvancedJavaScript)},
+			},
+			{
+				ID:      CourseStepIDGit,
+				Name:    "Git",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizGit)},
+			}, {
+				ID:      CourseStepIDTypeScript,
+				Name:    "TypeScript",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizTypeScript)},
+			}, {
+				ID:      CourseStepIDNodeJS,
+				Name:    "NodeJS",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizNodeJS)},
+			}, {
+				ID:      CourseStepIDWebpack,
+				Name:    "Webpack",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizWebpack)},
+			}, {
+				ID:      CourseStepIDTestingJest,
+				Name:    "Testing with Jest",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizTestingJest)},
+			}, {
+				ID:      CourseStepIDReact,
+				Name:    "React",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizReact)},
+			}, {
+				ID:      CourseStepIDCIGithubActions,
+				Name:    "GitHub Actions",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizCIGithubActions)},
+			},
+		},
+	}, nil
+}
+
+func (q *CourseRepository) getBackendCourse() (course.Course, error) {
+
+	quizJavaBasics, err := q.getQuiz(CourseIDBackendDevelopment, QuizIDJavaBasics)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizCS, err := q.getQuiz(CourseIDBackendDevelopment, QuizIDCS)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizGit, err := q.getQuiz(CourseIDBackendDevelopment, QuizIDGit)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	return course.Course{
+		ID:   CourseIDBackendDevelopment,
+		Name: "Backend Development",
+		Steps: []course.Step{
+			{
+				ID:      CourseStepIDJavaBasics,
+				Name:    "Java Basics",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizJavaBasics)},
+			}, {
+				ID:      CourseStepIDCS,
+				Name:    "Computer Science",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizCS)},
+			}, {
+				ID:      CourseStepIDGit,
+				Name:    "Git",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizGit)},
+			},
+		},
+	}, nil
 }
 
 func (q *CourseRepository) getQuiz(courseID string, quizID string) (responseobject.StepQuiz, error) {

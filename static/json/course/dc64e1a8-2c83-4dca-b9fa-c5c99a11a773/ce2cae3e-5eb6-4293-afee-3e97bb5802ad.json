@@ -1,0 +1,339 @@
+{
+    "id": "ce2cae3e-5eb6-4293-afee-3e97bb5802ad",
+    "questions": [
+        {
+            "id": "c2d10116-9a0b-48dc-a8f7-7815d00a1fcf",
+            "text": "What is the file extension for a Java source file?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "f01d9b9e-79c1-4b20-b393-9e2a3e50911d",
+                    "text": ".java",
+                    "isCorrect": true,
+                    "description": "Java source files are typically saved with the extension .java."
+                },
+                {
+                    "id": "6e3fd26d-f99d-46e1-bca1-6719c3cd93ac",
+                    "text": ".jav",
+                    "isCorrect": false,
+                    "description": ".jav is not the standard file extension for Java source files."
+                },
+                {
+                    "id": "37a1b2e2-6b78-49f7-b60f-3a00cf7604bf",
+                    "text": ".js",
+                    "isCorrect": false,
+                    "description": ".js is used for JavaScript files, not Java source files."
+                },
+                {
+                    "id": "1e02e98d-d050-4bc7-b02b-4b125f2759d1",
+                    "text": ".jv",
+                    "isCorrect": false,
+                    "description": ".jv is not a standard file extension for Java source files."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        [
+            {
+                "id": "a1b2c3d4-e5f6-7890-g1h2-i3j4k5l6m7n8",
+                "text": "What is the purpose of the `main` method in Java?",
+                "difficulty": "easy",
+                "answers": [
+                    {
+                        "id": "aa11bb22-cc33-dd44-ee55-ff66gg77hh88",
+                        "text": "To define variables",
+                        "isCorrect": false,
+                        "description": "Variables can be defined anywhere in the program, not just in `main`."
+                    },
+                    {
+                        "id": "ii99jj88-kk77-ll66-mm55-nn44oo33pp22",
+                        "text": "To serve as the entry point for the program",
+                        "isCorrect": true,
+                        "description": "The `main` method is where the Java program starts its execution."
+                    },
+                    {
+                        "id": "qq11rr22-ss33-tt44-uu55-vv66ww77xx88",
+                        "text": "To create a loop",
+                        "isCorrect": false,
+                        "description": "Loops can be created in many places, not just in `main`."
+                    },
+                    {
+                        "id": "yy99zz88-aa77-bb66-cc55-dd44ee33ff22",
+                        "text": "To define a class",
+                        "isCorrect": false,
+                        "description": "A class is defined using the `class` keyword, not `main`."
+                    }
+                ],
+                "rating": 0,
+                "ratingCount": 0
+            },
+            {
+                "id": "a7b6c5d4-e3f2-1890-g1h4-i5j6k7l8m9n0",
+                "text": "What is the output of `System.out.println(5 + 3);`?",
+                "difficulty": "easy",
+                "answers": [
+                    {
+                        "id": "zz11yy22-xx33-ww44-vv55-uu66tt77ss88",
+                        "text": "53",
+                        "isCorrect": false,
+                        "description": "53 would be the output if it were a string concatenation."
+                    },
+                    {
+                        "id": "rr99qq88-pp77-oo66-nn55-mm44ll33kk22",
+                        "text": "8",
+                        "isCorrect": true,
+                        "description": "The expression `5 + 3` evaluates to 8, which is then printed."
+                    },
+                    {
+                        "id": "jj11ii22-hh33-gg44-ff55-ee66dd77cc88",
+                        "text": "5 + 3",
+                        "isCorrect": false,
+                        "description": "`5 + 3` is an arithmetic expression, not a string."
+                    },
+                    {
+                        "id": "bb99aa88-zz77-yy66-xx55-ww44vv33uu22",
+                        "text": "Error",
+                        "isCorrect": false,
+                        "description": "There is no error in the code."
+                    }
+                ],
+                "rating": 0,
+                "ratingCount": 0
+            },
+            {
+                "id": "b1a2d3c4-e5f4-6789-g0h1-i2j3k4l5m6n7",
+                "text": "What does the `if` statement do?",
+                "difficulty": "easy",
+                "answers": [
+                    {
+                        "id": "cc11dd22-ee33-ff44-gg55-hh66ii77jj88",
+                        "text": "Loops through code",
+                        "isCorrect": false,
+                        "description": "Looping is done using `for`, `while`, or `do-while`."
+                    },
+                    {
+                        "id": "mm99nn88-oo77-pp66-qq55-rr44ss33tt22",
+                        "text": "Defines a method",
+                        "isCorrect": false,
+                        "description": "Methods are defined using the `void` or other return types."
+                    },
+                    {
+                        "id": "uu11vv22-ww33-xx44-yy55-zz66aa77bb88",
+                        "text": "Executes code based on a condition",
+                        "isCorrect": true,
+                        "description": "The `if` statement checks a condition and executes the code block if the condition is true."
+                    },
+                    {
+                        "id": "ee99ff88-gg77-hh66-ii55-jj44kk33ll22",
+                        "text": "Declares a variable",
+                        "isCorrect": false,
+                        "description": "Variables are declared using data types like `int`, `float`, etc."
+                    }
+                ],
+                "rating": 0,
+                "ratingCount": 0
+            },
+            {
+                "id": "c1b2a3d4-e5f6-7890-g1h2-i3j4k5l6m7n8",
+                "text": "What is the purpose of a `return` statement in a method?",
+                "difficulty": "easy",
+                "answers": [
+                    {
+                        "id": "dd11cc22-bb33-aa44-zz55-yy66xx77ww88",
+                        "text": "To exit the program",
+                        "isCorrect": false,
+                        "description": "Exiting the program is done using `System.exit(0);`."
+                    },
+                    {
+                        "id": "gg99hh88-ii77-jj66-kk55-ll44mm33nn22",
+                        "text": "To return a value from the method",
+                        "isCorrect": true,
+                        "description": "The `return` statement is used to return a value from a method to the calling code."
+                    },
+                    {
+                        "id": "oo11pp22-qq33-rr44-ss55-tt66uu77vv88",
+                        "text": "To print a value",
+                        "isCorrect": false,
+                        "description": "Printing is done using `System.out.println();`."
+                    },
+                    {
+                        "id": "yy99zz88-aa77-bb66-cc55-dd44ee33ff22",
+                        "text": "To loop through code",
+                        "isCorrect": false,
+                        "description": "Looping is not the purpose of a `return` statement."
+                    }
+                ],
+                "rating": 0,
+                "ratingCount": 0
+            }
+        ],
+        [
+            {
+                "id": "01a2b3c4-d5e6-f7g8-h9i0-j1k2l3m4n5o6",
+                "text": "What does the keyword `static` signify in Java?",
+                "difficulty": "easy",
+                "answers": [
+                    {
+                        "id": "p1q2r3s4-t5u6-v7w8-x9y0-z1a2b3c4d5e6",
+                        "text": "The method can be accessed without creating an object",
+                        "isCorrect": true,
+                        "description": "The `static` keyword allows a method to be accessed without creating an instance of the class it belongs to."
+                    },
+                    {
+                        "id": "f1g2h3i4-j5k6-l7m8-n9o0-p1q2r3s4t5u6",
+                        "text": "The method will run automatically",
+                        "isCorrect": false,
+                        "description": "The method will not run automatically; it has to be called."
+                    },
+                    {
+                        "id": "v1w2x3y4-z5a6-b7c8-d9e0-f1g2h3i4j5k6",
+                        "text": "The method can be overridden",
+                        "isCorrect": false,
+                        "description": "`static` methods cannot be overridden in Java."
+                    },
+                    {
+                        "id": "l1m2n3o4-p5q6-r7s8-t9u0-v1w2x3y4z5a6",
+                        "text": "The method will throw an exception",
+                        "isCorrect": false,
+                        "description": "The `static` keyword has nothing to do with exceptions."
+                    }
+                ],
+                "rating": 0,
+                "ratingCount": 0
+            },
+            {
+                "id": "b7c8d9e0-f1g2-h3i4-j5k6-l7m8n9o0p1q2",
+                "text": "What is the purpose of a constructor in Java?",
+                "difficulty": "easy",
+                "answers": [
+                    {
+                        "id": "r3s4t5u6-v7w8-x9y0-z1a2-b3c4d5e6f7g8",
+                        "text": "To create a new object",
+                        "isCorrect": true,
+                        "description": "Constructors are special methods used for initializing new objects."
+                    },
+                    {
+                        "id": "h3i4j5k6-l7m8-n9o0-p1q2-r3s4t5u6v7w8",
+                        "text": "To modify an existing object",
+                        "isCorrect": false,
+                        "description": "Modifying an object is generally done through methods."
+                    },
+                    {
+                        "id": "w8x9y0z1-a2b3-c4d5-e6f7-g8h9i0j1k2l3",
+                        "text": "To delete an object",
+                        "isCorrect": false,
+                        "description": "Deleting objects is handled by the garbage collector."
+                    },
+                    {
+                        "id": "m8n9o0p1-q2r3-s4t5-u6v7-w8x9y0z1a2b3",
+                        "text": "To list all objects of a class",
+                        "isCorrect": false,
+                        "description": "Listing all objects of a class is not the purpose of a constructor."
+                    }
+                ],
+                "rating": 0,
+                "ratingCount": 0
+            },
+            {
+                "id": "c7d8e9f0-g1h2-i3j4-k5l6-m7n8o9p0q1r2",
+                "text": "What is the correct way to declare an integer variable named `age`?",
+                "difficulty": "easy",
+                "answers": [
+                    {
+                        "id": "s4t5u6v7-w8x9-y0z1-a2b3-c4d5e6f7g8h9",
+                        "text": "`int age;`",
+                        "isCorrect": true,
+                        "description": "In Java, the correct syntax to declare an integer variable is `int variableName;`."
+                    },
+                    {
+                        "id": "i4j5k6l7-m8n9-o0p1-q2r3-s4t5u6v7w8x9",
+                        "text": "`age int;`",
+                        "isCorrect": false,
+                        "description": "The type comes before the variable name."
+                    },
+                    {
+                        "id": "x9y0z1a2-b3c4-d5e6-f7g8-h9i0j1k2l3m4",
+                        "text": "`var age;`",
+                        "isCorrect": false,
+                        "description": "`var` is type inference and not specifically for integers."
+                    },
+                    {
+                        "id": "n9o0p1q2-r3s4-t5u6-v7w8-x9y0z1a2b3c4",
+                        "text": "`integer age;`",
+                        "isCorrect": false,
+                        "description": "`integer` is not a valid type in Java."
+                    }
+                ],
+                "rating": 0,
+                "ratingCount": 0
+            },
+            {
+                "id": "d7e8f9g0-h1i2-j3k4-l5m6-n7o8p9q0r1s2",
+                "text": "What is the result of the following condition: `5 == 5`?",
+                "difficulty": "easy",
+                "answers": [
+                    {
+                        "id": "t5u6v7w8-x9y0-z1a2-b3c4-d5e6f7g8h9i0",
+                        "text": "true",
+                        "isCorrect": true,
+                        "description": "The condition `5 == 5` checks for equality and returns true."
+                    },
+                    {
+                        "id": "j4k5l6m7-n8o9-p0q1-r2s3-t4u5v6w7x8y9",
+                        "text": "false",
+                        "isCorrect": false,
+                        "description": "The condition is true, not false."
+                    },
+                    {
+                        "id": "y0z1a2b3-c4d5-e6f7-g8h9-i0j1k2l3m4n5",
+                        "text": "0",
+                        "isCorrect": false,
+                        "description": "Java returns boolean values for conditions, not integers."
+                    },
+                    {
+                        "id": "o9p0q1r2-s3t4-u5v6-w7x8-y9z0a1b2c3d4",
+                        "text": "1",
+                        "isCorrect": false,
+                        "description": "Java uses `true` and `false`, not 1 and 0 for boolean values."
+                    }
+                ],
+                "rating": 0,
+                "ratingCount": 0
+            },
+            {
+                "id": "e7f8g9h0-i1j2-k3l4-m5n6-o7p8q9r0s1t2",
+                "text": "What is an interface in Java?",
+                "difficulty": "easy",
+                "answers": [
+                    {
+                        "id": "u6v7w8x9-y0z1-a2b3-c4d5-e6f7g8h9i0j1",
+                        "text": "A GUI component",
+                        "isCorrect": false,
+                        "description": "GUI components are not interfaces in the context of Java programming."
+                    },
+                    {
+                        "id": "k5l6m7n8-o9p0-q1r2-s3t4-u5v6w7x8y9z0",
+                        "text": "A collection of abstract methods",
+                        "isCorrect": true,
+                        "description": "An interface in Java is a reference type that is similar to a class and is a collection of abstract methods."
+                    },
+                    {
+                        "id": "z1a2b3c4-d5e6-f7g8-h9i0-j1k2l3m4n5o6",
+                        "text": "A data structure",
+                        "isCorrect": false,
+                        "description": "Data structures like arrays or lists are not interfaces."
+                    },
+                    {
+                        "id": "p0q1r2s3-t4u5-v6w7-x8y9-z0a1b2c3d4e5",
+                        "text": "A type of loop",
+                        "isCorrect": false,
+                        "description": "A loop is a control flow statement, not an interface."
+                    }
+                ],
+                "rating": 0,
+                "ratingCount": 0
+            }
+        ]
+    ]
+}

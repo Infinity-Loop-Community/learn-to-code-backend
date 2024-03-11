@@ -1,0 +1,665 @@
+{
+    "id": "492190b1-4123-4fcf-aeb8-dfaf2193309a",
+    "questions": [
+        {
+            "id": "1fc8da8f-3c03-44c1-a93f-04f61e5e6db7",
+            "text": "What is Docker?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "01bb36f6-1f13-41fd-b53d-8577f6db18d6",
+                    "text": "A version control system",
+                    "isCorrect": false,
+                    "description": "Version control systems like Git manage changes to source code."
+                },
+                {
+                    "id": "39d47d40-422a-4d3b-b4ac-11e61f33268d",
+                    "text": "A containerization platform",
+                    "isCorrect": true,
+                    "description": "Docker is a platform that enables developers to build, ship, and run applications in containers, which are lightweight, standalone, and executable software packages."
+                },
+                {
+                    "id": "1b52d017-efbb-4c34-8a21-d45ff42b4f35",
+                    "text": "A text editor",
+                    "isCorrect": false,
+                    "description": "Text editors like VS Code are used for writing and editing code."
+                },
+                {
+                    "id": "c2cd4b5e-1a7d-4705-bd9d-4fd3c17c1635",
+                    "text": "A programming language",
+                    "isCorrect": false,
+                    "description": "Programming languages like Java or Python are used to write software applications."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "1b0af4c6-31bb-4a4c-a51b-dc47c32e1fc4",
+            "text": "What is a Dockerfile used for?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "fd8c6463-39b4-4967-bdc7-10d5bf94ac69",
+                    "text": "Storing data",
+                    "isCorrect": false,
+                    "description": "Data storage is typically managed through volumes or databases."
+                },
+                {
+                    "id": "8a2af57d-89c1-4b30-b780-5e6f8f4c8253",
+                    "text": "Defining a container's environment",
+                    "isCorrect": true,
+                    "description": "A Dockerfile is a script that contains instructions for building a Docker image, which defines the environment for running a container."
+                },
+                {
+                    "id": "7b0f8a44-eb81-4d40-b236-32e063f0e203",
+                    "text": "Running containers",
+                    "isCorrect": false,
+                    "description": "Running containers is done using Docker commands."
+                },
+                {
+                    "id": "f1e2d70c-f324-4a3e-95a4-af0147c0c202",
+                    "text": "Monitoring containers",
+                    "isCorrect": false,
+                    "description": "Monitoring containers is generally done through logging and observability tools."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "9a3ad2cd-44c5-4fc3-9766-7fc454eff02f",
+            "text": "What is the purpose of Docker Compose?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "40e1d2a0-2f2e-4535-8b5f-bde9edcd1800",
+                    "text": "To compile Java code",
+                    "isCorrect": false,
+                    "description": "Compiling Java code is not the purpose of Docker Compose."
+                },
+                {
+                    "id": "01509c4d-7760-4342-8ae4-d56d545b792d",
+                    "text": "To define and run multi-container applications",
+                    "isCorrect": true,
+                    "description": "Docker Compose is a tool for defining and running multi-container Docker applications. It uses a YAML file to specify the services, networks, and volumes needed for an application."
+                },
+                {
+                    "id": "4c32fd8d-860d-4853-80ad-bb2022f35c54",
+                    "text": "To deploy containers to the cloud",
+                    "isCorrect": false,
+                    "description": "Deployment to the cloud is generally done through other tools or services."
+                },
+                {
+                    "id": "4db0d8c2-b499-459f-a6d3-b14d0c590e12",
+                    "text": "To edit source code",
+                    "isCorrect": false,
+                    "description": "Editing source code is done in text editors or IDEs."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "1cb1d65b-04ef-463b-9b1d-0b33a48d3a26",
+            "text": "What does a Docker image contain?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "2df15e49-0026-4915-8a13-c30d6ab66c1f",
+                    "text": "Only source code",
+                    "isCorrect": false,
+                    "description": "An image contains more than just source code."
+                },
+                {
+                    "id": "a78b75d1-7c5c-403b-8b1f-0eb5f4fc2c29",
+                    "text": "Only dependencies",
+                    "isCorrect": false,
+                    "description": "An image contains more than just dependencies."
+                },
+                {
+                    "id": "4f3d3a6b-d004-49d8-8378-ec3a6a3b38c3",
+                    "text": "Both source code and dependencies",
+                    "isCorrect": true,
+                    "description": "A Docker image contains both the application's source code and its dependencies, making it a standalone, executable package."
+                },
+                {
+                    "id": "3b163045-ae6b-476b-b1b8-98a0eb98c352",
+                    "text": "Neither source code nor dependencies",
+                    "isCorrect": false,
+                    "description": "An image is designed to be a complete package for running an application."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "2932e94b-f422-4be3-9fd3-3e4e482f0339",
+            "text": "What is a Docker container?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "6d0a8c5f-d3f2-41f0-88f1-19b08452e162",
+                    "text": "A running instance of a Docker image",
+                    "isCorrect": true,
+                    "description": "A Docker container is a running instance of a Docker image. It encapsulates the application and its environment."
+                },
+                {
+                    "id": "9ad3e3c6-d717-45f6-8fbf-64f121c9a9f7",
+                    "text": "A storage unit for data",
+                    "isCorrect": false,
+                    "description": "A storage unit for data is generally referred to as a volume in Docker terminology."
+                },
+                {
+                    "id": "303b28f0-38a2-43c5-a0ac-66b33f5a70da",
+                    "text": "A version control system",
+                    "isCorrect": false,
+                    "description": "Version control systems like Git are different from Docker."
+                },
+                {
+                    "id": "1c0fb78f-c5c7-4a44-9df1-74bdf5f94492",
+                    "text": "A cloud service",
+                    "isCorrect": false,
+                    "description": "Docker itself is not a cloud service, although it can interact with them."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "d0f4ef25-7e42-4b6b-9725-9985b15baf35",
+            "text": "What is a Docker volume?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "a8618d17-c15e-4a7a-a8eb-6bbd2da9ffab",
+                    "text": "A network protocol",
+                    "isCorrect": false,
+                    "description": "Network protocols are not related to Docker volumes."
+                },
+                {
+                    "id": "7bb0b2e3-10ec-4c1e-aed2-0663c09c0284",
+                    "text": "A storage mechanism for persistent data",
+                    "isCorrect": true,
+                    "description": "Docker volumes are used for storing persistent data generated by and used by Docker containers."
+                },
+                {
+                    "id": "dc8f773a-17c8-4e41-8310-70ff2de7b1a4",
+                    "text": "A container orchestration tool",
+                    "isCorrect": false,
+                    "description": "Container orchestration tools like Kubernetes are different from Docker volumes."
+                },
+                {
+                    "id": "e3a04341-9506-441b-b05c-86e95314e038",
+                    "text": "A security feature",
+                    "isCorrect": false,
+                    "description": "While security is important, it's not what Docker volumes are primarily used for."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "f10aa07a-f2da-4a92-bc15-18b70b7b76f3",
+            "text": "What is Docker Hub?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "3b9a3dcf-3cc0-4e9b-a9a1-6ecf19e0d490",
+                    "text": "A container orchestration tool",
+                    "isCorrect": false,
+                    "description": "Container orchestration tools like Kubernetes are different from Docker Hub."
+                },
+                {
+                    "id": "8b5a1b89-d99c-4523-bb0d-98a38497237a",
+                    "text": "A cloud-based registry service",
+                    "isCorrect": true,
+                    "description": "Docker Hub is a cloud-based registry service where you can upload and download Docker images."
+                },
+                {
+                    "id": "622bd17d-9d9f-46d7-b7e0-8f39f2b8a66a",
+                    "text": "A version control system",
+                    "isCorrect": false,
+                    "description": "Version control systems like Git are not the same as Docker Hub."
+                },
+                {
+                    "id": "ff77ee48-f0f2-40e8-ae3b-328ecf4330e7",
+                    "text": "A monitoring service",
+                    "isCorrect": false,
+                    "description": "Monitoring services are not the primary function of Docker Hub."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "c1f9357e-0b89-4a5b-afbb-309147b2a62b",
+            "text": "What is the primary language for writing Dockerfiles?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "bbf5a47f-77d8-42d4-9f10-647158ef6f29",
+                    "text": "YAML",
+                    "isCorrect": false,
+                    "description": "YAML is used for Docker Compose files, not Dockerfiles."
+                },
+                {
+                    "id": "2fc8d5b2-6934-43d7-8750-0e8bf7c2b8ae",
+                    "text": "JSON",
+                    "isCorrect": false,
+                    "description": "JSON is not used for writing Dockerfiles."
+                },
+                {
+                    "id": "825ad98e-6172-48cb-84cf-9c7bc6b5e7d9",
+                    "text": "Shell Script",
+                    "isCorrect": false,
+                    "description": "While shell commands can be run in a Dockerfile, the primary language is Dockerfile DSL."
+                },
+                {
+                    "id": "f3a6c5c6-f8ed-44bc-9b3c-d15ecbc6ff27",
+                    "text": "Dockerfile DSL",
+                    "isCorrect": true,
+                    "description": "Dockerfiles are written in Dockerfile DSL (Domain Specific Language), which is a set of specific commands understood by Docker for building images."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "4d90bb28-145e-4681-a184-45c7f34e86c4",
+            "text": "What is the command to build a Docker image?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "5844b389-ee81-4378-8c3f-5d861bf87c9a",
+                    "text": "docker run",
+                    "isCorrect": false,
+                    "description": "docker run is used to run a container."
+                },
+                {
+                    "id": "c27b9b6c-f83c-4d86-8058-88fb49d83ef4",
+                    "text": "docker pull",
+                    "isCorrect": false,
+                    "description": "docker pull is used to download an image."
+                },
+                {
+                    "id": "535a9a8b-8799-4f86-bf65-6f9fb144433a",
+                    "text": "docker push",
+                    "isCorrect": false,
+                    "description": "docker push is used to upload an image to a registry."
+                },
+                {
+                    "id": "8e7d4ff4-1169-4485-bb22-0764df4509e7",
+                    "text": "docker build",
+                    "isCorrect": true,
+                    "description": "The docker build command is used to build a Docker image from a Dockerfile."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "7b31ac18-255f-40f5-97ad-03fe5a2e4d36",
+            "text": "What is the command to run a Docker container?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "d2a31462-ba3a-4da4-8d4a-f17b8bc055e3",
+                    "text": "docker exec",
+                    "isCorrect": false,
+                    "description": "docker exec is used to run a command in a running container."
+                },
+                {
+                    "id": "ea156ad2-bff2-4040-90a7-3e8a07363bd0",
+                    "text": "docker build",
+                    "isCorrect": false,
+                    "description": "docker build is used to build an image."
+                },
+                {
+                    "id": "74218a94-769b-4f60-b162-ef36177e97aa",
+                    "text": "docker run",
+                    "isCorrect": true,
+                    "description": "The docker run command is used to create and start a Docker container from an image."
+                },
+                {
+                    "id": "9c71d62a-034b-4b39-bb5b-7931d80fd4b3",
+                    "text": "docker compose",
+                    "isCorrect": false,
+                    "description": "docker compose is used for defining and running multi-container applications."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "54be78c2-3ecf-48fb-8842-9a6b58c2dfe6",
+            "text": "What is the difference between a Docker image and a Docker container?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "f524f4d4-2cf7-44d2-816a-63d5a14db23a",
+                    "text": "They are the same",
+                    "isCorrect": false,
+                    "description": "They are fundamentally different."
+                },
+                {
+                    "id": "35240ee1-428b-4487-8ab8-c32846e0a92b",
+                    "text": "An image is a running instance, and a container is a static file",
+                    "isCorrect": false,
+                    "description": "This is the opposite of the correct answer."
+                },
+                {
+                    "id": "e7c6d151-52c4-4e6d-96fc-437f84d30b28",
+                    "text": "An image is a static file, and a container is a running instance",
+                    "isCorrect": true,
+                    "description": "A Docker image is a static file that contains the application and its dependencies, while a Docker container is a running instance of that image."
+                },
+                {
+                    "id": "d35c3073-432b-4924-bb91-2c61f2dbf52f",
+                    "text": "A container is a newer version of an image",
+                    "isCorrect": false,
+                    "description": "A container is not necessarily a newer version of an image."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "a5ec22a1-d1b0-42b3-a185-53b36ef1e125",
+            "text": "What is the purpose of the `EXPOSE` command in a Dockerfile?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "9db6b55d-3b8b-48a2-8b73-37f45b74ad2a",
+                    "text": "To expose environment variables",
+                    "isCorrect": false,
+                    "description": "Environment variables are managed using the **`ENV`** command."
+                },
+                {
+                    "id": "b295b20a-7d34-44f0-964f-479ad00a4f45",
+                    "text": "To expose a network port",
+                    "isCorrect": true,
+                    "description": "The **`EXPOSE`** command in a Dockerfile informs Docker that the container will listen on the specified network ports at runtime."
+                },
+                {
+                    "id": "f0d68ea9-c525-4a68-a9e5-8d5d6a2246f7",
+                    "text": "To expose a volume",
+                    "isCorrect": false,
+                    "description": "Volumes are managed using the **`VOLUME`** command."
+                },
+                {
+                    "id": "a35b5986-b43f-4575-af6c-d4d0c99f6c59",
+                    "text": "To expose a service",
+                    "isCorrect": false,
+                    "description": "Services are generally defined in Docker Compose files."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "8721f432-b5a5-44dc-b058-d7c3b0ee63cb",
+            "text": "What is the purpose of the `CMD` command in a Dockerfile?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "1cb2aa00-9de4-4eaf-87db-eb66d45121d5",
+                    "text": "To execute shell commands during build",
+                    "isCorrect": false,
+                    "description": "Shell commands during build are executed using the **`RUN`** command."
+                },
+                {
+                    "id": "fc57cd9b-fec4-4e49-8584-e38e5a30f4cd",
+                    "text": "To specify the default command to run when the container starts",
+                    "isCorrect": true,
+                    "description": "The **`CMD`** command in a Dockerfile specifies the default command that will be executed when the container is run."
+                },
+                {
+                    "id": "f1e75e32-133b-498e-bb9f-90b20af6d2e1",
+                    "text": "To copy files into the image",
+                    "isCorrect": false,
+                    "description": "Files are copied using the **`COPY`** command."
+                },
+                {
+                    "id": "66d317fc-8a7e-4ac5-8e41-4e32db7a9298",
+                    "text": "To set environment variables",
+                    "isCorrect": false,
+                    "description": "Environment variables are set using the **`ENV`** command."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "c614eb07-4c74-4f84-a3b2-f7895dbbb7f8",
+            "text": "What is Docker Swarm?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "32a2720f-bf18-4d36-8f07-50dfe71c318e",
+                    "text": "A container registry",
+                    "isCorrect": false,
+                    "description": "A container registry is where Docker images are stored."
+                },
+                {
+                    "id": "f3dc349b-5c65-4aa0-9f7f-b19e43decb22",
+                    "text": "A container orchestration platform",
+                    "isCorrect": true,
+                    "description": "Docker Swarm is a native clustering and orchestration solution for Docker. It allows you to manage multiple containers deployed across multiple host machines."
+                },
+                {
+                    "id": "73919ef1-2d23-424a-b0e0-2da91f0df1b4",
+                    "text": "A version control system",
+                    "isCorrect": false,
+                    "description": "Version control systems like Git are not related to Docker Swarm."
+                },
+                {
+                    "id": "4d09b23a-1d9c-43b1-9a23-d7b027edbc97",
+                    "text": "A monitoring tool",
+                    "isCorrect": false,
+                    "description": "Monitoring tools are separate from Docker Swarm, although Swarm does have some basic monitoring capabilities."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "db3b6993-f3e7-4935-9767-97ee1a71960e",
+            "text": "What is the `docker-compose up` command used for?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "64ec8dcb-fdb8-4dfb-9fd2-2a748b049a5c",
+                    "text": "To build images defined in a **`docker-compose.yml`** file",
+                    "isCorrect": false,
+                    "description": "While it can build images if they don't exist, its primary function is to start services."
+                },
+                {
+                    "id": "7e0b02dc-9027-4f34-af62-ba415e9e71ff",
+                    "text": "To start services defined in a **`docker-compose.yml`** file",
+                    "isCorrect": true,
+                    "description": "The **`docker-compose up`** command is used to start up all the services defined in a **`docker-compose.yml`** file."
+                },
+                {
+                    "id": "0f8e48da-7704-487e-9d52-c647b2d15620",
+                    "text": "To upload images to Docker Hub",
+                    "isCorrect": false,
+                    "description": "Uploading images to Docker Hub is done using **`docker push`**."
+                },
+                {
+                    "id": "c8b78794-1ac1-4981-85aa-e940788059fc",
+                    "text": "To download images from Docker Hub",
+                    "isCorrect": false,
+                    "description": "Downloading images is done using **`docker pull`**."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "2e42b1ff-2b1e-4652-bf07-b786ad584532",
+            "text": "What is the `--link` flag used for in Docker?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "7dd93f26-00a6-4f02-9c5a-86cb85c4f50e",
+                    "text": "To link two containers",
+                    "isCorrect": true,
+                    "description": "The **`--link`** flag is used to link two containers, allowing them to communicate with each other. However, it's considered a legacy feature and is generally replaced by Docker networks."
+                },
+                {
+                    "id": "e6189d17-c7e1-4dc0-9a0e-35d7c0883d35",
+                    "text": "To link a container to a volume",
+                    "isCorrect": false,
+                    "description": "Volumes are not linked using the **`--link`** flag."
+                },
+                {
+                    "id": "4aa4c200-0523-4b70-a124-0c1d931ecb30",
+                    "text": "To link a container to a network",
+                    "isCorrect": false,
+                    "description": "Networks are generally managed differently."
+                },
+                {
+                    "id": "d52b3a2c-14bb-40d8-b3ed-2e1a89f86e42",
+                    "text": "To link a container to a Dockerfile",
+                    "isCorrect": false,
+                    "description": "A Dockerfile is not linked to a container using the **`--link`** flag."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "ae3e0619-3946-43cb-a108-62d84f0c26f8",
+            "text": "What is the purpose of a `.dockerignore` file?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "9d015c26-f436-45b6-b77f-75a9e4d2c833",
+                    "text": "To specify files and directories to ignore during a **`docker build`**",
+                    "isCorrect": true,
+                    "description": "A **`.dockerignore`** file is used to specify files and directories that should be ignored during the **`docker build`** process, similar to how **`.gitignore`** works for Git."
+                },
+                {
+                    "id": "46d2b48c-f058-4a0f-89cc-8a4ac8c2efc0",
+                    "text": "To specify environment variables",
+                    "isCorrect": false,
+                    "description": "Environment variables are generally set in the Dockerfile or Docker Compose file."
+                },
+                {
+                    "id": "0592b3b8-0c50-4a28-bc6d-8db66cd7e4d3",
+                    "text": "To specify network settings",
+                    "isCorrect": false,
+                    "description": "Network settings are not managed through **`.dockerignore`**."
+                },
+                {
+                    "id": "ab80aabb-8a0c-48da-975e-ae4f27676043",
+                    "text": "To specify container orchestration settings",
+                    "isCorrect": false,
+                    "description": "Container orchestration settings are generally managed in Docker Compose or other orchestration tools."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "a17b67cd-08d0-4f28-9586-e7d0d92d6d2b",
+            "text": "What is the purpose of Docker namespaces?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "ed52d17b-5e6f-4ecf-88db-7cf707916f57",
+                    "text": "To provide isolation between containers",
+                    "isCorrect": true,
+                    "description": "Docker uses namespaces to provide a layer of isolation between containers. Namespaces restrict what a container can see and do, thereby enhancing security and isolation."
+                },
+                {
+                    "id": "e2df8a91-23c5-4d47-90e4-5b4ec9b1d4e1",
+                    "text": "To specify build settings",
+                    "isCorrect": false,
+                    "description": "Build settings are generally specified in the Dockerfile."
+                },
+                {
+                    "id": "a17b3a9d-4564-46c5-8b76-0d085a259b41",
+                    "text": "To manage volumes",
+                    "isCorrect": false,
+                    "description": "Volumes are managed through other mechanisms."
+                },
+                {
+                    "id": "43c3d00f-b1f7-47f0-97e0-0134a8f8c04c",
+                    "text": "To manage images",
+                    "isCorrect": false,
+                    "description": "Images are not managed through namespaces."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "cf25d1d1-bcf5-4494-8e97-49d293a8b547",
+            "text": "What is the `docker exec` command used for?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "1348b54c-41f6-4927-8e1b-d0477c60c92f",
+                    "text": "To execute a command in a running container",
+                    "isCorrect": true,
+                    "description": "The **`docker exec`** command is used to execute a command in a running container, often for debugging or administrative tasks."
+                },
+                {
+                    "id": "5e2a1688-1c67-49b2-854d-b1d242a92277",
+                    "text": "To execute a command in a stopped container",
+                    "isCorrect": false,
+                    "description": "Commands cannot be executed in a stopped container."
+                },
+                {
+                    "id": "83e0ab36-5e40-4c76-b55a-9978b8af8819",
+                    "text": "To stop a running container",
+                    "isCorrect": false,
+                    "description": "Stopping a container is done using **`docker stop`**."
+                },
+                {
+                    "id": "1181ffcb-dc1e-4b63-8c56-39ed08e080b3",
+                    "text": "To build a Docker image",
+                    "isCorrect": false,
+                    "description": "Building a Docker image is done using **`docker build`**."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "fd2bc451-048d-4994-a1e8-3659b66589a7",
+            "text": "What is a Docker service in the context of Docker Swarm?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "b3ba28f3-3b1a-4f0e-bc18-8c858f71f5aa",
+                    "text": "A group of containers with the same image and configuration",
+                    "isCorrect": true,
+                    "description": "In the context of Docker Swarm, a service is a group of containers that are created from the same image and share the same configuration. Services allow you to scale and manage containers more easily."
+                },
+                {
+                    "id": "8c1a31ed-61fd-4f65-a0c5-7862ae23c379",
+                    "text": "A single container",
+                    "isCorrect": false,
+                    "description": "A single container is not considered a service in Docker Swarm."
+                },
+                {
+                    "id": "0f191d24-d1c0-42e7-8a82-4f4b890cc0e3",
+                    "text": "A Docker registry",
+                    "isCorrect": false,
+                    "description": "A Docker registry is not a service in the context of Docker Swarm."
+                },
+                {
+                    "id": "9ad6f097-ae48-4c62-8b02-84a416e0529e",
+                    "text": "A network protocol",
+                    "isCorrect": false,
+                    "description": "Network protocols are not services in the context of Docker Swarm."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        }
+    ]
+}

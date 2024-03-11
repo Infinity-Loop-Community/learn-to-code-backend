@@ -1,0 +1,665 @@
+{
+    "id": "6c37bc46-05cf-4746-9c70-2a11545030fd",
+    "questions": [
+        {
+            "id": "4f598c21-0d6c-47b8-b570-ec1d0690a1e5",
+            "text": "What is the primary purpose of GitHub Actions?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "1b428d18-9293-40b5-903e-61485c8c1ba9",
+                    "text": "Social networking for developers",
+                    "isCorrect": false,
+                    "description": "GitHub Actions is designed for automation of software development workflows, not social networking."
+                },
+                {
+                    "id": "cbe97df2-10ad-4bfa-9b2d-989f4c0f1843",
+                    "text": "Automating workflows",
+                    "isCorrect": true,
+                    "description": "GitHub Actions is specifically created to automate various tasks in software development workflows."
+                },
+                {
+                    "id": "b73d35e6-0127-4e99-9b7f-73d6ec3a6ff7",
+                    "text": "Code review",
+                    "isCorrect": false,
+                    "description": "While GitHub offers code review features, GitHub Actions is not primarily for code review."
+                },
+                {
+                    "id": "6f0af62b-dbb0-45b6-951d-80b63f3f4ba4",
+                    "text": "Database management",
+                    "isCorrect": false,
+                    "description": "Database management is not the main purpose of GitHub Actions, which focuses on workflow automation."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "7a0f48e4-70d6-4a17-ae36-1d9535d261d4",
+            "text": "What is Gradle primarily used for?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "7365a417-bbe5-43b3-9dd4-3b2e0c2f2f82",
+                    "text": "Text editing",
+                    "isCorrect": false,
+                    "description": "Gradle is primarily used for build automation, not text editing."
+                },
+                {
+                    "id": "b14af278-7549-41db-b5df-7fcb462f11a3",
+                    "text": "Build automation",
+                    "isCorrect": true,
+                    "description": "Gradle is a build automation tool that handles dependency resolution, compilation, packaging, and more."
+                },
+                {
+                    "id": "da0a0027-79ac-4eae-9a6c-f759ad3eef8d",
+                    "text": "Version control",
+                    "isCorrect": false,
+                    "description": "Version control is not the primary purpose of Gradle."
+                },
+                {
+                    "id": "b588fb34-f9c7-4981-aa32-7485c52d8896",
+                    "text": "Networking",
+                    "isCorrect": false,
+                    "description": "Networking is not the main function of Gradle."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "df8d0d3b-12ff-4d63-8a08-6f8a92ee2d11",
+            "text": "What language is primarily used for writing GitHub Actions workflows?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "02400f2b-2b91-4f0e-8fe0-860af3b4c198",
+                    "text": "Python",
+                    "isCorrect": false,
+                    "description": "While Python can be used in a step, GitHub Actions workflows are primarily defined in YAML."
+                },
+                {
+                    "id": "15de8e7a-6b76-4797-98c3-1aa6bf1f2d22",
+                    "text": "YAML",
+                    "isCorrect": true,
+                    "description": "GitHub Actions workflows are primarily written in YAML to define the steps and actions."
+                },
+                {
+                    "id": "95ae9de6-61e1-4b2d-890e-64aafbdd4447",
+                    "text": "Java",
+                    "isCorrect": false,
+                    "description": "Java is not used for defining GitHub Actions workflows."
+                },
+                {
+                    "id": "c0a1a5f8-3f1e-4e38-bc48-dcfb5e1e04d8",
+                    "text": "SQL",
+                    "isCorrect": false,
+                    "description": "SQL is not used in GitHub Actions workflows."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "b7f4a0fb-92d2-48aa-bc10-1e1985a8d2b5",
+            "text": "What is a Docker image?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "06460c20-bd51-4f27-8418-95efc99a7fbf",
+                    "text": "A screenshot of a container",
+                    "isCorrect": false,
+                    "description": "A Docker image is not a screenshot of a container."
+                },
+                {
+                    "id": "73260b58-b0de-468a-ae85-1a1683bc93b5",
+                    "text": "A lightweight standalone executable package",
+                    "isCorrect": true,
+                    "description": "A Docker image is a lightweight, standalone package containing everything needed to run a piece of software."
+                },
+                {
+                    "id": "55699b5d-dcd4-49f7-8f6d-61e0d1d2d7f8",
+                    "text": "A version control system",
+                    "isCorrect": false,
+                    "description": "A Docker image is not a version control system."
+                },
+                {
+                    "id": "7b1d4d9a-26db-4d7c-83e5-3fbf370ef67f",
+                    "text": "A text editor",
+                    "isCorrect": false,
+                    "description": "A Docker image is not a text editor."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "768b78f5-2d8d-4dd8-84c5-82a4f0b5cfd9",
+            "text": "What does CI/CD stand for?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "314a8978-9917-4ec9-a6a4-b54da53d545f",
+                    "text": "Continuous Integration/Continuous Deployment",
+                    "isCorrect": true,
+                    "description": "CI/CD stands for Continuous Integration and Continuous Deployment, automating the build, test, and deployment phases."
+                },
+                {
+                    "id": "a2e5b3cf-1a90-40c4-9a97-331b0b9b1a84",
+                    "text": "Code Inspection/Code Debugging",
+                    "isCorrect": false,
+                    "description": "CI/CD does not stand for Code Inspection/Code Debugging."
+                },
+                {
+                    "id": "7e7756ff-55e2-4d29-935a-e62c336b3184",
+                    "text": "Container Initialization/Container Deletion",
+                    "isCorrect": false,
+                    "description": "CI/CD does not stand for Container Initialization/Container Deletion."
+                },
+                {
+                    "id": "2c6ed7de-fb44-4eb7-83ac-6f8583fd42d5",
+                    "text": "Command Interface/Command Directory",
+                    "isCorrect": false,
+                    "description": "CI/CD does not stand for Command Interface/Command Directory."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "f6f07327-d06d-4d6f-bd5d-0fbd01c8e1a1",
+            "text": "What is the main advantage of using a build automation tool like Gradle?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "c3ee82d3-f2e5-49e8-9524-0127ddbc116e",
+                    "text": "Social networking",
+                    "isCorrect": false,
+                    "description": "The main advantage of using Gradle is automating repetitive tasks, not social networking."
+                },
+                {
+                    "id": "e5bea16f-9377-4de1-8654-75aaf2580970",
+                    "text": "Automating repetitive tasks",
+                    "isCorrect": true,
+                    "description": "Gradle helps automate tasks like compilation, testing, and packaging, improving efficiency."
+                },
+                {
+                    "id": "e8c1b29c-21f4-4b8c-9354-0f276a4fb52d",
+                    "text": "Web hosting",
+                    "isCorrect": false,
+                    "description": "Web hosting is not a primary feature of Gradle."
+                },
+                {
+                    "id": "da4944a8-30c6-4d53-9b22-0f92429e290b",
+                    "text": "Data analysis",
+                    "isCorrect": false,
+                    "description": "Data analysis is not the main purpose of Gradle."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "0d9a3d5e-8c71-45fc-bbd9-3ff4de39d657",
+            "text": "What is a GitHub repository primarily used for?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "79a17bc3-37fc-4b8d-9295-5b019b34426b",
+                    "text": "Storing code",
+                    "isCorrect": true,
+                    "description": "A GitHub repository is mainly used for storing code and managing version control."
+                },
+                {
+                    "id": "0d4de588-d118-4d32-9fc5-3c99e20e6c7c",
+                    "text": "Video conferencing",
+                    "isCorrect": false,
+                    "description": "Video conferencing is not a primary function of a GitHub repository."
+                },
+                {
+                    "id": "01848df8-89cd-43ef-8761-fcba8cc12ae4",
+                    "text": "Database management",
+                    "isCorrect": false,
+                    "description": "Database management is not the main purpose of a GitHub repository."
+                },
+                {
+                    "id": "67079c3d-15fc-4e48-bd38-b560279d6ec1",
+                    "text": "Graphic design",
+                    "isCorrect": false,
+                    "description": "Graphic design is not the primary function of a GitHub repository."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "0196b4b1-2c05-4827-9ad4-5d0f6948d1ac",
+            "text": "What is a 'workflow' in the context of GitHub Actions?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "5eab58de-e38a-42d4-b5a6-8d41b9bc5220",
+                    "text": "A sequence of jobs",
+                    "isCorrect": true,
+                    "description": "In GitHub Actions, a workflow is a configurable automated process made up of one or more jobs."
+                },
+                {
+                    "id": "e7e85068-3d29-4791-9ff2-1936de65be4b",
+                    "text": "A chat application",
+                    "isCorrect": false,
+                    "description": "A workflow in GitHub Actions is not a chat application."
+                },
+                {
+                    "id": "8d54d843-e25d-40f5-847a-8f5f507d7738",
+                    "text": "A file format",
+                    "isCorrect": false,
+                    "description": "A workflow in GitHub Actions is not defined as a file format."
+                },
+                {
+                    "id": "5821e82c-44b5-462d-bde9-73c5f399b49d",
+                    "text": "A type of database",
+                    "isCorrect": false,
+                    "description": "A workflow in GitHub Actions is not a type of database."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "95aeb527-4c9f-4a47-9d5d-df3d30335c7b",
+            "text": "What is the primary purpose of a Docker container?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "8d921b24-67b1-4d3f-a166-547d416190f7",
+                    "text": "To run a specific task or set of tasks",
+                    "isCorrect": true,
+                    "description": "The primary purpose of a Docker container is to run specific tasks, often as part of a larger application."
+                },
+                {
+                    "id": "f5a300f7-5e6b-4e6b-bbf0-d29f9df2e858",
+                    "text": "To act as a virtual machine",
+                    "isCorrect": false,
+                    "description": "While similar to a virtual machine, Docker containers serve a different purpose."
+                },
+                {
+                    "id": "1b5a5a9b-6d92-4d9c-b0f3-b45772556480",
+                    "text": "To store data",
+                    "isCorrect": false,
+                    "description": "Storing data is not the primary purpose of a Docker container."
+                },
+                {
+                    "id": "af8a27c7-8005-4c3f-8f4a-025a6da420f6",
+                    "text": "To manage network traffic",
+                    "isCorrect": false,
+                    "description": "Managing network traffic is not the primary purpose of a Docker container."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "cc5b812d-54bc-4269-b80a-4ac80f786157",
+            "text": "What does an 'action' in GitHub Actions do?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "d0d58850-9c58-470f-bb7a-7b738d226729",
+                    "text": "Sends an email",
+                    "isCorrect": false,
+                    "description": "While an action could potentially send an email, it is not the primary purpose of a GitHub Action."
+                },
+                {
+                    "id": "ed4c7737-5d12-4343-bf5f-47ab6be6400b",
+                    "text": "Performs a specific task in a workflow",
+                    "isCorrect": true,
+                    "description": "An action in GitHub Actions performs a specific task within a workflow."
+                },
+                {
+                    "id": "29b70d8e-cdbd-4a1a-badb-3f906b36d5cd",
+                    "text": "Creates a new repository",
+                    "isCorrect": false,
+                    "description": "Creating a new repository is not what an action does in GitHub Actions."
+                },
+                {
+                    "id": "7d0e79e1-1ed3-4b89-836f-56e75db2f6e1",
+                    "text": "Deletes a file",
+                    "isCorrect": false,
+                    "description": "Deleting a file is not the primary purpose of an action in GitHub Actions."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "c9e7b71c-4a19-4f14-b073-001c8ac902ec",
+            "text": "How can you securely store sensitive information for use in GitHub Actions?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "f1e15c9e-15f6-44a4-8fb6-5dd83d5c150a",
+                    "text": "Hardcode them in the workflow file",
+                    "isCorrect": false,
+                    "description": "Hardcoding sensitive information is insecure and not recommended."
+                },
+                {
+                    "id": "b5b4da47-2341-4697-b495-6e16f53bf497",
+                    "text": "Use GitHub Secrets",
+                    "isCorrect": true,
+                    "description": "GitHub Secrets provide a secure way to store sensitive information like API keys and passwords for use in GitHub Actions workflows."
+                },
+                {
+                    "id": "76d7b1e5-60f8-47a1-9507-2fb4d06b65c6",
+                    "text": "Store them in a public repository",
+                    "isCorrect": false,
+                    "description": "Storing sensitive information in a public repository is insecure."
+                },
+                {
+                    "id": "36e1b019-6ad0-4c5c-8c6e-b59bb5e3a9cd",
+                    "text": "Email them to team members",
+                    "isCorrect": false,
+                    "description": "Emailing sensitive information is not secure and not recommended."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "8c88cddf-fd5a-45f8-8356-125fa42c706f",
+            "text": "What is the Gradle Daemon and why is it useful?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "2b1d40d0-63c9-4f9f-9c77-d8273dc9ecbf",
+                    "text": "A security feature to protect code",
+                    "isCorrect": false,
+                    "description": "The Gradle Daemon is not primarily a security feature."
+                },
+                {
+                    "id": "f9a90319-c24b-4406-8da2-7d8a416345b8",
+                    "text": "A background process to speed up build times",
+                    "isCorrect": true,
+                    "description": "The Gradle Daemon caches build information and keeps build-related data hot in memory, speeding up build times."
+                },
+                {
+                    "id": "3245bbee-3f07-4f82-98bb-7fcf63a3f5aa",
+                    "text": "A version control system",
+                    "isCorrect": false,
+                    "description": "The Gradle Daemon is not a version control system."
+                },
+                {
+                    "id": "6b3d9eb8-e207-4d06-8e6f-5de9dce62120",
+                    "text": "A networking protocol",
+                    "isCorrect": false,
+                    "description": "The Gradle Daemon is not a networking protocol."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "c4a5a7b8-31af-405e-8495-d1d6e706c586",
+            "text": "What is the significance of a 'Dockerfile'?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "a27503e6-684d-47e5-bb69-ae33a90b7585",
+                    "text": "It's a configuration file for Docker Compose",
+                    "isCorrect": false,
+                    "description": "A Dockerfile is not a configuration file for Docker Compose."
+                },
+                {
+                    "id": "e8f84cd1-d477-4b78-82bb-0ae6a05f8577",
+                    "text": "It's a script to build a Docker image",
+                    "isCorrect": true,
+                    "description": "A Dockerfile contains instructions to build a Docker image."
+                },
+                {
+                    "id": "aa78d63c-ec9d-4b90-9a3e-b2e19129c498",
+                    "text": "It's a database file for Docker",
+                    "isCorrect": false,
+                    "description": "A Dockerfile is not a database file for Docker."
+                },
+                {
+                    "id": "4d06dcbb-2d42-4b8c-93b7-3e0dc4b42036",
+                    "text": "It's a log file for Docker operations",
+                    "isCorrect": false,
+                    "description": "A Dockerfile is not a log file for Docker operations."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "224a66d2-c58a-4e8c-9f33-fc8b5d5d4704",
+            "text": "What is the purpose of 'matrix builds' in GitHub Actions?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "2f5599f3-d3b8-43a2-9913-21279dca4fd5",
+                    "text": "To perform arithmetic calculations",
+                    "isCorrect": false,
+                    "description": "Matrix builds are not for performing arithmetic calculations."
+                },
+                {
+                    "id": "1f9367b3-c0ef-4e95-8162-c0b49e7e1e14",
+                    "text": "To run tests on multiple versions of a language or environment",
+                    "isCorrect": true,
+                    "description": "Matrix builds allow running tests on various versions of a language or different environments concurrently."
+                },
+                {
+                    "id": "4da00a2a-f18e-44b4-bdd8-e31d5c537802",
+                    "text": "To create a graphical representation of data",
+                    "isCorrect": false,
+                    "description": "Matrix builds are not for creating graphical representations."
+                },
+                {
+                    "id": "8f26fb6c-7b7b-4c45-a405-90c92dc7ac13",
+                    "text": "To encrypt data",
+                    "isCorrect": false,
+                    "description": "Matrix builds are not primarily for encrypting data."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "56dc66e8-73b0-4f34-8470-21b4b0789a5d",
+            "text": "What is 'caching' in the context of Gradle?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "15725520-5db0-49c4-88d2-c5c6409ed8cf",
+                    "text": "Storing frequently used data to speed up builds",
+                    "isCorrect": true,
+                    "description": "Caching in Gradle involves storing frequently accessed data or build outputs to speed up subsequent builds."
+                },
+                {
+                    "id": "6f535efb-e810-414d-870f-595e487c2b85",
+                    "text": "Encrypting sensitive data",
+                    "isCorrect": false,
+                    "description": "Caching is not primarily for encrypting sensitive data."
+                },
+                {
+                    "id": "a66d8539-d3d0-4414-96c7-7c42f0d83aa3",
+                    "text": "Compressing files for storage",
+                    "isCorrect": false,
+                    "description": "Caching is not primarily for compressing files."
+                },
+                {
+                    "id": "8915e8b2-2927-4c7c-9aa6-110ec84e0d64",
+                    "text": "Deleting old build artifacts",
+                    "isCorrect": false,
+                    "description": "Caching is not primarily for deleting old build artifacts."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "d47c0b86-8c5c-4cfb-bb80-d360f00eac7a",
+            "text": "How can you optimize a Docker image for a Java application?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "d66c15d1-c786-4a8b-972b-4377b3e05579",
+                    "text": "By using a multi-stage build",
+                    "isCorrect": true,
+                    "description": "Multi-stage builds allow creating smaller and more optimized Docker images for Java applications."
+                },
+                {
+                    "id": "e90d4e4d-4c1d-4a0c-9c39-cd7e87698a3a",
+                    "text": "By increasing the image size",
+                    "isCorrect": false,
+                    "description": "Increasing the image size does not optimize it."
+                },
+                {
+                    "id": "2a994894-9829-4672-85e0-c9c9e1197781",
+                    "text": "By adding unnecessary files",
+                    "isCorrect": false,
+                    "description": "Adding unnecessary files would make the image less efficient."
+                },
+                {
+                    "id": "4f6c34b1-b363-4d7b-92cf-2e06286d142b",
+                    "text": "By running multiple services in one container",
+                    "isCorrect": false,
+                    "description": "Running multiple services in one container is generally not recommended for optimization."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "02a03b89-8687-4875-bc94-312a9f418fb0",
+            "text": "How can you trigger a GitHub Actions workflow only for specific branches?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "6115f9db-77b2-49dc-b21b-308b6b3d71db",
+                    "text": "By using the **`branches`** keyword in the workflow YAML file",
+                    "isCorrect": true,
+                    "description": "You can specify branch triggers in the GitHub Actions workflow YAML file using the **`branches`** keyword."
+                },
+                {
+                    "id": "5b4914ff-13a2-4c39-bd4f-3eb3b7a49d5d",
+                    "text": "By manually running the workflow",
+                    "isCorrect": false,
+                    "description": "Manual runs do not restrict the workflow to specific branches."
+                },
+                {
+                    "id": "5ffdc94f-75ed-4864-8166-89e3a67cf330",
+                    "text": "By using a third-party tool",
+                    "isCorrect": false,
+                    "description": "Using third-party tools is unnecessary for this functionality."
+                },
+                {
+                    "id": "b7988822-4eae-40d4-94e1-3b03cbb1ebc3",
+                    "text": "By emailing GitHub support",
+                    "isCorrect": false,
+                    "description": "Emailing GitHub support is not how you configure workflow triggers."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "9b99e542-8712-41c0-a7a7-fa6814d15b76",
+            "text": "What is the 'build scan' feature in Gradle?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "78f312b9-3b30-4d0f-8ba3-57b8ac7d26fd",
+                    "text": "A tool for sharing insights about your build",
+                    "isCorrect": true,
+                    "description": "Build scans provide insights into your Gradle build by collecting and presenting data."
+                },
+                {
+                    "id": "2a14b108-ee1b-4a17-b4a6-83c675cbf0f3",
+                    "text": "A security vulnerability scanner",
+                    "isCorrect": false,
+                    "description": "Build scans are not primarily for security vulnerability scanning."
+                },
+                {
+                    "id": "84d00b30-2d14-4fc2-8f05-d9b7e2ad7ee0",
+                    "text": "A code formatter",
+                    "isCorrect": false,
+                    "description": "Build scans are not code formatters."
+                },
+                {
+                    "id": "19b68710-ec5e-4e0b-9c8f-c62beaf1f1e1",
+                    "text": "A network monitor",
+                    "isCorrect": false,
+                    "description": "Build scans are not network monitors."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "3693d0a5-6375-4c1f-bfc4-539b74fe7c1c",
+            "text": "How can you minimize the build time in a GitHub Actions workflow?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "7a4b09b8-464e-4e91-b622-0400cbf29678",
+                    "text": "By using caching mechanisms",
+                    "isCorrect": true,
+                    "description": "Caching dependencies and frequently used data can reduce the build time significantly."
+                },
+                {
+                    "id": "b00a3203-86c4-47f8-bc4c-9a7e19a169a7",
+                    "text": "By adding more steps to the workflow",
+                    "isCorrect": false,
+                    "description": "Adding more steps could increase the build time."
+                },
+                {
+                    "id": "c7b8cb4f-208f-4bc4-80b6-8f20d3d010d7",
+                    "text": "By running all jobs sequentially",
+                    "isCorrect": false,
+                    "description": "Running all jobs sequentially could make the workflow slower."
+                },
+                {
+                    "id": "a1a9db16-dce2-4967-8268-c8048f87b3b7",
+                    "text": "By avoiding the use of environment variables",
+                    "isCorrect": false,
+                    "description": "Environment variables have minimal impact on build time."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "e76759a7-bbae-4247-bc8c-69356e0b1273",
+            "text": "What is 'configuration as code' in the context of CI/CD pipelines?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "235b1233-f1d4-40ab-8097-8a8bf8f4a9a1",
+                    "text": "Storing the pipeline configuration as code in version control",
+                    "isCorrect": true,
+                    "description": "'Configuration as code' means storing pipeline configurations as code files in version control."
+                },
+                {
+                    "id": "3c102106-2a9d-4d46-bca8-6b48e07f5c7f",
+                    "text": "Writing documentation for your pipeline",
+                    "isCorrect": false,
+                    "description": "Documentation is important but not 'configuration as code'."
+                },
+                {
+                    "id": "b2d45c1b-1528-4181-9a64-dcd2fb999ad9",
+                    "text": "Using a graphical interface to set up your pipeline",
+                    "isCorrect": false,
+                    "description": "Using a graphical interface is not 'configuration as code'."
+                },
+                {
+                    "id": "5e45cf92-e83a-44c1-b2d7-27f0c739d5e4",
+                    "text": "Hardcoding all settings into the pipeline script",
+                    "isCorrect": false,
+                    "description": "Hardcoding settings is not 'configuration as code'."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        }
+    ]
+}

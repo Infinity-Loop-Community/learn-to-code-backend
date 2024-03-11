@@ -1,0 +1,335 @@
+{
+    "id": "28d788d1-f8e8-4915-a48f-acd5eda4f1d5",
+    "questions": [
+        {
+            "id": "d7154c51-1c31-4e20-b1cf-526e67f12647",
+            "text": "What is the difference between `==` and `equals()` in Java?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "54fcf5c1-cf41-4f65-8c4c-95b05bce9f9d",
+                    "text": "`==` checks for reference equality, `equals()` checks for value equality",
+                    "isCorrect": true,
+                    "description": "`==` compares object references, while `equals()` is used for content comparison."
+                },
+                {
+                    "id": "eab5b3f2-c85b-46fd-90d1-3a8d58df6fd3",
+                    "text": "`==` checks for value equality, `equals()` checks for reference equality",
+                    "isCorrect": false,
+                    "description": "The comparison roles are reversed; `==` compares references, `equals()` compares content."
+                },
+                {
+                    "id": "7b114a7e-39f1-4b1b-9a10-6c55be26e025",
+                    "text": "Both are used for error handling",
+                    "isCorrect": false,
+                    "description": "Neither operator is primarily used for error handling purposes."
+                },
+                {
+                    "id": "8ed5d8a4-5ee5-47dc-b4ad-017204f88f61",
+                    "text": "There is no difference",
+                    "isCorrect": false,
+                    "description": "There is a significant distinction between `==` and `equals()` in Java."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "b4a9a3ef-b892-4a92-94b3-2d4a5d89d8cc",
+            "text": "What is method overloading in Java?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "ab90cfb9-091f-44f5-b057-56a5465b9302",
+                    "text": "Changing the return type of a method",
+                    "isCorrect": false,
+                    "description": "Changing the return type alone does not constitute method overloading."
+                },
+                {
+                    "id": "e4c7d7d8-9bb8-4185-a244-f2a200e44247",
+                    "text": "Having multiple methods with the same name but different parameters",
+                    "isCorrect": true,
+                    "description": "Method overloading allows multiple methods with the same name but different parameter lists."
+                },
+                {
+                    "id": "61ecff9a-5ad8-4e94-a4ed-5789e925c32f",
+                    "text": "Having multiple methods with the same name and same parameters",
+                    "isCorrect": false,
+                    "description": "Methods with the same name and parameters lead to compilation errors."
+                },
+                {
+                    "id": "9cf1fd75-dcb3-40b7-8f69-8eb441452f0d",
+                    "text": "Replacing an existing method in a subclass",
+                    "isCorrect": false,
+                    "description": "Replacing an existing method in a subclass is called overriding, not overloading."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "94c279e5-df95-418f-8ee0-0cd4a88c3cc3",
+            "text": "What is the purpose of the `final` keyword in Java?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "4903703b-331d-498b-97c3-02d7d61bdf87",
+                    "text": "To make a variable unmodifiable",
+                    "isCorrect": false,
+                    "description": "This is one purpose of the `final` keyword but not the only one."
+                },
+                {
+                    "id": "ab43bc34-0120-4c18-a271-9c9ba2890092",
+                    "text": "To make a method un-overridable",
+                    "isCorrect": false,
+                    "description": "This is one purpose of the `final` keyword but not the only one."
+                },
+                {
+                    "id": "180c7a10-b236-4f25-99f6-87724b9dfedb",
+                    "text": "To make a class un-inheritable",
+                    "isCorrect": false,
+                    "description": "This is one purpose of the `final` keyword but not the only one."
+                },
+                {
+                    "id": "e19150d2-346a-41d8-8d79-3cf007d7b28e",
+                    "text": "All of the above",
+                    "isCorrect": true,
+                    "description": "The `final` keyword can be used for all these purposes."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "f45d2bc1-0155-46b3-af8a-f44f4522d6a0",
+            "text": "What is the default value of an uninitialized integer variable in a Java class?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "33db7834-21ad-4c9d-b6a0-1191fdcf5de1",
+                    "text": "0",
+                    "isCorrect": true,
+                    "description": "In Java, the default value of an uninitialized integer variable is 0."
+                },
+                {
+                    "id": "2d59c12d-9071-4131-842b-9f8d933e5f2e",
+                    "text": "null",
+                    "isCorrect": false,
+                    "description": "`null` is the default for object references, not primitives like integers."
+                },
+                {
+                    "id": "9e8d107b-63ac-4d4d-8965-73907c365fa7",
+                    "text": "Undefined",
+                    "isCorrect": false,
+                    "description": "Java provides default values for variables; it's not undefined."
+                },
+                {
+                    "id": "2d61b7a2-f151-43e9-bf20-dc9ef3b5bea9",
+                    "text": "1",
+                    "isCorrect": false,
+                    "description": "The default value for uninitialized integer variables is 0, not 1."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "5f07a0c1-84bc-4c2f-8ed8-d10fbc7b6666",
+            "text": "What is the use of the `this` keyword in Java?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "5a7bf8a3-bd32-4b3e-a04f-64c1ff789b8f",
+                    "text": "To refer to another method in the same class",
+                    "isCorrect": false,
+                    "description": "Referring to another method doesn't require the `this` keyword."
+                },
+                {
+                    "id": "87b3d9f0-7771-45f0-ae35-1655f012ee7f",
+                    "text": "To refer to the current instance of the class",
+                    "isCorrect": true,
+                    "description": "The `this` keyword is used within a class's method to refer to the current instance of that class."
+                },
+                {
+                    "id": "6fbb47c1-7e92-4d18-9374-819d69b4bb33",
+                    "text": "To create a new object",
+                    "isCorrect": false,
+                    "description": "New objects are created using the `new` keyword, not `this`."
+                },
+                {
+                    "id": "ba401da7-510f-4eb8-8a22-c90e349cb931",
+                    "text": "To call a parent class method",
+                    "isCorrect": false,
+                    "description": "Parent class methods are called using `super`, not `this`."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "8b6cb131-7e3a-43de-b067-52442b725740",
+            "text": "What is the Java Memory Model primarily concerned with?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "30798a7a-2b17-43c6-8445-6839bf4061d0",
+                    "text": "Disk storage",
+                    "isCorrect": false,
+                    "description": "The Java Memory Model primarily focuses on thread safety and memory visibility, not disk storage."
+                },
+                {
+                    "id": "b312914a-c7b6-4870-9f8e-4a29df35ae65",
+                    "text": "Thread safety and memory visibility",
+                    "isCorrect": true,
+                    "description": "The Java Memory Model specifies how Java programs interact with memory, particularly concerning multi-threading and memory visibility."
+                },
+                {
+                    "id": "37d005e3-c205-4739-b1c2-b0b5a876512f",
+                    "text": "CPU usage",
+                    "isCorrect": false,
+                    "description": "While CPU usage is related to performance, it's not the primary concern of the Java Memory Model."
+                },
+                {
+                    "id": "7c5b05f7-4f32-4d07-836f-51e50947401d",
+                    "text": "Network latency",
+                    "isCorrect": false,
+                    "description": "Network latency is unrelated to the Java Memory Model."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "5e1d63ee-6c24-45ae-b79b-d1b0d70d2d8f",
+            "text": "What is the primary advantage of using Generics in Java?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "56d2acdd-df77-4193-89db-38feab0d30cc",
+                    "text": "Performance optimization",
+                    "isCorrect": false,
+                    "description": "While Generics may offer performance benefits indirectly, their primary advantage is type safety."
+                },
+                {
+                    "id": "f29b2c2e-77b3-470f-ba42-0e1796a35dbf",
+                    "text": "Type safety",
+                    "isCorrect": true,
+                    "description": "Generics provide stronger type checks at compile time, enhancing type safety."
+                },
+                {
+                    "id": "d5a0e68e-8f08-4762-80e7-9ee94a4cf4ab",
+                    "text": "Code reusability",
+                    "isCorrect": false,
+                    "description": "While Generics do improve code reusability, their primary advantage is type safety."
+                },
+                {
+                    "id": "7548b1c3-cd4e-42e2-99bf-f85f5d11d178",
+                    "text": "Memory management",
+                    "isCorrect": false,
+                    "description": "Memory management is not the primary focus of Generics."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "ab2d9d38-0537-4671-899f-47b307b24a8b",
+            "text": "What is the Singleton design pattern primarily used for?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "32528c36-1b29-43ee-895a-7224949ad4d8",
+                    "text": "To ensure a class has only one instance",
+                    "isCorrect": true,
+                    "description": "The Singleton design pattern ensures that a class has only one instance and provides a global point to access it."
+                },
+                {
+                    "id": "a7f51e4f-cfd3-4812-8a0e-dc885fb7a82e",
+                    "text": "To create multiple instances of a class",
+                    "isCorrect": false,
+                    "description": "Singleton is specifically for limiting instances, not creating multiple."
+                },
+                {
+                    "id": "c17a05b0-e60f-4159-b4b8-02436d47cdd0",
+                    "text": "To facilitate easy inheritance",
+                    "isCorrect": false,
+                    "description": "Singleton pattern does not facilitate easy inheritance."
+                },
+                {
+                    "id": "86c49c8e-93d9-4130-813b-787b0f5ec831",
+                    "text": "To optimize memory usage",
+                    "isCorrect": false,
+                    "description": "Memory optimization is not the primary goal of the Singleton pattern."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "2b62eb8e-ae18-4da7-a857-119e7ad33bcf",
+            "text": "What is the primary use of the `volatile` keyword in Java?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "a7e06a40-3c8e-4a38-8710-3a090b2cb182",
+                    "text": "To make code run faster",
+                    "isCorrect": false,
+                    "description": "Using `volatile` doesn't necessarily make code run faster."
+                },
+                {
+                    "id": "ae92b28e-41b5-49d7-9825-8ae0b18a4239",
+                    "text": "To ensure changes to a variable are visible to all threads",
+                    "isCorrect": true,
+                    "description": "The `volatile` keyword is used to indicate that a variable's value may be changed by multiple threads and ensures changes are visible to all threads."
+                },
+                {
+                    "id": "2b527c1d-4715-4a43-8144-76c2254b5e3c",
+                    "text": "To lock a variable for exclusive use",
+                    "isCorrect": false,
+                    "description": "Locking is done using `synchronized`, not `volatile`."
+                },
+                {
+                    "id": "9b3d6b39-b92a-4c78-afe0-967f3dbd2594",
+                    "text": "To mark a variable as deprecated",
+                    "isCorrect": false,
+                    "description": "Deprecation is indicated using annotations, not `volatile`."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "e929fb3c-9b9b-439b-88e8-6f43c1188496",
+            "text": "What is the concept of `Deadlock` in multi-threading?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "086ded4d-2a88-44cc-b035-9da72aa5e44d",
+                    "text": "When a thread completes its execution",
+                    "isCorrect": false,
+                    "description": "Completion of execution is not deadlock."
+                },
+                {
+                    "id": "6fb6872c-81c1-4b49-a8d4-f515e3be65f5",
+                    "text": "When two or more threads are blocked forever",
+                    "isCorrect": true,
+                    "description": "Deadlock occurs when two or more threads are blocked forever, each waiting for the other to release a lock."
+                },
+                {
+                    "id": "c4cf6429-2211-4dab-b2a4-f3fd8331f197",
+                    "text": "When a thread is temporarily inactive",
+                    "isCorrect": false,
+                    "description": "Temporary inactivity is not deadlock."
+                },
+                {
+                    "id": "a14ac6ee-3d65-4531-a98a-03e46b4847b8",
+                    "text": "When a thread is executing faster than others",
+                    "isCorrect": false,
+                    "description": "Execution speed is not deadlock."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        }
+    ]
+}

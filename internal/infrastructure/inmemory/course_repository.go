@@ -200,6 +200,21 @@ const QuizIDTesting = "2dd320c6-e8b9-4d8d-8ebc-84afab4a5276"
 const CourseStepIDTDD = "2656d99c-28f9-4b25-a842-7c4aa0c35329"
 const QuizIDTDD = "fcb9218c-422e-42b5-94ab-abde486c3629"
 
+const CourseStepIDSpringBoot = "adaa50f6-81a0-4c35-ada1-95b966e2fe61"
+const QuizIDSpringBoot = "7577179a-4c59-4fcc-99a2-232132a65709"
+
+const CourseStepIDDocker = "6ae1c0da-e46d-4c36-b5a1-2bafe9e020a7"
+const QuizIDDocker = "492190b1-4123-4fcf-aeb8-dfaf2193309a"
+
+const CourseStepIDGithubActions = "f4dfa8f8-1002-4cdb-91b9-7eda42edb04d"
+const QuizIDGithubActions = "6c37bc46-05cf-4746-9c70-2a11545030fd"
+
+const CourseStepIDAWS = "5d5b7116-9292-449f-a671-084d221b101c"
+const QuizIDAWS = "c3b848ad-918d-4e41-b612-1a5920b9e499"
+
+const CourseStepIDAdvancedJava = "98e54432-d7b6-43cc-b438-b0c57905a1c2"
+const QuizIDAdvancedJava = "28d788d1-f8e8-4915-a48f-acd5eda4f1d5"
+
 func (q *CourseRepository) getBackendCourse() (course.Course, error) {
 
 	quizJavaBasics, err := q.getQuiz(CourseIDBackendDevelopment, QuizIDJavaBasics)
@@ -232,6 +247,31 @@ func (q *CourseRepository) getBackendCourse() (course.Course, error) {
 		return course.Course{}, course.ErrCourseNotFound
 	}
 
+	quizSpringBoot, err := q.getQuiz(CourseIDBackendDevelopment, QuizIDSpringBoot)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizDocker, err := q.getQuiz(CourseIDBackendDevelopment, QuizIDDocker)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizGithubActions, err := q.getQuiz(CourseIDBackendDevelopment, QuizIDGithubActions)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizAWS, err := q.getQuiz(CourseIDBackendDevelopment, QuizIDAWS)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
+	quizAdvancedJava, err := q.getQuiz(CourseIDBackendDevelopment, QuizIDAdvancedJava)
+	if err != nil {
+		return course.Course{}, course.ErrCourseNotFound
+	}
+
 	return course.Course{
 		ID:   CourseIDBackendDevelopment,
 		Name: "Backend Development",
@@ -260,6 +300,26 @@ func (q *CourseRepository) getBackendCourse() (course.Course, error) {
 				ID:      CourseStepIDTDD,
 				Name:    "Test Driven Development",
 				Quizzes: []course.StepQuiz{q.mapQuiz(quizTDD)},
+			}, {
+				ID:      CourseStepIDSpringBoot,
+				Name:    "Spring Boot",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizSpringBoot)},
+			}, {
+				ID:      CourseStepIDDocker,
+				Name:    "Docker",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizDocker)},
+			}, {
+				ID:      CourseStepIDGithubActions,
+				Name:    "Github Actions",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizGithubActions)},
+			}, {
+				ID:      CourseStepIDAWS,
+				Name:    "AWS",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizAWS)},
+			}, {
+				ID:      CourseStepIDAdvancedJava,
+				Name:    "Advanced Java",
+				Quizzes: []course.StepQuiz{q.mapQuiz(quizAdvancedJava)},
 			},
 		},
 	}, nil

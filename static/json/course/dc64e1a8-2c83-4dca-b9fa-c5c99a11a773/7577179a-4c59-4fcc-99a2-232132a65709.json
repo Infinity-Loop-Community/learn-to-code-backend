@@ -1,0 +1,665 @@
+{
+    "id": "7577179a-4c59-4fcc-99a2-232132a65709",
+    "questions": [
+        {
+            "id": "7d32a3b1-4f90-4fa5-9a8b-2b4a3ff52c1c",
+            "text": "What is Spring Boot primarily used for?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "9279c91c-7b2a-4949-99e2-2099b5d23ab1",
+                    "text": "Frontend Development",
+                    "isCorrect": false,
+                    "description": "Frontend development is generally not the focus of Spring Boot."
+                },
+                {
+                    "id": "56d2448f-9f37-49f8-8f36-cb3de60be101",
+                    "text": "Backend Development",
+                    "isCorrect": true,
+                    "description": "Spring Boot is a Java-based framework designed to simplify the process of building production-ready backend applications."
+                },
+                {
+                    "id": "e510518f-1650-4d03-bf26-738916fa3006",
+                    "text": "Mobile App Development",
+                    "isCorrect": false,
+                    "description": "Mobile app development is typically done using other frameworks."
+                },
+                {
+                    "id": "80315a2b-c90d-4e10-8ef7-42559ed6703d",
+                    "text": "Game Development",
+                    "isCorrect": false,
+                    "description": "Game development is not the primary use-case for Spring Boot."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "eb2bf34b-5563-414b-af68-cc2d874e845f",
+            "text": "What does REST stand for?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "4df95e7c-1fc7-43e7-b7b1-c345bdc7a067",
+                    "text": "Remote Elastic Search Technology",
+                    "isCorrect": false,
+                    "description": "This is not the correct expansion for REST."
+                },
+                {
+                    "id": "8c6a6df3-5119-484f-b765-2a964ecfb2b3",
+                    "text": "Representational State Transfer",
+                    "isCorrect": true,
+                    "description": "REST is an architectural style for designing networked applications."
+                },
+                {
+                    "id": "bf651f61-86a5-4856-a8c0-c66b7d0291c8",
+                    "text": "Real-time Event Streaming Transfer",
+                    "isCorrect": false,
+                    "description": "This is not the correct expansion for REST."
+                },
+                {
+                    "id": "b5e4b00e-2b51-4c61-afe3-d4f88b8e8f16",
+                    "text": "Randomized Encryption Security Token",
+                    "isCorrect": false,
+                    "description": "This is not the correct expansion for REST."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "b4ff6c82-7c36-4a33-917a-30fdd08fa0e2",
+            "text": "What is cohesion in software engineering?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "ff005d3f-9e04-4826-812e-8086f6227c15",
+                    "text": "How tightly the responsibilities of a module are related to each other",
+                    "isCorrect": true,
+                    "description": "Cohesion refers to the degree to which the elements inside a module belong together."
+                },
+                {
+                    "id": "06695311-d670-45a5-b1a3-3251a0a16015",
+                    "text": "How loosely coupled modules are",
+                    "isCorrect": false,
+                    "description": "This describes coupling, not cohesion."
+                },
+                {
+                    "id": "f63d9e46-02fc-4914-9d0f-89d50a3f42b1",
+                    "text": "The speed of the application",
+                    "isCorrect": false,
+                    "description": "This is not related to the concept of cohesion."
+                },
+                {
+                    "id": "30f326e6-b918-4e89-b7b2-204f11a6f840",
+                    "text": "The size of the codebase",
+                    "isCorrect": false,
+                    "description": "This is not related to the concept of cohesion."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "d49d4d14-90d2-49e6-bbc8-9ff596e2cb94",
+            "text": "What is the primary purpose of JPA in Spring Boot?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "2c9c0849-6254-4a21-bbc9-0847cb5b6e67",
+                    "text": "Data Validation",
+                    "isCorrect": false,
+                    "description": "This is not the primary purpose of JPA."
+                },
+                {
+                    "id": "4d45e66d-68d7-4e67-b570-ee6d693e007a",
+                    "text": "Database Entity Access",
+                    "isCorrect": true,
+                    "description": "JPA (Java Persistence API) is used for accessing, persisting, and managing data between Java objects and relational databases."
+                },
+                {
+                    "id": "be64a2ef-8927-4d29-994f-746c27c28b9e",
+                    "text": "Authentication",
+                    "isCorrect": false,
+                    "description": "This is not the primary purpose of JPA."
+                },
+                {
+                    "id": "b80c8b99-8fbb-429b-a36e-45d1f8a358d0",
+                    "text": "Logging",
+                    "isCorrect": false,
+                    "description": "This is not the primary purpose of JPA."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "05e217b8-f7e1-4d85-9abf-08a9a45f4fc7",
+            "text": "What is an API endpoint?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "d6c98a4b-13c6-4299-ae13-935eb34c7f8d",
+                    "text": "A database table",
+                    "isCorrect": false,
+                    "description": "This is not related to API endpoints."
+                },
+                {
+                    "id": "d0a5b1b1-f05c-4d29-b45a-34c6902d883d",
+                    "text": "A URL where an API can be accessed",
+                    "isCorrect": true,
+                    "description": "An API endpoint is a specific URL where an API can receive and send data."
+                },
+                {
+                    "id": "3d80c862-ae24-4b5e-b2a0-3ab30abf9461",
+                    "text": "A frontend component",
+                    "isCorrect": false,
+                    "description": "This is not related to API endpoints."
+                },
+                {
+                    "id": "8c6a08df-1b32-424f-9c1e-4087b27222b2",
+                    "text": "A security protocol",
+                    "isCorrect": false,
+                    "description": "This is not related to API endpoints."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "9d308d22-ec72-4f94-b75e-018f2f84fc20",
+            "text": "What does CRUD stand for?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "b6ee12b8-82d0-41c1-94f1-42d4f74a2b6b",
+                    "text": "Create, Read, Update, Delete",
+                    "isCorrect": true,
+                    "description": "CRUD operations are the basic functions of persistent storage in databases."
+                },
+                {
+                    "id": "cfad8e0a-5e80-4840-8ed6-dafae3b5e21d",
+                    "text": "Copy, Remove, Use, Debug",
+                    "isCorrect": false,
+                    "description": "These are not the correct expansions of CRUD."
+                },
+                {
+                    "id": "05be8f71-2201-4e7f-8ec8-6d2a7b7b1d15",
+                    "text": "Connect, Retrieve, Utilize, Disconnect",
+                    "isCorrect": false,
+                    "description": "These are not the correct expansions of CRUD."
+                },
+                {
+                    "id": "0f7175e3-0988-43d8-a16d-11a94c8c8775",
+                    "text": "Compile, Run, Undo, Deploy",
+                    "isCorrect": false,
+                    "description": "These are not the correct expansions of CRUD."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "c53b1792-332e-48f5-80a3-5fb72b1cc1a5",
+            "text": "What is the role of the `@Controller` annotation in Spring Boot?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "8b511499-2084-43b4-bb94-1982c6f74a29",
+                    "text": "Database Connection",
+                    "isCorrect": false,
+                    "description": "This is not the role of the `@Controller` annotation."
+                },
+                {
+                    "id": "d22e0f47-7f2f-4e3d-b509-bd12f8e56481",
+                    "text": "Dependency Injection",
+                    "isCorrect": false,
+                    "description": "This is not the role of the `@Controller` annotation."
+                },
+                {
+                    "id": "fc774ec2-67f2-4586-9b54-e2569f40c759",
+                    "text": "Define a class as a web controller",
+                    "isCorrect": true,
+                    "description": "The `@Controller` annotation indicates that a class is a web controller and can handle HTTP requests."
+                },
+                {
+                    "id": "6c03b8aa-8f92-4f96-8c8f-b8e0aace85b2",
+                    "text": "Logging",
+                    "isCorrect": false,
+                    "description": "This is not the role of the `@Controller` annotation."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "e330d88d-51ae-4ebd-bfa3-d4a500ab59c4",
+            "text": "What is coupling in software engineering?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "4c53b82b-13b1-4240-9c46-89e32b24ce50",
+                    "text": "The speed of the application",
+                    "isCorrect": false,
+                    "description": "This is not related to the concept of coupling."
+                },
+                {
+                    "id": "a1568c77-ea77-4d56-aa1f-01902d9e9998",
+                    "text": "How tightly the responsibilities of a module are related to each other",
+                    "isCorrect": false,
+                    "description": "This is not related to the concept of coupling."
+                },
+                {
+                    "id": "17f9ee42-df9a-4868-bb1e-818c7eb09bfa",
+                    "text": "The degree to which one module depends on another module",
+                    "isCorrect": true,
+                    "description": "Coupling refers to the degree of direct knowledge that one module has of another."
+                },
+                {
+                    "id": "b89e22e1-bd5e-45d0-9922-14832a07b5ae",
+                    "text": "The size of the codebase",
+                    "isCorrect": false,
+                    "description": "This is not related to the concept of coupling."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "f8a4c09e-59bb-45c3-8de3-f2d7223c5e8f",
+            "text": "What does MVC stand for in software architecture?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "5a6b9813-1330-49d5-9341-7da5fcbe63f3",
+                    "text": "Multi-Version Control",
+                    "isCorrect": false,
+                    "description": "These are not the correct expansions of MVC."
+                },
+                {
+                    "id": "99ff5c63-1b5f-42cf-bb3a-80f00c60cdd6",
+                    "text": "Model-View-Controller",
+                    "isCorrect": true,
+                    "description": "MVC is a design pattern used in software engineering aimed to separate an application into three interconnected components."
+                },
+                {
+                    "id": "1e19d7d6-9b50-4417-aeb7-d30d96d423d0",
+                    "text": "Maximum Value Configuration",
+                    "isCorrect": false,
+                    "description": "These are not the correct expansions of MVC."
+                },
+                {
+                    "id": "0ad34a2e-83cb-4a15-865e-8b9019d481c3",
+                    "text": "Modular Virtual Component",
+                    "isCorrect": false,
+                    "description": "These are not the correct expansions of MVC."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "6c7d6a41-1be9-464d-9b0c-7da4eb20a4d3",
+            "text": "What is the role of the `@Autowired` annotation in Spring Boot?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "a57531b2-7645-45b7-a463-3f7d7fd2296a",
+                    "text": "Database Connection",
+                    "isCorrect": false,
+                    "description": "This is not the role of the `@Autowired` annotation."
+                },
+                {
+                    "id": "7ebd9fcf-2e4d-4b29-b7de-2d65eafe3948",
+                    "text": "Dependency Injection",
+                    "isCorrect": true,
+                    "description": "The `@Autowired` annotation is used to auto-wire Spring Bean on the setter method, constructor, field, and methods."
+                },
+                {
+                    "id": "3450b02f-3a47-4220-b309-3b30d4f56cbf",
+                    "text": "Define a class as a web controller",
+                    "isCorrect": false,
+                    "description": "This is not the role of the `@Autowired` annotation."
+                },
+                {
+                    "id": "8b22e130-7b0b-4d83-8245-80cfa72fc8e3",
+                    "text": "Logging",
+                    "isCorrect": false,
+                    "description": "This is not the role of the `@Autowired` annotation."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "f40f7844-d794-4de2-a5c7-cc8b6014297e",
+            "text": "What is the primary advantage of using DTOs (Data Transfer Objects) in Spring Boot?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "9a539a07-f89d-4e68-bb50-8585e06b6d5f",
+                    "text": "Improved Security",
+                    "isCorrect": false,
+                    "description": "This is not the primary advantage of using DTOs."
+                },
+                {
+                    "id": "7c836f2d-22d6-46a3-ae9d-5e59f7cc5dd6",
+                    "text": "Separation of Concerns",
+                    "isCorrect": true,
+                    "description": "DTOs help in separating the internal representation of data from the data that you expose via your API."
+                },
+                {
+                    "id": "f46d8e8c-6234-4567-a404-aa1b2458163a",
+                    "text": "Faster Compilation",
+                    "isCorrect": false,
+                    "description": "This is not the primary advantage of using DTOs."
+                },
+                {
+                    "id": "c3e6d2e6-ec02-4981-9c19-d81d19f9b6e3",
+                    "text": "Easier Debugging",
+                    "isCorrect": false,
+                    "description": "This is not the primary advantage of using DTOs."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "e7d8f102-2852-4f97-90b4-0d3639716da6",
+            "text": "What is the use of the `@Repository` annotation in Spring Boot?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "4f26fde5-8d0a-470b-944f-3040474a0dc7",
+                    "text": "To indicate a Spring managed controller bean",
+                    "isCorrect": false,
+                    "description": "This is not the use of the `@Repository` annotation."
+                },
+                {
+                    "id": "ba595ff4-ba09-41d8-aa0e-94d8e6cda0d2",
+                    "text": "To indicate a Spring managed service bean",
+                    "isCorrect": false,
+                    "description": "This is not the use of the `@Repository` annotation."
+                },
+                {
+                    "id": "79211e5a-74aa-4f26-bdcd-f7b5d4ff6ff5",
+                    "text": "To indicate a Spring managed repository bean",
+                    "isCorrect": true,
+                    "description": "The `@Repository` annotation is used to indicate that a class functions as a repository and needs to be auto-configured."
+                },
+                {
+                    "id": "916672a5-57da-4ecb-a7cb-7b5b3c58b098",
+                    "text": "To indicate a Spring managed configuration bean",
+                    "isCorrect": false,
+                    "description": "This is not the use of the `@Repository` annotation."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "1ed3763b-eb0b-4b43-8aaf-99db4b43cfc3",
+            "text": "What is the purpose of the `@RequestMapping` annotation in Spring Boot?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "3e6286d6-3a3a-4989-af8d-cb7e24f99abf",
+                    "text": "Data Validation",
+                    "isCorrect": false,
+                    "description": "This is not the primary purpose of `@RequestMapping`."
+                },
+                {
+                    "id": "02293ec9-bc6c-4d8b-a0f8-b79fc067be9f",
+                    "text": "Routing of HTTP Requests",
+                    "isCorrect": true,
+                    "description": "The `@RequestMapping` annotation is used for mapping web requests onto specific handler classes and handler methods."
+                },
+                {
+                    "id": "7fa48f5b-3186-41cb-a7c6-431e8d5c5b65",
+                    "text": "Dependency Injection",
+                    "isCorrect": false,
+                    "description": "This is not the primary purpose of `@RequestMapping`."
+                },
+                {
+                    "id": "7c615b10-8085-4f13-a7e9-0aa01cded60e",
+                    "text": "Logging",
+                    "isCorrect": false,
+                    "description": "This is not the primary purpose of `@RequestMapping`."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "6e1d91cf-bbaf-4a37-8e59-8aeb2ed69a5d",
+            "text": "What is the primary role of the `@Entity` annotation in Spring Boot?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "65d4e4f4-8f0a-478a-b6f1-05465f4a214d",
+                    "text": "To indicate a REST controller",
+                    "isCorrect": false,
+                    "description": "This is not the role of the `@Entity` annotation."
+                },
+                {
+                    "id": "c0b4d5a6-df11-4fbf-ba50-67683f231e5b",
+                    "text": "To indicate a JPA entity",
+                    "isCorrect": true,
+                    "description": "The `@Entity` annotation is used to indicate that a class is a JPA entity and is mapped to a database table."
+                },
+                {
+                    "id": "3c10614d-9678-4a5f-99b4-afce5246d540",
+                    "text": "To indicate a service class",
+                    "isCorrect": false,
+                    "description": "This is not the role of the `@Entity` annotation."
+                },
+                {
+                    "id": "c4c0e16e-71bc-40cd-8421-7612edff8f5f",
+                    "text": "To indicate a configuration class",
+                    "isCorrect": false,
+                    "description": "This is not the role of the `@Entity` annotation."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "32e5b97d-934b-46a5-a3d8-f33b18413a28",
+            "text": "What is the Spring Security framework primarily used for?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "c2d54084-6d58-460d-95a3-8cda12b01e58",
+                    "text": "Data Validation",
+                    "isCorrect": false,
+                    "description": "This is not the primary purpose of Spring Security."
+                },
+                {
+                    "id": "40e5b88f-384f-4e5e-8e06-8d0c29f5f41e",
+                    "text": "Authentication and Authorization",
+                    "isCorrect": true,
+                    "description": "Spring Security is primarily used for authentication and authorization in Spring applications."
+                },
+                {
+                    "id": "53b0fc20-b7c4-4710-853d-8d5aa7775e63",
+                    "text": "Database Migration",
+                    "isCorrect": false,
+                    "description": "This is not the primary purpose of Spring Security."
+                },
+                {
+                    "id": "a79cfc31-c0fc-466d-b5c3-2bb84cf71f06",
+                    "text": "Logging",
+                    "isCorrect": false,
+                    "description": "This is not the primary purpose of Spring Security."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "28bb8a33-51b7-4d58-83f0-7e0828f00b95",
+            "text": "What is the primary advantage of using Aspect-Oriented Programming (AOP) in Spring Boot?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "f51a755d-af53-4472-8f2f-f2bf103e1a8c",
+                    "text": "Improved Security",
+                    "isCorrect": false,
+                    "description": "This is not the primary advantage of using AOP."
+                },
+                {
+                    "id": "3815ff5e-ccdc-4e07-af58-df31b271e081",
+                    "text": "Separation of Concerns",
+                    "isCorrect": true,
+                    "description": "AOP allows for better modularity by separating cross-cutting concerns from the main business logic."
+                },
+                {
+                    "id": "eb7f6fa1-072e-4c46-a675-2497c4e8e59f",
+                    "text": "Faster Compilation",
+                    "isCorrect": false,
+                    "description": "This is not the primary advantage of using AOP."
+                },
+                {
+                    "id": "89d67c5f-9604-4d94-aa1a-04d760b09e20",
+                    "text": "Easier Debugging",
+                    "isCorrect": false,
+                    "description": "This is not the primary advantage of using AOP."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "125f055f-144d-4d8b-91e1-5227fd7c746d",
+            "text": "What is the use of the `@Transactional` annotation in Spring Boot?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "32fd4109-69a2-4469-8904-89c835eb08fb",
+                    "text": "To define a JPA entity",
+                    "isCorrect": false,
+                    "description": "This is not the use of the `@Transactional` annotation."
+                },
+                {
+                    "id": "41aa6a10-0f8e-47d0-bd8f-8c56b8c9e3a5",
+                    "text": "To define a REST endpoint",
+                    "isCorrect": false,
+                    "description": "This is not the use of the `@Transactional` annotation."
+                },
+                {
+                    "id": "a5fc96d4-b139-4698-aa82-eebd3b34ec8c",
+                    "text": "To define a transaction boundary",
+                    "isCorrect": true,
+                    "description": "The `@Transactional` annotation is used to define the scope of a single database transaction."
+                },
+                {
+                    "id": "a91dbb7c-b4cd-45aa-a66e-032ed034f833",
+                    "text": "To define a service class",
+                    "isCorrect": false,
+                    "description": "This is not the use of the `@Transactional` annotation."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "df85dffd-9f8d-4e8e-b798-364a00031e57",
+            "text": "What is the primary role of the `@Qualifier` annotation in Spring Boot?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "0091f169-484e-49b5-b5d6-31499f95a73d",
+                    "text": "To resolve ambiguity during bean injection",
+                    "isCorrect": true,
+                    "description": "The `@Qualifier` annotation is used to resolve ambiguity when multiple beans of the same type exist."
+                },
+                {
+                    "id": "a7202b69-26b1-4f64-8df5-daa04e447141",
+                    "text": "To define a REST endpoint",
+                    "isCorrect": false,
+                    "description": "This is not the role of the `@Qualifier` annotation."
+                },
+                {
+                    "id": "f64d93db-6601-4134-a6c2-ba472fd8003b",
+                    "text": "To define a JPA entity",
+                    "isCorrect": false,
+                    "description": "This is not the role of the `@Qualifier` annotation."
+                },
+                {
+                    "id": "c6626f9f-d46e-4de0-8e84-4be3c8f93c4b",
+                    "text": "To define a service class",
+                    "isCorrect": false,
+                    "description": "This is not the role of the `@Qualifier` annotation."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "1f2c02b1-bcb3-44bc-b0e7-5a4b7e4b632e",
+            "text": "What is the primary advantage of using the Flyway database migration tool in Spring Boot applications?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "e2e6e68b-d401-45c6-82d5-6d1e65d96b3c",
+                    "text": "Improved Security",
+                    "isCorrect": false,
+                    "description": "This is not the primary advantage of using Flyway."
+                },
+                {
+                    "id": "19143d78-1803-4bfc-8c53-ff0da4c23c48",
+                    "text": "Version Control for Database Schema",
+                    "isCorrect": true,
+                    "description": "Flyway allows you to version control your database schema, making it easier to manage changes."
+                },
+                {
+                    "id": "6173d372-3838-4f5a-bdbd-c0b17f69cbf4",
+                    "text": "Faster Compilation",
+                    "isCorrect": false,
+                    "description": "This is not the primary advantage of using Flyway."
+                },
+                {
+                    "id": "e5a7b242-bb92-4911-9878-5c6d582e01a3",
+                    "text": "Easier Debugging",
+                    "isCorrect": false,
+                    "description": "This is not the primary advantage of using Flyway."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "f1c5f78a-33f8-4410-9a59-91a7136a7e14",
+            "text": "What is the primary role of the `@Cacheable` annotation in Spring Boot?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "e170cd65-ff1b-4a4f-8b9f-7330ec19f319",
+                    "text": "Data Validation",
+                    "isCorrect": false,
+                    "description": "This is not the primary role of the `@Cacheable` annotation."
+                },
+                {
+                    "id": "86a10f78-9e8c-4df7-8da7-750b58869512",
+                    "text": "Caching Method Return Values",
+                    "isCorrect": true,
+                    "description": "The `@Cacheable` annotation is used to indicate that the result of a method execution needs to be cached."
+                },
+                {
+                    "id": "bc9f647d-1f4d-4a4d-b493-ccf3db2ec57b",
+                    "text": "Routing of HTTP Requests",
+                    "isCorrect": false,
+                    "description": "This is not the primary role of the `@Cacheable` annotation."
+                },
+                {
+                    "id": "b5479ab8-d863-4600-bad5-fd3ee951bd69",
+                    "text": "Logging",
+                    "isCorrect": false,
+                    "description": "This is not the primary role of the `@Cacheable` annotation."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        }
+    ]
+}

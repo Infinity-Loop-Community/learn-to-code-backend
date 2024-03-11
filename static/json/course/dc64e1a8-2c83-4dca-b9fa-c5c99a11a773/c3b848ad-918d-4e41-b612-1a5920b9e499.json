@@ -1,0 +1,640 @@
+{
+    "id": "c3b848ad-918d-4e41-b612-1a5920b9e499",
+    "questions": [
+        {
+            "id": "8f297bc3-9b79-4b7f-827f-51d3a9d362c8",
+            "text": "What is the primary function of AWS Cloud9?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "e6e791f1-5da4-4b86-90f5-16a58d18d74a",
+                    "text": "Real-time collaboration platform",
+                    "isCorrect": false,
+                    "description": "While it does support real-time collaboration, that is not its primary function."
+                },
+                {
+                    "id": "ad8c6f42-1833-4660-ae9c-2fd88c4255a9",
+                    "text": "Cloud-based IDE",
+                    "isCorrect": true,
+                    "description": "AWS Cloud9 provides an integrated development environment in the cloud, facilitating code writing, running, and debugging."
+                },
+                {
+                    "id": "ac29b78a-3df5-495f-97aa-011c8b0bf708",
+                    "text": "Database management system",
+                    "isCorrect": false,
+                    "description": "Cloud9 is not specifically for database management."
+                },
+                {
+                    "id": "43b1fdef-fb56-405f-893b-54e61c68d269",
+                    "text": "Analytics service",
+                    "isCorrect": false,
+                    "description": "It's not designed for analytics but for development."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "5bf5f3d1-14b4-49a3-8a39-dc4cfc52f3fc",
+            "text": "What is API Gateway mainly used for?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "f7f13133-5c7b-4ab8-8b7a-34fe6c131f76",
+                    "text": "Computing power",
+                    "isCorrect": false,
+                    "description": "Computing power is generally provided by EC2 instances or Lambda functions."
+                },
+                {
+                    "id": "c68febbd-c4b2-4a87-b0c4-53b64d5aa761",
+                    "text": "Deploying APIs",
+                    "isCorrect": true,
+                    "description": "API Gateway is primarily used for creating, publishing, and managing APIs."
+                },
+                {
+                    "id": "cf493e91-00dc-4a2c-ae7b-b290d99f299b",
+                    "text": "File storage",
+                    "isCorrect": false,
+                    "description": "File storage is usually handled by AWS S3."
+                },
+                {
+                    "id": "7af18328-3b2a-4ef1-96d3-0b6651a3efec",
+                    "text": "Analytics",
+                    "isCorrect": false,
+                    "description": "Analytics is typically managed by services like AWS Kinesis."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "ad05de3d-4be5-4856-813b-6da36aef8102",
+            "text": "Which AWS service is primarily used for user authentication?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "257786d7-f1a7-4c5c-a24e-961db27ccfb8",
+                    "text": "Cognito",
+                    "isCorrect": true,
+                    "description": "AWS Cognito provides authentication, authorization, and user management services."
+                },
+                {
+                    "id": "be95eb4b-8a51-4671-bd6a-3acbcba8a6d3",
+                    "text": "DynamoDB",
+                    "isCorrect": false,
+                    "description": "DynamoDB is a NoSQL database service."
+                },
+                {
+                    "id": "29837257-4a14-4201-90ae-dbbf97c48e7a",
+                    "text": "S3",
+                    "isCorrect": false,
+                    "description": "S3 is primarily for storage."
+                },
+                {
+                    "id": "c0266f5f-36a2-4d4c-85ac-019a727c3f40",
+                    "text": "EC2",
+                    "isCorrect": false,
+                    "description": "EC2 provides virtual servers."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "931a4b05-97c8-4a71-ba36-d9474432eb94",
+            "text": "What is the core purpose of AWS Lambda?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "9de577fc-e95c-4a71-bd16-8d1d3daa5d4f",
+                    "text": "Data warehousing",
+                    "isCorrect": false,
+                    "description": "Data warehousing is the purpose of services like AWS Redshift."
+                },
+                {
+                    "id": "750746ab-fd51-4c3b-b12b-647e75f3ef18",
+                    "text": "Serverless computing",
+                    "isCorrect": true,
+                    "description": "Lambda allows you to run your code without provisioning or managing servers."
+                },
+                {
+                    "id": "098f2b6a-b753-4b05-bb29-76f46decd94d",
+                    "text": "Networking",
+                    "isCorrect": false,
+                    "description": "Networking is more aligned with services like VPC."
+                },
+                {
+                    "id": "303b8c43-bc2b-45c6-94c5-b6d1784c17cc",
+                    "text": "Monitoring",
+                    "isCorrect": false,
+                    "description": "Monitoring is typically done by AWS CloudWatch."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "930a1d0b-7b7b-458f-950a-4f4f631d936e",
+            "text": "What does SNS stand for?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "ad191342-8c3e-4b82-82c6-0be51f7d3980",
+                    "text": "Simple Networking Service",
+                    "isCorrect": false,
+                    "description": "This is not an actual AWS service."
+                },
+                {
+                    "id": "f44c2059-05d1-41b1-8bb1-6a7c3e96bb26",
+                    "text": "Simple Notification Service",
+                    "isCorrect": true,
+                    "description": "SNS is used for sending messages or notifications based on certain events."
+                },
+                {
+                    "id": "0b94e3d1-5a51-437f-bbcb-832e3629cb19",
+                    "text": "Secure Node Service",
+                    "isCorrect": false,
+                    "description": "This is not an actual AWS service."
+                },
+                {
+                    "id": "b4a1989e-189f-46f0-9d90-47ec80c09f87",
+                    "text": "System Namespace Service",
+                    "isCorrect": false,
+                    "description": "This is not an actual AWS service."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "eab0774a-1e01-4dc5-a9bc-2b145b6d54cd",
+            "text": "Which AWS service is used for message queuing?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "7e4e48f2-6188-4ac5-9853-2b3b3023da5a",
+                    "text": "SQS",
+                    "isCorrect": true,
+                    "description": "SQS, or Simple Queue Service, is used for message queuing in distributed systems."
+                },
+                {
+                    "id": "d01f1003-37d3-4a6f-a183-1b25a00718d7",
+                    "text": "RDS",
+                    "isCorrect": false,
+                    "description": "RDS is a relational database service."
+                },
+                {
+                    "id": "f785c25a-04fc-46fc-9315-5ee1e6c1537f",
+                    "text": "EMR",
+                    "isCorrect": false,
+                    "description": "EMR is used for big data processing."
+                },
+                {
+                    "id": "4b6c6c08-22de-4b90-94cb-7e7819be76a8",
+                    "text": "Athena",
+                    "isCorrect": false,
+                    "description": "Athena is a query service."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "d730d890-f7b6-4a58-9e52-001a508af097",
+            "text": "What is serverless architecture?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "15c04d97-4e64-437d-b632-cb4392eaa08a",
+                    "text": "Architecture without need for server management",
+                    "isCorrect": true,
+                    "description": "In a serverless architecture, the cloud provider automatically manages the servers, so you can focus on the code."
+                },
+                {
+                    "id": "4ff0f128-741f-4d5e-a4aa-29a042ac4c5e",
+                    "text": "Architecture with zero servers",
+                    "isCorrect": false,
+                    "description": "There are servers, but they're managed by the cloud provider."
+                },
+                {
+                    "id": "a0e7c352-c1a5-42a1-9e85-5e49c5a4904c",
+                    "text": "Architecture with self-managed servers",
+                    "isCorrect": false,
+                    "description": "Self-management is not part of serverless architecture."
+                },
+                {
+                    "id": "a53b0a3a-6b4f-4f7b-9b64-f8e1e27d7b79",
+                    "text": "Architecture based on client-side computing",
+                    "isCorrect": false,
+                    "description": "Client-side computing is not what makes an architecture serverless."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "9cc27c98-109d-4147-b2c0-7eeb4a79f5df",
+            "text": "What are microservices?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "6b4f5f3e-d0c1-41e5-b396-5c025a8e7894",
+                    "text": "Independent application components",
+                    "isCorrect": true,
+                    "description": "Microservices are loosely-coupled, independently deployable components of an application."
+                },
+                {
+                    "id": "20c6e227-37b4-4b26-99e2-2f61b476df05",
+                    "text": "Small EC2 instances",
+                    "isCorrect": false,
+                    "description": "EC2 instance size is not related to microservices."
+                },
+                {
+                    "id": "1b2b3b27-87a3-4fd0-bf86-0d64ec372132",
+                    "text": "Minimal cloud functions",
+                    "isCorrect": false,
+                    "description": "Cloud functions could be part of a microservices architecture, but they are not synonymous."
+                },
+                {
+                    "id": "ab452301-5c85-4a9f-8635-b6e2e02fc57e",
+                    "text": "Micro-level security rules",
+                    "isCorrect": false,
+                    "description": "Security rules are not what defines microservices."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "96f3d678-86c2-42eb-b4ff-2c2d38a4e3e6",
+            "text": "What is AWS Cognito User Pool?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "c30dc152-61f4-4e85-ba76-91a33d06e218",
+                    "text": "A user directory",
+                    "isCorrect": true,
+                    "description": "Cognito User Pools serve as a user directory to help manage user profiles and authentication features."
+                },
+                {
+                    "id": "c9a5de0e-eb26-44c0-8e88-df5b2c88b9b9",
+                    "text": "A data storage pool",
+                    "isCorrect": false,
+                    "description": "It's not a data storage pool."
+                },
+                {
+                    "id": "dfdb51ed-fbe9-4e49-8aaf-ebde7e6c8ed8",
+                    "text": "A group of EC2 instances",
+                    "isCorrect": false,
+                    "description": "It has nothing to do with EC2 instances."
+                },
+                {
+                    "id": "6902b667-d6e0-4f17-bd3c-3011f3b3af47",
+                    "text": "A set of IAM roles",
+                    "isCorrect": false,
+                    "description": "IAM roles are separate from Cognito User Pools."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "394d30bc-2753-4ba2-b3d0-480bb0a6be7a",
+            "text": "Which AWS service can trigger a Lambda function?",
+            "difficulty": "easy",
+            "answers": [
+                {
+                    "id": "b15a2185-b00a-448a-b0f7-5d8c0f25c94e",
+                    "text": "Only SNS",
+                    "isCorrect": false,
+                    "description": "It's not limited to either just SNS or SQS."
+                },
+                {
+                    "id": "07061d24-42f4-4f90-b536-9b3f3f46e1b7",
+                    "text": "Only SQS",
+                    "isCorrect": false,
+                    "description": "It's not limited to either just SNS or SQS."
+                },
+                {
+                    "id": "993cf1ff-b0d4-4b33-9308-c0d9032c01aa",
+                    "text": "SNS and SQS",
+                    "isCorrect": true,
+                    "description": "Both SNS and SQS can be used to trigger a Lambda function based on events or messages."
+                },
+                {
+                    "id": "c6fbbe5a-22c4-4cb8-a8e5-2d94b8cf65dc",
+                    "text": "EC2 and RDS",
+                    "isCorrect": false,
+                    "description": "EC2 and RDS are not typically used to trigger Lambda functions."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "1cfde57b-707f-442f-a67f-937511e9c1cb",
+            "text": "How does API Gateway work with Lambda for a serverless application?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "5da32f44-863e-49d4-a847-c9c16f54e25e",
+                    "text": "API Gateway cannot work with Lambda",
+                    "isCorrect": false,
+                    "description": "This statement is false; they are often used together."
+                },
+                {
+                    "id": "9d5e36f0-badf-4cc1-87ae-64e47f4f8d71",
+                    "text": "API Gateway forwards client requests to Lambda functions",
+                    "isCorrect": true,
+                    "description": "API Gateway acts as the 'front door' to route incoming API requests to associated Lambda functions."
+                },
+                {
+                    "id": "f6e6c700-145d-4a91-b1d5-7e20cb750eb8",
+                    "text": "API Gateway stores data for Lambda",
+                    "isCorrect": false,
+                    "description": "API Gateway does not store data."
+                },
+                {
+                    "id": "3fd6ec3d-d558-4a47-8af0-962f67d0d82b",
+                    "text": "Lambda triggers API Gateway",
+                    "isCorrect": false,
+                    "description": "Lambda does not trigger API Gateway; rather, API Gateway can trigger Lambda."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "02b23b59-bf2b-491e-aae6-ee8ff30ab207",
+            "text": "What is the purpose of AWS Step Functions?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "df412b78-502f-4f27-95b1-f35b4e095400",
+                    "text": "Data transformation",
+                    "isCorrect": false,
+                    "description": "Data transformation is not its primary use."
+                },
+                {
+                    "id": "0f70b3cb-ec2e-4b46-a25b-14c456b22f33",
+                    "text": "Coordinate microservices",
+                    "isCorrect": true,
+                    "description": "AWS Step Functions are used to coordinate the components of distributed applications and microservices."
+                },
+                {
+                    "id": "6fcf35d6-88a7-4564-87d5-eb4700164a3b",
+                    "text": "Network routing",
+                    "isCorrect": false,
+                    "description": "Network routing is done through services like AWS VPC."
+                },
+                {
+                    "id": "fd0d61c1-6a95-486a-99cf-1f5f55fdebe6",
+                    "text": "Object storage",
+                    "isCorrect": false,
+                    "description": "Object storage is typically handled by S3."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "2d5fe26e-9409-4be6-8e36-2a4023d06709",
+            "text": "In an event-driven architecture, what role does SNS play?",
+            "difficulty": "medium",
+            "answers": [],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "49e3e292-98e3-4d67-97d4-55f1f0c22822",
+            "text": "How is Cognito different from IAM in AWS?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "be60c9dc-c598-41a0-aaf3-6d8c9263c4a6",
+                    "text": "Cognito is for app users, IAM for cloud resource access",
+                    "isCorrect": true,
+                    "description": "Cognito is geared towards managing app-level users, while IAM is for controlling access to cloud resources within AWS."
+                },
+                {
+                    "id": "88d0368d-3aa6-43ee-9cc7-2a7a9f63a996",
+                    "text": "IAM is for data storage, Cognito for authentication",
+                    "isCorrect": false,
+                    "description": "IAM is not for data storage."
+                },
+                {
+                    "id": "8eae097d-dfd8-4942-a41a-1bbf374d7d32",
+                    "text": "Cognito is for machine-to-machine authentication",
+                    "isCorrect": false,
+                    "description": "Cognito is not typically used for machine-to-machine authentication."
+                },
+                {
+                    "id": "dbb2b870-fc8f-4420-a93f-18d849ac8e38",
+                    "text": "IAM and Cognito serve the same purpose",
+                    "isCorrect": false,
+                    "description": "They serve different purposes."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "8b2694e2-8194-4f5b-9ff0-193ebf1e9eb0",
+            "text": "What is blue-green deployment in AWS?",
+            "difficulty": "medium",
+            "answers": [
+                {
+                    "id": "279c0b94-7d81-4d0e-924a-999b0c97c7f9",
+                    "text": "A color-coding scheme for resources",
+                    "isCorrect": false,
+                    "description": "It's not a color-coding scheme."
+                },
+                {
+                    "id": "303b4dc2-2229-4f6c-8c82-9a05a6c7fcfd",
+                    "text": "A specific type of EC2 instance",
+                    "isCorrect": false,
+                    "description": "It's not an EC2 instance type."
+                },
+                {
+                    "id": "df3da328-236d-4720-a69e-1f491f582485",
+                    "text": "A deployment strategy for minimizing downtime",
+                    "isCorrect": true,
+                    "description": "Blue-green deployment is a technique for releasing applications by shifting traffic between two identical environments running different versions of the application."
+                },
+                {
+                    "id": "51815e07-9d11-4185-99e5-919166dc67b7",
+                    "text": "A cost-optimization strategy",
+                    "isCorrect": false,
+                    "description": "It's not primarily for cost-optimization."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "ff1f8d63-1ac1-404d-bb5d-11ee25552cf0",
+            "text": "What are the best practices for securing an API deployed with API Gateway?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "a1b27f61-4706-4ed7-b3c0-0b030d9bfa7a",
+                    "text": "HTTPS only, rate limiting",
+                    "isCorrect": true,
+                    "description": "Enforcing HTTPS and implementing rate limiting are among the best practices for securing an API in API Gateway."
+                },
+                {
+                    "id": "3f135399-36db-42b6-b41f-2f4f55ff9a61",
+                    "text": "Public access, API keys",
+                    "isCorrect": false,
+                    "description": "Public access is not recommended for secure APIs."
+                },
+                {
+                    "id": "8fe59bc7-c2c0-4695-9205-0b3aee7f5ebd",
+                    "text": "Private VPC, no authentication",
+                    "isCorrect": false,
+                    "description": "Private VPC alone without authentication is not sufficient."
+                },
+                {
+                    "id": "4b8928e5-b589-4e58-9503-4520b2f4eaf4",
+                    "text": "Basic Authentication, unrestricted access",
+                    "isCorrect": false,
+                    "description": "Basic Authentication and unrestricted access are insecure practices."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "ff294d20-e8cd-499e-af93-1a1d566e44de",
+            "text": "How does Cognito work with OAuth 2.0?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "74a0f4df-4f6f-4147-94f8-d3e7f618c50f",
+                    "text": "Cognito doesn’t support OAuth 2.0",
+                    "isCorrect": false,
+                    "description": "Cognito does support OAuth 2.0."
+                },
+                {
+                    "id": "46a5e0d4-0b83-498e-85cd-227f0d893dab",
+                    "text": "OAuth 2.0 acts as a backup for Cognito",
+                    "isCorrect": false,
+                    "description": "OAuth 2.0 doesn’t act as a backup for Cognito."
+                },
+                {
+                    "id": "d1b4c042-8583-4056-aa63-b7d68ac4a885",
+                    "text": "Cognito can act as an OAuth 2.0 provider",
+                    "isCorrect": true,
+                    "description": "AWS Cognito can act as an identity provider, supporting OAuth 2.0 for token-based authentication and authorization."
+                },
+                {
+                    "id": "9fbd8e54-e367-4ab7-8aa3-77454e2998f7",
+                    "text": "Cognito uses OAuth 2.0 for internal operations only",
+                    "isCorrect": false,
+                    "description": "OAuth 2.0 is not limited to internal operations in Cognito."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "b22b6887-548f-45cc-baa4-9aee2b7605c1",
+            "text": "What is the relationship between AWS Lambda and AWS X-Ray?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "df79a1d8-50ed-4df1-b920-3c18433692a2",
+                    "text": "X-Ray is an older version of Lambda",
+                    "isCorrect": false,
+                    "description": "X-Ray is not an older version of Lambda."
+                },
+                {
+                    "id": "3d5b0b8f-39dc-4c12-b7fd-e22c8d0ab4f0",
+                    "text": "X-Ray is for monitoring and tracing Lambda executions",
+                    "isCorrect": true,
+                    "description": "AWS X-Ray provides insights into the behavior of your applications, making it easier to analyze and debug them. It is often used with Lambda for this purpose."
+                },
+                {
+                    "id": "e36b0117-7b4d-4c76-8909-5cf1e499a104",
+                    "text": "Lambda uses X-Ray for data storage",
+                    "isCorrect": false,
+                    "description": "X-Ray is not for data storage."
+                },
+                {
+                    "id": "981be4b2-cfac-488d-8597-b295c4fb7695",
+                    "text": "X-Ray uses Lambda for automatic scaling",
+                    "isCorrect": false,
+                    "description": "X-Ray doesn’t use Lambda for scaling; rather, it’s used to trace its activities."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "c9ff9619-c9e4-40c0-bff3-0014c55bc071",
+            "text": "What is the main advantage of using Step Functions over Lambda for complex workflows?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "4f55de40-f4b0-474a-a52e-1d5f90a65414",
+                    "text": "Cost-efficiency",
+                    "isCorrect": false,
+                    "description": "Cost-efficiency is not the primary advantage."
+                },
+                {
+                    "id": "d29e0ba3-4643-47a9-bf38-28b8a4bbd56e",
+                    "text": "Data storage",
+                    "isCorrect": false,
+                    "description": "Step Functions aren't mainly for data storage."
+                },
+                {
+                    "id": "f9bbacee-89f6-4956-852a-6964f7a248f1",
+                    "text": "State management",
+                    "isCorrect": true,
+                    "description": "Step Functions offer better state management and coordination between different AWS services, which is especially useful for complex workflows."
+                },
+                {
+                    "id": "3ad6ed0d-ccf2-4c6f-93e0-7b270ea1d377",
+                    "text": "Networking capabilities",
+                    "isCorrect": false,
+                    "description": "Networking capabilities aren't the main benefit."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        },
+        {
+            "id": "5181cf6d-0073-4796-a702-9fc93c8c07df",
+            "text": "How can you optimize a serverless application for cost in AWS?",
+            "difficulty": "hard",
+            "answers": [
+                {
+                    "id": "83de1ad4-64a9-47e2-a7e6-83c850b1e2ae",
+                    "text": "Increase the number of EC2 instances",
+                    "isCorrect": false,
+                    "description": "Increasing EC2 instances could increase cost, not optimize it."
+                },
+                {
+                    "id": "63255f99-6efb-4ff7-a0ac-c648cc7b68bf",
+                    "text": "Use provisioned concurrency in Lambda",
+                    "isCorrect": true,
+                    "description": "Provisioned concurrency can help optimize the function's initialization time, thereby reducing cost by making the function respond within double-digit milliseconds."
+                },
+                {
+                    "id": "57dbdfe4-e27e-4947-899f-b0f07e2b28a3",
+                    "text": "Store all data in S3",
+                    "isCorrect": false,
+                    "description": "Storing all data in S3 could lead to high storage costs."
+                },
+                {
+                    "id": "13428a65-6e92-42f3-b94b-b3690e6a8cf8",
+                    "text": "Use an unlimited budget",
+                    "isCorrect": false,
+                    "description": "An unlimited budget is not a way to optimize cost."
+                }
+            ],
+            "rating": 0,
+            "ratingCount": 0
+        }
+    ]
+}
